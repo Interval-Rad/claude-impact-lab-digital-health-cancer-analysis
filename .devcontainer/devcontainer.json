@@ -1,6 +1,7 @@
 {
   "name": "Interval Read",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "features": { "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" } },
   "postCreateCommand": "npm install",
   "postStartCommand": "nohup npm run dev > /tmp/interval-dev.log 2>&1 &",
   "forwardPorts": [3000],
