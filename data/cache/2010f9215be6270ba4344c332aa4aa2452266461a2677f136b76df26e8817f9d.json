@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "2010f9215be6270ba4344c332aa4aa2452266461a2677f136b76df26e8817f9d",
+  "case_id": "refusal_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:40:26.561Z",
+  "usage": {
+    "input_tokens": 10424,
+    "output_tokens": 1136
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage: urgency high, on-call page not triggered, needs human review.",
+        "why": "The findings contain no triage or urgency assignment or paging information. Every finding has time_sensitive false and study_flags is empty, so 'urgency high' is unsupported and conflicts with them."
+      }
+    ]
+  }
+}
