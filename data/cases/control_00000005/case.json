@@ -1,0 +1,62 @@
+{
+  "case_id": "control_00000005",
+  "source": "NIH ChestX-ray14 (NIH Clinical Center). De-identified public data.",
+  "category_hint": "control",
+  "nih": {
+    "patient_id": 5,
+    "sex": "F",
+    "prior": {
+      "image": "00000005_003.png",
+      "view": "PA",
+      "age": 69,
+      "nlp_labels": "No Finding",
+      "px_mm_at_1024": 0.418
+    },
+    "current": {
+      "image": "00000005_004.png",
+      "view": "PA",
+      "age": 70,
+      "nlp_labels": "No Finding",
+      "px_mm_at_1024": 0.417
+    }
+  },
+  "_note": "NIH labels were text-mined from reports and are noisy. They are hints, not ground truth.",
+  "synthetic_chart": {
+    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
+    "mrn": "",
+    "display_name": "",
+    "prior_date": "",
+    "current_date": "",
+    "indication": "",
+    "ordering_provider": {
+      "name": "",
+      "role": "medical oncology | PCP | ED"
+    },
+    "prior_report": "",
+    "vitals": {
+      "hr": null,
+      "spo2": null,
+      "temp_c": null,
+      "bp": ""
+    },
+    "labs": [],
+    "problem_list": [],
+    "pcp_on_file": true,
+    "insurance_on_file": true,
+    "preferred_language": "en"
+  },
+  "ground_truth": {
+    "_note": "Fill BEFORE running the model. One clinician labels, a second checks.",
+    "labeled_by": "",
+    "checked_by": "",
+    "comparable": "yes | limited | no",
+    "findings": [
+      {
+        "region": "",
+        "status": "new | increased | decreased | stable | resolved | indeterminate"
+      }
+    ],
+    "should_refuse": [],
+    "would_sign_ai_draft_with_minor_edits": null
+  }
+}
