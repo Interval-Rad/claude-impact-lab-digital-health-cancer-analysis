@@ -1,4 +1,4 @@
-# Interval Read
+# ScanShift
 
 Claude Impact Lab NYC, Track 3 (Radiology / Oncology). Demo build. Not
 for clinical use.

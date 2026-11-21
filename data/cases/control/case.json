@@ -34,17 +34,17 @@
   },
   "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
   "synthetic_chart": {
-    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
-    "mrn": "",
-    "display_name": "",
-    "prior_date": "",
-    "current_date": "",
-    "indication": "",
+    "_note": "SYNTHETIC. Written for the demo. Not from the patient record. No clinician has reviewed this text.",
+    "mrn": "SYN-0005",
+    "display_name": "SYNTHETIC, Patient B",
+    "prior_date": "2026-02-10",
+    "current_date": "2026-11-12",
+    "indication": "Routine surveillance. History of treated breast cancer. No new symptoms.",
     "ordering_provider": {
-      "name": "",
-      "role": "medical oncology | PCP | ED"
+      "name": "Dr. L. Okafor (synthetic)",
+      "role": "medical oncology"
     },
-    "prior_report": "",
+    "prior_report": "PA chest. No acute cardiopulmonary abnormality.",
     "vitals": {
       "hr": null,
       "spo2": null,
@@ -52,7 +52,9 @@
       "bp": ""
     },
     "labs": [],
-    "problem_list": [],
+    "problem_list": [
+      "Breast cancer, treated"
+    ],
     "pcp_on_file": true,
     "insurance_on_file": true,
     "preferred_language": "en"

@@ -20,7 +20,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Interval Read",
+  title: "ScanShift",
   description: "Demo only. Public de-identified images, synthetic chart. Not for clinical use.",
 };
 

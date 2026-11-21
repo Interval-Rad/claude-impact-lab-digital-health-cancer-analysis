@@ -53,8 +53,11 @@ export function buildBlindContent(input: BlindInput): Anthropic.ContentBlockPara
   ];
 }
 
-export function blindCall(caseId: string, input: BlindInput, label: "blind_A" | "blind_B") {
+export type BlindCheck = (read: BlindRead) => string[];
+
+export function blindCall(caseId: string, input: BlindInput, label: "blind_A" | "blind_B", check?: BlindCheck) {
   return {
+    check,
     agent: "lightbox" as const,
     label,
     caseId,
@@ -66,13 +69,13 @@ export function blindCall(caseId: string, input: BlindInput, label: "blind_A" | 
 }
 
 export async function blindRead(
-  caseId: string, input: BlindInput, label: "blind_A" | "blind_B"
+  caseId: string, input: BlindInput, label: "blind_A" | "blind_B", check?: BlindCheck
 ): Promise<{ data: BlindRead; meta: CallMeta }> {
-  return callModel(blindCall(caseId, input, label));
+  return callModel(blindCall(caseId, input, label, check));
 }
 
 /** Both blind reads, in parallel, from the same input. */
-export async function blindReadTwice(caseId: string, input: BlindInput) {
-  const [a, b] = await Promise.all([blindRead(caseId, input, "blind_A"), blindRead(caseId, input, "blind_B")]);
+export async function blindReadTwice(caseId: string, input: BlindInput, check?: BlindCheck) {
+  const [a, b] = await Promise.all([blindRead(caseId, input, "blind_A", check), blindRead(caseId, input, "blind_B", check)]);
   return { a, b };
 }

@@ -159,6 +159,7 @@ export async function focusedPass(
   return callModel({
     agent: "lightbox", label: "focused", caseId, model: MODELS.lightbox, system: lightboxFocusedPrompt(),
     content: buildFocusedContent(merged, priorBytes, currentBytes, released), schema: FocusedPass,
+    check: focusedProblems,
   });
 }
 
@@ -174,6 +175,33 @@ function strings(value: unknown, out: string[] = []): string[] {
 }
 
 export interface CodeCheck { check: string; pass: boolean; detail: string }
+
+/** Rules one blind read must meet on its own. A read that breaks one is sent back once. */
+export function blindReadProblems(read: BlindRead): string[] {
+  const problems: string[] = [];
+  const sized = strings(read).filter((s) => MM_OR_PERCENT.test(s));
+  if (sized.length) {
+    problems.push(
+      `Sizes in millimeters or centimeters and percents are not allowed anywhere in the output, including thresholds. Describe size in words. Offending text: ${sized.map((s) => `"${s.slice(0, 120)}"`).join(", ")}`
+    );
+  }
+  if (read.comparability.comparable === "no" && read.findings.some((f) => f.status === "increased" || f.status === "decreased")) {
+    problems.push('comparable is "no", so no finding may have status "increased" or "decreased"');
+  }
+  if (read.comparability.prior.view !== read.comparability.current.view &&
+      read.findings.some((f) => ["larger", "smaller", "similar"].includes(f.size_change_words))) {
+    problems.push('prior and current views differ, so every size_change_words must be "not_comparable" or "not_applicable"');
+  }
+  return problems;
+}
+
+/** The same idea for the focused pass: no sizes, no percents. */
+export function focusedProblems(focused: FocusedPass): string[] {
+  const sized = strings(focused).filter((s) => MM_OR_PERCENT.test(s));
+  return sized.length
+    ? [`Sizes in millimeters or centimeters and percents are not allowed. Offending text: ${sized.map((s) => `"${s.slice(0, 120)}"`).join(", ")}`]
+    : [];
+}
 
 export function lightboxCodeChecks(a: BlindRead, b: BlindRead, merged: LightboxMerged, focused?: FocusedPass): CodeCheck[] {
   const checks: CodeCheck[] = [];
@@ -226,7 +254,7 @@ export async function runLightbox(caseId: string, onStatus: (s: string) => void 
   const current = loadImage(caseId, "current");
 
   onStatus("Blind read A and blind read B running");
-  const { a, b } = await blindReadTwice(caseId, blindInputFromCase(c, prior, current));
+  const { a, b } = await blindReadTwice(caseId, blindInputFromCase(c, prior, current), blindReadProblems);
   onStatus("Reconciling the two reads");
   let merged = reconcile(a.data, b.data);
   const calls = [a.meta, b.meta];

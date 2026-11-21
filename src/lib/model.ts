@@ -71,6 +71,12 @@ export interface CallOptions<S extends z.ZodType> {
   content: Anthropic.ContentBlockParam[];
   schema: S;
   maxTokens?: number;
+  /**
+   * Code QC on a schema-valid answer. Returns the problems found, or an empty list.
+   * Problems send the answer back to the model once with the list attached
+   * (agents/01_CHARGE_orchestrator.md: "return to the agent once with the mismatch list").
+   */
+  check?: (data: z.infer<S>) => string[];
 }
 
 function buildRequest<S extends z.ZodType>(o: CallOptions<S>, messages: Anthropic.MessageParam[]) {
@@ -106,6 +112,8 @@ export async function callModel<S extends z.ZodType>(o: CallOptions<S>): Promise
     const stored = JSON.parse(fs.readFileSync(cachePath(hash), "utf8"));
     const parsed = o.schema.safeParse(stored.response);
     if (!parsed.success) throw new ModelCallError(`recorded response no longer matches the schema: ${parsed.error.message}`, o.agent, o.label);
+    const replayProblems = o.check?.(parsed.data) ?? [];
+    if (replayProblems.length) throw new ModelCallError(`recorded response fails code QC: ${replayProblems.join("; ")}`, o.agent, o.label);
     return { data: parsed.data, meta: { ...base, model: stored.model, replayed: true, recorded_at: stored.recorded_at, attempts: 0, usage: stored.usage ?? null } };
   }
 
@@ -120,7 +128,8 @@ export async function callModel<S extends z.ZodType>(o: CallOptions<S>): Promise
       throw new ModelCallError("output was cut off at max_tokens", o.agent, o.label);
     }
     const validated = o.schema.safeParse(response.parsed_output);
-    if (validated.success) {
+    const problems = validated.success ? o.check?.(validated.data) ?? [] : [];
+    if (validated.success && problems.length === 0) {
       const recorded_at = new Date().toISOString();
       const usage = { input_tokens: response.usage.input_tokens, output_tokens: response.usage.output_tokens };
       fs.mkdirSync(CACHE_DIR, { recursive: true });
@@ -130,11 +139,13 @@ export async function callModel<S extends z.ZodType>(o: CallOptions<S>): Promise
       );
       return { data: validated.data, meta: { ...base, model: response.model, replayed: false, recorded_at, attempts: attempt, usage } };
     }
-    lastError = validated.error.message;
+    lastError = validated.success
+      ? `output broke these rules: ${problems.join("; ")}`
+      : `output failed schema validation: ${validated.error.message}`;
     messages.push(
       { role: "assistant", content: response.content as Anthropic.ContentBlockParam[] },
-      { role: "user", content: `Your output failed schema validation:\n${lastError}\nReturn the corrected JSON only.` }
+      { role: "user", content: `Your ${lastError}\nReturn the corrected JSON only.` }
     );
   }
-  throw new ModelCallError(`schema validation failed twice: ${lastError}`, o.agent, o.label);
+  throw new ModelCallError(`failed twice. Last problem: ${lastError}`, o.agent, o.label);
 }

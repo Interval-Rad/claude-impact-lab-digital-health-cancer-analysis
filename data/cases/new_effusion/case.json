@@ -36,25 +36,35 @@
   },
   "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
   "synthetic_chart": {
-    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
-    "mrn": "",
-    "display_name": "",
-    "prior_date": "",
-    "current_date": "",
-    "indication": "",
+    "_note": "SYNTHETIC. Written for the demo. Not from the patient record. No clinician has reviewed this text.",
+    "mrn": "SYN-0039",
+    "display_name": "SYNTHETIC, Patient C",
+    "prior_date": "2026-09-02",
+    "current_date": "2026-11-19",
+    "indication": "On treatment for metastatic colorectal cancer. Increasing shortness of breath over one week.",
     "ordering_provider": {
-      "name": "",
-      "role": "medical oncology | PCP | ED"
+      "name": "Dr. M. Castellanos (synthetic)",
+      "role": "medical oncology"
     },
-    "prior_report": "",
+    "prior_report": "PA chest. Lungs clear. No pleural effusion.",
     "vitals": {
-      "hr": null,
-      "spo2": null,
-      "temp_c": null,
-      "bp": ""
+      "hr": 104,
+      "spo2": 91,
+      "temp_c": 37.1,
+      "bp": "128/76"
     },
-    "labs": [],
-    "problem_list": [],
+    "labs": [
+      {
+        "name": "Albumin",
+        "value": "2.9 g/dL",
+        "flag": "L",
+        "date": "2026-11-18"
+      }
+    ],
+    "problem_list": [
+      "Metastatic colorectal cancer",
+      "Type 2 diabetes"
+    ],
     "pcp_on_file": true,
     "insurance_on_file": true,
     "preferred_language": "en"

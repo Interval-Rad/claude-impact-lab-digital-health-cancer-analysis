@@ -1,4 +1,4 @@
-# Interval Read
+# ScanShift
 
 Demo web app for Track 3 (Radiology / Oncology), Claude Impact Lab NYC. Compares a cancer patient's current chest study with the prior, drafts a first read with explicit refusals, and after two human signatures hands the result to the ordering provider. Demo only. Public de-identified images, synthetic chart. Not for clinical use.
 

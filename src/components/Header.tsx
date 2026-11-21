@@ -9,7 +9,7 @@ export default function Header() {
       style={{ height: "var(--header-h)" }}
     >
       <Link href="/" className="data text-[12px] font-medium tracking-[0.18em]">
-        INTERVAL READ
+        SCANSHIFT
       </Link>
       <nav aria-label="Role" className="data flex items-center gap-2 text-[11px]">
         <Link href="/" aria-current="true" className="underline underline-offset-4">

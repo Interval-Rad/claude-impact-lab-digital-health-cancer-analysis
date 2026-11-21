@@ -36,26 +36,28 @@
   },
   "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
   "synthetic_chart": {
-    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
-    "mrn": "",
-    "display_name": "",
-    "prior_date": "",
-    "current_date": "",
-    "indication": "",
+    "_note": "SYNTHETIC. Written for the demo. Not from the patient record. No clinician has reviewed this text.",
+    "mrn": "SYN-0038",
+    "display_name": "SYNTHETIC, Patient E",
+    "prior_date": "2026-06-30",
+    "current_date": "2026-11-21",
+    "indication": "Emergency department. Shortness of breath. History of prostate cancer on hormone therapy. Portable film.",
     "ordering_provider": {
-      "name": "",
-      "role": "medical oncology | PCP | ED"
+      "name": "Dr. J. Marte (synthetic)",
+      "role": "ED"
     },
-    "prior_report": "",
+    "prior_report": "PA chest. Heart size normal. Lungs clear.",
     "vitals": {
-      "hr": null,
-      "spo2": null,
-      "temp_c": null,
-      "bp": ""
+      "hr": 96,
+      "spo2": 94,
+      "temp_c": 36.9,
+      "bp": "142/88"
     },
     "labs": [],
-    "problem_list": [],
-    "pcp_on_file": true,
+    "problem_list": [
+      "Prostate cancer on hormone therapy"
+    ],
+    "pcp_on_file": false,
     "insurance_on_file": true,
     "preferred_language": "en"
   },

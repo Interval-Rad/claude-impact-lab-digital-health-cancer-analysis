@@ -38,25 +38,28 @@
   },
   "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
   "synthetic_chart": {
-    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
-    "mrn": "",
-    "display_name": "",
-    "prior_date": "",
-    "current_date": "",
-    "indication": "",
+    "_note": "SYNTHETIC. Written for the demo. Not from the patient record. No clinician has reviewed this text.",
+    "mrn": "SYN-0017",
+    "display_name": "SYNTHETIC, Patient D",
+    "prior_date": "2026-08-21",
+    "current_date": "2026-11-20",
+    "indication": "Known lung nodule under surveillance. Admitted with fever. Portable film. Has the nodule changed?",
     "ordering_provider": {
-      "name": "",
-      "role": "medical oncology | PCP | ED"
+      "name": "Dr. S. Whitfield (synthetic)",
+      "role": "medical oncology"
     },
-    "prior_report": "",
+    "prior_report": "PA chest. Nodular opacity and a small pleural effusion noted. Follow-up imaging recommended.",
     "vitals": {
-      "hr": null,
-      "spo2": null,
-      "temp_c": null,
-      "bp": ""
+      "hr": 98,
+      "spo2": 95,
+      "temp_c": 38.4,
+      "bp": "118/70"
     },
     "labs": [],
-    "problem_list": [],
+    "problem_list": [
+      "Lung nodule under surveillance",
+      "Fever, source under evaluation"
+    ],
     "pcp_on_file": true,
     "insurance_on_file": true,
     "preferred_language": "en"

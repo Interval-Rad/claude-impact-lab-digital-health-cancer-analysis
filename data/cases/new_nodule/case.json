@@ -36,17 +36,17 @@
   },
   "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
   "synthetic_chart": {
-    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
-    "mrn": "",
-    "display_name": "",
-    "prior_date": "",
-    "current_date": "",
-    "indication": "",
+    "_note": "SYNTHETIC. Written for the demo. Not from the patient record. No clinician has reviewed this text.",
+    "mrn": "SYN-0008",
+    "display_name": "SYNTHETIC, Patient A",
+    "prior_date": "2026-05-14",
+    "current_date": "2026-11-18",
+    "indication": "Surveillance. History of treated colon adenocarcinoma. Assess for new pulmonary nodules.",
     "ordering_provider": {
-      "name": "",
-      "role": "medical oncology | PCP | ED"
+      "name": "Dr. A. Rahimi (synthetic)",
+      "role": "medical oncology"
     },
-    "prior_report": "",
+    "prior_report": "PA chest. Lungs clear. No focal opacity. No pleural effusion. Heart size at the upper limit of normal.",
     "vitals": {
       "hr": null,
       "spo2": null,
@@ -54,7 +54,10 @@
       "bp": ""
     },
     "labs": [],
-    "problem_list": [],
+    "problem_list": [
+      "Colon adenocarcinoma, treated",
+      "Hypertension"
+    ],
     "pcp_on_file": true,
     "insurance_on_file": true,
     "preferred_language": "en"
