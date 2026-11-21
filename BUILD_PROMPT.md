@@ -9,6 +9,7 @@ Track 3, Radiology / Oncology. Claude Impact Lab NYC. For Bonnie and whoever dri
 3. Paste everything in Part 1 as the first message.
 4. Build in the order in section 9. Stop adding features at 1:55.
 5. Part 2 is for the team: tech choices to defend, how this sits next to Sectra and Rad AI, and open items for the clinicians.
+6. The 12:00 Build Plan PDF is superseded. It still has model confidence, an aggregate score and model measurements. Keep it out of the repo, out of Claude Code and out of Jae's slides.
 
 Files in the kit:
 
@@ -21,11 +22,26 @@ Files in the kit:
 | `agents/04_COURIER_report_handoff.md` | Report draft, delivery, handoffs, voice |
 | `dataset/DATASET_GUIDE.md` | Sources, licenses, how to pull pairs, scorecard |
 | `dataset/nih_pairs_manifest.csv` | 48 prior/current X-ray pairs from NIH ChestX-ray14 |
-| `dataset/pull_pairs.py` | Downloads pairs into `cases/` |
+| `dataset/pull_demo_pairs.py` | Fetches five confirmed pairs from Hugging Face, checks each image id, saves the right file type |
+| `CLAUDE.md` | Project rules Claude Code reads every session. Source of truth with `agents/` |
+| `.claude/settings.json`, `.claude/hooks/` | Hooks: rule guard after each edit, shell guard, stop check |
+| `.claude/agents/` | Claude Code subagents: ui-builder, rule-auditor, case-runner, pitch-checker |
 
 ---
 
 # Part 1. The build prompt (paste into Claude Code)
+
+## 0. Scope for the time left
+
+Must work, in this order:
+1. Upload a pair. Three Lightbox calls. Reconciliation with agreement per finding.
+2. Read screen: two images, findings rail, Can't determine block, AI DRAFT strip.
+3. Stat tier and subgroup on a worklist table. Courier report draft. QC call.
+4. Review each finding. Type measurements in. RECIST in code. Resident and attending sign.
+5. Provider message with the follow-up order, locked until signed.
+6. The refusal case. The scorecard.
+
+Skip today: registry, navigator letter, FHIR object, keyboard shortcuts, theme toggle polish, caliper, live phone call, tumor board and surgeon tabs if the clock is short. Sections below describe the full design. Build only the list above unless told otherwise.
 
 ## 1. Mission
 
@@ -105,7 +121,9 @@ Pick the smallest stack one builder ships in 90 minutes.
 | Voice | ElevenLabs text to speech from a server route. Cache the audio file | Live phone call | A played clip is enough for the demo |
 | Auth | None. A role switch in the header | Login | Out of scope |
 
-Check docs.claude.com for current request parameters before coding the SDK calls. Send images as base64 image blocks, prior first, each preceded by a text label. Run the two blind reads with `Promise.all`.
+Check docs.claude.com for current request parameters before coding the SDK calls. Send images as base64 image blocks, prior first, each preceded by a text label. Read each image's media type from its first bytes. The Hugging Face copies are JPEG. Run the two blind reads with `Promise.all`.
+
+Model ids are `claude-fable-5-2`, `claude-sonnet-5-5` and `claude-opus-5-5`. Before the first call, list models through the SDK and confirm all three exist for this API key. Fail at server start with a clear message if one is missing.
 
 ## 5. Repo layout
 
@@ -114,8 +132,12 @@ agents/                    prompts and specs (given)
 dataset/                   manifest, pull script, guide (given)
 data/cases/<case_id>/      prior.png, current.png, case.json, state.json
 data/audit.jsonl
+data/cache/                recorded model responses for replay
+fixtures/demo_case.json    UI fixture, same shape as the case payload
 src/lib/charge.ts          state machine, firewall, QC, timers, audit
-src/lib/lightbox.ts        three calls + reconcile()
+src/lib/model.ts           callModel(): schema check, one retry, cache to data/cache, replay mode
+src/lib/lightbox.blind.ts  blind read only. Images and view labels. Nothing else
+src/lib/lightbox.ts        focused pass + reconcile()
 src/lib/stat.ts            triage call + sortWorklist()
 src/lib/courier.ts         modes A, B, C
 src/lib/recist.ts          pure function, unit tested
@@ -242,7 +264,7 @@ Handoff screen (after signature). Tabs: Ordering provider, Follow-up order, Tumo
 
 Ordering provider inbox (role switch). Light theme, 16 px, one column. Message list on the left, the selected result on the right in this order: what changed, what the radiologist recommends, the pre-filled follow-up order with a Sign order button, then the full report collapsed. Buttons: Mark patient informed, Copy Epic chat question. Unopened high-tier messages show the countdown.
 
-### 7.4 Keys (Radiology role)
+### 7.4 Keys (Radiology role). Skip today
 
 `J` / `K` next and previous finding. `A` accept. `E` edit. `R` reject. `Space` flicker prior and current. `I` invert. `M` jump to measurements. `Cmd+Enter` sign. `D` theme.
 
@@ -252,30 +274,43 @@ Text contrast at least 4.5 to 1 in both themes. Focus rings visible. Every actio
 
 ## 8. Population health layer
 
-Same loop, wider population. Build one case to show it.
+Today: one line, no new screens. The refusal case's synthetic chart is an ED order with no PCP on file. After signature, the provider message ends with "No PCP on file. Follow-up routed to the nurse navigator queue." These flags never enter the worklist sort.
 
-- Case: ED order, portable AP film, no PCP on file, no insurance on file, preferred language Spanish. A prior upright PA film exists. This is also the refusal case.
-- Lightbox output: Can't determine interval size change, recommend CT chest.
-- After signature, Courier adds a navigator referral: owner is the nurse navigator queue, a due date, a sixth grade letter in Spanish saying a follow-up scan is recommended and how to book it.
-- A small registry view: follow-ups due, booked, completed, split by insurance on file, language and ordering location. Synthetic counts, tagged synthetic.
-- Rule: these fields add support. They never enter the worklist sort.
+Later: a navigator referral with a due date, a sixth grade letter in the patient's language, and a registry reporting follow-up completion by insurance, language and ordering location.
 
 ## 9. Build order and done criteria
 
-1. `recist.ts` with tests. Schemas. Prompt loader.
-2. Upload and Lightbox, three calls, with reconciliation. Done: JSON for one pair prints in the terminal.
-3. Read screen with images and the findings rail. Done: one case renders from stored JSON.
-4. Stat and the worklist. Courier mode A. QC call.
-5. Review, measurements, RECIST, sign.
-6. Courier mode B, handoff tabs, provider inbox, delivery timer on the demo clock.
-7. The refusal and population health case.
-8. ElevenLabs clip. Theme polish.
+1. Scaffold. `model.ts` with schema check, retry, cache and replay. `recist.ts` with tests. Schemas. Prompt loader. Model id check at start. Write `fixtures/demo_case.json`.
+2. Hand the read screen to the `ui-builder` subagent, working from the fixture. The main session keeps going.
+3. `lightbox.blind.ts`, reconciliation, focused pass. Done: merged JSON for the new nodule case prints in the terminal.
+4. Stat, worklist sort, Courier report draft, QC call.
+5. Wire real data into the read screen. Review, typed measurements, RECIST, two signatures.
+6. Courier handoff mode: provider message and locked follow-up order.
+7. Run the refusal case. Then `case-runner` for all cases and the scorecard.
+8. `rule-auditor`, then `pitch-checker` on the demo script. Record from replay mode.
 
-Stop at step 6 if the clock says so. Steps 1 to 6 are the demo.
+Stop at step 6 if the clock says so. Run step 8 regardless. It takes two minutes.
 
 ## 10. Out of scope today
 
-PACS or EHR integration. DICOM. Login. A database. Live phone calls. AI-drawn bounding boxes. Model-made measurements. TNM staging. Any claim of clinical validation.
+PACS or EHR integration. DICOM. Login. A database. Live phone calls. AI-drawn bounding boxes. Model-made measurements. A caliper tool. TNM staging. Any claim of clinical validation.
+
+## 11. Guardrails, replay and subagents
+
+Hooks are installed in `.claude/settings.json`. Leave them on.
+- After every Edit or Write, `rule-guard.mjs` scans `src/`. It fails when the blind read file mentions held-back context, when a schema carries model confidence, when a blended score appears, when handoff lacks the `NOT_SIGNED` check, when a key leaks to the client, or when the interface uses purple, gradients or blur.
+- Before every shell command, `bash-guard.mjs` blocks key printing, deleting `data/`, force pushes and hard resets.
+- On stop, `stop-check.mjs` runs the rule guard, the typecheck and `npm run test:unit`. A failure sends you back to fix it. For the final minutes the team runs `touch .claude/skip-check`.
+
+Replay. Every model call goes through `callModel()`, which stores the request hash and the response in `data/cache/`. With `DEMO_MODE=replay` the app serves stored responses and shows "replayed, recorded HH:MM" in the footer. Record each case once when it works. Demo from replay. A rate limit or a dropped connection then has no effect on the recording.
+
+Scripts in `package.json`: `check` (typecheck, unit tests, rule guard), `test:unit` (vitest on `src/lib`), `cases` (run every case headless, write outputs and `scorecard.md`).
+
+Subagents in `.claude/agents/`. Use them by name.
+- `ui-builder`: start it at step 2 so the screen and the pipeline get built at the same time.
+- `case-runner`: runs all cases and fills the scorecard. It never fills ground truth.
+- `rule-auditor`: read-only audit of the twelve rules in `CLAUDE.md`. Run before recording.
+- `pitch-checker`: give it the demo script. It marks each claim supported, overstated or unsupported.
 
 ---
 
@@ -285,13 +320,13 @@ PACS or EHR integration. DICOM. Login. A database. Live phone calls. AI-drawn bo
 
 | Question | Answer |
 |---|---|
-| Why four agents? | Each has one job and one input boundary. Lightbox's blind reads see images and view labels only. Its focused pass also gets the indication and prior report. Stat sees the chart and no images. Courier's handoff mode sees only what the attending signed. The boundaries are the safety design |
+| Why four agents? | Each has one job and one input boundary. The blind reads see images only. The focused pass adds the indication and the prior report. Stat sees the chart and no images. Courier's handoff mode sees only the signed report. The boundaries are the safety design |
 | Why is the orchestrator code? | Order, locks and timers must be deterministic. The model checks the report against the findings, which is a judgment task |
 | Why run the read twice? | A model's stated confidence is not accuracy. Agreement is measurable. Disagreement is shown, never hidden |
 | What does agreement not tell you? | Whether the reads are right. Two reads from one model share blind spots. A radiologist reads every study |
 | Why Fable 5.2 for Lightbox? | Vision on paired images, plus declining to call what the image does not support |
 | Why Sonnet for the rest? | Text tasks on structured input. Faster and cheaper, and it leaves Fable credits for the three vision calls |
-| How was it tested? | Pairs labelled by clinicians before the run. Scorecard: caught, false flags, correct refusals, missed refusals, sign-off rate. A smoke test, not a validation study |
+| How was it tested? | Say the number on `scorecard.md`, the pairs clinicians labelled before the run and the pipeline ran. Scorecard: caught, false flags, correct refusals, missed refusals, sign-off rate. A smoke test, not a validation study |
 
 ## Where this sits next to Sectra and Rad AI
 
@@ -312,13 +347,14 @@ Lessons to copy from both: fit inside the existing workflow, never overwrite the
 ## Population health talking points
 
 - Inside the academic center: every signed result reaches the ordering provider, with re-send and escalation.
-- Outside it: the ED patient with no PCP is where recommendations get lost. A study of two New York City teaching hospitals reported 41.3 percent of patients with incidental lung nodules completed recommended follow-up imaging, with lower completion among uninsured patients and after ED or inpatient imaging. Pull the original paper before putting the number on a slide.
+- Outside it: the ED patient with no PCP is where recommendations get lost. A study of two New York City teaching hospitals reported 41.3 percent of patients with CT-detected incidental lung nodules completed recommended follow-up imaging. Odds ratios for completing it: 0.461 uninsured, 0.451 ED imaging, 0.531 inpatient imaging. Claude Code's check places the study at Mount Sinai Morningside and Mount Sinai West, the judges' own system. No one has opened the original paper. Open it before the number goes on a slide, and name the source out loud.
 - The registry turns a per-patient task into a system metric: completion rate by insurance, language and ordering site.
 
 ## Open items for the clinicians
 
 1. Review `READING_METHOD.md` line by line. Thresholds come from teaching material.
 2. Set the on-call re-page interval (placeholder: 15 minutes).
-3. Confirm the wording for RECIST on radiographs. RECIST 1.1 expects CT.
+3. Armin: confirm the RECIST wording. From memory, RECIST 1.1 prefers CT and counts a chest X-ray lesion as measurable only when clearly defined, surrounded by aerated lung, and 20 mm or more.
 4. Write the synthetic chart for each case and tag it.
 5. Label ground truth before the first model run.
+6. Choose the lead refusal: nodule not seen on the AP film (rows 33, 34) or heart size (rows 68, 69). Look at both pairs first. NIH labels are noisy.

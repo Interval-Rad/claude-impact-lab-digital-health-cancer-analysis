@@ -70,7 +70,8 @@ Rules for transitions:
 - Complete response: target lesions resolved.
 - Stable disease: anything between.
 - No confirmed measurements: the report line reads "RECIST 1.1: not computed. No confirmed measurements."
-- X-ray pairs: label the result "estimate from radiograph. RECIST 1.1 expects CT." A clinician should confirm this wording.
+- X-ray pairs: label the result "estimate from radiograph". From memory, RECIST 1.1 prefers CT and counts a chest X-ray lesion as measurable only when it is clearly defined, surrounded by aerated lung, and 20 mm or more. Armin confirms the wording before it goes on screen. If he has not, show "RECIST 1.1: not computed on radiographs".
+- No caliper. The public images are stored square at 1024 px from non-square originals, so one pixel spacing value is wrong on one axis. The radiologist types the numbers in.
 
 ## QC checks before DRAFTED
 

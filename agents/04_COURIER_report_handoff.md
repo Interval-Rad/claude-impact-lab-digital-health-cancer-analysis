@@ -162,7 +162,9 @@ Demo scope: one recorded scheduling call clip, and the family page read aloud.
 
 The gap is wider outside oncology. A patient with no PCP gets a chest film in the ER. The report recommends CT. No one owns the recommendation.
 
-A study of two New York City teaching hospitals reported 41.3 percent of patients with an incidental lung nodule completed recommended follow-up imaging. Uninsured patients were less likely to complete it (odds ratio 0.461). Imaging ordered in the ED or during an admission cut the odds by more than half. Source: AuntMinnie summary, "Gaps identified in surveillance of incidental lung nodules". Pull the original paper before quoting numbers on a slide.
+A study of two New York City teaching hospitals reported 41.3 percent of patients with a CT-detected incidental lung nodule completed recommended follow-up imaging. Odds ratios for completing it: 0.461 for uninsured patients, 0.451 for imaging ordered in the ED, 0.531 for imaging during an admission. Source: AuntMinnie summary, "Gaps identified in surveillance of incidental lung nodules". Claude Code's check places the study at Mount Sinai Morningside and Mount Sinai West. No one on the team has opened the original paper. Open it before a number goes on a slide.
+
+Demo scope for this section: one line. When a trigger fires, the provider message ends with "No PCP on file. Follow-up routed to the nurse navigator queue." Skip the letter and the registry today.
 
 Triggers for `navigator_referral`:
 - No PCP on file, or

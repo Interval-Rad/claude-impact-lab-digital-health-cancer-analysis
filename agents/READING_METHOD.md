@@ -15,7 +15,9 @@ Load this file into the Lightbox system prompt. It is the radiologist search pat
 
 ### 1.1 Details first
 
-Confirm before reading: both images are the same patient, view label, upright or supine or portable. The indication, prior report and study dates are withheld during the blind reads.
+Confirm before reading: which image is PRIOR and which is CURRENT, the view label on each, and upright, supine or portable when the image shows it.
+
+The blind read has no indication and no study dates. Charge holds them. Do not ask for them and do not guess them. Patient match and dates are Charge's check.
 
 ### 1.2 Technical quality (RIPE)
 
@@ -135,6 +137,7 @@ The demo passes key slices, not full volumes. Say so in the output. A slice show
 | Situation | Do not call | Recommend |
 |---|---|---|
 | PA prior, AP or portable current | Size change of any lesion. Heart size change | CT chest, or repeat PA and lateral when the patient is able |
+| Finding on a PA prior, not seen on an AP or portable current | Resolved | Repeat PA and lateral, or CT chest. A lower quality film hides small nodules and layers out effusions |
 | Rotated or low-volume film | New basal opacity. Hilar enlargement. Mediastinal widening | Repeat film with good inspiration |
 | Region not on the film or slice | Presence or absence of disease there | Complete imaging of the region |
 | Nodule under about 1 cm on X-ray | Nodule versus nipple shadow, vessel end-on or bone island | CT chest, or repeat with nipple markers |

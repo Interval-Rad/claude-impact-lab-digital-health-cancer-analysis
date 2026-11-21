@@ -34,7 +34,7 @@ What it lacks, and what to do about it:
 | Labels text-mined from reports | Labels are wrong often enough to matter | Treat labels as hints for picking cases. Clinicians set ground truth by looking |
 | No lateral views | Retrocardiac and apical calls are limited | Expect the model to say so. Score it as correct |
 | 1024 px downsample | Small nodules blur | Favor cases with a mass or a clear nodule |
-| Unknown magnification | Millimeter sizes are unreliable | Matches the pipeline: the radiologist measures, code does RECIST |
+| Unknown magnification, square 1024 px copies | Millimeter sizes from pixels are unreliable | The radiologist types measurements in. Code does RECIST |
 
 Attribution the NIH asks for. Put this on the last slide and in the app's About panel:
 
@@ -54,36 +54,36 @@ Built from the NIH metadata table for all 112,120 images. Each row is one patien
 | F_new_effusion_with_known_mass | Mass or Nodule on both, Effusion added on current | 123 | Progression with a second finding |
 
 Columns to know:
-- `prior_image`, `current_image`: NIH file names. `prior_image_id`, `current_image_id`: the same without `.png`, for the Hugging Face search box.
+- `prior_image`, `current_image`: NIH file names. `prior_image_id`, `current_image_id`: the same without `.png`.
 - `prior_view`, `current_view`: PA or AP.
-- `prior_px_mm_at_1024`, `current_px_mm_at_1024`: pixel spacing rescaled to the 1024 px copy. For a caliper tool only. Magnification is still unknown.
-- `nih_batch_hint`: `images_001.tar.gz` for patient ids up to 1335. From memory of the NIH batch layout. If a file is missing from batch 1, it sits in a later batch.
+- `prior_hf_train_row`, `current_hf_train_row`: row number in the Hugging Face train split. Blank means the image sits in the test split. Computed from the NIH metadata and the official test list. Checked against eight rows Claude Code confirmed live.
+- `nih_batch_hint`: `images_001.tar.gz` for patient ids up to 1335. From memory of the NIH batch layout.
 
-Suggested test set of 8: two from A, two from B, one from C, two from D, one from E.
+No pixel spacing columns. The public copies are stored square at 1024 px from non-square originals such as 2048 by 2500, so one spacing value is about 22 percent off on one axis. Skip the caliper. The radiologist types measurements in.
 
 ## Pulling the images
 
-Fastest for a handful of pairs, no code:
-1. Open the Hugging Face viewer for `timm/nih-chest-xray-14`.
-2. Paste an `image_id` from the manifest into the search box. Check both train and test splits.
-3. Save the image. Name it `prior.png` or `current.png` in a folder per case.
+What failed on Nov 21: the Google bucket returned "Access denied". The Hugging Face filter endpoint returned "index loading". The one filter call which answered found no row for `00000618_006` in train, because this image sits in the test split.
 
-With the script:
+What works: the Hugging Face first-rows call, which returns image links for train rows 0 to 99. Five usable pairs are inside it.
+
+| Use | Prior, current | Rows | Live metadata |
+|---|---|---|---|
+| New nodule | 00000008_001, 00000008_002 | 16, 17 | Both PA. No Finding then Nodule |
+| Control | 00000005_003, 00000005_004 | 8, 9 | Both PA. No Finding on both |
+| New effusion | 00000039_003, 00000039_004 | 77, 78 | Both PA. Effusion added |
+| Refusal, nodule | 00000017_000, 00000017_001 | 33, 34 | PA then AP. Effusion, Infiltration, Nodule on the PA. No Finding on the AP |
+| Refusal, heart size | 00000038_002, 00000038_003 | 68, 69 | PA then AP. Cardiomegaly on the AP only |
+
+Rows 33 and 34 give an oncology-relevant refusal: a nodule on the PA prior and nothing labelled on the AP current. The model should decline to call it resolved. I have not seen these images. A clinician looks before it becomes the demo case.
 
 ```
 pip install requests
-python pull_pairs.py nih_pairs_manifest.csv --per-category 2
-python pull_pairs.py nih_pairs_manifest.csv --category D_refusal_PA_then_AP --per-category 3
+python pull_demo_pairs.py            # the five pairs above
+python pull_demo_pairs.py --extra    # also tries three PA-then-AP pairs with a nodule or mass on both
 ```
 
-With the NIH tarball (about 2 GB, covers 43 of the 48 pairs if the batch hint holds):
-
-```
-tar -xzf images_001.tar.gz
-python pull_pairs.py nih_pairs_manifest.csv --from-dir ./images --per-category 8
-```
-
-The script writes `cases/<case_id>/prior.png`, `current.png` and `case.json`. I wrote it without network access to Hugging Face or Google from my workspace, so it is untested against those hosts. Run it on one pair first. If it fails, use the manual route.
+The script checks each row's `image_id` before saving, reads the file type from the bytes (Hugging Face serves JPEG), saves `prior.jpg` and `current.jpg`, and records `media_type` in `case.json`. The `--extra` rows (5176, 6150, 674) use the rows endpoint with an offset. I have not been able to test it. If it fails you still have five pairs.
 
 ## What Nadia fills in per case (`case.json`)
 
@@ -108,7 +108,7 @@ One row per case:
 | Case | Findings in ground truth | Caught | False flags | Correct refusals | Calls which should have been refusals | Reads agreed (of findings) | Would sign with minor edits |
 |---|---|---|---|---|---|---|---|
 
-Say the totals out loud in the demo. Eight cases is a smoke test, not a validation study. Say this too. Judges trust a team more when it names the limit.
+Say the totals out loud in the demo, with the real number of cases labelled and run. A handful of cases is a smoke test, not a validation study. Say this too. Judges trust a team more when it names the limit.
 
 ## Stretch: DeepLesion for the RECIST demo
 

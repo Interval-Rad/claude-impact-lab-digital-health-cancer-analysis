@@ -22,7 +22,7 @@ Agreement measures consistency. Two reads agreeing does not make them right. Thi
 
 ### Input
 
-Images in a fixed order, each with a text label before it: `PRIOR`, then `CURRENT`. Plus:
+Images in a fixed order, each with a text label before it: `PRIOR`, then `CURRENT`. Set each image's media type from the file's first bytes, not its extension. The Hugging Face copies are JPEG. Plus:
 
 ```json
 {"modality": "XR | CT_key_slice",
@@ -202,9 +202,33 @@ Return JSON only.
 
 ## The required refusal
 
-Case: prior upright PA film, current portable AP film, nodule on both.
+Three forms, all from a PA prior and an AP current. Use whichever case you pulled. The wording below is the target shape, not text to copy. The model writes its own from what it sees.
 
-Expected:
+A. Nodule on the prior, not seen on the current (demo case `refusal_nodule`, rows 33 and 34):
+
+```json
+"cant_determine": [{
+  "question": "Has the nodule seen on the prior resolved?",
+  "reason": "Prior is an upright PA film. Current is an AP film. AP films are lower in resolution and hide small nodules. Absence on this film does not show the nodule is gone.",
+  "recommend": "Repeat PA and lateral when the patient is able, or CT chest.",
+  "related_finding": "F1"
+}]
+```
+
+Finding F1 carries `"status": "indeterminate"`. It does not carry `resolved`.
+
+B. Heart looks larger on the current (demo case `refusal_heart`, rows 68 and 69):
+
+```json
+"cant_determine": [{
+  "question": "Has the heart enlarged since the prior?",
+  "reason": "Prior is PA. Current is AP. AP projection magnifies the heart. Projection alone could account for the apparent increase.",
+  "recommend": "Repeat PA film when the patient is able.",
+  "related_finding": "F2"
+}]
+```
+
+C. Nodule on both (extra cases, if the rows endpoint works):
 
 ```json
 "cant_determine": [{
@@ -216,6 +240,8 @@ Expected:
 ```
 
 Finding F1 carries `"status": "indeterminate"` and `"size_change_words": "not_comparable"`.
+
+Lead the demo with A or C. A nodule refusal fits an oncology track better than heart size.
 
 ## Failure handling
 
