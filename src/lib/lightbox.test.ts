@@ -51,13 +51,16 @@ describe("reconcile", () => {
     expect(reconcile(read(), read()).study_flags).toEqual([]);
   });
 
-  it("unions the abstentions and links them to a finding", () => {
+  it("unions the abstentions, keeps differently worded questions, and links them to a finding", () => {
     const q = { question: "Has the nodule changed in size?", reason: "PA then AP", recommend: "CT chest", region: "R_upper", kind: "nodule_or_mass" };
+    const reworded = { ...q, question: "Is the nodule calcified?" };
     const other = { question: "Has the heart enlarged?", reason: "AP magnifies", recommend: "Repeat PA", region: "heart", kind: "cardiac_silhouette" };
-    const m = reconcile(read({ findings: [finding()], cant_determine: [q] }), read({ findings: [finding()], cant_determine: [{ ...q, question: "Nodule size change?" }, other] }));
-    expect(m.cant_determine).toHaveLength(2);
-    expect(m.cant_determine[0]).toMatchObject({ related_finding: "F1", from_reads: ["A", "B"] });
-    expect(m.cant_determine[1]).toMatchObject({ related_finding: null, from_reads: ["B"] });
+    const m = reconcile(read({ findings: [finding()], cant_determine: [q] }), read({ findings: [finding()], cant_determine: [q, reworded, other] }));
+    expect(m.cant_determine.map((c) => [c.question, c.related_finding, c.from_reads])).toEqual([
+      [q.question, "F1", ["A", "B"]],
+      [reworded.question, "F1", ["B"]],
+      [other.question, null, ["B"]],
+    ]);
   });
 
   it("raises needs_measurement and time_sensitive if either read set them", () => {

@@ -67,22 +67,21 @@ export function reconcile(a: BlindRead, b: BlindRead): LightboxMerged {
   for (const x of unusedB) if (!x.used) merged.push(mergeFinding(null, x.f));
   const findings: MergedFinding[] = merged.map((f, i) => ({ ...f, id: `F${i + 1}` }));
 
-  // Union of the abstentions. Same region + kind from both reads counts once.
-  const cant: { item: MergedCantDetermine; key: string | null }[] = [];
+  // Union of the abstentions. Only an identical question from both reads counts once:
+  // two different questions about the same region are both kept.
+  const cant_determine: MergedCantDetermine[] = [];
   const add = (c: BlindRead["cant_determine"][number], read: "A" | "B") => {
-    const k = c.region !== "" && c.kind !== "" ? key(c) : null;
     const question = c.question.trim().toLowerCase();
-    const existing = cant.find((x) => (k ? x.key === k : x.item.question.trim().toLowerCase() === question));
+    const existing = cant_determine.find((x) => x.question.trim().toLowerCase() === question);
     if (existing) {
-      if (!existing.item.from_reads.includes(read)) existing.item.from_reads.push(read);
+      if (!existing.from_reads.includes(read)) existing.from_reads.push(read);
       return;
     }
-    const related = k ? findings.find((f) => key(f) === k)?.id ?? null : null;
-    cant.push({ key: k, item: { question: c.question, reason: c.reason, recommend: c.recommend, related_finding: related, from_reads: [read] } });
+    const related = c.region !== "" && c.kind !== "" ? findings.find((f) => key(f) === key(c))?.id ?? null : null;
+    cant_determine.push({ question: c.question, reason: c.reason, recommend: c.recommend, related_finding: related, from_reads: [read] });
   };
   a.cant_determine.forEach((c) => add(c, "A"));
   b.cant_determine.forEach((c) => add(c, "B"));
-  const cant_determine = cant.map((x) => x.item);
 
   const differs = a.comparability.comparable !== b.comparability.comparable;
   const cautious = CAUTION[b.comparability.comparable] < CAUTION[a.comparability.comparable] ? b : a;

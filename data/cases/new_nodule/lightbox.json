@@ -434,8 +434,7 @@
         "recommend": "Review the source image in PACS and compare with older imaging. CT chest if it has not been characterized before.",
         "related_finding": "F2",
         "from_reads": [
-          "A",
-          "B"
+          "A"
         ]
       },
       {
@@ -444,8 +443,7 @@
         "recommend": "Lateral view and clinical correlation. Echocardiography if clinically indicated.",
         "related_finding": "F3",
         "from_reads": [
-          "A",
-          "B"
+          "A"
         ]
       },
       {
@@ -453,6 +451,24 @@
         "reason": "A small nodule on a frontal radiograph cannot be fully characterised. Calcification pattern and margin detail are beyond the resolution of these compressed images. Stability is shown only across these two films, and the interval between them is not known to this read.",
         "recommend": "Review the source images in PACS and any older films to establish longer-term stability. CT chest if calcification or long-term stability cannot be confirmed.",
         "related_finding": "F4",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the small dense focus at the right hilum a vessel end-on or a calcified hilar node?",
+        "reason": "A small density under about 1 cm on a frontal film cannot be separated from a vessel seen end-on. No lateral view was provided.",
+        "recommend": "Lateral view, or CT chest if clinically relevant.",
+        "related_finding": "F2",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the cardiothoracic ratio above 50 percent?",
+        "reason": "The silhouette is borderline by eye, and no measurement can be made on these image files.",
+        "recommend": "Radiologist to measure the cardiothoracic ratio in PACS on both PA films.",
+        "related_finding": "F3",
         "from_reads": [
           "B"
         ]
@@ -515,9 +531,9 @@
       "requested_model": "claude-fable-5-2",
       "request_hash": "2b02c4b60d1ae55e43b7268fe226c182bd138fff7d150a4a5abab8a52eecde1e",
       "model": "claude-fable-5-2",
-      "replayed": false,
+      "replayed": true,
       "recorded_at": "2026-11-21T19:26:39.520Z",
-      "attempts": 1,
+      "attempts": 0,
       "usage": {
         "input_tokens": 9202,
         "output_tokens": 4540
@@ -529,9 +545,9 @@
       "requested_model": "claude-fable-5-2",
       "request_hash": "cc55d0fe45d32584ef34c34dd717bd0d60740b3e4901850a84556147454a4041",
       "model": "claude-fable-5-2",
-      "replayed": false,
+      "replayed": true,
       "recorded_at": "2026-11-21T19:26:33.352Z",
-      "attempts": 1,
+      "attempts": 0,
       "usage": {
         "input_tokens": 9202,
         "output_tokens": 3967

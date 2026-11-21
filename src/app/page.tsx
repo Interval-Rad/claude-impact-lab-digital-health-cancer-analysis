@@ -51,7 +51,7 @@ export default function WorklistPage() {
         </p>
       </div>
       <div className="overflow-x-auto">
-        <table className="grid">
+        <table className="worklist">
           <thead>
             <tr>
               <th scope="col">Tier</th>

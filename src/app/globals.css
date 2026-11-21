@@ -159,11 +159,11 @@ body {
     background-size: 6px 6px;
   }
 
-  table.grid {
+  table.worklist {
     width: 100%;
     border-collapse: collapse;
   }
-  table.grid th {
+  table.worklist th {
     font-family: var(--font-mono);
     font-size: 10.5px;
     font-weight: 500;
@@ -176,13 +176,13 @@ body {
     background: var(--surface);
     white-space: nowrap;
   }
-  table.grid td {
+  table.worklist td {
     padding: 5px 8px;
     border-bottom: 1px solid var(--rule);
     vertical-align: top;
   }
-  table.grid tbody tr { position: relative; }
-  table.grid tbody tr:hover { background: var(--surface); }
+  table.worklist tbody tr { position: relative; }
+  table.worklist tbody tr:hover { background: var(--surface); }
   /* The case link covers its whole row. */
   .row-link::after { content: ""; position: absolute; inset: 0; }
   .row-link:focus-visible { outline: none; }

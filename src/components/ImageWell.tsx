@@ -53,7 +53,7 @@ export default function ImageWell({ images, prior, current, regionLabel }: Props
         {flicker ? (
           <div>
             <PaneLabel name={showing === "prior" ? "PRIOR" : "CURRENT"} side={showing === "prior" ? prior : current} />
-            <div className="relative" style={{ height: "clamp(300px, 56vh, 900px)" }}>
+            <div className="relative" style={{ height: "clamp(280px, 50vh, 900px)" }}>
               {/* Both stay mounted so the swap is instant. */}
               {img("prior", showing !== "prior")}
               {img("current", showing !== "current")}
@@ -63,11 +63,11 @@ export default function ImageWell({ images, prior, current, regionLabel }: Props
           <div className="grid grid-cols-2">
             <div className="border-r border-rule">
               <PaneLabel name="PRIOR" side={prior} />
-              <div className="relative" style={{ height: "clamp(300px, 56vh, 900px)" }}>{img("prior")}</div>
+              <div className="relative" style={{ height: "clamp(280px, 50vh, 900px)" }}>{img("prior")}</div>
             </div>
             <div>
               <PaneLabel name="CURRENT" side={current} />
-              <div className="relative" style={{ height: "clamp(300px, 56vh, 900px)" }}>{img("current")}</div>
+              <div className="relative" style={{ height: "clamp(280px, 50vh, 900px)" }}>{img("current")}</div>
             </div>
           </div>
         )}

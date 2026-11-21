@@ -54,7 +54,7 @@ export default function FindingRow({ finding: f, review, selected, onSelect, onR
       <div className={rule}>
         <button
           type="button"
-          className="grid w-full grid-cols-[3.5ch_1fr_auto_auto] items-baseline gap-x-3 text-left"
+          className="grid w-full grid-cols-[3.5ch_1fr_15ch_16ch] items-baseline gap-x-3 text-left"
           aria-expanded={open}
           aria-controls={`${uid}-detail`}
           onClick={() => {
