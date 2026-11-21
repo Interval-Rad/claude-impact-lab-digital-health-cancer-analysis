@@ -237,3 +237,5 @@ tsconfig.tsbuildinfo
 next-env.d.ts
 .claude/skip-check
 .claude/settings.local.json
+.DS_Store
+__pycache__/
