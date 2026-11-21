@@ -1,9 +1,9 @@
 {
   "case_id": "control",
-  "state": "TRIAGED",
+  "state": "DRAFTED",
   "version": 1,
   "arrived_at": "2026-11-21T19:37:43.402Z",
-  "status_text": "Triaged. Report draft and quality check running",
+  "status_text": "AI draft ready for resident review",
   "busy": null,
   "error": null,
   "indication_released_at": "2026-11-21T19:39:29.969Z",
@@ -709,12 +709,25 @@
     "worklist_reason": "Possible new small right lower zone nodule after breast cancer; reads uncertain, needs radiologist review of source images."
   },
   "paged_on_call_at": null,
-  "report_draft": null,
+  "report_draft": "EXAM: Chest radiograph, one view, 2026-11-12\nCLINICAL INDICATION: Routine surveillance. History of treated breast cancer. No new symptoms.\nORDERING PROVIDER: Dr. L. Okafor (synthetic), medical oncology\nCOMPARISON: Chest radiograph, 2026-02-10\nTECHNIQUE: Current PA. Prior PA. Both images are downsampled. Differences from prior: current is slightly deeper in inspiration, slightly more penetrated with higher contrast, and shoulder, arm and breast position differ.\n\nLOOK AT FIRST:\n- No finding is flagged time-sensitive. Order of priority for review: F2 (possible small dense nodular focus, medial right lower zone, indeterminate), then F1 (left chest venous access device, reads disagreed, indeterminate).\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Trachea central. Lungs well expanded. No consolidation, mass or collapse. Mildly prominent linear bronchovascular markings in the medial right lower zone on the current study, with a single small dense nodular focus projected among them (F2). Markings are more conspicuous than on the prior and the focus is not clearly seen on the prior, but the current film is more penetrated with higher contrast, which might explain the appearance. Status indeterminate; both blind reads agreed. Left lung clear. Apices clear.\n- Mediastinum / hila: Prominent rounded aortic knuckle, consistent with an unfolded aorta, similar to prior (F3). Upper mediastinum not widened. Hila normal in position, with no one-sided hilar enlargement.\n- Pleura: No pleural line to suggest pneumothorax. Both costophrenic angles sharp on the current study. No pleural thickening. No free gas under the diaphragm.\n- Heart: Cardiac silhouette not enlarged on either PA film, similar to prior (F4). Borders distinct. Only one of the two reads recorded this finding.\n- Bones / soft tissue: No rib, clavicle or shoulder fracture or destructive lesion seen at this resolution. Mild curvature of the thoracic spine, similar alignment on both films (F5; only one of the two reads recorded this finding). Bilateral breast shadows overlie the lower zones. Device (F1): thin tubing arcs across the left upper zone toward the medial left clavicle to a small metallic component, consistent with an implanted venous access port and catheter. Same configuration on both studies; it projects higher on the current, in keeping with different arm and breast position. No kink or discontinuity seen at this resolution. Catheter tip not traced. Status indeterminate: the two blind reads disagreed (read A stable, read B indeterminate).\n\nINTERVAL CHANGE:\n- Changed: No confirmed change. Indeterminate: F2 right lower zone markings and small dense focus (both reads indeterminate); F1 left chest device position (reads disagreed).\n- Unchanged: Aortic knuckle prominence, similar (F3). Cardiac silhouette not enlarged, similar (F4). Thoracic spinal alignment, similar (F5).\n\nRECIST 1.1: Not computed. No confirmed measurements.\n\nCAN'T DETERMINE:\n- Is the small dense focus in the medial right lower zone a true lung nodule, and is it new? | Reason: The focus is small and lies among vessels, so a vessel seen end-on or a calcified granuloma cannot be separated from a nodule on a frontal film. The softer exposure of the prior may hide it. | Recommend: Review the source images in PACS. If it persists, CT chest.\n- Have the right lower zone lung markings truly increased since the prior? | Reason: The current study is more penetrated with higher contrast, which makes fine markings more conspicuous without a real change. | Recommend: Review source images side by side in PACS with matched windowing. Interval follow-up PA film, or CT chest if there is clinical concern.\n- Where is the tip of the left-sided venous catheter? | Reason: The thin catheter cannot be followed over the dense mediastinal shadow on these low-resolution frontal images. | Recommend: Review the source image in PACS with edge-enhanced windowing, or obtain a lateral view.\n- Where is the tip of the left-sided venous catheter, and has it moved? | Reason: The catheter is lost over the dense mediastinal shadow on both films at this resolution. The chest wall component projects at a different rib level on the two films. | Recommend: Review the source images in PACS with window adjustment. Add a lateral view if tip position matters clinically.\n- Is the tiny dense focus over the right lower zone on current a nodule, a vessel end-on or a calcified granuloma, and is it new? | Reason: The focus is too small for a frontal X-ray to separate a nodule from a vessel end-on or a bone island. On prior the same area is covered by breast shadow on a lower contrast film. | Recommend: Review the source image in PACS. CT chest if it persists or is of clinical concern.\n- Are the more conspicuous right lower zone markings on current a real interval change? | Reason: Breast shadow overlap, contrast and depth of inspiration differ between the two films. | Recommend: Correlate clinically. Repeat PA and lateral with matched technique, or CT chest if concern persists.\n- Are the faint linear densities lateral to the left hilum on prior a real band of atelectasis or scarring, and have they cleared? | Reason: Mild rotation and lower contrast on prior. Vessels and the overlying catheter cross the same area. The appearance is not reproduced on current. | Recommend: Review the source images in PACS. No further imaging needed if the radiologist confirms normal vessels.\n- Is there a subtle rib, spine or shoulder lesion? | Reason: The low resolution, compressed image limits fine bone detail. Shoulders and ribs are partly overlapped by soft tissue. | Recommend: Review the source images in PACS on bone settings. Dedicated imaging if there is focal pain or clinical concern.\n\nIMPRESSION:\n1. Indeterminate: mildly prominent medial right lower zone linear markings with a single small dense nodular focus, not clearly seen on the prior (F2). Both blind reads were indeterminate. Differences in exposure and contrast might explain the appearance. A true nodule and a new finding cannot be excluded on this study. Needs review of the source images.\n2. Indeterminate: left chest venous access port and catheter, same configuration on both studies and projecting higher on the current (F1). The two blind reads disagreed (stable vs indeterminate). Catheter tip not traced and true migration cannot be judged from projected position.\n3. In answer to the surveillance question: no mass, pleural effusion, hilar or mediastinal enlargement, or destructive bone lesion is seen at this resolution, apart from the indeterminate item in 1.\n4. Prominent aortic knuckle and non-enlarged cardiac silhouette are similar to prior.\n5. Limits: blind read of two downsampled frontal PA films with no lateral view. Fine detail (small nodules, margins, calcification, catheter tip, subtle rib or spine lesions) is limited. No measurements are given.\n\nRECOMMENDATIONS:\n- Review the source images in PACS side by side with matched windowing (F2, F1).\n- CT chest if the right lower zone focus persists on source image review or if there is clinical concern. No interval is specified in the findings.\n- Lateral view if catheter tip position matters clinically.\n\nAI DRAFT: requires resident review and attending signature.",
   "report_edited_by_hand": false,
-  "qc": null,
+  "qc": {
+    "pass": true,
+    "mismatches": []
+  },
   "reviews": {},
   "measurements": [],
-  "recist": null,
+  "recist": {
+    "category": "not_computed",
+    "prior_sum_mm": null,
+    "current_sum_mm": null,
+    "change_mm": null,
+    "change_pct": null,
+    "targets": [],
+    "reason": "RECIST is not computed on radiographs.",
+    "caveat": null,
+    "line": "RECIST 1.1: not computed on radiographs"
+  },
   "signature": {
     "resident": null,
     "attending": null
@@ -777,6 +790,62 @@
       "usage": {
         "input_tokens": 6783,
         "output_tokens": 182
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "763e313dc4afc0948c1ebb5d0b6518ab7bb5f8b13b1e6798f8c9c09c16da9a4e",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:28.902Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 5473,
+        "output_tokens": 5701
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "4a329acdae7833b8bcea43de3a06221c277ff0662abfc9cfc75545c3cc12a37a",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:41.770Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7988,
+        "output_tokens": 1119
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "14d78c43b5fc4669f82dab1c1927f3918ca6ab0d323b8aa4b3d5eaeee9f31766",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:41:09.111Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 5595,
+        "output_tokens": 3880
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "21270c0441fe0e7985e9a6a823251e2d90385ee208d5f5e178960289fd2d872e",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:41:19.241Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7617,
+        "output_tokens": 1251
       }
     }
   ]

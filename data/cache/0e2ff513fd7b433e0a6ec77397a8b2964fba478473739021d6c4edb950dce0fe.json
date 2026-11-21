@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "0e2ff513fd7b433e0a6ec77397a8b2964fba478473739021d6c4edb950dce0fe",
+  "case_id": "refusal_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:41:10.865Z",
+  "usage": {
+    "input_tokens": 9878,
+    "output_tokens": 1846
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "LOOK AT FIRST:\n- None. No finding is marked time-sensitive.",
+        "why": "The findings list look_first as F1, F4 and F2, and the report replaces that with 'None' by treating look-first as the same as time-sensitive."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": null,
+        "report_text": "No discrete nodule can be identified and matched on both films.",
+        "why": "The findings record two prior-report discrepancies (prior report's 'nodular opacity' and 'small pleural effusion' not confirmed on the images), and the report never mentions them."
+      }
+    ]
+  }
+}

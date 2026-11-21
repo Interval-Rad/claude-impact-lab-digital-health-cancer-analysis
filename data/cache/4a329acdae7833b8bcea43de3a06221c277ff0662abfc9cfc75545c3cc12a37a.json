@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "4a329acdae7833b8bcea43de3a06221c277ff0662abfc9cfc75545c3cc12a37a",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:40:41.770Z",
+  "usage": {
+    "input_tokens": 7988,
+    "output_tokens": 1119
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F2",
+        "report_text": "triage urgency is high because of the surveillance history",
+        "why": "The findings list F2 as not time-sensitive with no study flags and give no triage urgency rating, so this urgency level is not supported."
+      }
+    ]
+  }
+}

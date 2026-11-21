@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "635af0da8ae9665e66efc5a5cd1715155b3f507fbedb551943b6f7ae87d259b1",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:41:24.696Z",
+  "usage": {
+    "input_tokens": 8835,
+    "output_tokens": 1580
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "None. No finding is marked time-sensitive.",
+        "why": "The findings JSON gives a look_first list (F1, F6, F5, F8, F7) that the report drops, even though no finding is flagged time-sensitive."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F5",
+        "report_text": "Mildly coarse markings in the right lower zone, similar to the prior and seen by one read only",
+        "why": "F5 (read A) and F8 (read B) both describe the right lower zone markings as stable, so both reads saw them, not one."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "a6d891e091c8c71fee3ea7aee41e76b723bbef0f49ffd41d1a2f2d89a6b7d8b0",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:41:22.386Z",
+  "usage": {
+    "input_tokens": 13991,
+    "output_tokens": 1496
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "number_not_from_confirmed_measurement",
+        "finding_id": null,
+        "report_text": "Triage notes SpO2 94 percent with shortness of breath",
+        "why": "The findings contain no triage data and no SpO2 value, and the only measurements list is empty."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage: urgency high; page on call: no.",
+        "why": "The findings have no triage urgency or paging decision, and study_flags is empty."
+      }
+    ]
+  }
+}

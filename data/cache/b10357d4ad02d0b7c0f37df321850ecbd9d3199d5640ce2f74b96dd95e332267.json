@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "b10357d4ad02d0b7c0f37df321850ecbd9d3199d5640ce2f74b96dd95e332267",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:40:42.239Z",
+  "usage": {
+    "input_tokens": 9443,
+    "output_tokens": 1744
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage urgency is high: SpO2 91 percent with one week of worsening breathlessness in metastatic cancer makes the unresolved left hilar question more pressing to review.",
+        "why": "The findings contain no SpO2 value and assign no triage urgency, and they mark every finding time_sensitive false, which contradicts the 'high' urgency call."
+      }
+    ]
+  }
+}

@@ -1,11 +1,11 @@
 {
   "case_id": "refusal_nodule",
-  "state": "TRIAGED",
+  "state": "NEEDS_HUMAN",
   "version": 1,
   "arrived_at": "2026-11-21T19:37:43.405Z",
-  "status_text": "Triaged. Report draft and quality check running",
+  "status_text": "No AI draft. A person reads this study.",
   "busy": null,
-  "error": null,
+  "error": "The report draft failed the quality check twice.",
   "indication_released_at": "2026-11-21T19:39:08.487Z",
   "blind": {
     "a": {
@@ -865,12 +865,38 @@
     "worklist_reason": "Nodule change unanswerable on mismatched films; right lower opacity with fever cannot be compared, needs radiologist review."
   },
   "paged_on_call_at": null,
-  "report_draft": null,
+  "report_draft": "EXAM: Chest radiograph, one view, 2026-11-20\nCLINICAL INDICATION: Known lung nodule under surveillance. Admitted with fever. Portable film. Has the nodule changed?\nORDERING PROVIDER: Dr. S. Whitfield (synthetic), medical oncology\nCOMPARISON: Chest radiograph, 2026-08-21\nTECHNIQUE: Current film is AP, underexposed, mildly rotated, with clavicles projecting high over the apices (suggesting a lordotic beam angle). Prior film is PA. Projection differs from the prior. Comparability is limited (both blind reads).\n\nLOOK AT FIRST:\n- None. No finding is marked time-sensitive.\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Hazy, ill-defined opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm, present on both studies. On the current film the haze appears to reach the lower right mid zone, which may be explained by AP projection, underexposure and overlying soft tissue. Indeterminate; size and density change not comparable (both reads indeterminate). Left lung shows no focal or new confluent opacity. Coarse linear and reticular markings in the left mid and lower zones are similar in distribution on both studies (stable; one of two reads; density not compared because of exposure difference). Trachea is poorly seen with no gross displacement. No pneumothorax. No discrete nodule can be identified and matched on both films. Small nodules and fine interstitial change cannot be excluded on the underexposed current film.\n- Mediastinum / hila: Aortic knuckle is prominent with an unfolded contour on both studies, same shape and position. The upper mediastinum looks wider on the AP current film; the two blind reads disagreed (one stable, one indeterminate), so this is indeterminate and not called as a change. Right hilar and infrahilar prominence is continuous with the right lower zone opacity on both studies; vessels, adjacent opacity and a hilar lesion cannot be separated. Indeterminate, size and change not comparable (one of two reads). Left hilum is not clearly enlarged.\n- Pleura: Lateral right costophrenic sulcus is aerated and pointed with the medial right base opaque; subpulmonic or layering fluid is not excluded. Left costophrenic angle is sharp. No pneumothorax. Right hemidiaphragm contour is high and indistinct medially on both studies; the two blind reads disagreed (one indeterminate, one stable), so this is indeterminate and interval change cannot be judged. No free gas identified, but the upper abdomen is underexposed on the current film.\n- Heart: Cardiac silhouette appears prominent on the PA prior and enlarged on the AP current, but AP projection magnifies the heart and the right heart border is obscured on both. Indeterminate, not comparable (both reads indeterminate).\n- Bones / soft tissue: No displaced rib fracture or gross destructive bone lesion, with bone detail limited by underexposure on the current film. Chest wall soft tissue is prominent on the current film. No soft tissue gas. No internal lines, tubes or devices on either study.\n\nINTERVAL CHANGE:\n- Changed: No change can be reliably called. The right lower zone opacity appears more extensive on the current film but this is not comparable across projection and exposure. No discrete nodule could be matched on both films, so change in the known nodule cannot be judged.\n- Unchanged: Right lower zone opacity is in the same location with the same loss of the right heart border and medial hemidiaphragm. Aortic knuckle has the same shape and position. Left mid and lower zone coarse markings have a similar distribution (stable, one of two reads). No new device.\n\nRECIST 1.1: Not computed. No confirmed measurements.\n\nCAN'T DETERMINE:\n- Has the right lower zone opacity changed in size or density since the prior? | Reason: Prior is PA and current is AP and underexposed. Projection and exposure differences can make a basal opacity look larger or denser. | Recommend: CT chest, or repeat PA and lateral when the patient is able.\n- Is there a right pleural effusion, including a subpulmonic component, and has it changed? | Reason: The high, indistinct right basal contour with an aerated lateral sulcus could reflect subpulmonic fluid, an elevated hemidiaphragm, or basal volume loss. A frontal film alone cannot separate these, and patient position on the current AP is not shown. | Recommend: Lateral or right lateral decubitus view, ultrasound of the right base, or CT chest.\n- Is there a right hilar or infrahilar mass or adenopathy underlying the right basal opacity and volume loss? | Reason: The right hilum merges with the adjacent opacity on both films. Mild rotation and the AP projection make hilar size unreliable. | Recommend: CT chest, with contrast if appropriate.\n- Has heart size changed? | Reason: AP projection magnifies the heart, and cardiothoracic ratio is valid on PA films only. The right heart border is also obscured on both studies. | Recommend: Repeat PA film when the patient is able, or echocardiography if clinically relevant.\n- Is the right hemidiaphragm truly elevated, or is the contour formed by subpulmonic fluid or a process below the diaphragm? | Reason: The true diaphragm is not separately visible on a frontal film. The lordotic AP beam angle on the current film also alters the apparent dome height. | Recommend: Ultrasound of the right upper quadrant and right base, or CT covering the chest and upper abdomen.\n- Are there small nodules or fine interstitial changes in either lung on the current study? | Reason: The current film is underexposed with heavy soft tissue overlap, and the clavicles project over the apices. Small nodules cannot be confirmed or excluded. | Recommend: CT chest, or repeat PA and lateral with adequate exposure.\n- Has the heart enlarged since the prior? | Reason: Prior is PA and current is AP. AP projection magnifies the heart, and the right heart border is obscured on both films. | Recommend: Repeat PA and lateral when the patient is able, or CT chest.\n- Has the right lower zone opacity grown, shrunk, or stayed the same? | Reason: Projection differs (PA then AP) and the current film is underpenetrated. Size and density change cannot be reported across these differences. | Recommend: Repeat PA and lateral with good inspiration, or CT chest.\n- Is the high right hemidiaphragm contour a truly elevated diaphragm, a subpulmonic effusion, or lower lobe volume loss? | Reason: A frontal film alone cannot separate these. Patient position on the current AP film is unknown, and fluid layers out when supine. | Recommend: Lateral and right lateral decubitus views, ultrasound of the right base, or CT chest.\n- Is the upper mediastinum truly wider on the current study? | Reason: AP projection, possible mild rotation, and underexposure each widen or blur the mediastinal contour. | Recommend: Repeat PA film, or CT chest if there is clinical concern.\n- Are there small lung nodules or a hilar abnormality on the current study? | Reason: The current film is underpenetrated and low in contrast, with overlying soft tissue shadows. Small nodules and hilar detail cannot be assessed, and the right hilum is partly obscured by adjacent opacity on both studies. | Recommend: Review the source image in PACS with windowing; CT chest if a nodule or hilar lesion needs to be excluded.\n- Is there a retrocardiac opacity? | Reason: Vertebrae are not visible behind the heart on the current film, and a frontal view alone cannot clear this area. | Recommend: Lateral view or CT chest.\n\nIMPRESSION:\n1. Hazy right lower zone opacity with apparent right basal volume loss, present on both studies, indeterminate. Size and density change cannot be judged because the prior is PA and the current is an underexposed AP.\n2. Right hilar and infrahilar prominence continuous with the right lower zone opacity, indeterminate. Hilar mass or adenopathy cannot be confirmed or excluded.\n3. High, medially indistinct right hemidiaphragm with an aerated lateral sulcus. The two reads disagreed (indeterminate vs stable), so this is indeterminate. Subpulmonic fluid, true elevation or volume loss cannot be separated.\n4. No discrete nodule can be matched on both films, so change in the known surveillance nodule cannot be judged from these images.\n5. Cardiac silhouette appears enlarged on the AP current film, indeterminate and not comparable with the PA prior.\n6. Upper mediastinum looks wider on the AP current film. The two reads disagreed (stable vs indeterminate), so this is indeterminate and not called as a change.\n7. Coarse left mid and lower zone linear and reticular markings appear stable in distribution (one of two reads).\n\nRECOMMENDATIONS:\n- CT chest, or repeat PA and lateral with adequate exposure when the patient is able, to assess the right lower zone opacity, right hilum, possible small nodules and the surveillance nodule (interval not specified in the findings).\n- Lateral or right lateral decubitus view, or ultrasound of the right base, for possible right pleural fluid and the right hemidiaphragm contour.\n- Review the source images in PACS with windowing.\n\nAI DRAFT: requires resident review and attending signature.",
   "report_edited_by_hand": false,
-  "qc": null,
+  "qc": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "LOOK AT FIRST:\n- None. No finding is marked time-sensitive.",
+        "why": "The findings list look_first as F1, F4 and F2, and the report replaces that with 'None' by treating look-first as the same as time-sensitive."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": null,
+        "report_text": "No discrete nodule can be identified and matched on both films.",
+        "why": "The findings record two prior-report discrepancies (prior report's 'nodular opacity' and 'small pleural effusion' not confirmed on the images), and the report never mentions them."
+      }
+    ]
+  },
   "reviews": {},
   "measurements": [],
-  "recist": null,
+  "recist": {
+    "category": "not_computed",
+    "prior_sum_mm": null,
+    "current_sum_mm": null,
+    "change_mm": null,
+    "change_pct": null,
+    "targets": [],
+    "reason": "RECIST is not computed on radiographs.",
+    "caveat": null,
+    "line": "RECIST 1.1: not computed on radiographs"
+  },
   "signature": {
     "resident": null,
     "attending": null
@@ -933,6 +959,62 @@
       "usage": {
         "input_tokens": 8951,
         "output_tokens": 350
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "3009abcf05285352b728010d0258389df821e10dd478c7f694fa7fb81a142124",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:17.233Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7253,
+        "output_tokens": 6370
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "2010f9215be6270ba4344c332aa4aa2452266461a2677f136b76df26e8817f9d",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:26.561Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 10424,
+        "output_tokens": 1136
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "c5853037c2526360fd3023348c382718aab7fb80e36bfeee069ddaa154bf625b",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:56.529Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7402,
+        "output_tokens": 5161
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "0e2ff513fd7b433e0a6ec77397a8b2964fba478473739021d6c4edb950dce0fe",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:41:10.865Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9878,
+        "output_tokens": 1846
       }
     }
   ]
