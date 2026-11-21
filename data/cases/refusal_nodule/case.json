@@ -1,0 +1,78 @@
+{
+  "case_id": "refusal_nodule",
+  "source": "NIH ChestX-ray14 (NIH Clinical Center), via Hugging Face timm/nih-chest-xray-14. De-identified public data.",
+  "why_picked": "PA then AP. Nodule and effusion labelled on the PA prior, nothing on the AP. Model should decline to call them resolved.",
+  "prior": {
+    "file": "prior.jpg",
+    "media_type": "image/jpeg",
+    "nih": {
+      "image_id": "00000017_000",
+      "label_names": [
+        "Effusion",
+        "Infiltration",
+        "Nodule"
+      ],
+      "patient_id": 17,
+      "follow_up": 0,
+      "patient_age": 77,
+      "patient_sex": "M",
+      "view_position": "PA",
+      "original_width": 2500,
+      "original_height": 2048
+    }
+  },
+  "current": {
+    "file": "current.jpg",
+    "media_type": "image/jpeg",
+    "nih": {
+      "image_id": "00000017_001",
+      "label_names": [],
+      "patient_id": 17,
+      "follow_up": 1,
+      "patient_age": 77,
+      "patient_sex": "M",
+      "view_position": "AP",
+      "original_width": 2500,
+      "original_height": 2048
+    }
+  },
+  "_label_note": "NIH labels were text-mined from reports and are noisy. Hints only. Clinicians set ground truth by eye.",
+  "synthetic_chart": {
+    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
+    "mrn": "",
+    "display_name": "",
+    "prior_date": "",
+    "current_date": "",
+    "indication": "",
+    "ordering_provider": {
+      "name": "",
+      "role": "medical oncology | PCP | ED"
+    },
+    "prior_report": "",
+    "vitals": {
+      "hr": null,
+      "spo2": null,
+      "temp_c": null,
+      "bp": ""
+    },
+    "labs": [],
+    "problem_list": [],
+    "pcp_on_file": true,
+    "insurance_on_file": true,
+    "preferred_language": "en"
+  },
+  "ground_truth": {
+    "_note": "Fill BEFORE the first model run. One clinician labels, a second checks.",
+    "labeled_by": "",
+    "checked_by": "",
+    "comparable": "yes | limited | no",
+    "findings": [
+      {
+        "region": "",
+        "status": "new | increased | decreased | stable | resolved | indeterminate"
+      }
+    ],
+    "should_refuse": [],
+    "would_sign_ai_draft_with_minor_edits": null
+  }
+}
