@@ -1,11 +1,11 @@
 {
   "case_id": "new_effusion",
-  "state": "NEEDS_HUMAN",
+  "state": "TRIAGED",
   "version": 1,
   "arrived_at": "2026-11-21T19:37:43.405Z",
-  "status_text": "No AI draft. A person reads this study.",
+  "status_text": "Report draft and quality check running again",
   "busy": null,
-  "error": "The report draft failed the quality check twice.",
+  "error": null,
   "indication_released_at": "2026-11-21T19:39:15.765Z",
   "blind": {
     "a": {
@@ -1036,5 +1036,6 @@
         "output_tokens": 1580
       }
     }
-  ]
+  ],
+  "draft_tries": 1
 }

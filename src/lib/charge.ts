@@ -54,6 +54,7 @@ export interface CaseState {
   report_draft: string | null;
   report_edited_by_hand: boolean;
   qc: QcOutput | null;
+  draft_tries: number; // how many times a person asked for the report draft to be run again
   reviews: Record<string, Review>;
   measurements: Measurement[];
   recist: RecistResult | null;
@@ -108,7 +109,7 @@ function fresh(id: string): CaseState {
     case_id: id, state: "RECEIVED", version: 1, arrived_at: new Date().toISOString(),
     status_text: "Received. Indication locked.", busy: null, error: null, indication_released_at: null, blind: null,
     focused: null, lightbox: null, code_checks: [], stat: null, paged_on_call_at: null, report_draft: null,
-    report_edited_by_hand: false, qc: null, reviews: {}, measurements: [], recist: null,
+    report_edited_by_hand: false, qc: null, draft_tries: 0, reviews: {}, measurements: [], recist: null,
     signature: { resident: null, attending: null }, handoff: null, delivery: null, patient_informed: false, calls: [],
   };
 }
@@ -153,6 +154,10 @@ function reportInput(c: CaseFile, s: CaseState): ReportInput {
       comparison: `Chest radiograph, ${chart.prior_date || "date not recorded"}`,
       technique: `Current ${currentView}. Prior ${priorView}.${priorView !== currentView ? " Projection differs from the prior." : ""}`,
     },
+    LOOK_AT_FIRST: lb.look_first.filter((id) => kept.has(id)).map((id) => {
+      const f = findings.find((x) => x.id === id)!;
+      return { finding_id: id, region: f.region, kind: f.kind, time_sensitive: f.time_sensitive };
+    }),
     FINDINGS: { ...lb, findings, look_first: lb.look_first.filter((id) => kept.has(id)) },
     MEASUREMENTS: s.measurements.filter((m): m is { finding_id: string; prior_mm: number; current_mm: number } =>
       m.prior_mm !== null && m.current_mm !== null && kept.has(m.finding_id)),
@@ -175,7 +180,7 @@ function recistFor(s: CaseState): RecistResult {
 async function qcCall(caseId: string, label: string, input: ReportInput, report: string) {
   return callModel({
     agent: "charge", label, caseId, model: MODELS.qc, system: chargeQcPrompt(), schema: QcOutput,
-    content: [{ type: "text", text: `FINDINGS:\n${JSON.stringify({ findings: input.FINDINGS, measurements: input.MEASUREMENTS, recist: input.RECIST })}\n\nREPORT:\n${report}` }],
+    content: [{ type: "text", text: `FINDINGS:\n${JSON.stringify({ look_at_first: input.LOOK_AT_FIRST, findings: input.FINDINGS, measurements: input.MEASUREMENTS, recist: input.RECIST })}\n\nREPORT:\n${report}` }],
   });
 }
 
@@ -207,6 +212,17 @@ export function startPipeline(id: string): CaseState {
   if (running.has(id)) throw new ChargeError("This case is already running.");
   const existing = loadState(id);
   if (existing && existing.signature.attending) throw new ChargeError("This case is signed. It cannot be re-run.");
+  // The read itself is sound and only the report draft failed QC: a person may ask for the
+  // draft again without paying for the three Lightbox calls a second time.
+  if (existing && existing.state === "NEEDS_HUMAN" && existing.lightbox && existing.focused && existing.stat &&
+      existing.code_checks.length > 0 && existing.code_checks.every((x) => x.pass)) {
+    existing.error = null;
+    existing.draft_tries = (existing.draft_tries ?? 0) + 1;
+    move(existing, "TRIAGED", "Report draft and quality check running again");
+    running.add(id);
+    void redraft(existing).finally(() => running.delete(id));
+    return existing;
+  }
   const s = fresh(id);
   if (existing) s.arrived_at = existing.arrived_at;
   save(s);
@@ -214,6 +230,19 @@ export function startPipeline(id: string): CaseState {
   running.add(id);
   void pipeline(s).finally(() => running.delete(id));
   return s;
+}
+
+async function redraft(s: CaseState): Promise<void> {
+  try {
+    const c = loadCase(s.case_id);
+    s.measurements = s.lightbox!.findings.filter((x) => x.needs_measurement).map((x) => ({ finding_id: x.id, prior_mm: null, current_mm: null }));
+    s.recist = recistFor(s);
+    const pass = await draftAndCheck(c, s, `v${s.version}_try${s.draft_tries}`);
+    if (!pass) return needsHuman(s, "The report draft failed the quality check twice.");
+    move(s, "DRAFTED", "AI draft ready for resident review", "courier");
+  } catch (e) {
+    needsHuman(s, String((e as Error).message ?? e));
+  }
 }
 
 async function pipeline(s: CaseState): Promise<void> {

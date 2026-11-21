@@ -1,11 +1,11 @@
 {
   "case_id": "refusal_nodule",
-  "state": "NEEDS_HUMAN",
+  "state": "TRIAGED",
   "version": 1,
   "arrived_at": "2026-11-21T19:37:43.405Z",
-  "status_text": "No AI draft. A person reads this study.",
+  "status_text": "Report draft and quality check running again",
   "busy": null,
-  "error": "The report draft failed the quality check twice.",
+  "error": null,
   "indication_released_at": "2026-11-21T19:39:08.487Z",
   "blind": {
     "a": {
@@ -1017,5 +1017,6 @@
         "output_tokens": 1846
       }
     }
-  ]
+  ],
+  "draft_tries": 1
 }

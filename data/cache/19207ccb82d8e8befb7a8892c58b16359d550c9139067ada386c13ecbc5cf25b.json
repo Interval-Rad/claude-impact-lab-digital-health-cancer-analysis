@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_try1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "19207ccb82d8e8befb7a8892c58b16359d550c9139067ada386c13ecbc5cf25b",
+  "case_id": "refusal_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:44:08.559Z",
+  "usage": {
+    "input_tokens": 10366,
+    "output_tokens": 1603
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage urgency is high and the case needs radiologist review. On-call page is not triggered.",
+        "why": "The findings contain no triage urgency rating and no study flags, and every finding has time_sensitive false, so 'high' urgency has no source."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "- None. No finding is flagged time-sensitive.",
+        "why": "The findings give a look_at_first priority list (F1, F4, F2) that the report replaces with 'None', although none of these are time-sensitive."
+      }
+    ]
+  }
+}

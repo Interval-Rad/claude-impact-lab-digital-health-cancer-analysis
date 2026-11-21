@@ -12,6 +12,8 @@ export interface ReportInput {
   HEADER: {
     exam: string; clinical_indication: string; ordering_provider: string; comparison: string; technique: string;
   };
+  /** Computed in code from look_first, in order, so the report and the QC call read the same list. */
+  LOOK_AT_FIRST: { finding_id: string; region: string; kind: string; time_sensitive: boolean }[];
   FINDINGS: unknown; // merged Lightbox output after any resident decisions
   MEASUREMENTS: { finding_id: string; prior_mm: number; current_mm: number }[]; // radiologist-entered only
   RECIST: string; // the line code computed

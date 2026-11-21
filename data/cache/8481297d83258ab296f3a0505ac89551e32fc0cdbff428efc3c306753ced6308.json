@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_try1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "8481297d83258ab296f3a0505ac89551e32fc0cdbff428efc3c306753ced6308",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:44:07.236Z",
+  "usage": {
+    "input_tokens": 9160,
+    "output_tokens": 1698
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage urgency is high and an on-call page is not indicated.",
+        "why": "The findings contain no triage urgency rating and no study flags, and every finding is marked not time-sensitive, so the 'high' urgency claim has no source and conflicts with the sentence before it."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F1",
+        "report_text": "Left hilum appears less full and denser-looking on the current than the prior",
+        "why": "The findings say the prior left hilum is fuller and denser and the current is less conspicuous, so describing the current as denser-looking reverses the direction of the density comparison."
+      }
+    ]
+  }
+}

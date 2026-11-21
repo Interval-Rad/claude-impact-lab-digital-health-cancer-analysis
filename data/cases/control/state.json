@@ -715,8 +715,34 @@
     "pass": true,
     "mismatches": []
   },
-  "reviews": {},
-  "measurements": [],
+  "reviews": {
+    "F1": {
+      "action": "edited",
+      "reason": "Reads disagreed; wording made neutral.",
+      "text": "External monitoring leads project over the chest on one film. No implanted device identified.",
+      "at": "2026-11-21T19:43:25.105Z"
+    },
+    "F3": {
+      "action": "accepted",
+      "at": "2026-11-21T19:43:27.782Z"
+    },
+    "F4": {
+      "action": "accepted",
+      "at": "2026-11-21T19:43:27.878Z"
+    },
+    "F5": {
+      "action": "rejected",
+      "reason": "Not a finding. Normal variant.",
+      "at": "2026-11-21T19:43:27.909Z"
+    }
+  },
+  "measurements": [
+    {
+      "finding_id": "F2",
+      "prior_mm": 12,
+      "current_mm": 13
+    }
+  ],
   "recist": {
     "category": "not_computed",
     "prior_sum_mm": null,

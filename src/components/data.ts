@@ -82,6 +82,7 @@ function statePayload(id: string, s: CaseState): CasePayload {
     prior_report: released ? chart.prior_report : null,
     indication_released_at: s.indication_released_at,
     lightbox: s.state === "NEEDS_HUMAN" ? null : s.lightbox, // NEEDS_HUMAN: a person reads with no AI draft
+    // (qc below still carries the mismatches, so the screen can say why)
     stat: s.state === "NEEDS_HUMAN" ? null : s.stat,
     measurements: s.measurements,
     recist: s.recist ? { category: s.recist.category, line: s.recist.line } : null,
