@@ -2,7 +2,7 @@
   "name": "Interval Read",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "postCreateCommand": "npm install",
-  "postAttachCommand": "npm run dev",
+  "postStartCommand": "nohup npm run dev > /tmp/interval-dev.log 2>&1 &",
   "forwardPorts": [3000],
   "portsAttributes": { "3000": { "label": "Interval Read", "onAutoForward": "openBrowser", "visibility": "private" } },
   "secrets": {
