@@ -1,0 +1,69 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "2dd45c06f30daa0d3f3ee89e69cbf8769fd0dd8a291d5d5097c79251944d94ee",
+  "case_id": "control",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-21T19:50:13.320Z",
+  "usage": {
+    "input_tokens": 9541,
+    "output_tokens": 2372
+  },
+  "response": {
+    "indication_pass": {
+      "question": "In a patient with treated breast cancer on routine surveillance and no new symptoms, do the images show any sign of disease in the chest (lung nodule or mass, hilar or mediastinal node enlargement, pleural effusion, bone lesion), and has anything changed from the prior?",
+      "answer": "No definite lung mass, confluent opacity, right pleural effusion or destructive rib lesion is seen on the current PA film, and the upper mediastinum is not widened. The right hilar and infrahilar fullness (F6), the more conspicuous right lower zone markings (F2), the tiny dense right lower zone focus and the left humeral head texture remain undetermined on these frontal films, and the left costophrenic region is hidden by breast shadow.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura",
+        "bones",
+        "soft_tissue",
+        "devices"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F6",
+      "F2"
+    ]
+  }
+}

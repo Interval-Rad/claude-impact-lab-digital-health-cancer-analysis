@@ -1,0 +1,42 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "a5d08269b75439bbdb3dc396c1e0f1cc1d10cf06e032d9372a59db500553a14b",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:51:00.129Z",
+  "usage": {
+    "input_tokens": 8859,
+    "output_tokens": 1425
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F6",
+        "report_text": "Triage: high urgency, radiologist review next shift, no on-call page.",
+        "why": "The findings give no triage level or review timing and mark F6 time_sensitive false, so 'high urgency' is unsupported and contradicts the report's own 'Not marked time-sensitive'."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "EXAM: Chest radiograph, one view, 2026-11-12",
+        "why": "The findings state this was a blind read with no study dates and that dates were not verified, so the exam date is unsupported."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "COMPARISON: Chest radiograph, 2026-02-10",
+        "why": "The findings contain no study dates, so the comparison date is unsupported."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "ORDERING PROVIDER: Dr. L. Okafor (synthetic), medical oncology",
+        "why": "No ordering provider appears anywhere in the findings."
+      }
+    ]
+  }
+}

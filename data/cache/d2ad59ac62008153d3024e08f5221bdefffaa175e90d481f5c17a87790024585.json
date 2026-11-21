@@ -1,0 +1,17 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "d2ad59ac62008153d3024e08f5221bdefffaa175e90d481f5c17a87790024585",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:51:35.996Z",
+  "usage": {
+    "input_tokens": 8847,
+    "output_tokens": 1270
+  },
+  "response": {
+    "pass": true,
+    "mismatches": []
+  }
+}
