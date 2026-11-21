@@ -47,7 +47,7 @@ HTML = r"""<!doctype html>
 <title>ScanShift</title>
 <style>
 :root{--bg:#0B0C0A;--surface:#141511;--raised:#1C1E19;--rule:#2B2E27;--text:#E6E3D8;--muted:#8F8D80;--accent:#E3A21A;--critical:#E5484D;--confirm:#8FB59A;--blind:#6FA8A0}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.45 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 .mono,.label,button,select{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .label{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 header,.strip{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:6px 12px;border-bottom:1px solid var(--rule)}
@@ -74,7 +74,7 @@ details summary{cursor:pointer}a{color:var(--text)}
 <header><b class="mono">SCANSHIFT</b><span class="label">Radiology</span>
 <label class="label" for="case">case</label><select id="case"></select>
 <span class="label" style="margin-left:auto">demo only, not for clinical use</span></header>
-<div class="strip"><span class="tag warn">recorded snapshot</span><span class="mono">Findings and report are real model output recorded <span id="rec"></span>. Buttons work in this browser only: nothing is saved and no model is called here.</span></div>
+<div class="strip"><span class="tag warn">recorded snapshot</span><span class="mono muted">Real model output, recorded <span id="rec"></span>. Buttons work in this browser only.</span></div>
 <div class="strip"><b class="mono" id="banner">AI DRAFT. Requires resident review and attending signature.</b><span class="mono muted" id="models" style="margin-left:auto"></span></div>
 <div id="app"></div>
 <script id="data" type="application/json">__DATA__</script>
@@ -87,7 +87,8 @@ const time = iso => iso ? new Date(iso).toLocaleTimeString([], { hour12: false }
 const AGREE = { '2_of_2': ['2 of 2', false], '1_of_2': ['1 of 2 !', true], 'status_differs': ['reads disagree !', true] };
 const SHAPE = { new: '▲', increased: '▲', decreased: '▼', stable: '■', resolved: '○', indeterminate: '◇' };
 let S = {};
-function fresh(id) { return { id, reviews: {}, reason: {}, open: {}, mm: {}, flick: false, show: 'prior', invert: false, resident: null, attending: null }; }
+function fresh(id) { return { id, reviews: {}, rejecting: {}, reason: {}, open: {}, moreCd: false, flick: false, show: 'prior', invert: false, resident: null, attending: null }; }
+const more = (label, ...kids) => el('details', {}, el('summary', { class: 'label' }, label), el('div', { style: 'padding-top:6px' }, kids));
 function render() {
   const c = CASES.find(x => x.id === S.id), app = document.getElementById('app'); app.textContent = '';
   document.getElementById('banner').textContent = S.attending ? '● Signed by attending ' + time(S.attending) + ' (in this browser only)' : 'AI DRAFT. Requires resident review and attending signature.';
@@ -99,45 +100,52 @@ function render() {
   const pane = w => el('div', { class: 'pane' }, el('img', { src: c.img[w], alt: (w === 'prior' ? 'Prior' : 'Current') + ' chest radiograph, ' + c.views[w] + ' view', style: 'filter:' + filt }), el('span', { class: 'cap mono' }, w.toUpperCase() + ' ' + c.views[w] + ' ' + (c.chart[w + '_date'] || ''), ' ', syn()));
   const left = el('div', {},
     el('div', { class: 'well' + (S.flick ? ' one' : '') }, S.flick ? pane(S.show) : [pane('prior'), pane('current')]),
-    el('div', { class: 'strip' }, el('span', { class: 'label' }, 'display'),
+    el('div', { class: 'strip' },
       el('button', { 'aria-pressed': String(S.flick), onclick: () => { S.flick = !S.flick; render(); } }, 'Flicker: ' + (S.flick ? 'on' : 'off')),
       S.flick && el('button', { onclick: () => { S.show = S.show === 'prior' ? 'current' : 'prior'; render(); } }, 'Swap (showing ' + S.show + ')'),
       el('button', { 'aria-pressed': String(S.invert), onclick: () => { S.invert = !S.invert; render(); } }, 'Invert: ' + (S.invert ? 'on' : 'off'))),
-    el('section', {}, el('div', { class: 'label' }, 'Indication  ', el('span', { class: 'mono' }, 'released ' + time(c.released) + ' after blind reads')),
-      el('p', {}, c.chart.indication, ' ', syn()), el('p', { class: 'muted' }, 'Ordered by: ' + c.provider.name + ', ' + c.provider.role + ' ', syn()),
+    el('section', {}, more('Full report draft   QC: ' + (c.qc ? (c.qc.pass ? 'pass' : 'fail !') : 'not run'), el('pre', {}, c.report || 'No report draft.'))),
+    el('section', {}, more('Prior report and where the images differ from it (' + lb.prior_report_discrepancies.length + ')',
       el('p', { class: 'muted' }, 'Prior report: ' + c.chart.prior_report + ' ', syn()),
-      lb.indication_pass && el('p', { class: 'f' }, el('span', { class: 'label' }, 'focused pass '), lb.indication_pass.answer),
-      lb.prior_report_discrepancies.map(d => el('p', { class: 'attn' }, 'Differs from prior report ! ', el('span', { style: 'color:var(--text)' }, 'Report says: ' + d.prior_report_says + ' Images show: ' + d.images_show)))),
-    el('section', {}, el('div', { class: 'label' }, 'Report draft   QC: ' + (c.qc ? (c.qc.pass ? 'pass' : 'fail !') : 'not run')), el('pre', {}, c.report || 'No report draft.')));
-  const finding = f => { const r = S.reviews[f.id], ag = f.agreement ? AGREE[f.agreement] : ['focused pass', false], open = S.open[f.id];
+      lb.prior_report_discrepancies.map(d => el('p', {}, el('span', { class: 'attn' }, 'Differs ! '), 'Report says: ' + d.prior_report_says + ' Images show: ' + d.images_show)))));
+  const finding = f => { const r = S.reviews[f.id], ag = f.agreement ? AGREE[f.agreement] : ['focused pass', false], open = S.open[f.id], rej = S.rejecting[f.id];
     return el('div', { class: 'f ' + (r ? r.action : '') },
-      el('div', { class: 'top mono' }, el('b', {}, f.id), words(f.region), el('span', { class: 'muted' }, words(f.kind)), el('span', {}, (SHAPE[f.status] || '') + ' ' + f.status), el('span', { class: ag[1] ? 'attn' : '' }, ag[0]), f.outside_indication && el('span', { class: 'tag' }, 'outside indication'), f.time_sensitive && el('span', { class: 'tag warn' }, 'time sensitive')),
-      el('div', {}, f.description),
-      open && el('div', { class: 'muted' }, el('div', {}, 'Evidence: ' + f.evidence), el('div', { class: 'mono' }, 'read A: ' + (f.read_a_status || 'not seen') + '   read B: ' + (f.read_b_status || 'not seen'))),
-      el('div', { style: 'display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px' },
-        el('span', { class: 'mono muted' }, r ? (r.action === 'accepted' ? '● accepted' : '✕ rejected: ' + r.reason) : '○ draft, not reviewed'),
-        el('button', { onclick: () => { S.open[f.id] = !open; render(); } }, open ? 'Hide evidence' : 'Evidence'),
-        el('button', { disabled: !!S.attending, onclick: () => { S.reviews[f.id] = { action: 'accepted' }; render(); } }, 'Accept'),
-        el('input', { type: 'text', placeholder: 'reason to reject', 'aria-label': 'Reason to reject ' + f.id, value: S.reason[f.id] || '', oninput: e => { S.reason[f.id] = e.target.value; } }),
-        el('button', { disabled: !!S.attending, onclick: () => { const why = (S.reason[f.id] || '').trim(); if (!why) { alertLine('Reject needs a reason.'); return; } S.reviews[f.id] = { action: 'rejected', reason: why }; render(); } }, 'Reject'),
-        r && !S.resident && el('button', { onclick: () => { delete S.reviews[f.id]; render(); } }, 'Undo'))); };
+      el('div', { class: 'top mono' }, el('b', {}, f.id), words(f.region) + ' ' + words(f.kind), el('span', {}, (SHAPE[f.status] || '') + ' ' + f.status), el('span', { class: ag[1] ? 'attn' : 'muted' }, ag[0]),
+        el('span', { style: 'margin-left:auto;display:flex;gap:6px;align-items:center' },
+          r && el('span', { class: 'muted' }, r.action === 'accepted' ? '● accepted' : '✕ rejected'),
+          !r && el('button', { disabled: !!S.attending, onclick: () => { S.reviews[f.id] = { action: 'accepted' }; render(); } }, 'Accept'),
+          !r && el('button', { disabled: !!S.attending, onclick: () => { S.rejecting[f.id] = !rej; render(); } }, 'Reject'),
+          r && !S.resident && el('button', { onclick: () => { delete S.reviews[f.id]; render(); } }, 'Undo'),
+          el('button', { 'aria-expanded': String(!!open), onclick: () => { S.open[f.id] = !open; render(); } }, open ? 'Less' : 'Why'))),
+      rej && !r && el('div', { style: 'display:flex;gap:6px;margin-top:4px' }, el('input', { type: 'text', style: 'flex:1', placeholder: 'reason (required)', 'aria-label': 'Reason to reject ' + f.id, value: S.reason[f.id] || '', oninput: e => { S.reason[f.id] = e.target.value; } }),
+        el('button', { onclick: () => { const why = (S.reason[f.id] || '').trim(); if (!why) { alertLine('Reject needs a reason.'); return; } S.reviews[f.id] = { action: 'rejected', reason: why }; S.rejecting[f.id] = false; render(); } }, 'Confirm reject')),
+      r && r.reason && el('div', { class: 'muted' }, 'Reason: ' + r.reason),
+      open && el('div', { style: 'margin-top:4px' }, el('div', {}, f.description), el('div', { class: 'muted' }, 'Evidence: ' + f.evidence), el('div', { class: 'mono muted' }, 'read A: ' + (f.read_a_status || 'not seen') + '   read B: ' + (f.read_b_status || 'not seen') + (f.outside_indication ? '   outside indication' : '')))); };
+  // Can't determine: items tied to the look-first findings come first. Three are shown, the rest on request.
+  const rankCd = q => { const i = lb.look_first.indexOf(q.related_finding); return i === -1 ? (q.related_finding ? 50 : 99) : i; };
+  const cds = [...lb.cant_determine].sort((x, y) => rankCd(x) - rankCd(y)), shown = S.moreCd ? cds : cds.slice(0, 3);
+  const firstDiff = lb.comparability.differences[0];
   const rail = el('div', { class: 'rail' },
-    el('section', {}, el('div', { class: 'label' }, 'Comparability'), el('div', { class: 'mono' }, ({ yes: '●', limited: '◐', no: '✕' })[lb.comparability.comparable] + ' ' + lb.comparability.comparable + '   (read A: ' + lb.comparable_by_read.a + ', read B: ' + lb.comparable_by_read.b + ')'),
-      lb.study_flags.length ? el('div', { class: 'attn' }, 'reads disagree on comparability !') : null,
-      lb.comparability.differences.map(d => el('div', { class: 'muted' }, el('span', { class: 'mono' }, d.factor + ': '), d.detail + ' Prevents: ' + d.prevents))),
-    c.stat && el('section', {}, el('div', { class: 'label' }, 'Triage'), el('div', { class: 'mono' }, '◆ ' + c.stat.urgency_tier + '   ' + words(c.stat.severity_subgroup)), el('div', { class: 'muted' }, c.stat.worklist_reason)),
-    el('section', {}, el('div', { class: 'label' }, 'Look first'), lb.look_first.length ? lb.look_first.map(id => { const f = fs.find(x => x.id === id); return el('div', { class: 'mono' }, el('b', { class: 'attn' }, id + ' '), f ? words(f.region) + ' ' + words(f.kind) : ''); }) : el('div', { class: 'muted' }, 'None')),
-    el('section', {}, el('div', { class: 'label' }, 'Findings   ' + reviewed + ' of ' + fs.length + ' reviewed'), fs.map(finding)),
-    el('section', {}, el('div', { class: 'label' }, "Can't determine"), lb.cant_determine.map(q => el('div', { class: 'cd' }, el('div', {}, q.question, q.related_finding ? el('span', { class: 'mono muted' }, '  ' + q.related_finding) : null), el('div', { class: 'muted' }, 'Reason: ' + q.reason), el('div', {}, 'Next: ' + q.recommend)))),
-    el('section', {}, el('div', { class: 'label' }, 'Measurements (you enter)'), fs.filter(f => f.needs_measurement).map(f => el('div', { class: 'mono', style: 'margin:4px 0' }, f.id + ' prior ', el('input', { type: 'number', min: '0', style: 'width:70px', 'aria-label': f.id + ' prior mm' }), ' mm  current ', el('input', { type: 'number', min: '0', style: 'width:70px', 'aria-label': f.id + ' current mm' }), ' mm')), el('div', { class: 'mono' }, c.recist || 'RECIST 1.1: not computed'), el('div', { class: 'muted' }, 'The draft contains no sizes. Only values typed here are measurements.')),
-    el('section', {}, el('div', { class: 'label' }, 'Ordering provider view'),
-      !S.attending ? el('div', { class: 'locked mono' }, 'Locked. Nothing leaves radiology before the attending signs.')
-      : c.handoff ? el('div', {}, el('div', { class: 'mono' }, c.handoff.provider_message.subject), el('pre', {}, c.handoff.provider_message.body), c.handoff.followup_order ? el('table', { style: 'margin-top:6px' }, Object.entries(c.handoff.followup_order).map(([k, v]) => el('tr', {}, el('th', {}, words(k)), el('td', {}, v)))) : el('div', { class: 'muted' }, 'The signed report recommends no follow-up order.'), el('div', { class: 'muted' }, 'The provider signs the order. No agent places an order.'))
-      : el('div', { class: 'mono' }, '● Unlocked. In the running app, the provider message and the pre-filled follow-up order are drafted at this point from the signed report. That step is a live model call and is not part of this snapshot.')));
-  app.append(el('div', { class: 'strip' }, el('span', { class: 'mono' }, c.chart.display_name + ' '), syn(), el('span', { class: 'mono' }, 'MRN ' + c.chart.mrn + ' '), syn(), el('span', { class: 'mono muted' }, 'XR CHEST 1 VIEW')),
+    el('section', {}, el('div', { class: 'label' }, 'Clinical question ', syn()), el('div', {}, c.chart.indication),
+      el('div', { class: 'label', style: 'margin-top:8px' }, 'Draft answer'), el('div', { class: 'f', style: 'font-size:14px' }, lb.indication_pass ? lb.indication_pass.answer : 'No focused pass was run.'),
+      el('div', { class: 'mono muted' }, 'question released to the AI ' + time(c.released) + ', after both blind reads')),
+    el('section', {}, el('div', { class: 'label' }, 'Can the two films be compared?'),
+      el('div', { class: 'mono' }, ({ yes: '● yes', limited: '◐ limited', no: '✕ no' })[lb.comparability.comparable] + (firstDiff ? '   ' + firstDiff.factor + ': ' + firstDiff.detail : '')),
+      lb.study_flags.length ? el('div', { class: 'attn' }, 'the two reads disagree on this !') : null,
+      lb.comparability.differences.length > 0 && more('What this prevents (' + lb.comparability.differences.length + ')', lb.comparability.differences.map(d => el('div', { class: 'muted' }, el('span', { class: 'mono' }, d.factor + ': '), d.prevents)))),
+    el('section', {}, el('div', { class: 'label' }, "Can't determine  (" + cds.length + ')'),
+      shown.map(q => el('div', { class: 'cd' }, el('div', {}, q.question), el('div', {}, el('b', {}, 'Next: '), q.recommend), more('Reason', el('div', { class: 'muted' }, q.reason)))),
+      cds.length > 3 && el('button', { onclick: () => { S.moreCd = !S.moreCd; render(); } }, S.moreCd ? 'Show fewer' : 'Show ' + (cds.length - 3) + ' more')),
+    el('section', {}, el('div', { class: 'label' }, 'Findings   ' + reviewed + ' of ' + fs.length + ' reviewed' + (lb.look_first.length ? '   look first: ' + lb.look_first.join(', ') : '')), fs.map(finding)),
+    el('section', {}, more('Measurements (you enter)', fs.filter(f => f.needs_measurement).map(f => el('div', { class: 'mono', style: 'margin:4px 0' }, f.id + ' prior ', el('input', { type: 'number', min: '0', style: 'width:70px', 'aria-label': f.id + ' prior mm' }), ' mm  current ', el('input', { type: 'number', min: '0', style: 'width:70px', 'aria-label': f.id + ' current mm' }), ' mm')), el('div', { class: 'mono' }, c.recist || 'RECIST 1.1: not computed'), el('div', { class: 'muted' }, 'The draft contains no sizes. Only values typed here are measurements.'))),
+    el('section', {}, el('div', { class: 'label' }, 'Ordering provider'),
+      !S.attending ? el('div', { class: 'locked mono' }, 'Locked until the attending signs.')
+      : c.handoff ? el('div', {}, el('div', { class: 'mono' }, c.handoff.provider_message.subject), el('pre', {}, c.handoff.provider_message.body))
+      : el('div', { class: 'mono' }, '● Unlocked. The running app drafts the provider message and follow-up order here. Not part of this snapshot.')));
+  app.append(el('div', { class: 'strip' }, el('span', { class: 'mono' }, c.chart.display_name + ' '), syn(), el('span', { class: 'mono' }, 'MRN ' + c.chart.mrn + ' '), syn(), c.stat && el('span', { class: 'mono' }, '◆ ' + c.stat.urgency_tier + ': ' + c.stat.worklist_reason)),
     el('div', { class: 'grid' }, left, rail),
-    el('div', { class: 'bar' }, el('span', { class: 'mono ' + (all ? '' : 'attn') }, 'Resident: ' + reviewed + ' of ' + fs.length + ' reviewed' + (all ? '' : ' !')), S.resident && el('span', { class: 'mono' }, '● resident signed ' + time(S.resident)), S.attending && el('span', { class: 'mono' }, '● attending signed ' + time(S.attending)), el('span', { class: 'mono attn', id: 'msg', role: 'alert' }),
-      el('span', { style: 'margin-left:auto;display:flex;gap:8px' }, el('button', { disabled: !all || !!S.resident, onclick: () => { S.resident = new Date().toISOString(); render(); } }, 'Sign as resident'), el('button', { disabled: !all || !S.resident || !!S.attending, onclick: () => { S.attending = new Date().toISOString(); render(); } }, 'Attending sign'), el('button', { onclick: () => { S = fresh(S.id); render(); } }, 'Reset'))));
+    el('div', { class: 'bar' }, el('span', { class: 'mono ' + (all ? '' : 'attn') }, reviewed + ' of ' + fs.length + ' findings reviewed' + (all ? '' : ' !')), S.resident && el('span', { class: 'mono' }, '● resident signed ' + time(S.resident)), S.attending && el('span', { class: 'mono' }, '● attending signed ' + time(S.attending)), el('span', { class: 'mono attn', id: 'msg', role: 'alert' }),
+      el('span', { style: 'margin-left:auto;display:flex;gap:8px' }, el('button', { disabled: !!S.attending, onclick: () => { fs.forEach(f => { if (!S.reviews[f.id]) S.reviews[f.id] = { action: 'accepted' }; }); render(); } }, 'Accept all remaining'), el('button', { disabled: !all || !!S.resident, onclick: () => { S.resident = new Date().toISOString(); render(); } }, 'Sign as resident'), el('button', { disabled: !all || !S.resident || !!S.attending, onclick: () => { S.attending = new Date().toISOString(); render(); } }, 'Attending sign'), el('button', { onclick: () => { S = fresh(S.id); render(); } }, 'Reset'))));
 }
 function alertLine(t) { const m = document.getElementById('msg'); if (m) m.textContent = t + ' !'; }
 const sel = document.getElementById('case');
