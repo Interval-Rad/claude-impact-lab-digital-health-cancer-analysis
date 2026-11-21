@@ -230,3 +230,10 @@ data/audit.jsonl
 data/cases/**/*.png
 data/cases/**/*.jpg
 *.pdf
+
+# The Python template above ignores lib/. The app's code lives in src/lib.
+!src/lib/
+tsconfig.tsbuildinfo
+next-env.d.ts
+.claude/skip-check
+.claude/settings.local.json
