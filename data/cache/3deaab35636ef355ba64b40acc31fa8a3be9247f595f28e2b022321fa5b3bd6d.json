@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "3deaab35636ef355ba64b40acc31fa8a3be9247f595f28e2b022321fa5b3bd6d",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:46:01.453Z",
+  "usage": {
+    "input_tokens": 7903,
+    "output_tokens": 1826
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage: urgency high, on-call page not indicated.",
+        "why": "The findings contain no urgency or triage rating, and every finding is marked time_sensitive false."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F2",
+        "report_text": "No confirmed measurements. A measurement entry for F2 (prior 12 mm, current 13 mm) was supplied but is not used",
+        "why": "The findings include a radiologist-confirmed measurement for F2 (12 mm prior, 13 mm current), so saying there are no confirmed measurements and discarding it misstates the input."
+      }
+    ]
+  }
+}

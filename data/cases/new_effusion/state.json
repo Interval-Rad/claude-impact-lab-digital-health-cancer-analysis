@@ -1,11 +1,11 @@
 {
   "case_id": "new_effusion",
-  "state": "TRIAGED",
+  "state": "NEEDS_HUMAN",
   "version": 1,
   "arrived_at": "2026-11-21T19:37:43.405Z",
-  "status_text": "Report draft and quality check running again",
+  "status_text": "No AI draft. A person reads this study.",
   "busy": null,
-  "error": null,
+  "error": "The report draft failed the quality check twice.",
   "indication_released_at": "2026-11-21T19:39:15.765Z",
   "blind": {
     "a": {
@@ -878,22 +878,16 @@
     "worklist_reason": "Breathless metastatic cancer patient; left hilum change unresolved between reads, no clear cause on film. Needs radiologist review."
   },
   "paged_on_call_at": null,
-  "report_draft": "EXAM: Chest radiograph, one view, 2026-11-19\nCLINICAL INDICATION: On treatment for metastatic colorectal cancer. Increasing shortness of breath over one week.\nORDERING PROVIDER: Dr. M. Castellanos, medical oncology\nCOMPARISON: Chest radiograph, 2026-09-02\nTECHNIQUE: Current PA. Prior PA. Same projection on both. The prior is displayed with higher contrast and mild rotation. The current is softer and flatter with no rotation.\n\nLOOK AT FIRST:\n- None. No finding is marked time-sensitive.\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Trachea is central with the expected slight rightward deviation at the aortic arch. No central airway narrowing at this resolution. Lung volumes are large. No focal consolidation, collapse or discrete mass in any zone. Mildly coarse markings in the right lower zone, similar to the prior and seen by one read only; no focal consolidation. Overlying soft tissue may contribute. Vascular markings reach the chest wall on both sides. A tiny density projects over the right medial upper zone near the anterior first rib end on the prior only (see CAN'T DETERMINE).\n- Mediastinum / hila: Aortic knuckle is prominent, consistent with an unfolded aorta, and similar to the prior. Upper mediastinum is not widened. Right hilum is unremarkable. Left hilum: INDETERMINATE for change. The reads disagreed: one read called it indeterminate (fuller and denser on the prior, not bulky on the current), and the other called it stable (similar bulk and contour, with the prior denser because of higher contrast). The current left hilum is not bulky and shows a small ring shadow, possibly a bronchus seen end-on. Prior contrast and rotation differences limit comparison.\n- Pleura: Both costophrenic angles are sharp on both studies. No pleural line and no visible pleural thickening. The left dome is level with or slightly higher than the right on both studies, with gas-filled stomach and bowel beneath it that partly overlap the left base. Change in gas distension under the left dome is INDETERMINATE: the reads disagreed (one read stable, one read decreased on the current). No gas under the right dome on either study.\n- Heart: Not enlarged on this PA film, with defined borders. One read describes it as at the upper limit of normal. Size and contour are similar to the prior.\n- Bones / soft tissue: No displaced rib fracture or destructive rib lesion at this resolution. Degenerative change at both shoulders and in the lower cervical spine. No soft tissue gas. Fine bone detail is limited. Devices: left-sided central venous catheter entering from the left lateral chest or axillary region and crossing the midline, with its tip projecting over the expected level of the superior vena cava. Course and tip position match the prior. No new device. The insertion site is not on the film.\n\nINTERVAL CHANGE:\n- Changed: No confirmed change. Indeterminate: left hilum, which is fuller and denser on the prior and smaller in words on the current, but the reads disagreed and the difference may be due to contrast and rotation. Indeterminate: gas distension under the left dome, which is less on the current per one read, with the reads in disagreement.\n- Unchanged: Mildly coarse right lower zone markings. Aortic knuckle contour and mediastinal width. Heart size and contour. Left-sided central venous catheter and tip position. Relationship of the domes. Sharp costophrenic angles. No new consolidation, pleural effusion, pneumothorax, or new lung nodule or mass compared with the prior.\n\nRECIST 1.1: Not computed on radiographs.\n\nCAN'T DETERMINE:\n- Is the left hilum truly smaller on the current study than on the prior? | Reason: The prior has higher contrast and mild rotation, and both can make one hilum look larger and denser. A frontal film alone does not separate vessel from node or mass. | Recommend: CT chest with contrast, and review of the source images in PACS.\n- Is the tiny density over the right medial upper zone on the prior a lung nodule or first rib costochondral calcification? | Reason: The density is well under the size at which X-ray separates a nodule from bone or a vessel end-on. It is not clearly seen on the lower-contrast current film. | Recommend: Review the source images in PACS. CT chest if it persists on review.\n- Is there opacity behind the heart or at the left base? | Reason: The relatively high left dome and gas-filled bowel overlap the left base and retrocardiac region on a frontal film alone. | Recommend: Lateral view or CT chest.\n- Is there a focal bone lesion in the ribs, shoulders or spine? | Reason: The images are low resolution and compressed, so fine bone detail is not assessable. | Recommend: Review the source images in PACS.\n- Is the left hilar fullness vascular (pulmonary artery) or nodal? | Reason: A frontal film alone cannot separate vessel from lymph node, and the difference in image contrast between the two studies limits judgment of subtle density change. | Recommend: Correlate with any previous cross-sectional imaging. If none is available, contrast-enhanced CT chest.\n- Is the small ring lucency over the left hilum on the current study a bronchus seen end-on or a small cavitary or cystic focus? | Reason: The structure is small, overlaps hilar vessels, and is seen on a downsampled frontal image only. It is less conspicuous on the higher-contrast prior. | Recommend: Review the source image in PACS. Lateral view or CT chest if it persists.\n- Does the asymmetry of the breast shadows reflect previous left breast surgery, or positioning? | Reason: Soft-tissue contours are partly outside the field and faint at this resolution. The asymmetry makes the right lower zone look hazier than the left on both studies. | Recommend: Correlate with surgical history. Do not read the right lower zone haze as lung opacity without that correlation.\n- What is the exact catheter tip position relative to the cavoatrial junction, and what type of line is it? | Reason: The carina and the right atrial junction are not sharply defined on these images, and the insertion site and any reservoir lie outside the field. | Recommend: Review the source image in PACS with windowing. Correlate with the line insertion record.\n- Are there small nodules in the retrocardiac region, at the apices or behind the diaphragm domes? | Reason: Only a single frontal view of each study is available. These areas are hidden by overlap, and small nodules cannot be separated from vessels seen end-on or from rib ends. | Recommend: Lateral view, or CT chest if there is clinical concern.\n- Is there a subtle rib, spine or shoulder lesion? | Reason: The images are low resolution and compressed, and fine bone detail such as cortex, pedicles and small lucent lesions is not reliably shown. | Recommend: Review the source images in PACS on bone settings.\n\nIMPRESSION:\n1. Left hilum: change since 2026-09-02 is indeterminate. The reads disagreed. The prior shows a fuller, denser left hilum than the current, but differences in contrast and rotation may account for this. Vessel versus node cannot be separated on a single frontal film (see CAN'T DETERMINE).\n2. Small ring shadow over the left hilum on the current study, possibly a bronchus seen end-on. Seen by one read only and not resolved on this film (see CAN'T DETERMINE).\n3. Mildly coarse right lower zone markings, similar to the prior, with no focal consolidation.\n4. Heart not enlarged and similar to the prior.\n5. No new consolidation, pleural effusion, pneumothorax, or new lung nodule or mass compared with the prior. This single frontal film does not show a cause for the breathlessness, and the left hilar question remains unresolved.\n6. Gas distension under the left dome: change is indeterminate, as the reads disagreed.\n7. Left-sided central venous catheter and prominent aortic knuckle are unchanged.\n\nRECOMMENDATIONS:\n- CT chest with contrast for the unresolved left hilar question (interval not specified in the findings).\n- Lateral view or CT chest for the retrocardiac and left base regions and for possible small nodules.\n- Review source images in PACS, including bone settings and windowing of the catheter tip.\n- Correlate with the line insertion record and surgical history, and with any prior cross-sectional imaging.\n\nAI DRAFT: requires resident review and attending signature.",
+  "report_draft": "EXAM: Chest radiograph, one view, 2026-11-19\n\nCLINICAL INDICATION: On treatment for metastatic colorectal cancer. Increasing shortness of breath over one week.\n\nORDERING PROVIDER: Dr. M. Castellanos (synthetic), medical oncology\n\nCOMPARISON: Chest radiograph, 2026-09-02\n\nTECHNIQUE: Current PA. Prior PA. Same projection. The prior is displayed with higher contrast and is mildly rotated. The current is softer and flatter and is not rotated. These differences limit comparison of subtle density change, hilar size and mediastinal contour.\n\nLOOK AT FIRST:\n- None (no finding is marked time-sensitive).\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Trachea is central with the expected slight rightward deviation at the aortic arch. No central airway narrowing at this resolution. Lung volumes are large. No focal consolidation, collapse or discrete mass in any zone. Mildly coarse markings in the right lower zone, with no focal consolidation. This is similar on the prior, and overlying soft tissue may contribute. Only one of the two reads reported it. Vascular markings reach the chest wall on both sides. A tiny density projects over the right medial upper zone near the anterior first rib end on the prior only (see CAN'T DETERMINE).\n- Mediastinum / hila: Aortic knuckle is prominent, consistent with an unfolded aorta. It is similar on both studies. The upper mediastinum is not widened. Right hilum is unremarkable. Left hilum: change is INDETERMINATE and the reads disagreed. The prior left hilum is fuller and denser than the current. The current left hilum is not bulky and shows a small ring shadow, possibly a bronchus seen end-on. One read called the change indeterminate, with the hilum smaller on the current in words only. The other read called it similar and stable. The difference in contrast and rotation between the studies may explain the appearance. No measurements are available, and this finding needs radiologist measurement.\n- Pleura: Both costophrenic angles are sharp on both studies. No pleural line and no visible pleural thickening. Diaphragm and upper abdomen: the left dome is level with or slightly higher than the right on both studies, with gas-filled stomach and bowel beneath it. No gas under the right dome. Change in gas distension under the left dome is INDETERMINATE. The reads disagreed: one read called it stable and the other called it decreased on the current.\n- Heart: Heart is not enlarged on this PA film. The silhouette is at the upper limit of normal with sharp borders, and it is similar to the prior. Only one of the two reads reported this finding.\n- Bones / soft tissue: No displaced rib fracture or destructive rib lesion at this resolution. Degenerative change at both shoulders and in the lower cervical spine. No soft tissue gas. Fine bone detail is limited. A left-sided central venous catheter is present, with its tip projecting over the expected level of the superior vena cava. Its course and tip position are the same as on the prior. No new device.\n\nINTERVAL CHANGE:\n- Changed: Left hilar density is fuller and denser on the prior than on the current. Whether this is true change is indeterminate, and the reads disagreed. Gas distension under the left dome is less on the current per one read, and the reads disagreed. A tiny right medial upper zone density is seen on the prior only. Whether it is a nodule or a rib-related density is not determined.\n- Unchanged: Mildly coarse right lower zone markings. Prominent aortic knuckle. Cardiac silhouette. Left central venous catheter and its tip position. Sharp costophrenic angles. Relative height of the domes. No new consolidation, pleural effusion, pneumothorax, or new lung nodule or mass is seen compared with the prior.\n\nRECIST 1.1: Not computed on radiographs.\n\nCAN'T DETERMINE:\n- Is the left hilum truly smaller on the current study than on the prior? | Reason: The prior has higher contrast and mild rotation, and both can make one hilum look larger and denser. A frontal film alone does not separate vessel from node or mass. | Recommend: CT chest with contrast, and review of the source images in PACS.\n- Is the tiny density over the right medial upper zone on the prior a lung nodule or first rib costochondral calcification? | Reason: The density is well under the size at which X-ray separates a nodule from bone or a vessel end-on. It is not clearly seen on the lower-contrast current film. | Recommend: Review the source images in PACS. CT chest if it persists on review.\n- Is there opacity behind the heart or at the left base? | Reason: The relatively high left dome and gas-filled bowel overlap the left base and retrocardiac region on a frontal film alone. | Recommend: Lateral view or CT chest.\n- Is there a focal bone lesion in the ribs, shoulders or spine? | Reason: The images are low resolution and compressed, so fine bone detail is not assessable. | Recommend: Review the source images in PACS.\n- Is the left hilar fullness vascular (pulmonary artery) or nodal? | Reason: A frontal film alone cannot separate vessel from lymph node, and the difference in image contrast between the two studies limits judgment of subtle density change. | Recommend: Correlate with any previous cross-sectional imaging. If none is available, contrast-enhanced CT chest.\n- Is the small ring lucency over the left hilum on the current study a bronchus seen end-on or a small cavitary or cystic focus? | Reason: The structure is small, overlaps hilar vessels, and is seen on a downsampled frontal image only. It is less conspicuous on the higher-contrast prior. | Recommend: Review the source image in PACS. Lateral view or CT chest if it persists.\n- Does the asymmetry of the breast shadows reflect previous left breast surgery, or positioning? | Reason: Soft-tissue contours are partly outside the field and faint at this resolution. The asymmetry makes the right lower zone look hazier than the left on both studies. | Recommend: Correlate with surgical history. Do not read the right lower zone haze as lung opacity without that correlation.\n- What is the exact catheter tip position relative to the cavoatrial junction, and what type of line is it? | Reason: The carina and the right atrial junction are not sharply defined on these images, and the insertion site and any reservoir lie outside the field. | Recommend: Review the source image in PACS with windowing. Correlate with the line insertion record.\n- Are there small nodules in the retrocardiac region, at the apices or behind the diaphragm domes? | Reason: Only a single frontal view of each study is available. These areas are hidden by overlap, and small nodules cannot be separated from vessels seen end-on or from rib ends. | Recommend: Lateral view, or CT chest if there is clinical concern.\n- Is there a subtle rib, spine or shoulder lesion? | Reason: The images are low resolution and compressed, and fine bone detail such as cortex, pedicles and small lucent lesions is not reliably shown. | Recommend: Review the source images in PACS on bone settings.\n\nIMPRESSION:\n1. Left hilum: change between studies is indeterminate and the reads disagreed. The prior left hilum is fuller and denser than the current, and the current left hilum is not bulky. Contrast and rotation differences may account for this. Not measured. Nodal versus vascular fullness cannot be separated on this single frontal film.\n2. Small ring shadow over the left hilum on the current study, possibly a bronchus seen end-on. A small cavitary or cystic focus is not excluded.\n3. Mildly coarse right lower zone markings without focal consolidation, similar to the prior. Overlying soft tissue may contribute, and breast asymmetry is unresolved.\n4. Mildly prominent bronchovascular markings at the right base, without focal consolidation, similar to the prior.\n5. Cardiac silhouette at the upper limit of normal on PA, similar to the prior.\n6. Change in gas distension under the left dome is indeterminate, and the reads disagreed.\n7. No new consolidation, pleural effusion, pneumothorax, or new lung nodule or mass compared with the prior. Heart size is similar. This single frontal film does not show a cause for the breathlessness. The left hilar question remains unresolved.\n\nRECOMMENDATIONS:\n- CT chest with contrast to assess the left hilum and the other unresolved questions above. The findings do not specify an interval, so timing is per attending.\n- Lateral chest view or CT chest for the retrocardiac and left base regions. The findings do not specify an interval, so timing is per attending.\n- Review of source images in PACS for the left hilar ring shadow, right upper zone density, bone detail and catheter tip. Correlate with the line insertion record and surgical history.\n\nAI DRAFT: requires resident review and attending signature.",
   "report_edited_by_hand": false,
   "qc": {
     "pass": false,
     "mismatches": [
       {
         "type": "missing_finding",
-        "finding_id": "F1",
-        "report_text": "None. No finding is marked time-sensitive.",
-        "why": "The findings JSON gives a look_first list (F1, F6, F5, F8, F7) that the report drops, even though no finding is flagged time-sensitive."
-      },
-      {
-        "type": "unsupported_statement",
-        "finding_id": "F5",
-        "report_text": "Mildly coarse markings in the right lower zone, similar to the prior and seen by one read only",
-        "why": "F5 (read A) and F8 (read B) both describe the right lower zone markings as stable, so both reads saw them, not one."
+        "finding_id": null,
+        "report_text": "- None (no finding is marked time-sensitive).",
+        "why": "The findings JSON gives a look_at_first list (F1, F6, F5, F8, F7), but the report's LOOK AT FIRST section says none and omits those items."
       }
     ]
   },
@@ -1034,6 +1028,62 @@
       "usage": {
         "input_tokens": 8835,
         "output_tokens": 1580
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_try1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "838607476c989dc8aba2d73aa8ed77652274c84c1428a7d25ca688cb0e3b5e69",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:43:52.115Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 6696,
+        "output_tokens": 5819
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_try1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "8481297d83258ab296f3a0505ac89551e32fc0cdbff428efc3c306753ced6308",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:07.236Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9160,
+        "output_tokens": 1698
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_try1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "7aada5af7770cd7828956283b3002e1a91c64fba0c75b0f29e0d35cc0aa1f6d0",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:42.057Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 6948,
+        "output_tokens": 5545
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_try1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "00267aa7f09a91660d1c4758bee22c14ca664a47c63fd57b4521afea1304b600",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:59.206Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9162,
+        "output_tokens": 1739
       }
     }
   ],

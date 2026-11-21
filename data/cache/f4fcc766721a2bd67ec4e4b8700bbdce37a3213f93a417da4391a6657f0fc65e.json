@@ -1,0 +1,40 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "f4fcc766721a2bd67ec4e4b8700bbdce37a3213f93a417da4391a6657f0fc65e",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:46:57.301Z",
+  "usage": {
+    "input_tokens": 4516,
+    "output_tokens": 2011
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Indeterminate small nodular focus, right lower zone, not clearly seen on prior (prior breast cancer)",
+      "body": "Changed: CXR shows a small dense nodular focus with more conspicuous markings in the medial right lower zone (F2), not clearly seen on prior. Measured 12 mm prior, 13 mm current. Exposure differences may explain it. Port catheter tip (F1) not traced.\nRadiologist recommends: PACS source review, CT chest if the focus persists or you are concerned, lateral view if tip position matters.\nWaiting for your signature: conditional CT chest order (below)."
+    },
+    "followup_order": {
+      "study": "CT chest (conditional: only if the focus persists on radiologist source-image review or there is clinical concern)",
+      "body_part": "Chest",
+      "contrast": "Not specified in report",
+      "interval": "Not specified in report",
+      "reason": "Indeterminate small dense nodular focus, medial right lower zone (F2), not clearly seen on prior CXR 2026-02-10, in a patient with prior treated breast cancer. Cannot determine whether it is a true nodule or new."
+    },
+    "tumor_board": {
+      "recist_rows": [
+        {
+          "lesion": "F2, medial right lower zone small dense nodular focus (indeterminate, may not be a true nodule)",
+          "prior": "12 mm (2026-02-10 radiograph; measurement supplied, basis to be confirmed on source images)",
+          "current": "13 mm (2026-11-12 radiograph; measurement supplied, basis to be confirmed on source images)",
+          "change": "+1 mm by supplied values. Not a RECIST measurement: RECIST 1.1 not computed on radiographs. Relation of the measurement to the nodular focus is unconfirmed."
+        }
+      ],
+      "history": "Treated breast cancer, on routine surveillance with no new symptoms.\nChest radiograph 2026-11-12 compared with 2026-02-10.\nOrdering provider: Dr. L. Okafor, medical oncology.",
+      "impression": "Indeterminate small dense nodular focus with more conspicuous markings, medial right lower zone (F2), not clearly seen on prior. Exposure and contrast differences may account for it. True nodule and newness cannot be determined; needs source-image review.\nPort catheter tip (F1) not traced; reads disagreed. No mass, effusion, hilar or mediastinal enlargement, or destructive bone lesion at this resolution."
+    },
+    "surgeon": "Location: medial right lower zone, small dense nodular focus (F2) on chest radiograph. Size trend: 12 mm on prior to 13 mm on current by supplied measurement, basis unconfirmed. It is indeterminate whether this is a true nodule or new. The report says nothing on whether surgery is possible.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray. It was done as a routine check after your breast cancer treatment.\nThe X-ray showed a very small spot in the lower part of your right lung. The X-ray cannot tell what the spot is. It could be a normal part of the lung, or it could be something that needs a closer look. The spot was not clearly seen on your last X-ray.\nThe X-ray also could not show the end of your port tube clearly. A port is a small device under the skin that lets doctors give medicine through a vein.\nWhat your care team recommends next: the radiologist, a doctor who reads X-rays, will look at the original pictures more closely. You may need a CT scan. A CT scan takes more detailed pictures of the inside of your chest. You may also need another X-ray from the side to see your port tube.\nWho to call: please call Dr. Okafor's office (medical oncology) with any questions."
+  }
+}

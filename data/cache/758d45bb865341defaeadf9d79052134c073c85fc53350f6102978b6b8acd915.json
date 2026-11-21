@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "758d45bb865341defaeadf9d79052134c073c85fc53350f6102978b6b8acd915",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:46:39.507Z",
+  "usage": {
+    "input_tokens": 7503,
+    "output_tokens": 1760
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Lungs otherwise, pleura and mediastinal contour are without definite change.",
+        "why": "The findings give no 'unchanged' call for the remaining lungs or pleura, and they say position and exposure differences prevent judging subtle left basal density change and leave the faint left perihilar linear densities on the prior unresolved."
+      }
+    ]
+  }
+}
