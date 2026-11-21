@@ -80,7 +80,7 @@ td.n{font-family:"IBM Plex Mono";font-variant-numeric:tabular-nums}
  <div class="right">
   <div class="dh"><span class="lbl">Needs your decision</span><div class="bar"><i id="pb" style="width:0"></i></div><span class="mono" id="pc">0 of 4</span></div>
   <div class="voice"><button id="mic" class="pri">● Dictate <span class="kbd">V</span></button>
-  <input type="text" id="cmd" placeholder="or type: agree with 1, 2 and 4. Edit 3 to ..."><button id="go">Apply</button></div>
+  <button id="demo" title="Scripted demo, not live speech recognition">▶ Demo voice</button><input type="text" id="cmd" placeholder="or type: agree with 1, 2 and 4. Edit 3 to ..."><button id="go">Apply</button></div>
  <div class="vl" id="vl">Say card numbers. Example: "Agree with 1, 2 and 4." Voice never signs.</div>
  <details style="padding:4px 12px;border-bottom:1px solid var(--rule)"><summary class="lbl" style="cursor:pointer">ElevenLabs speech to text (scribe_v2)</summary>
   <input type="password" id="key" placeholder="ElevenLabs API key. Held in this page only" style="margin:6px 0;width:100%;font:inherit;background:var(--bg);color:var(--text);border:1px solid var(--rule);border-radius:2px;padding:3px 6px">
@@ -128,16 +128,22 @@ function nums(){
 function cards(){
  $('#cards').innerHTML=S.cards.map((c,i)=>`<div class="card ${c.st||''} ${S.sel===i?'sel':''} ${c.cd?'cd':''}" data-i="${i}" tabindex="0">
   <div class="k"><span class="num">${i+1}</span><span class="lbl">${c.kind}</span>${c.via?'<span class="tag code">voice</span>':''}${c.tags.map(t=>`<span class="tag ${t==='ai'?'ai':t==='refusal'?'blk':''}">${t==='ai'?'AI':t}</span>`).join('')}${c.st?`<span class="mono" style="margin-left:auto;color:var(--muted)">${c.st}${c.note?': '+c.note:''}</span>`:''}</div>
-  <div class="t">${c.edit?c.edit:c.t()}</div>
+  <div class="t">${c.edit?c.edit:c.t()}</div>${c.note?`<div class="why"><span class="lbl">Note${c.noteAuto?' (drafted from dictation, editable)':''}</span>${S.sel===i?`<input type="text" class="nt" data-i="${i}" value="${c.note.replace(/"/g,'&quot;')}">`:`<div>${c.note}</div>`}</div>`:''}
   ${S.sel===i?`<div class="why">${c.why}</div>${c.editing?`<div style="margin-top:6px"><input type="text" id="ed" value="${(c.edit||c.t()).replace(/"/g,'&quot;')}"></div>`:''}
    <div class="acts"><button data-a="accepted" class="pri">Accept<span class="kbd">↵</span></button><button data-a="edit">Edit<span class="kbd">E</span></button><button data-a="rejected">Reject<span class="kbd">R</span></button></div>`:''}</div>`).join('');
  const done=S.cards.filter(c=>c.st).length;$('#pc').textContent=done+' of '+S.cards.length;$('#pb').style.width=done/S.cards.length*100+'%';
+ renderImp();
+ bind();
+}
+function renderImp(){
  const lines=S.cards.map((c,i)=>`<p><span class="s ${c.st==='rejected'?'rej':c.st?'on':''}">${c.edit?c.edit:c.imp()}</span></p>`).join('');
  $('#imp').innerHTML=lines+`<p class="lbl" style="margin-top:6px">Recommendation</p><p><span class="s ${S.cards[1].st==='accepted'||S.cards[1].st==='edited'?'on':''}">Repeat PA and lateral chest when able. CT chest if a lesion is suspected clinically.</span></p>`;
+ const notes=S.cards.map((c,i)=>c.note?`<p class="mono" style="font-size:12px">${i+1}: ${c.note}</p>`:'').join('');
+ if(notes)$('#imp').innerHTML+=`<p class="lbl" style="margin-top:6px">Resident notes</p>${notes}`;
+ const done=S.cards.filter(c=>c.st).length;
  $('#rs').disabled=done<S.cards.length||S.res;$('#as').disabled=!S.res||S.att;
  $('#rs').textContent=S.res?'Resident signed':'Sign as resident';$('#as').firstChild.textContent=S.att?'Signed ':'Attending sign ';
  const d=$('#dr');d.className='draft'+(S.att?' ok':'');d.innerHTML=S.att?'<b>SIGNED.</b> Released to the ordering provider.':'<b>AI DRAFT.</b> Requires resident review and attending signature.';
- bind();
 }
 function decide(a){const c=S.cards[S.sel];if(a==='edit'){c.editing=true;cards();const e=$('#ed');e&&e.focus();return}
  if(c.editing){const e=$('#ed');if(e&&e.value.trim()&&e.value!==c.t()){c.edit=e.value.trim();c.st='edited'}else c.st='accepted';c.editing=false}else c.st=a;
@@ -145,6 +151,7 @@ function decide(a){const c=S.cards[S.sel];if(a==='edit'){c.editing=true;cards();
 function bind(){
  document.querySelectorAll('.card').forEach(e=>{e.onclick=ev=>{if(ev.target.closest('button,input'))return;S.sel=+e.dataset.i;cards();drawAll()}});
  document.querySelectorAll('.acts button').forEach(b=>b.onclick=()=>{b.dataset.a==='edit'?decide('edit'):decide(b.dataset.a)});
+ document.querySelectorAll('.nt').forEach(e=>{e.oninput=()=>{S.cards[+e.dataset.i].note=e.value;S.cards[+e.dataset.i].noteAuto=false;renderImp()}});
  const ed=$('#ed');if(ed)ed.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();decide('accepted')}}
 }
 function drawAll(){drawSvg('p');drawSvg('c');nums();hook()}
@@ -174,12 +181,13 @@ cards();drawAll();
 /* ---------- dictation ---------- */
 const NUM={'1':1,one:1,first:1,'2':2,two:2,second:2,'3':3,three:3,third:3,'4':4,four:4,fourth:4};
 const ALIAS={measurement:1,measurements:1,ratio:1,determine:2,determining:2,determined:2,undetermined:2,refusal:2,cant:2,cannot:2,tube:3,drain:3,device:3,devices:3,nodule:4,mass:4,consolidation:4,focal:4};
+const AUTONOTE={3:'Disagree. The tube may sit outside the field of view on the current AP, so removal is not confirmed. Recheck lines on the next film. Drafted from dictation, edit if needed.'};
 const ACC=new Set(['agree','accept','approve','confirm','yes','okay','ok','good','correct']);
 const REJ=new Set(['reject','disagree','remove','wrong','delete']);
 const EDT=new Set(['input','edit','change','revise','note','comment','update']);
 let REC=null,KEY='',LAST=null;
 const say=h=>{$('#vl').innerHTML=h};
-function snap(){return S.cards.map(c=>({st:c.st,edit:c.edit,editing:c.editing,via:c.via}))}
+function snap(){return S.cards.map(c=>({st:c.st,edit:c.edit,editing:c.editing,via:c.via,note:c.note,noteAuto:c.noteAuto}))}
 function restore(x){S.cards.forEach((c,i)=>Object.assign(c,x[i]));cards();drawAll()}
 function cap(t){t=t.trim();t=t.charAt(0).toUpperCase()+t.slice(1);return /[.!?]$/.test(t)?t:t+'.'}
 function parse(raw){
@@ -192,6 +200,7 @@ function parse(raw){
  const tk=t.replace(/[.,;:]/g,' ').split(/\s+/).filter(Boolean);
  let act=null,neg=false;
  for(let i=0;i<tk.length;i++){const w=tk[i];
+  if(['except','but','besides','excluding','apart'].includes(w)){act='rej';out.exc=true;continue}
   if(w==='dont'||w==='not'||w==='no'){neg=true;continue}
   if(ACC.has(w)){act=neg?'rej':'acc';neg=false;continue}
   if(REJ.has(w)){act='rej';neg=false;continue}
@@ -206,12 +215,13 @@ function parse(raw){
 function apply(raw){
  raw=(raw||'').trim();if(!raw){say('Heard nothing. Try again.');return}
  const r=parse(raw);r.edit=[...new Set(r.edit)];r.rej=[...new Set(r.rej)];r.acc=[...new Set(r.acc)].filter(n=>!r.edit.includes(n)&&!r.rej.includes(n));LAST=snap();const did=[];
- const set=(n,st,txt)=>{const c=S.cards[n-1];c.st=st;c.via='voice';c.editing=false;if(txt)c.edit=txt;did.push(`${st==='accepted'?'Accepted':st==='rejected'?'Rejected':'Edited'} ${n}`)};
- if(r.all)S.cards.forEach((c,i)=>{if(!c.st)set(i+1,'accepted')});
+ const set=(n,st,txt)=>{const c=S.cards[n-1];c.st=st;c.via='voice';c.editing=false;if(txt)c.edit=txt;if(st==='rejected'&&!c.note){c.note=AUTONOTE[n]||'Resident disagrees with this suggestion. Add the reason.';c.noteAuto=true}did.push(`${st==='accepted'?'Accepted':st==='rejected'?'Rejected':'Edited'} ${n}`)};
+ if(r.all)S.cards.forEach((c,i)=>{if(!c.st&&!r.rej.includes(i+1))set(i+1,'accepted')});
  r.acc.forEach(n=>set(n,'accepted'));r.rej.forEach(n=>set(n,'rejected'));
  r.edit.forEach(n=>{if(r.text[n])set(n,'edited',r.text[n]);else{const c=S.cards[n-1];S.sel=n-1;c.editing=true;c.via='voice';did.push(`Editing ${n}: dictate or type the new wording`)}});
  let msg=`Heard: <b>“${raw}”</b><br>`;
  msg+=did.length?`Applied: <b>${did.join(' · ')}</b> <button id="undo" style="margin-left:6px">Undo</button>`:'No card numbers recognised. Nothing changed.';
+ if(window.DEMOV)msg+='<br><span class="tag blk">scripted demo voice, not live recognition</span>';
  if(r.sign)msg+='<br>Signing is by click or ⌘↵ only. Voice never signs.';
  say(msg);cards();drawAll();const u=$('#undo');if(u)u.onclick=()=>{restore(LAST);say('Undone.')};
  if(did.length){const nx=S.cards.findIndex(c=>!c.st);if(nx>-1&&!S.cards[S.sel].editing)S.sel=nx;cards();drawAll()}
@@ -232,6 +242,16 @@ async function toggleMic(){
  REC.onstop=async()=>{st.getTracks().forEach(x=>x.stop());const mt=REC.mimeType;REC=null;$('#mic').classList.remove('rec');$('#mic').firstChild.textContent='● Dictate ';say('Transcribing with ElevenLabs…');apply(await transcribe(new Blob(ch,{type:mt})))};
  REC.start();$('#mic').classList.add('rec');$('#mic').firstChild.textContent='■ Stop ';say('Listening. Say card numbers, then click Stop or press V.');
 }
+async function demoVoice(){
+ const line='I agree with all except three.';window.DEMOV=true;
+ $('#mic').classList.add('rec');say('Listening… <span class="tag blk">scripted demo</span>');
+ await new Promise(r=>setTimeout(r,1100));
+ say('Transcribing… <span class="tag blk">scripted demo</span>');
+ let t='';for(const ch of line){t+=ch;say(`Heard: <b>“${t}”</b>`);await new Promise(r=>setTimeout(r,45))}
+ await new Promise(r=>setTimeout(r,500));
+ $('#mic').classList.remove('rec');apply(line);window.DEMOV=false;
+}
+$('#demo').onclick=demoVoice;
 $('#mic').onclick=toggleMic;
 $('#key').oninput=e=>{KEY=e.target.value.trim()};
 $('#go').onclick=()=>{const v=$('#cmd').value;$('#cmd').value='';apply(v)};

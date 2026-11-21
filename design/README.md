@@ -6,6 +6,7 @@ What it explores:
 - One decision at a time: numbered suggestion cards (accept, edit, reject), report built from what is accepted.
 - Real public radiographs instead of drawn placeholders.
 - Voice dictation with ElevenLabs speech to text (`scribe_v2`): "agree with 1, 2 and 4". Voice never signs.
+- A scripted "Demo voice" button that plays "I agree with all except three" and fills the note on card 3. It is labeled on screen as scripted, not live recognition. Say so when you present it.
 
 ## Where it differs from CLAUDE.md. Decide before merging any of this into the app
 
