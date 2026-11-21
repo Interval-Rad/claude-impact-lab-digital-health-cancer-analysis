@@ -1,14 +1,9 @@
 {
   "name": "Interval Read",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
-  "features": { "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" } },
+  "features": { "ghcr.io/devcontainers/features/sshd:1": {} },
   "postCreateCommand": "npm install",
   "postStartCommand": "nohup npm run dev > /tmp/interval-dev.log 2>&1 &",
   "forwardPorts": [3000],
-  "portsAttributes": { "3000": { "label": "Interval Read", "onAutoForward": "openBrowser", "visibility": "private" } },
-  "secrets": {
-    "ANTHROPIC_API_KEY": { "description": "Optional. Without it the app runs in labelled fixture mode." },
-    "ELEVENLABS_API_KEY": { "description": "Optional. Without it the browser voice is used." }
-  },
-  "customizations": { "vscode": { "extensions": ["dbaeumer.vscode-eslint"] } }
+  "portsAttributes": { "3000": { "label": "Interval Read", "onAutoForward": "notify" } }
 }
