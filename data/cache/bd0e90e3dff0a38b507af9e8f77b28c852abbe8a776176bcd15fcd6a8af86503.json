@@ -1,0 +1,26 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "bd0e90e3dff0a38b507af9e8f77b28c852abbe8a776176bcd15fcd6a8af86503",
+  "case_id": "new_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:36:39.042Z",
+  "usage": {
+    "input_tokens": 6418,
+    "output_tokens": 1099
+  },
+  "response": {
+    "severity_subgroup": "stable_or_responding",
+    "urgency_tier": "routine",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "Colon adenocarcinoma, treated",
+        "bears_on": "F1 left hilar nodule and the new-nodule surveillance question",
+        "why": "F1 is stable but uncharacterized and was missing from the prior report, so the radiologist should confirm it in PACS in a patient with prior cancer."
+      }
+    ],
+    "worklist_reason": "Surveillance chest film: no new nodules; two hilar densities unchanged from prior, still uncharacterized."
+  }
+}

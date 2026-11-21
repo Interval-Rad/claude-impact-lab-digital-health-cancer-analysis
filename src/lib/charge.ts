@@ -156,7 +156,7 @@ function reportInput(c: CaseFile, s: CaseState): ReportInput {
     FINDINGS: { ...lb, findings, look_first: lb.look_first.filter((id) => kept.has(id)) },
     MEASUREMENTS: s.measurements.filter((m): m is { finding_id: string; prior_mm: number; current_mm: number } =>
       m.prior_mm !== null && m.current_mm !== null && kept.has(m.finding_id)),
-    RECIST: (s.recist ?? recistFor(s)).line,
+    RECIST: (s.recist ?? recistFor(s)).line.replace(/^RECIST 1\.1:\s*/, ""), // the template already prints the label
     TRIAGE: s.stat!,
   };
 }

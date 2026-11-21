@@ -1,0 +1,30 @@
+{
+  "case_id": "control",
+  "state": "BLIND_READING",
+  "version": 1,
+  "arrived_at": "2026-11-21T19:37:43.402Z",
+  "status_text": "Blind read A and blind read B running",
+  "busy": null,
+  "error": null,
+  "indication_released_at": null,
+  "blind": null,
+  "focused": null,
+  "lightbox": null,
+  "code_checks": [],
+  "stat": null,
+  "paged_on_call_at": null,
+  "report_draft": null,
+  "report_edited_by_hand": false,
+  "qc": null,
+  "reviews": {},
+  "measurements": [],
+  "recist": null,
+  "signature": {
+    "resident": null,
+    "attending": null
+  },
+  "handoff": null,
+  "delivery": null,
+  "patient_informed": false,
+  "calls": []
+}

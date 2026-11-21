@@ -1,0 +1,17 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "52a542534c786f8d06dc5c1aa7e302dab2279f6f35eb2a243499eb88d84fe789",
+  "case_id": "new_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:37:15.596Z",
+  "usage": {
+    "input_tokens": 7375,
+    "output_tokens": 1059
+  },
+  "response": {
+    "pass": true,
+    "mismatches": []
+  }
+}

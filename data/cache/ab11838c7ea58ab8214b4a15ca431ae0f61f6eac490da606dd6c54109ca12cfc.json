@@ -1,0 +1,68 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "ab11838c7ea58ab8214b4a15ca431ae0f61f6eac490da606dd6c54109ca12cfc",
+  "case_id": "new_nodule",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-21T19:36:28.544Z",
+  "usage": {
+    "input_tokens": 8233,
+    "output_tokens": 1785
+  },
+  "response": {
+    "indication_pass": {
+      "question": "Are there new pulmonary nodules on this surveillance film in a patient with treated colon adenocarcinoma?",
+      "answer": "No new pulmonary nodule is seen by eye in either lung on the current PA film compared with the prior. The small dense left perihilar nodule (F1) and the small dense right hilar focus (F2) are present on both films and look similar, but small nodules and the areas behind the heart and diaphragm cannot be excluded on a single frontal film at this resolution.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura",
+        "bones"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Lungs clear. No focal opacity.",
+        "images_show": "The prior film itself shows a small dense, well-defined rounded nodular opacity at the lateral edge of the left hilum (F1), which the prior report does not mention. It is in the same position with similar size on the current film. The stable status is based on comparing the two images, not on the prior report."
+      },
+      {
+        "prior_report_says": "Lungs clear. No focal opacity.",
+        "images_show": "The prior film also shows a small dense focus over the right hilum (F2), not mentioned in the prior report. It looks similar on the current film. It may be a vessel seen end-on or a small calcified node, and this is not determined on these films."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F2"
+    ]
+  }
+}
