@@ -68,26 +68,21 @@ export function reconcile(a: BlindRead, b: BlindRead): LightboxMerged {
   const findings: MergedFinding[] = merged.map((f, i) => ({ ...f, id: `F${i + 1}` }));
 
   // Union of the abstentions. Same region + kind from both reads counts once.
-  const cant: MergedCantDetermine[] = [];
-  const add = (item: BlindRead["cant_determine"][number], read: "A" | "B") => {
-    const hasKey = item.region !== "" && item.kind !== "";
-    const related = hasKey ? findings.find((f) => key(f) === key(item))?.id ?? null : null;
-    const existing = hasKey
-      ? cant.find((c) => c._key === key(item))
-      : cant.find((c) => c.question.trim().toLowerCase() === item.question.trim().toLowerCase());
+  const cant: { item: MergedCantDetermine; key: string | null }[] = [];
+  const add = (c: BlindRead["cant_determine"][number], read: "A" | "B") => {
+    const k = c.region !== "" && c.kind !== "" ? key(c) : null;
+    const question = c.question.trim().toLowerCase();
+    const existing = cant.find((x) => (k ? x.key === k : x.item.question.trim().toLowerCase() === question));
     if (existing) {
-      if (!existing.from_reads.includes(read)) existing.from_reads.push(read);
+      if (!existing.item.from_reads.includes(read)) existing.item.from_reads.push(read);
       return;
     }
-    cant.push({
-      question: item.question, reason: item.reason, recommend: item.recommend,
-      related_finding: related, from_reads: [read], _key: hasKey ? key(item) : null,
-    } as MergedCantDetermine & { _key: string | null });
+    const related = k ? findings.find((f) => key(f) === k)?.id ?? null : null;
+    cant.push({ key: k, item: { question: c.question, reason: c.reason, recommend: c.recommend, related_finding: related, from_reads: [read] } });
   };
-  type Keyed = MergedCantDetermine & { _key?: string | null };
   a.cant_determine.forEach((c) => add(c, "A"));
   b.cant_determine.forEach((c) => add(c, "B"));
-  const cant_determine = (cant as Keyed[]).map(({ _key: _k, ...rest }) => rest);
+  const cant_determine = cant.map((x) => x.item);
 
   const differs = a.comparability.comparable !== b.comparability.comparable;
   const cautious = CAUTION[b.comparability.comparable] < CAUTION[a.comparability.comparable] ? b : a;
@@ -200,7 +195,7 @@ export function lightboxCodeChecks(a: BlindRead, b: BlindRead, merged: LightboxM
     .some((w) => w === "larger" || w === "smaller" || w === "similar");
   push("views differ: no size change is reported", viewsDiffer ? merged.findings.filter(sizeCalls).map((f) => f.id) : []);
 
-  const count = (fs: BlindFinding[]) => fs.reduce((m, f) => m.set(key(f), (m.get(key(f)) ?? 0) + 1), new Map<string, number>());
+  const count = (fs: { region: string; kind: string }[]) => fs.reduce((m, f) => m.set(key(f), (m.get(key(f)) ?? 0) + 1), new Map<string, number>());
   const mergedCount = count(merged.findings.filter((f) => !f.added_in_focused_pass));
   const missing: string[] = [];
   for (const [read, fs] of [["A", a.findings], ["B", b.findings]] as const) {

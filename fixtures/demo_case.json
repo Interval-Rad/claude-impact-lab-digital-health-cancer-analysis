@@ -1,0 +1,255 @@
+{
+  "_mock": true,
+  "_note": "MOCK FIXTURE written by hand for building screens. Not model output. Every screen that renders this file must show a visible 'mock' tag.",
+  "case_id": "fixture_demo",
+  "state": "DRAFTED",
+  "version": 1,
+  "banner": "AI DRAFT. Requires resident review and attending signature.",
+  "header": {
+    "display_name": "DOE, JANE",
+    "mrn": "SYN-000000",
+    "exam": "XR CHEST 1 VIEW",
+    "prior": {
+      "view": "PA",
+      "date": "2026-08-14"
+    },
+    "current": {
+      "view": "PA",
+      "date": "2026-11-20"
+    },
+    "arrived_at": "2026-11-21T14:02:00Z"
+  },
+  "images": {
+    "prior": "/api/cases/new_nodule/image/prior",
+    "current": "/api/cases/new_nodule/image/current"
+  },
+  "indication": "MOCK. Known lung adenocarcinoma, restaging after 3 cycles.",
+  "ordering_provider": {
+    "name": "MOCK Dr. Example",
+    "role": "medical oncology"
+  },
+  "prior_report": "MOCK. No focal lung opacity.",
+  "indication_released_at": "2026-11-21T14:02:11Z",
+  "lightbox": {
+    "comparability": {
+      "prior": {
+        "view": "PA",
+        "view_inferred": false,
+        "rotation": "none",
+        "inspiration": "adequate",
+        "exposure": "adequate",
+        "coverage": "complete",
+        "artifacts": []
+      },
+      "current": {
+        "view": "PA",
+        "view_inferred": false,
+        "rotation": "none",
+        "inspiration": "adequate",
+        "exposure": "adequate",
+        "coverage": "complete",
+        "artifacts": []
+      },
+      "comparable": "yes",
+      "differences": []
+    },
+    "comparable_by_read": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "systematic_read": {
+      "airway_lungs": "MOCK. Trachea central. Rounded opacity right upper zone.",
+      "mediastinum_hila": "MOCK. Unremarkable.",
+      "pleura": "MOCK. Left costophrenic angle possibly blunted.",
+      "heart": "MOCK. Normal size.",
+      "diaphragm_below": "MOCK. Unremarkable.",
+      "bones_soft_tissue": "MOCK. Possible lucent area, right posterior rib.",
+      "devices": "MOCK. None."
+    },
+    "findings": [
+      {
+        "region": "R_upper",
+        "kind": "nodule_or_mass",
+        "description": "MOCK. Rounded opacity in the right upper zone.",
+        "status": "new",
+        "size_change_words": "not_applicable",
+        "needs_measurement": true,
+        "evidence": "MOCK. Present on the current film, not seen on the prior at the same level.",
+        "time_sensitive": false,
+        "id": "F1",
+        "agreement": "2_of_2",
+        "read_a_status": "new",
+        "read_b_status": "new",
+        "reads": {
+          "a": {
+            "region": "R_upper",
+            "kind": "nodule_or_mass",
+            "description": "MOCK. Rounded opacity in the right upper zone.",
+            "status": "new",
+            "size_change_words": "not_applicable",
+            "needs_measurement": true,
+            "evidence": "MOCK. Present on the current film, not seen on the prior at the same level.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "R_upper",
+            "kind": "nodule_or_mass",
+            "description": "MOCK. Rounded opacity in the right upper zone.",
+            "status": "new",
+            "size_change_words": "not_applicable",
+            "needs_measurement": true,
+            "evidence": "MOCK. Present on the current film, not seen on the prior at the same level.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false
+      },
+      {
+        "region": "L_pleura",
+        "kind": "effusion",
+        "description": "MOCK. Blunting of the left costophrenic angle.",
+        "status": "indeterminate",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "MOCK. Angle is sharp on the prior.",
+        "time_sensitive": false,
+        "id": "F2",
+        "agreement": "status_differs",
+        "read_a_status": "new",
+        "read_b_status": "stable",
+        "reads": {
+          "a": {
+            "region": "L_pleura",
+            "kind": "effusion",
+            "description": "MOCK. Blunting of the left costophrenic angle.",
+            "status": "new",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "MOCK. Angle is sharp on the prior.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "L_pleura",
+            "kind": "effusion",
+            "description": "MOCK. Blunting of the left costophrenic angle.",
+            "status": "stable",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "MOCK. Angle looks similar on both films.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true
+      },
+      {
+        "region": "bones",
+        "kind": "bone_lesion",
+        "description": "MOCK. Lucent area in a right posterior rib.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "MOCK. Seen on one read only.",
+        "time_sensitive": false,
+        "id": "F3",
+        "agreement": "1_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": null,
+        "reads": {
+          "a": {
+            "region": "bones",
+            "kind": "bone_lesion",
+            "description": "MOCK. Lucent area in a right posterior rib.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "MOCK. Seen on one read only.",
+            "time_sensitive": false
+          },
+          "b": null
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true
+      }
+    ],
+    "cant_determine": [
+      {
+        "question": "MOCK. Is the right upper zone opacity a nodule or an overlapping shadow?",
+        "reason": "MOCK. Single frontal view, no lateral.",
+        "recommend": "MOCK. CT chest.",
+        "related_finding": "F1",
+        "from_reads": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "indication_pass": {
+      "question": "MOCK. Has disease progressed?",
+      "answer": "MOCK. A new right upper zone opacity is present.",
+      "regions_rechecked": [
+        "R_upper",
+        "R_hilum"
+      ]
+    },
+    "prior_report_discrepancies": [],
+    "look_first": [
+      "F1"
+    ],
+    "study_flags": [],
+    "limits": "MOCK. Single frontal view, no lateral."
+  },
+  "stat": {
+    "severity_subgroup": "new_lesion_or_possible_new_diagnosis",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "MOCK SpO2 91%",
+        "bears_on": "F2",
+        "why": "MOCK. Possible new effusion."
+      }
+    ],
+    "worklist_reason": "MOCK. New right upper zone opacity since prior. Reads agree."
+  },
+  "measurements": [
+    {
+      "finding_id": "F1",
+      "prior_mm": null,
+      "current_mm": null
+    }
+  ],
+  "recist": {
+    "category": "not_computed",
+    "line": "RECIST 1.1: not computed on radiographs"
+  },
+  "reviews": {},
+  "report_draft": "MOCK REPORT TEXT.\nEXAM: XR chest, 1 view\nCLINICAL INDICATION: (mock)\n\nIMPRESSION:\n1. (mock)\n\nAI DRAFT: requires resident review and attending signature.",
+  "qc": {
+    "pass": true,
+    "mismatches": []
+  },
+  "signature": null,
+  "delivery": null,
+  "patient_informed": false,
+  "synthetic_fields": [
+    "display_name",
+    "mrn",
+    "dates",
+    "indication",
+    "ordering_provider",
+    "prior_report",
+    "vitals",
+    "labs",
+    "problem_list"
+  ],
+  "calls": [
+    {
+      "label": "blind_A",
+      "model": "mock",
+      "replayed": false,
+      "recorded_at": "2026-11-21T14:01:40Z"
+    }
+  ]
+}

@@ -46,3 +46,14 @@ describe("schemas", () => {
     }
   });
 });
+
+describe("fixtures/demo_case.json", () => {
+  it("is tagged mock and its lightbox block matches the merged schema", async () => {
+    const { LightboxMerged, StatOutput } = await import("./schemas");
+    const fixture = JSON.parse(fs.readFileSync(path.join(process.cwd(), "fixtures", "demo_case.json"), "utf8"));
+    expect(fixture._mock).toBe(true);
+    const merged = LightboxMerged.safeParse(fixture.lightbox);
+    expect(merged.success, merged.success ? "" : merged.error.message).toBe(true);
+    expect(StatOutput.safeParse(fixture.stat).success).toBe(true);
+  });
+});
