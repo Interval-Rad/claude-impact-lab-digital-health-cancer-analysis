@@ -1,0 +1,49 @@
+category,patient_id,sex,prior_image,prior_follow_up,prior_age,prior_view,prior_labels,prior_orig_w,prior_px_mm,current_image,current_follow_up,current_age,current_view,current_labels,current_orig_w,current_px_mm,prior_image_id,current_image_id,nih_batch_hint,prior_px_mm_at_1024,current_px_mm_at_1024
+A_new_nodule_or_mass,8,F,00000008_001.png,1,70,PA,No Finding,2048,0.171,00000008_002.png,2,72,PA,Nodule,2048,0.168,00000008_001,00000008_002,images_001.tar.gz,0.342,0.336
+A_new_nodule_or_mass,71,F,00000071_003.png,3,69,PA,No Finding,2048,0.168,00000071_004.png,4,69,PA,Nodule,2048,0.168,00000071_003,00000071_004,images_001.tar.gz,0.336,0.336
+A_new_nodule_or_mass,105,M,00000105_003.png,2,52,PA,No Finding,2500,0.171,00000105_004.png,3,52,PA,Nodule,2500,0.171,00000105_003,00000105_004,images_001.tar.gz,0.417,0.417
+A_new_nodule_or_mass,138,F,00000138_003.png,3,63,PA,No Finding,2992,0.143,00000138_004.png,4,65,PA,Nodule,2822,0.143,00000138_003,00000138_004,images_001.tar.gz,0.418,0.394
+A_new_nodule_or_mass,370,F,00000370_007.png,4,60,PA,No Finding,2678,0.143,00000370_008.png,5,60,PA,Nodule,2674,0.143,00000370_007,00000370_008,images_001.tar.gz,0.374,0.373
+A_new_nodule_or_mass,372,M,00000372_006.png,6,79,PA,No Finding,2048,0.168,00000372_007.png,7,79,PA,Nodule,2500,0.168,00000372_006,00000372_007,images_001.tar.gz,0.336,0.41
+A_new_nodule_or_mass,416,F,00000416_000.png,0,66,PA,No Finding,2048,0.168,00000416_001.png,1,67,PA,Mass,2500,0.168,00000416_000,00000416_001,images_001.tar.gz,0.336,0.41
+A_new_nodule_or_mass,545,M,00000545_008.png,6,42,PA,No Finding,2500,0.168,00000545_009.png,7,42,PA,Nodule,2992,0.143,00000545_008,00000545_009,images_001.tar.gz,0.41,0.418
+B_persistent_nodule_or_mass,93,M,00000093_000.png,0,74,PA,Nodule,2992,0.143,00000093_001.png,1,75,PA,Nodule,2500,0.168,00000093_000,00000093_001,images_001.tar.gz,0.418,0.41
+B_persistent_nodule_or_mass,105,M,00000105_004.png,3,52,PA,Nodule,2500,0.171,00000105_005.png,4,54,PA,Nodule,2500,0.168,00000105_004,00000105_005,images_001.tar.gz,0.417,0.41
+B_persistent_nodule_or_mass,383,F,00000383_000.png,0,66,PA,Nodule,2826,0.143,00000383_001.png,1,66,PA,Nodule,2048,0.168,00000383_000,00000383_001,images_001.tar.gz,0.395,0.336
+B_persistent_nodule_or_mass,618,F,00000618_001.png,0,53,PA,Mass,2634,0.143,00000618_002.png,1,53,PA,Mass,2430,0.143,00000618_001,00000618_002,images_001.tar.gz,0.368,0.339
+B_persistent_nodule_or_mass,1014,F,00001014_000.png,0,50,PA,Mass,2021,0.1943109999999999,00001014_001.png,1,50,PA,Nodule,2021,0.1943109999999999,00001014_000,00001014_001,images_001.tar.gz,0.383,0.383
+B_persistent_nodule_or_mass,1093,F,00001093_012.png,7,72,PA,Nodule,2566,0.143,00001093_013.png,8,73,PA,Nodule,2992,0.143,00001093_012,00001093_013,images_001.tar.gz,0.358,0.418
+B_persistent_nodule_or_mass,1187,F,00001187_002.png,2,66,PA,Mass,2048,0.168,00001187_003.png,3,66,PA,Mass,2048,0.168,00001187_002,00001187_003,images_001.tar.gz,0.336,0.336
+B_persistent_nodule_or_mass,61,M,00000061_000.png,0,77,PA,Infiltration|Nodule,3056,0.139,00000061_001.png,1,77,PA,Mass,2530,0.143,00000061_000,00000061_001,images_001.tar.gz,0.415,0.353
+C_resolved,93,M,00000093_001.png,1,75,PA,Nodule,2500,0.168,00000093_002.png,2,75,PA,No Finding,2992,0.143,00000093_001,00000093_002,images_001.tar.gz,0.41,0.418
+C_resolved,165,M,00000165_007.png,7,77,PA,Nodule,2992,0.143,00000165_008.png,8,78,PA,No Finding,2940,0.143,00000165_007,00000165_008,images_001.tar.gz,0.418,0.411
+C_resolved,174,F,00000174_002.png,2,72,PA,Nodule,2992,0.143,00000174_003.png,3,73,PA,No Finding,2814,0.143,00000174_002,00000174_003,images_001.tar.gz,0.418,0.393
+C_resolved,370,F,00000370_008.png,5,60,PA,Nodule,2674,0.143,00000370_009.png,6,61,PA,No Finding,2992,0.143,00000370_008,00000370_009,images_001.tar.gz,0.373,0.418
+C_resolved,545,M,00000545_009.png,7,42,PA,Nodule,2992,0.143,00000545_010.png,8,44,PA,No Finding,2992,0.143,00000545_009,00000545_010,images_001.tar.gz,0.418,0.418
+C_resolved,556,F,00000556_000.png,0,63,PA,Nodule,2048,0.168,00000556_001.png,1,64,PA,No Finding,2654,0.143,00000556_000,00000556_001,images_001.tar.gz,0.336,0.371
+C_resolved,569,F,00000569_005.png,4,70,PA,Nodule,2438,0.143,00000569_006.png,5,71,PA,No Finding,2790,0.143,00000569_005,00000569_006,images_001.tar.gz,0.34,0.39
+C_resolved,618,F,00000618_002.png,1,53,PA,Mass,2430,0.143,00000618_003.png,2,53,PA,No Finding,2386,0.143,00000618_002,00000618_003,images_001.tar.gz,0.339,0.333
+D_refusal_PA_then_AP,618,F,00000618_006.png,5,53,PA,Mass,2794,0.143,00000618_007.png,6,53,AP,Mass,2696,0.139,00000618_006,00000618_007,images_001.tar.gz,0.39,0.366
+D_refusal_PA_then_AP,248,M,00000248_017.png,18,87,PA,Mass,2992,0.143,00000248_019.png,19,87,AP,Atelectasis|Infiltration|Mass,2500,0.168,00000248_017,00000248_019,images_001.tar.gz,0.418,0.41
+D_refusal_PA_then_AP,887,M,00000887_001.png,1,65,PA,Infiltration|Nodule,2992,0.143,00000887_002.png,2,65,AP,Nodule|Pleural_Thickening,3056,0.139,00000887_001,00000887_002,images_001.tar.gz,0.418,0.415
+D_refusal_PA_then_AP,13,M,00000013_022.png,0,56,PA,Infiltration|Mass,2870,0.143,00000013_023.png,1,56,AP,Infiltration|Mass|Pneumothorax,2500,0.168,00000013_022,00000013_023,images_001.tar.gz,0.401,0.41
+D_refusal_PA_then_AP,376,M,00000376_007.png,7,48,PA,Emphysema|Mass,2500,0.168,00000376_008.png,8,49,AP,Atelectasis|Edema|Mass,2500,0.168,00000376_007,00000376_008,images_001.tar.gz,0.41,0.41
+D_refusal_PA_then_AP,1722,F,00001722_000.png,0,50,PA,Nodule,2500,0.171001,00001722_001.png,1,50,AP,Nodule,2500,0.171,00001722_000,00001722_001,later batch,0.417,0.417
+D_refusal_PA_then_AP,1995,M,00001995_006.png,6,46,PA,Nodule,2500,0.168,00001995_007.png,7,47,AP,Nodule,2500,0.168,00001995_006,00001995_007,later batch,0.41,0.41
+D_refusal_PA_then_AP,2345,F,00002345_002.png,2,56,PA,Nodule,2554,0.143,00002345_003.png,3,57,AP,Nodule,3056,0.139,00002345_002,00002345_003,later batch,0.357,0.415
+E_control_no_finding,5,F,00000005_003.png,3,69,PA,No Finding,2992,0.143,00000005_004.png,4,70,PA,No Finding,2986,0.143,00000005_003,00000005_004,images_001.tar.gz,0.418,0.417
+E_control_no_finding,11,M,00000011_001.png,1,74,PA,No Finding,2500,0.168,00000011_002.png,2,75,PA,No Finding,2714,0.143,00000011_001,00000011_002,images_001.tar.gz,0.41,0.379
+E_control_no_finding,13,M,00000013_014.png,39,60,PA,No Finding,2021,0.1943109999999999,00000013_015.png,40,60,PA,No Finding,2020,0.1943109999999999,00000013_014,00000013_015,images_001.tar.gz,0.383,0.383
+E_control_no_finding,35,M,00000035_000.png,0,79,PA,No Finding,2754,0.143,00000035_001.png,1,80,PA,No Finding,2718,0.143,00000035_000,00000035_001,images_001.tar.gz,0.385,0.38
+E_control_no_finding,39,M,00000039_000.png,0,75,PA,No Finding,2500,0.168,00000039_001.png,1,75,PA,No Finding,2992,0.143,00000039_000,00000039_001,images_001.tar.gz,0.41,0.418
+E_control_no_finding,47,F,00000047_000.png,0,73,PA,No Finding,2048,0.168,00000047_001.png,1,73,PA,No Finding,2766,0.143,00000047_000,00000047_001,images_001.tar.gz,0.336,0.386
+E_control_no_finding,50,M,00000050_002.png,0,72,PA,No Finding,2500,0.168,00000050_003.png,1,73,PA,No Finding,2992,0.143,00000050_002,00000050_003,images_001.tar.gz,0.41,0.418
+E_control_no_finding,54,F,00000054_003.png,0,62,PA,No Finding,2500,0.168,00000054_004.png,1,63,PA,No Finding,2048,0.168,00000054_003,00000054_004,images_001.tar.gz,0.41,0.336
+F_new_effusion_with_known_mass,592,F,00000592_000.png,0,56,PA,Mass,2990,0.143,00000592_001.png,1,58,PA,Effusion|Mass,2766,0.143,00000592_000,00000592_001,images_001.tar.gz,0.418,0.386
+F_new_effusion_with_known_mass,138,F,00000138_004.png,4,65,PA,Nodule,2822,0.143,00000138_005.png,5,66,PA,Effusion|Nodule|Pleural_Thickening,2642,0.143,00000138_004,00000138_005,images_001.tar.gz,0.394,0.369
+F_new_effusion_with_known_mass,949,M,00000949_004.png,4,61,PA,Nodule,2718,0.143,00000949_005.png,5,61,PA,Effusion|Infiltration|Mass,2992,0.143,00000949_004,00000949_005,images_001.tar.gz,0.38,0.418
+F_new_effusion_with_known_mass,315,M,00000315_003.png,1,71,PA,Nodule|Pleural_Thickening,2992,0.143,00000315_002.png,2,71,PA,Effusion|Nodule|Pleural_Thickening,3056,0.139,00000315_003,00000315_002,images_001.tar.gz,0.418,0.415
+F_new_effusion_with_known_mass,528,F,00000528_000.png,0,51,PA,Mass|Pleural_Thickening,2992,0.143,00000528_001.png,1,51,PA,Effusion|Infiltration|Mass,2992,0.143,00000528_000,00000528_001,images_001.tar.gz,0.418,0.418
+F_new_effusion_with_known_mass,744,M,00000744_009.png,9,72,PA,Mass|Pneumothorax,2990,0.143,00000744_010.png,10,72,PA,Effusion|Mass|Pneumothorax,2898,0.143,00000744_009,00000744_010,images_001.tar.gz,0.418,0.405
+F_new_effusion_with_known_mass,4738,F,00004738_002.png,2,66,PA,Mass,2048,0.171,00004738_003.png,3,66,PA,Effusion|Mass,2048,0.171,00004738_002,00004738_003,later batch,0.342,0.342
+F_new_effusion_with_known_mass,4806,M,00004806_000.png,0,56,PA,Nodule,2048,0.171,00004806_001.png,1,56,PA,Effusion|Nodule,2048,0.171,00004806_000,00004806_001,later batch,0.342,0.342
