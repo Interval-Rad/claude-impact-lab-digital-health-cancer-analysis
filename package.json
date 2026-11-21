@@ -11,7 +11,8 @@
     "check": "tsc --noEmit && vitest run src/lib && node .claude/hooks/rule-guard.mjs",
     "models": "tsx scripts/check-models.ts",
     "lightbox": "tsx scripts/run-lightbox.ts",
-    "cases": "tsx scripts/run-cases.ts"
+    "cases": "tsx scripts/run-cases.ts",
+    "pipeline": "tsx scripts/run-pipeline.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.12.0",
