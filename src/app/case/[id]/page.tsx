@@ -8,5 +8,10 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const payload = getCasePayload(id);
   if (!payload) notFound();
-  return <ReadScreen payload={payload} />;
+  // Remount when the server moves the case on, so the screen never shows stale local state.
+  const key = [
+    payload.state, payload.version, payload.busy, payload.report_draft?.length, payload.lightbox?.findings.length,
+    payload.signature?.resident?.at, payload.signature?.attending?.at, payload.qc?.pass,
+  ].join("|");
+  return <ReadScreen key={key} payload={payload} />;
 }

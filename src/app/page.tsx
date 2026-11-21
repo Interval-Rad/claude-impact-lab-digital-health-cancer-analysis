@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { getWorklist } from "@/components/data";
 import { MockTag, Syn, clockTime, dateAndTime, words } from "@/components/format";
+import UploadForm from "@/components/UploadForm";
 import type { WorklistRow } from "@/components/types";
 import { BANNER } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
+const HANDOFF_STATES = new Set(["DELIVERED", "ACKNOWLEDGED", "PATIENT_INFORMED"]);
 const TIER_SHAPE: Record<string, string> = { critical: "▲", high: "◆", routine: "○" };
 
 function Tier({ row }: { row: WorklistRow }) {
@@ -121,6 +123,13 @@ export default function WorklistPage() {
                 <td className="data">
                   {r.state}
                   {!r.has_draft && <div className="text-muted">No AI draft</div>}
+                  {HANDOFF_STATES.has(r.state) && (
+                    <div>
+                      <Link href={`/case/${r.case_id}/handoff`} className="relative z-10 underline underline-offset-2">
+                        handoff
+                      </Link>
+                    </div>
+                  )}
                 </td>
                 <td className="data whitespace-nowrap">
                   {r.arrived_at ? (
@@ -136,6 +145,10 @@ export default function WorklistPage() {
           </tbody>
         </table>
       </div>
+      <details className="border-b border-rule">
+        <summary className="label cursor-pointer px-[10px] py-2">Upload a pair</summary>
+        <UploadForm />
+      </details>
     </div>
   );
 }

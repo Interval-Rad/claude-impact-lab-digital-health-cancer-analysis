@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { MergedFinding } from "@/lib/schemas";
 import * as api from "./api";
 import FindingRow from "./FindingRow";
 import { Syn, clockTime, words } from "./format";
 import ImageWell from "./ImageWell";
+import LiveStatus from "./LiveStatus";
 import type { CasePayload, Review } from "./types";
 
 type Sig = { at: string; local: boolean } | null;
@@ -24,6 +26,7 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
   const findings: MergedFinding[] = lb?.findings ?? [];
   const byId = new Map(findings.map((f) => [f.id, f]));
 
+  const router = useRouter();
   const [state, setState] = useState(payload.state);
   const [reviews, setReviews] = useState<Record<string, Review>>(payload.reviews ?? {});
   const [selected, setSelected] = useState<string | null>(null);
@@ -51,6 +54,7 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
     setError(null);
     if (r.stub) setLocalOnly(true);
     if (r.state) setState(r.state);
+    router.refresh(); // pick up what the server changed: state, redraft, RECIST line
   };
 
   const reviewed = findings.filter((f) => reviews[f.id]).length;
@@ -113,6 +117,7 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
           <span className="data">MOCK FIXTURE — hand-written placeholder, not model output</span>
         </div>
       )}
+      <LiveStatus payload={payload} />
       <div className="strip shrink-0 flex-wrap">
         <Link href="/" className="data underline underline-offset-2">
           Worklist

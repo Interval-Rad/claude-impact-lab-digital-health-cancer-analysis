@@ -1,7 +1,7 @@
 // Shapes the screens render. Type-only: safe to import from client components.
 // Mirrors "What Charge sends the UI" in agents/01_CHARGE_orchestrator.md plus the
 // header and chart fields shown in fixtures/demo_case.json.
-import type { LightboxMerged, StatOutput, QcOutput } from "@/lib/schemas";
+import type { CourierHandoff, LightboxMerged, StatOutput, QcOutput } from "@/lib/schemas";
 
 export type ReviewAction = "accepted" | "edited" | "rejected";
 
@@ -51,10 +51,40 @@ export type CasePayload = {
   report_draft: string | null;
   qc: QcOutput | null;
   signature: SignatureRecord;
-  delivery?: unknown;
+  delivery?: DeliveryInfo | null;
+  handoff?: CourierHandoff | null; // null until the attending has signed and Courier has run
   patient_informed?: boolean;
+  status_text?: string | null; // plain text status from the server, e.g. "Blind read A running"
+  busy?: string | null; // a background step is running: the screen polls until it clears
+  error?: string | null; // a failure, shown as it happened
+  code_checks?: { check: string; pass: boolean; detail: string }[];
+  paged_on_call_at?: string | null;
+  replay?: boolean; // DEMO_MODE=replay: responses come from data/cache
   synthetic_fields: string[];
   calls?: { label: string; model: string; replayed: boolean; recorded_at: string }[];
+};
+
+export type DeliveryInfo = {
+  sent_at: string;
+  tier: StatOutput["urgency_tier"];
+  how: string;
+  deadline_at: string | null; // demo clock: 60 minutes runs as 20 seconds
+  opened_at: string | null;
+  escalations: { at: string; action: string }[];
+  order_signed_at: string | null;
+};
+
+// One message in the ordering provider's inbox. Exists only for attending-signed, delivered results.
+export type InboxItem = {
+  case_id: string;
+  patient: string | null;
+  mrn: string | null;
+  subject: string;
+  tier: StatOutput["urgency_tier"];
+  sent_at: string;
+  opened_at: string | null;
+  deadline_at: string | null;
+  escalated: boolean;
 };
 
 // One worklist row. Every field is its own visible column. There is no combined ranking value.

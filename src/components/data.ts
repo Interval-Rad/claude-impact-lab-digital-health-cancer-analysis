@@ -5,8 +5,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { assertCaseId, listCaseIds, loadCase, toViewLabel } from "@/lib/cases";
-import { BANNER } from "@/lib/config";
-import type { CasePayload, WorklistRow } from "./types";
+import { loadState, type CaseState } from "@/lib/charge";
+import { BANNER, isReplay } from "@/lib/config";
+import { sortWorklist as sortRows } from "@/lib/stat";
+import type { CasePayload, InboxItem, WorklistRow } from "./types";
 
 export const FIXTURE_ID = "fixture_demo";
 export const NOT_RUN_STATE = "RECEIVED — not run yet";
@@ -52,15 +54,80 @@ function notRunPayload(id: string): CasePayload {
   };
 }
 
+const SYNTHETIC_FIELDS = ["display_name", "mrn", "dates", "indication", "ordering_provider", "prior_report", "vitals", "labs", "problem_list"];
+
+// What Charge sends the UI for a case that has been run.
+// The indication and the prior report stay on the server until Charge has released them.
+function statePayload(id: string, s: CaseState): CasePayload {
+  const c = loadCase(id);
+  const chart = c.synthetic_chart;
+  const released = s.indication_released_at !== null;
+  const signed = s.signature.attending !== null;
+  return {
+    case_id: id,
+    state: s.state,
+    version: s.version,
+    banner: BANNER,
+    header: {
+      display_name: chart.display_name || null,
+      mrn: chart.mrn || null,
+      exam: "XR CHEST 1 VIEW",
+      prior: { view: toViewLabel(c.prior.nih.view_position), date: chart.prior_date || null },
+      current: { view: toViewLabel(c.current.nih.view_position), date: chart.current_date || null },
+      arrived_at: s.arrived_at,
+    },
+    images: { prior: `/api/cases/${id}/image/prior`, current: `/api/cases/${id}/image/current` },
+    indication: released ? chart.indication : null,
+    ordering_provider: released ? chart.ordering_provider : null,
+    prior_report: released ? chart.prior_report : null,
+    indication_released_at: s.indication_released_at,
+    lightbox: s.state === "NEEDS_HUMAN" ? null : s.lightbox, // NEEDS_HUMAN: a person reads with no AI draft
+    stat: s.state === "NEEDS_HUMAN" ? null : s.stat,
+    measurements: s.measurements,
+    recist: s.recist ? { category: s.recist.category, line: s.recist.line } : null,
+    reviews: s.reviews,
+    report_draft: s.state === "NEEDS_HUMAN" ? null : s.report_draft,
+    qc: s.qc,
+    signature: { resident: s.signature.resident, attending: s.signature.attending },
+    delivery: signed ? s.delivery : null,
+    handoff: signed ? s.handoff : null, // nothing after the gate is sent to the browser unsigned
+    patient_informed: s.patient_informed,
+    status_text: s.status_text,
+    busy: s.busy,
+    error: s.error,
+    code_checks: s.code_checks,
+    paged_on_call_at: s.paged_on_call_at,
+    replay: isReplay(),
+    synthetic_fields: SYNTHETIC_FIELDS,
+    calls: s.calls.map((m) => ({ label: m.label, model: m.model, replayed: m.replayed, recorded_at: m.recorded_at })),
+  };
+}
+
 /** Returns null when the id is malformed or no such case exists. */
 export function getCasePayload(id: string): CasePayload | null {
   if (id === FIXTURE_ID) return loadFixture();
   try {
     assertCaseId(id);
-    return notRunPayload(id);
+    const s = loadState(id);
+    return s ? statePayload(id, s) : notRunPayload(id);
   } catch {
     return null;
   }
+}
+
+/** The ordering provider's inbox: attending-signed, delivered results only. */
+export function getInbox(): InboxItem[] {
+  const items: InboxItem[] = [];
+  for (const id of listCaseIds()) {
+    const p = getCasePayload(id);
+    if (!p || !p.signature?.attending || !p.delivery || !p.handoff) continue;
+    items.push({
+      case_id: id, patient: p.header.display_name, mrn: p.header.mrn, subject: p.handoff.provider_message.subject,
+      tier: p.delivery.tier, sent_at: p.delivery.sent_at, opened_at: p.delivery.opened_at,
+      deadline_at: p.delivery.deadline_at, escalated: p.delivery.escalations.length > 0,
+    });
+  }
+  return items.sort((a, b) => b.sent_at.localeCompare(a.sent_at));
 }
 
 function agreementFlag(p: CasePayload): WorklistRow["agreement_flag"] {
@@ -75,7 +142,8 @@ function toRow(p: CasePayload): WorklistRow {
   return {
     case_id: p.case_id,
     mock: p._mock === true,
-    tier: p.stat?.urgency_tier ?? null,
+    // agents/03_STAT_triage.md: rows in NEEDS_HUMAN show "No AI draft" and sort with tier high.
+    tier: p.stat?.urgency_tier ?? (p.state === "NEEDS_HUMAN" ? "high" : null),
     severity_subgroup: p.stat?.severity_subgroup ?? null,
     agreement_flag: agreementFlag(p),
     patient: p.header.display_name,
@@ -92,39 +160,16 @@ function toRow(p: CasePayload): WorklistRow {
   };
 }
 
-const TIER_ORDER = ["critical", "high", "routine"];
-const SUBGROUP_ORDER = [
-  "new_lesion_or_possible_new_diagnosis",
-  "urgent_incidental",
-  "progression_of_known_disease",
-  "indeterminate_needs_human",
-  "stable_or_responding",
-];
-const AGREEMENT_ORDER = ["reads_disagree", "one_of_two", "reads_agree"];
-
-const rank = (order: string[], v: string | null) => {
-  const i = v === null ? -1 : order.indexOf(v);
-  return i === -1 ? order.length : i;
-};
-
-// Plain sort on the visible columns, keys in the order given in agents/03_STAT_triage.md:
-// tier, severity subgroup, low agreement first, arrival (oldest first). Rows not run yet go last.
+// The sort itself lives in src/lib/stat.ts: a plain sort on the visible columns.
 export function sortWorklist(rows: WorklistRow[]): WorklistRow[] {
-  return [...rows].sort(
-    (a, b) =>
-      rank(TIER_ORDER, a.tier) - rank(TIER_ORDER, b.tier) ||
-      rank(SUBGROUP_ORDER, a.severity_subgroup) - rank(SUBGROUP_ORDER, b.severity_subgroup) ||
-      rank(AGREEMENT_ORDER, a.agreement_flag) - rank(AGREEMENT_ORDER, b.agreement_flag) ||
-      (a.arrived_at ?? "9999").localeCompare(b.arrived_at ?? "9999") ||
-      a.case_id.localeCompare(b.case_id)
-  );
+  return sortRows(rows);
 }
 
 export function getWorklist(): WorklistRow[] {
   const rows: WorklistRow[] = [toRow(loadFixture())];
   for (const id of listCaseIds()) {
     try {
-      rows.push(toRow(notRunPayload(id)));
+      rows.push(toRow(getCasePayload(id) ?? notRunPayload(id)));
     } catch {
       // A folder whose case.json does not parse is still listed, with nothing assumed about it.
       rows.push({
