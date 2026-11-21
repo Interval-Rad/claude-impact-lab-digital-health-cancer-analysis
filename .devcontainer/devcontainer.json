@@ -1,0 +1,13 @@
+{
+  "name": "Interval Read",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "postCreateCommand": "npm install",
+  "postAttachCommand": "npm run dev",
+  "forwardPorts": [3000],
+  "portsAttributes": { "3000": { "label": "Interval Read", "onAutoForward": "openBrowser", "visibility": "private" } },
+  "secrets": {
+    "ANTHROPIC_API_KEY": { "description": "Optional. Without it the app runs in labelled fixture mode." },
+    "ELEVENLABS_API_KEY": { "description": "Optional. Without it the browser voice is used." }
+  },
+  "customizations": { "vscode": { "extensions": ["dbaeumer.vscode-eslint"] } }
+}

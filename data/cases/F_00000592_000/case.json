@@ -1,0 +1,72 @@
+{
+  "case_id": "F_00000592_000",
+  "source": "NIH ChestX-ray14 (NIH Clinical Center). De-identified public data.",
+  "category_hint": "F_new_effusion_with_known_mass",
+  "nih": {
+    "patient_id": "592",
+    "sex": "F",
+    "prior": {
+      "image": "00000592_000.png",
+      "view": "PA",
+      "age": "56",
+      "nlp_labels": "Mass",
+      "px_mm_at_1024": "0.418"
+    },
+    "current": {
+      "image": "00000592_001.png",
+      "view": "PA",
+      "age": "58",
+      "nlp_labels": "Effusion|Mass",
+      "px_mm_at_1024": "0.386"
+    }
+  },
+  "_note": "NIH labels were text-mined from reports and are noisy. They are hints, not ground truth.",
+  "synthetic_chart": {
+    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
+    "mrn": "SYN-000592",
+    "display_name": "Synthetic Patient 000592",
+    "prior_date": "2026-08-14",
+    "current_date": "2026-11-20",
+    "indication": "Lung mass on treatment. New shortness of breath.",
+    "ordering_provider": {
+      "name": "Dr. A. Rivera (synthetic)",
+      "role": "medical oncology"
+    },
+    "prior_report": "Upright PA chest. Right mid zone mass. No effusion.",
+    "vitals": {
+      "hr": 104,
+      "spo2": 91,
+      "temp_c": 37,
+      "bp": "132/80"
+    },
+    "labs": [
+      {
+        "name": "LDH",
+        "value": "310 U/L",
+        "flag": "H",
+        "date": "2026-11-19"
+      }
+    ],
+    "problem_list": [
+      "Lung cancer, on treatment",
+      "Dyspnea, new"
+    ],
+    "pcp_on_file": true,
+    "insurance_on_file": true,
+    "preferred_language": "en"
+  },
+  "ground_truth": {
+    "_note": "Fill BEFORE running the model. One clinician labels, a second checks.",
+    "labeled_by": "",
+    "checked_by": "",
+    "comparable": "yes | limited | no",
+    "findings": [
+      {
+        "region": "",
+        "status": "new | increased | decreased | stable | resolved | indeterminate"
+      }
+    ],
+    "should_refuse": [],
+    "would_sign_ai_draft_with_minor_edits": null
+  }
+}

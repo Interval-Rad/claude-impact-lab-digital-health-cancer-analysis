@@ -1,0 +1,64 @@
+{
+  "case_id": "D_00001995_006",
+  "source": "NIH ChestX-ray14 (NIH Clinical Center). De-identified public data.",
+  "category_hint": "D_refusal_PA_then_AP",
+  "nih": {
+    "patient_id": "1995",
+    "sex": "M",
+    "prior": {
+      "image": "00001995_006.png",
+      "view": "PA",
+      "age": "46",
+      "nlp_labels": "Nodule",
+      "px_mm_at_1024": "0.41"
+    },
+    "current": {
+      "image": "00001995_007.png",
+      "view": "AP",
+      "age": "47",
+      "nlp_labels": "Nodule",
+      "px_mm_at_1024": "0.41"
+    }
+  },
+  "_note": "NIH labels were text-mined from reports and are noisy. They are hints, not ground truth.",
+  "synthetic_chart": {
+    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
+    "mrn": "SYN-001995",
+    "display_name": "Synthetic Patient 001995",
+    "prior_date": "2026-08-14",
+    "current_date": "2026-11-20",
+    "indication": "Cough and chest discomfort. Known lung nodule on prior film. Portable chest film in the emergency department.",
+    "ordering_provider": {
+      "name": "Dr. M. Chen, ED (synthetic)",
+      "role": "ED"
+    },
+    "prior_report": "Upright PA chest. Nodule right upper zone. CT chest recommended, not obtained.",
+    "vitals": {
+      "hr": 96,
+      "spo2": 95,
+      "temp_c": 37.1,
+      "bp": "138/84"
+    },
+    "labs": [],
+    "problem_list": [
+      "Lung nodule, no follow-up on record"
+    ],
+    "pcp_on_file": false,
+    "insurance_on_file": false,
+    "preferred_language": "es"
+  },
+  "ground_truth": {
+    "_note": "Fill BEFORE running the model. One clinician labels, a second checks.",
+    "labeled_by": "",
+    "checked_by": "",
+    "comparable": "yes | limited | no",
+    "findings": [
+      {
+        "region": "",
+        "status": "new | increased | decreased | stable | resolved | indeterminate"
+      }
+    ],
+    "should_refuse": [],
+    "would_sign_ai_draft_with_minor_edits": null
+  }
+}

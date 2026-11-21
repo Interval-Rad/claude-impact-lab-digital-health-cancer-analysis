@@ -1,0 +1,72 @@
+{
+  "case_id": "A_00000008_001",
+  "source": "NIH ChestX-ray14 (NIH Clinical Center). De-identified public data.",
+  "category_hint": "A_new_nodule_or_mass",
+  "nih": {
+    "patient_id": "8",
+    "sex": "F",
+    "prior": {
+      "image": "00000008_001.png",
+      "view": "PA",
+      "age": "70",
+      "nlp_labels": "No Finding",
+      "px_mm_at_1024": "0.342"
+    },
+    "current": {
+      "image": "00000008_002.png",
+      "view": "PA",
+      "age": "72",
+      "nlp_labels": "Nodule",
+      "px_mm_at_1024": "0.336"
+    }
+  },
+  "_note": "NIH labels were text-mined from reports and are noisy. They are hints, not ground truth.",
+  "synthetic_chart": {
+    "_note": "SYNTHETIC. Written by the team. Not from the patient record.",
+    "mrn": "SYN-000008",
+    "display_name": "Synthetic Patient 000008",
+    "prior_date": "2026-08-14",
+    "current_date": "2026-11-20",
+    "indication": "Known lung adenocarcinoma on systemic therapy. Restaging chest film.",
+    "ordering_provider": {
+      "name": "Dr. A. Rivera (synthetic)",
+      "role": "medical oncology"
+    },
+    "prior_report": "Upright PA chest. Lungs clear. No nodule or mass. Heart size normal. No effusion.",
+    "vitals": {
+      "hr": 78,
+      "spo2": 97,
+      "temp_c": 36.8,
+      "bp": "126/78"
+    },
+    "labs": [
+      {
+        "name": "Hemoglobin",
+        "value": "11.2 g/dL",
+        "flag": "L",
+        "date": "2026-11-18"
+      }
+    ],
+    "problem_list": [
+      "Lung adenocarcinoma, on treatment",
+      "Former smoker"
+    ],
+    "pcp_on_file": true,
+    "insurance_on_file": true,
+    "preferred_language": "en"
+  },
+  "ground_truth": {
+    "_note": "Fill BEFORE running the model. One clinician labels, a second checks.",
+    "labeled_by": "",
+    "checked_by": "",
+    "comparable": "yes | limited | no",
+    "findings": [
+      {
+        "region": "",
+        "status": "new | increased | decreased | stable | resolved | indeterminate"
+      }
+    ],
+    "should_refuse": [],
+    "would_sign_ai_draft_with_minor_edits": null
+  }
+}

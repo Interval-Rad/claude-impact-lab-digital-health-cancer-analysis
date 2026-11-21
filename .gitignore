@@ -221,3 +221,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Interval Read app
+node_modules/
+.next/
+next-env.d.ts
+data/audit.jsonl
+data/cases/*/state.json
+data/cases/*/voice_*.mp3
+*.tsbuildinfo
