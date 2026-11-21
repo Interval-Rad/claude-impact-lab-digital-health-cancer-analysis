@@ -221,3 +221,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Interval Read
+.env*
+node_modules/
+.next/
+data/audit.jsonl
+data/cases/**/*.png
+data/cases/**/*.jpg
+*.pdf
