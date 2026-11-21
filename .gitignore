@@ -230,3 +230,6 @@ data/audit.jsonl
 data/cases/*/state.json
 data/cases/*/voice_*.mp3
 *.tsbuildinfo
+
+# Python template ignores lib/. The app source lives in src/lib/.
+!src/lib/
