@@ -1,0 +1,26 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "e98efbd2374f66809c587bc886a6a3caf30248ead97c3c69c576e51ab84ba35c",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:39:54.569Z",
+  "usage": {
+    "input_tokens": 6783,
+    "output_tokens": 182
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "History of treated breast cancer, surveillance indication",
+        "bears_on": "F2 small dense right lower zone focus, possibly new",
+        "why": "A possible new nodule in a patient with prior breast cancer could be recurrence, so a person should look early."
+      }
+    ],
+    "worklist_reason": "Possible new small right lower zone nodule after breast cancer; reads uncertain, needs radiologist review of source images."
+  }
+}

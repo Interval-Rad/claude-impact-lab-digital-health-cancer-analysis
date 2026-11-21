@@ -1,0 +1,31 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "98cc0568821d463de0a50f3d3a4f435d815af0b2cfc5a1539705a5ee306ceae2",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:39:46.500Z",
+  "usage": {
+    "input_tokens": 8106,
+    "output_tokens": 301
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "SpO2 91 percent with one week of increasing shortness of breath",
+        "bears_on": "Indication: cause of breathlessness, and unresolved left hilar change (F1)",
+        "why": "Low oxygen with worsening symptoms in metastatic cancer makes the unresolved hilar question more pressing to review."
+      },
+      {
+        "item": "Metastatic colorectal cancer on treatment",
+        "bears_on": "F1 left hilum, possible nodule over right upper zone on prior",
+        "why": "Known metastatic disease raises the importance of an unresolved hilar or nodal change and a possible small nodule."
+      }
+    ],
+    "worklist_reason": "Breathless metastatic cancer patient; left hilum change unresolved between reads, no clear cause on film. Needs radiologist review."
+  }
+}

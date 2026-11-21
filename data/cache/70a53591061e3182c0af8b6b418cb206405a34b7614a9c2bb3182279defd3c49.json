@@ -1,0 +1,31 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "70a53591061e3182c0af8b6b418cb206405a34b7614a9c2bb3182279defd3c49",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:40:18.840Z",
+  "usage": {
+    "input_tokens": 12251,
+    "output_tokens": 1113
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "SpO2 94 percent with shortness of breath",
+        "bears_on": "F1-F4 bilateral perihilar and basal opacities, and the shortness of breath indication",
+        "why": "Mildly reduced oxygen saturation goes with time-sensitive bilateral lung opacities, so they should be reviewed sooner."
+      },
+      {
+        "item": "Prostate cancer on hormone therapy",
+        "bears_on": "F10 mottled density over the right scapula and glenoid",
+        "why": "Known prostate cancer makes a possible bone lesion more relevant, even though the density may be an external electrode pad."
+      }
+    ],
+    "worklist_reason": "Short of breath; bilateral lung haze more conspicuous than prior but technique-limited; possible tubes unconfirmed. Needs radiologist review next."
+  }
+}

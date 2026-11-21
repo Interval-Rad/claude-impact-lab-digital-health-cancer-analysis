@@ -1,0 +1,88 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "5f81ca9c9ebf2dbacadb10dff7bb10b628b956baff02e96903d32e5905a34f24",
+  "case_id": "new_effusion",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-21T19:39:42.991Z",
+  "usage": {
+    "input_tokens": 9776,
+    "output_tokens": 2627
+  },
+  "response": {
+    "indication_pass": {
+      "question": "In a patient on treatment for metastatic colorectal cancer with one week of increasing shortness of breath, do the images show a cause, such as new lung or pleural disease, hilar or mediastinal enlargement, or a change in heart size?",
+      "answer": "The current film shows no new consolidation, pleural effusion, pneumothorax, or new lung nodule or mass compared with the prior, and heart size is similar. The coarse right lower zone markings are unchanged, and whether the left hilar fullness has changed remains unresolved between the two blind reads, so this single frontal film does not show a cause for the breathlessness.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "heart",
+        "R_pleura",
+        "L_pleura",
+        "devices"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Lungs clear.",
+        "images_show": "The prior image shows mildly coarse markings in the right lower zone and a left hilum that is fuller and denser than the right. Both are subtle and may be partly due to overlying soft tissue and the higher image contrast, but the report does not describe them."
+      },
+      {
+        "prior_report_says": "The report makes no mention of any line or device.",
+        "images_show": "The prior image shows a left-sided central venous catheter with its tip projecting over the expected superior vena cava, in the same position as on the current study."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F7",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F8",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F6",
+      "F5",
+      "F8",
+      "F7"
+    ]
+  }
+}

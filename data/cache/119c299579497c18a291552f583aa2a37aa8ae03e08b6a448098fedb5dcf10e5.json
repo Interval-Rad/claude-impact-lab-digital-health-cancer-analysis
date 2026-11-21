@@ -1,0 +1,65 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "119c299579497c18a291552f583aa2a37aa8ae03e08b6a448098fedb5dcf10e5",
+  "case_id": "control",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-21T19:39:52.064Z",
+  "usage": {
+    "input_tokens": 8759,
+    "output_tokens": 2127
+  },
+  "response": {
+    "indication_pass": {
+      "question": "Routine surveillance after treated breast cancer, no new symptoms: do the images show any sign of recurrent or metastatic disease in the chest (lung nodule or mass, pleural effusion, enlarged hila or mediastinum, bone lesion)?",
+      "answer": "The current film shows no mass, pleural effusion, hilar or mediastinal enlargement, or destructive bone lesion at this resolution. A small dense focus among more conspicuous markings in the medial right lower zone (F2) is not clearly seen on the prior and remains undetermined; it needs review on the source images.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura",
+        "bones",
+        "soft_tissue",
+        "devices"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": true
+      }
+    ],
+    "look_first": [
+      "F2",
+      "F1"
+    ]
+  }
+}

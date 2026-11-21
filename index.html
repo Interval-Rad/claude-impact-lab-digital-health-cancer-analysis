@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScanShift</title>
+<style>
+  :root { --bg:#0B0C0A; --surface:#141511; --raised:#1C1E19; --rule:#2B2E27; --text:#E6E3D8; --muted:#8F8D80; --accent:#E3A21A; --blind:#6FA8A0; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .mono, .label { font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; }
+  .label { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  header { display:flex; gap:20px; align-items:center; height:34px; padding:0 12px; border-bottom:1px solid var(--rule); background:var(--surface); }
+  header b { letter-spacing:.18em; font-weight:500; font-size:12px; }
+  .strip { padding:6px 12px; border-bottom:1px solid var(--rule); display:flex; gap:16px; flex-wrap:wrap; }
+  .tag { border:1px solid var(--accent); color:var(--accent); padding:0 6px; border-radius:2px; font-size:11px; }
+  main { max-width:1100px; margin:0 auto; padding:24px 12px 48px; }
+  h1 { font-size:22px; font-weight:500; margin:0 0 6px; }
+  p { margin:0 0 12px; max-width:70ch; }
+  .grid { display:grid; grid-template-columns:58fr 42fr; border:1px solid var(--rule); margin:20px 0; }
+  .well { background:#000; display:grid; grid-template-columns:1fr 1fr; gap:1px; min-height:300px; }
+  .pane { display:flex; align-items:center; justify-content:center; border:1px dashed var(--rule); margin:10px; color:var(--muted); }
+  .rail { border-left:1px solid var(--rule); background:var(--surface); }
+  .rail section { padding:10px 12px; border-bottom:1px solid var(--rule); }
+  .rail section:last-child { border-bottom:0; }
+  .row { display:flex; justify-content:space-between; gap:12px; padding:3px 0; color:var(--muted); }
+  .cd { border-left:3px double var(--accent); padding-left:10px; }
+  ul { margin:0; padding-left:18px; } li { margin:4px 0; }
+  a { color:var(--text); text-underline-offset:3px; }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  @media (max-width:760px) { .grid { grid-template-columns:1fr; } .rail { border-left:0; border-top:1px solid var(--rule); } }
+</style>
+</head>
+<body>
+<header><b class="mono">SCANSHIFT</b><span class="label">Radiology | Ordering provider</span><span class="label" style="margin-left:auto">demo only, not for clinical use</span></header>
+<div class="strip"><span class="tag mono">PLACEHOLDER</span><span class="mono">This page is a visual placeholder. It shows the layout, not results. The working app runs from the repository.</span></div>
+<main>
+  <h1>ScanShift</h1>
+  <p class="label">Claude Impact Lab NYC, Track 3 (Radiology / Oncology)</p>
+  <p>For the radiologist reading a cancer patient's follow-up chest film. ScanShift compares the prior and current image and drafts a structured first read: what changed, what did not, what to look at first, and what it declines to call. A resident reviews it and an attending signs it. Only then does the result go to the ordering provider.</p>
+
+  <div class="grid" aria-label="Layout of the read screen (placeholder, no data)">
+    <div class="well"><div class="pane mono">PRIOR</div><div class="pane mono">CURRENT</div></div>
+    <div class="rail">
+      <section><div class="label">Comparability</div><div class="row mono"><span>placeholder</span><span>&mdash;</span></div></section>
+      <section><div class="label">Look first</div><div class="row mono"><span>placeholder</span><span>&mdash;</span></div></section>
+      <section><div class="label">Findings</div><div class="row mono"><span>finding, status</span><span>reads agree: 2 of 2</span></div><div class="row mono"><span>finding, status</span><span>1 of 2 !</span></div></section>
+      <section class="cd"><div class="label">Can't determine</div><div class="row mono"><span>question, reason, next step</span></div></section>
+      <section><div class="label">Measurements (you enter)</div><div class="row mono"><span>prior [ ] mm &nbsp; current [ ] mm</span></div></section>
+    </div>
+  </div>
+
+  <div class="label">Safety design</div>
+  <ul>
+    <li>The reason for the scan is hidden from the blind reads.</li>
+    <li>The blind read runs twice. The app shows agreement between the reads, not a model-reported confidence.</li>
+    <li>The model gives no measurements. A radiologist enters them and code does the arithmetic.</li>
+    <li>"Can't determine" is a first-class output with a reason and a next step.</li>
+    <li>Nothing leaves radiology before the attending signs.</li>
+  </ul>
+
+  <p style="margin-top:20px"><a href="https://github.com/Interval-Rad/claude-impact-lab-digital-health-cancer-analysis">Source and run instructions on GitHub</a></p>
+  <p class="label">Public de-identified images (NIH ChestX-ray14). All chart data is synthetic. A smoke test, not a validation study.</p>
+</main>
+</body>
+</html>

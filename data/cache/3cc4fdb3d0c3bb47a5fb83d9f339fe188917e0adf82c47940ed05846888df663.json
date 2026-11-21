@@ -1,0 +1,105 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "3cc4fdb3d0c3bb47a5fb83d9f339fe188917e0adf82c47940ed05846888df663",
+  "case_id": "refusal_heart",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-21T19:40:10.048Z",
+  "usage": {
+    "input_tokens": 13188,
+    "output_tokens": 4872
+  },
+  "response": {
+    "indication_pass": {
+      "question": "What on the portable chest film could account for shortness of breath in a patient with prostate cancer on hormone therapy?",
+      "answer": "The current film shows bilateral perihilar and mid-zone hazy reticular opacity and opacity at both bases with indistinct hemidiaphragms, more conspicuous than on the prior, and an enlarged-appearing cardiac silhouette on both studies; whether this is a true interval change stays indeterminate because the current film is AP supine at low lung volumes. No discrete lung mass or definite rib, spine or clavicle lesion is seen on these downsampled images, apart from an indeterminate mottled density over the right shoulder that may be external, and pleural effusion, pneumothorax and hilar or mediastinal enlargement still cannot be determined on this film.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "heart",
+        "R_pleura",
+        "L_pleura",
+        "bones"
+      ]
+    },
+    "added_findings": [
+      {
+        "region": "bones",
+        "kind": "other",
+        "description": "Oval mottled density projecting over the right scapular and glenoid region on the current film, next to the right shoulder ECG electrode. It may be an electrode pad or other external material. A bone lesion at this site cannot be excluded on this image.",
+        "status": "indeterminate",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "The bones were rechecked because of the prostate cancer history. The density has a granular texture and sits just above the electrode snap on the current film. No matching density is seen at this site on the prior, but projection, arm position and overlying hardware all differ, and the images are downsampled. No other definite sclerotic or destructive lesion is seen in the visible ribs, spine, clavicles or shoulders, though the supine portable technique limits bone detail. Review on the source image with bone windowing is suggested.",
+        "time_sensitive": false,
+        "added_in_focused_pass": true
+      }
+    ],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Heart size normal.",
+        "images_show": "On the PA prior image the cardiac silhouette looks enlarged, with the cardiothoracic ratio appearing above one half. The report statement is not adopted. The radiologist should measure the ratio on the PA prior."
+      },
+      {
+        "prior_report_says": "PA chest. Heart size normal. Lungs clear. (No device is mentioned.)",
+        "images_show": "The prior image shows a left chest cardiac device generator with transvenous coil-bearing leads, which the report does not mention. The radiologist should confirm that this report text belongs to this prior image. The lung behind the generator is hidden and cannot be called clear."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F7",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F8",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F9",
+        "outside_indication": true
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F9",
+      "F7"
+    ]
+  }
+}

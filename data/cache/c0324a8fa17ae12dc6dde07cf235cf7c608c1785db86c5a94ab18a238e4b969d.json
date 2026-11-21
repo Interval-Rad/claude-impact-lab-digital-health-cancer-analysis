@@ -1,0 +1,36 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "c0324a8fa17ae12dc6dde07cf235cf7c608c1785db86c5a94ab18a238e4b969d",
+  "case_id": "refusal_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-21T19:39:39.991Z",
+  "usage": {
+    "input_tokens": 8951,
+    "output_tokens": 350
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "Temp 38.4 C, admitted with fever, source under evaluation",
+        "bears_on": "F1 right lower zone opacity (change cannot be judged)",
+        "why": "Fever with a basal opacity that cannot be compared raises the need for early human review of a possible new process."
+      },
+      {
+        "item": "Problem list: lung nodule under surveillance",
+        "bears_on": "Indication: has the nodule changed",
+        "why": "No nodule could be matched on either film, so the surveillance question is unanswered and needs a person."
+      },
+      {
+        "item": "Prior report lists small pleural effusion, side not given",
+        "bears_on": "Right pleural effusion question (cant_determine)",
+        "why": "Subpulmonic fluid with fever is not excluded, and the prior report is not confirmed by the images."
+      }
+    ],
+    "worklist_reason": "Nodule change unanswerable on mismatched films; right lower opacity with fever cannot be compared, needs radiologist review."
+  }
+}
