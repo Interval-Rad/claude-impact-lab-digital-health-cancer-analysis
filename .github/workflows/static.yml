@@ -33,11 +33,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Collect the public pages
+        # Only the static demo page and the slide deck are published, not the whole repository.
+        run: |
+          mkdir -p _site/slides
+          cp index.html _site/
+          cp slides/*.html _site/slides/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
