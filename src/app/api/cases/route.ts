@@ -4,6 +4,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import { getWorklist } from "@/components/data";
 import { assertCaseId, CASES_DIR } from "@/lib/cases";
+import { isReplay } from "@/lib/config";
 import { startPipeline } from "@/lib/charge";
 import { sniffMediaType } from "@/lib/images";
 import { CaseFile } from "@/lib/schemas";
@@ -17,6 +18,18 @@ export function GET() {
 const EXT = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" } as const;
 
 export async function POST(request: Request) {
+  if (isReplay()) {
+    return NextResponse.json(
+      { error: "Uploads need a live run. This server is in replay mode and can only show the recorded example cases. Start it with an API key (npm run dev) to read new images." },
+      { status: 409 }
+    );
+  }
+  if (!process.env.ANTHROPIC_API_KEY) {
+    return NextResponse.json(
+      { error: "Uploads need an API key. Put ANTHROPIC_API_KEY in .env.local and restart, or use the recorded example cases." },
+      { status: 409 }
+    );
+  }
   try {
     const form = await request.formData();
     const text = (k: string) => String(form.get(k) ?? "").trim();
