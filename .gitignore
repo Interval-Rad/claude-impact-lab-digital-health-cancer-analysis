@@ -239,3 +239,12 @@ next-env.d.ts
 .claude/settings.local.json
 .DS_Store
 __pycache__/
+
+# Example cases: public NIH ChestX-ray14 films, kept in git so a clone runs without a download.
+# Images of any other (uploaded) case stay ignored by the two data/cases rules above.
+!data/cases/control/*.jpg
+!data/cases/new_effusion/*.jpg
+!data/cases/new_nodule/*.jpg
+!data/cases/refusal_heart/*.jpg
+!data/cases/refusal_nodule/*.jpg
+data/cases/**/*.tmp

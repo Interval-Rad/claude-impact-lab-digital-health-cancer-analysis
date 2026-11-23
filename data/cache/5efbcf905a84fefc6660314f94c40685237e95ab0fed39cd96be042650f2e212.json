@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "5efbcf905a84fefc6660314f94c40685237e95ab0fed39cd96be042650f2e212",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:32:57.867Z",
+  "usage": {
+    "input_tokens": 9021,
+    "output_tokens": 1180
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F6",
+        "report_text": "Triage: urgency high, no on-call page, radiologist review next shift.",
+        "why": "The findings give no triage urgency, paging decision or review timing for F6, and record it as not time-sensitive."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F6",
+        "report_text": "Prior breast cancer history flagged for earlier human review.",
+        "why": "The findings contain no flag or instruction for earlier human review, and F6 is marked not time-sensitive."
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # Scorecard
 
-Generated 2026-11-23T15:19:55.875Z.
+Generated 2026-11-23T15:39:09.811Z.
 
 - Cases run: 5
 - Cases with an AI draft: 5

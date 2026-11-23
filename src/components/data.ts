@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { assertCaseId, listCaseIds, loadCase, toViewLabel } from "@/lib/cases";
-import { loadState, type CaseState } from "@/lib/charge";
+import { hasBaseline, loadState, type CaseState } from "@/lib/charge";
 import { BANNER, isReplay } from "@/lib/config";
 import { sortWorklist as sortRows } from "@/lib/stat";
 import type { CasePayload, InboxItem, WorklistRow } from "./types";
@@ -98,6 +98,7 @@ function statePayload(id: string, s: CaseState): CasePayload {
     error: s.error,
     code_checks: s.code_checks,
     paged_on_call_at: s.paged_on_call_at,
+    can_reset: hasBaseline(id),
     replay: isReplay(),
     synthetic_fields: SYNTHETIC_FIELDS,
     calls: s.calls.map((m) => ({ label: m.label, model: m.model, replayed: m.replayed, recorded_at: m.recorded_at })),
@@ -167,7 +168,7 @@ export function sortWorklist(rows: WorklistRow[]): WorklistRow[] {
 }
 
 export function getWorklist(): WorklistRow[] {
-  const rows: WorklistRow[] = [toRow(loadFixture())];
+  const rows: WorklistRow[] = [];
   for (const id of listCaseIds()) {
     try {
       rows.push(toRow(getCasePayload(id) ?? notRunPayload(id)));
@@ -181,5 +182,7 @@ export function getWorklist(): WorklistRow[] {
       });
     }
   }
+  // The hand-written fixture is only listed while no real case has an AI draft.
+  if (!rows.some((r) => r.has_draft)) rows.push(toRow(loadFixture()));
   return sortWorklist(rows);
 }

@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "c89c2ccb7937cdbfab807a43f3f1e2a91d08d7572a4ebbbd98f5edc7ccf0fdd1",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:48.924Z",
+  "usage": {
+    "input_tokens": 5235,
+    "output_tokens": 1742
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Indeterminate right hilar fullness, more conspicuous than prior chest X-ray",
+      "body": "Changed: Right hilar and infrahilar fullness is more conspicuous than on the 2026-02-10 film. It is indeterminate and the two reads disagreed. A tiny dense right lower zone focus is not clearly visible on the prior.\nRadiologist recommends: CT chest with contrast. Review source images in PACS for the focus and the right lower zone markings first.\nAwaiting your signature: pre-filled CT chest with contrast order."
+    },
+    "followup_order": {
+      "study": "CT chest",
+      "body_part": "Chest",
+      "contrast": "With contrast, as recommended in the report",
+      "interval": "Not specified in the report",
+      "reason": "Right hilar and infrahilar fullness, more conspicuous than prior and indeterminate (F6). Also a tiny dense right lower zone focus that is not clearly seen on the prior. History of treated breast cancer."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "Treated breast cancer. Routine surveillance, no new symptoms.\nChest radiograph 2026-11-12 compared with 2026-02-10. The current image has higher contrast and penetration.\nLeft chest wall implanted venous access device is present on both studies.",
+      "impression": "Right hilar and infrahilar fullness is more conspicuous than on the prior. It is indeterminate and the reads disagreed. Nodes or a hilar mass cannot be separated from vessels made more conspicuous by technique. A tiny dense right lower zone focus and more conspicuous right lower zone markings are also indeterminate.\nRECIST 1.1 not computed because there are no confirmed measurements. CT chest with contrast is recommended."
+    },
+    "surgeon": "Location: right hilum and infrahilum (fullness, F6) and right lower zone (tiny dense focus, and more conspicuous linear markings, F2). Size trend: no measurements were made. The report calls the right hilar change more conspicuous, but its size change is not comparable between studies. The report says nothing about whether surgery is possible. Its findings are indeterminate and CT chest is recommended.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray on November 12. It was compared with your X-ray from February.\nThe X-ray showed a fuller-looking area near the middle of your right lung. It may be a real change. It may also be normal blood vessels that look clearer on this X-ray. An X-ray cannot tell which one it is.\nThe X-ray also showed a very small spot in the lower right lung. It also cannot be explained by an X-ray alone.\nThe radiologist is the doctor who reads your scans. The radiologist recommends a CT scan of your chest. A CT scan takes more detailed pictures than an X-ray. Dr. Okafor will decide on the order.\nWho to call: please call Dr. Okafor's office with any questions."
+  }
+}

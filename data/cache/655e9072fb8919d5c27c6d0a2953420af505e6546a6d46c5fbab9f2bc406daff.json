@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "655e9072fb8919d5c27c6d0a2953420af505e6546a6d46c5fbab9f2bc406daff",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:50.780Z",
+  "usage": {
+    "input_tokens": 5316,
+    "output_tokens": 1966
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Left hilar change indeterminate on chest X-ray; no cause for breathlessness shown",
+      "body": "Changed: Chest X-ray 11/19 shows no new consolidation, effusion, pneumothorax or nodule vs 09/02. Left hilum looks smaller than on the prior, but this is indeterminate (contrast and rotation differences; one of two reads). No cause for breathlessness is shown.\nRadiologist recommends: CT chest with contrast, PACS source image review, and a lateral view or CT for the left base.\nWaiting for your signature: CT chest with contrast order (interval to be set by attending)."
+    },
+    "followup_order": {
+      "study": "CT chest",
+      "body_part": "Chest",
+      "contrast": "With contrast",
+      "interval": "Not specified in the report; to be set by the attending radiologist",
+      "reason": "Left hilar fullness and density differ between the 2026-09-02 and 2026-11-19 chest radiographs. A frontal film cannot separate vessel from node or mass. Patient has metastatic colorectal cancer, increasing shortness of breath and SpO2 91 percent."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "Metastatic colorectal cancer, on treatment.\nOne week of increasing shortness of breath; SpO2 91 percent.\nChest radiograph 2026-11-19 compared with 2026-09-02. RECIST 1.1 not computed on radiographs.",
+      "impression": "Left hilum fuller and denser on the prior; true interval change is indeterminate (contrast and rotation differences, one of two reads). No new consolidation, effusion, pneumothorax or new nodule/mass, and no cause for the breathlessness shown.\nRecommend CT chest with contrast and PACS source image review. A tiny right medial upper zone density seen on the prior only needs PACS review, with CT if it persists."
+    },
+    "surgeon": "Location: left hilum (fullness and density, possibly vessel or node; a small ring lucency is also noted). Size trend: not measured. The left hilum appears smaller on the current film than on the prior, but this is indeterminate because of image contrast and rotation differences, and only one of two reads reported it. The report says nothing on whether surgery is possible. CT chest with contrast is recommended for the left hilar question.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray on November 19. It was compared with an X-ray from September 2.\nThe X-ray did not show new pneumonia, fluid around the lung, or a collapsed lung. It did not show a cause for your trouble breathing.\nOne area near the center of the left lung looked different between the two X-rays. This area is called the hilum. It is where the airways and blood vessels enter the lung. The X-ray could not tell if it truly changed. The two pictures were taken a little differently.\nYour care team recommends a CT scan of your chest with contrast. A CT scan takes detailed pictures of the inside of your body. Contrast is a special dye that helps show more. The radiologist, a doctor who reads scans, will also look at the original pictures again.\nWho to call: Dr. Castellanos and the oncology team, with any questions."
+  }
+}

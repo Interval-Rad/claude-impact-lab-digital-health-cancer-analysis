@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "25d8a7ba556227ac56c3da6d7bcf05106f5560c37b166a0f30978c8c1c039c49",
+  "case_id": "refusal_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:13.988Z",
+  "usage": {
+    "input_tokens": 5966,
+    "output_tokens": 1830
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Nodule change cannot be judged; right lower zone opacity indeterminate",
+      "body": "Line 1: No change can be called. Prior is PA and current is an underexposed AP, so nodule change cannot be judged and the right lower zone opacity is indeterminate (patient has fever, 38.4 C).\nLine 2: Radiologist recommends CT chest, with contrast if appropriate. Also repeat PA and lateral when able, and a lateral or decubitus view or right base ultrasound.\nLine 3: Awaiting your signature: CT chest order. Timing to be set by the attending radiologist."
+    },
+    "followup_order": {
+      "study": "CT chest",
+      "body_part": "Chest (right lower zone, right hilum, right pleura and hemidiaphragm, lungs for small nodules)",
+      "contrast": "With contrast if appropriate",
+      "interval": "Not specified in report; attending radiologist to set timing",
+      "reason": "Known lung nodule under surveillance. Chest radiographs (prior PA, current underexposed AP) cannot show whether the nodule or the right lower zone opacity has changed. Right hilum, right pleural fluid and small nodules cannot be assessed."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "Known lung nodule under surveillance. Admitted with fever (temp 38.4 C), source under evaluation.\nComparison: chest radiograph 2026-08-21 (PA) vs 2026-11-20 (portable AP, underexposed, rotated, lordotic). Prior report describes a nodular opacity (no side or zone) and a small pleural effusion (no side).\nRECIST 1.1 not computed on radiographs.",
+      "impression": "No discrete nodule could be identified and matched on both films, so nodule change cannot be judged. Hazy right lower zone opacity with basal volume loss, right hilar prominence and high indistinct right hemidiaphragm are present on both studies and indeterminate; a new process is neither confirmed nor excluded.\nRadiologist recommends CT chest, with contrast if appropriate, plus repeat PA and lateral radiograph and a lateral or decubitus view or right base ultrasound. Timing to be set by the attending."
+    },
+    "surgeon": "Location: no discrete nodule could be identified or matched on either film. The nearest finding is a hazy, ill-defined right lower zone opacity with apparent basal volume loss, which was not adopted as the nodule. Right hilar prominence is continuous with it. Size trend: cannot be judged because the prior is PA and the current is an underexposed AP. The report says nothing about whether surgery is possible. It does not address resectability, staging or invasion. CT chest is recommended to clarify the right lower zone, hilum and pleura.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray. Doctors wanted to know if a spot in your lung has changed.\nThe two X-rays were taken in different ways. The new one was also a little dark. Because of this, the doctors could not tell if the spot changed. They also could not find the spot clearly on both pictures.\nThe X-ray showed a hazy area at the bottom of the right lung. It was there on both X-rays. The doctors could not say what it is.\nThe radiologist suggests a CT scan of the chest. A CT scan is a detailed picture made by a special X-ray machine. You may also need another chest X-ray when you are able. Your care team will decide the timing.\nWho to call: Dr. Whitfield's cancer care team. Ask them any questions about this scan."
+  }
+}

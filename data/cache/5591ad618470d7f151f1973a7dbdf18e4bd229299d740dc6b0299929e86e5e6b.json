@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "5591ad618470d7f151f1973a7dbdf18e4bd229299d740dc6b0299929e86e5e6b",
+  "case_id": "new_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:08.807Z",
+  "usage": {
+    "input_tokens": 4253,
+    "output_tokens": 2640
+  },
+  "response": {
+    "provider_message": {
+      "subject": "ROUTINE: Hilar opacities unchanged, no new pulmonary nodule on chest radiograph",
+      "body": "Changed: nothing vs 2026-05-14. Left (F1) and right (F4/F2) hilar opacities are similar. No new nodule on frontal views.\nRadiologist recommends: review source images and older films in PACS. CT chest if calcification or stability can't be confirmed. Lateral view if concerned. Echo if indicated.\nAwaiting your signature: conditional CT chest order. Interval is not set; the attending sets it."
+    },
+    "followup_order": {
+      "study": "CT chest (conditional: only if calcification or long-term stability of the hilar opacities cannot be confirmed after PACS review of source images and older films)",
+      "body_part": "Chest",
+      "contrast": "Not specified in the signed report; to be set by the attending or provider",
+      "interval": "Not specified in the signed report; the attending is to set it",
+      "reason": "Surveillance, history of treated colon adenocarcinoma. Small dense left hilar opacity (F1) and right hilar focus (F4/F2), similar to the prior film. Calcified versus non-calcified, or vessel end-on, cannot be determined on a frontal radiograph. No new nodule seen; small or retrocardiac nodules cannot be excluded on frontal views."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "1. History of treated colon adenocarcinoma. Surveillance chest radiograph 2026-11-18 to assess for new pulmonary nodules.\n2. Compared with 2026-05-14. The prior report said lungs clear, but the prior images show the left and right hilar opacities, which the prior report did not mention.\n3. Frontal views only. Image processing differs slightly between films, and the upper abdomen is not comparable because of a belt and buckle on the prior. No measurements are available.",
+      "impression": "1. No new pulmonary nodule vs prior on frontal views. Left hilar opacity (F1) and right hilar focus (F4/F2) are similar and indeterminate: calcified granuloma or node vs non-calcified nodule vs vessel end-on. The two blind reads disagreed on the right hilar focus. RECIST not computed on radiographs.\n2. Recommend PACS review of source images and older films, and CT chest if calcification or stability cannot be confirmed (interval not specified; attending to set). Lateral view if concerned; echo if clinically indicated for the upper-normal to mildly prominent cardiac silhouette, which is similar to the prior."
+    },
+    "surgeon": "Location: small dense opacity at the lateral margin of the left hilum (F1), and a small dense focus over the right hilum (F4/F2). Size trend: no measurements are available. Both are described in words as similar in size, shape and density to 2026-05-14. No new lung opacity or nodule on frontal views. The report says nothing about whether surgery is possible. The findings are indeterminate (calcified vs non-calcified vs vessel end-on), and CT chest is recommended only if calcification or stability cannot be confirmed.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray on November 18. It was compared with your X-ray from May.\nThe doctors did not see any new spots in your lungs.\nThere are two small dense spots near the center of your chest, one on each side. The center area where the airways and blood vessels enter the lungs is called the hilum. These spots look the same as they did in May.\nAn X-ray cannot tell exactly what these spots are. They may be old scars or blood vessels seen end-on. The X-ray cannot say for sure.\nThe radiologist, the doctor who reads scans, suggests a closer look at the X-ray pictures and any older pictures. If the spots still cannot be explained, your care team may order a CT scan. A CT scan takes more detailed pictures of the chest.\nA side-view X-ray may also be done if your doctor is concerned about areas the front view cannot show well.\nWho to call: please call Dr. Rahimi's office (medical oncology) with any questions."
+  }
+}

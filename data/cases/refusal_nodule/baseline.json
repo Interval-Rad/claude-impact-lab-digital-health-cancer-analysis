@@ -1,0 +1,1065 @@
+{
+  "case_id": "refusal_nodule",
+  "state": "DRAFTED",
+  "version": 1,
+  "arrived_at": "2026-11-21T19:37:43.405Z",
+  "status_text": "AI draft ready for resident review",
+  "busy": null,
+  "error": null,
+  "indication_released_at": "2026-11-21T19:39:08.487Z",
+  "blind": {
+    "a": {
+      "comparability": {
+        "prior": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "mild",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "Side marker and two short linear radiopaque external markers at the upper left corner of the film, outside the lungs"
+          ]
+        },
+        "current": {
+          "view": "AP",
+          "view_inferred": false,
+          "rotation": "mild",
+          "inspiration": "adequate",
+          "exposure": "under",
+          "coverage": "complete",
+          "artifacts": [
+            "Side marker at upper right of the patient",
+            "Heavy overlying chest wall soft tissue with curvilinear soft tissue edges over both lower lateral zones",
+            "Clavicles project high over the apices, suggesting a lordotic AP beam angle"
+          ]
+        },
+        "comparable": "limited",
+        "differences": [
+          {
+            "factor": "projection",
+            "detail": "Prior is labeled PA and current is labeled AP.",
+            "prevents": "Judging change in heart size, mediastinal width, hilar size, or the size of the right lower zone opacity."
+          },
+          {
+            "factor": "exposure",
+            "detail": "Current is underexposed, with diffusely greyer lungs and more soft tissue overlap than the prior.",
+            "prevents": "Judging change in density of the right lower zone opacity, or excluding small nodules and fine interstitial change on the current film."
+          },
+          {
+            "factor": "position",
+            "detail": "Upright versus supine or semi-erect is not shown on either image, and the current AP appears lordotic.",
+            "prevents": "Judging change in pleural fluid, since an effusion can layer out on a supine film, and comparing the apices."
+          },
+          {
+            "factor": "rotation",
+            "detail": "Both films are mildly rotated, and the medial clavicular ends are poorly seen on the current film.",
+            "prevents": "Reliable comparison of tracheal position, hilar size and left-right lung density."
+          }
+        ]
+      },
+      "systematic_read": {
+        "airway_lungs": "CURRENT: Trachea is poorly seen through the underexposed upper mediastinum, with no gross displacement. Hazy opacity occupies the right lower zone and reaches the lower right mid zone, obscuring the right heart border and medial right hemidiaphragm. Left lung shows no focal opacity. Vascular markings reach the chest wall on both sides, with no pleural line. PRIOR: Tracheal air column is roughly midline to slightly right, within the range expected for mild rotation. Hazy and partly linear opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm. Left lung is clear, with no pneumothorax.",
+        "mediastinum_hila": "CURRENT: Aortic knuckle is prominent. Upper mediastinum looks wide, as expected on an AP projection. Right hilum merges with the right lower zone opacity and cannot be separated from it. Left hilum is not clearly enlarged. PRIOR: Aortic knuckle is prominent with an unfolded aortic contour. Right hilar and infrahilar region is prominent and continuous with the right lower zone opacity. Left hilum is unremarkable.",
+        "pleura": "CURRENT: Lateral right costophrenic sulcus is aerated and pointed, while the medial right base is opaque; subpulmonic or layering pleural fluid is not excluded. Left costophrenic angle is sharp. No pneumothorax. PRIOR: Aerated pocket at the lateral right base with opacity medial and inferior to it; right pleural fluid or thickening is not excluded. Left costophrenic angle is sharp. No pneumothorax.",
+        "heart": "CURRENT: Cardiac silhouette appears enlarged, but this is an AP film and size is not reliable. Right heart border is obscured. PRIOR: Cardiac silhouette appears prominent on this PA film, with the cardiothoracic ratio near or above the upper limit, for radiologist measurement. Right heart border is obscured by the adjacent right lower zone opacity. Left heart border is defined.",
+        "diaphragm_below": "CURRENT: Right hemidiaphragm contour is high and indistinct medially. Left dome is sharp. No free gas is identified, but the upper abdomen is underexposed. PRIOR: Right hemidiaphragm appears elevated by more than the usual side difference, with an indistinct medial contour. Left dome is sharp with gastric and bowel gas beneath it. No free gas under the diaphragm.",
+        "bones_soft_tissue": "CURRENT: No displaced rib fracture or gross destructive bone lesion, but bone detail is limited by underexposure. Chest wall soft tissue is prominent. No soft tissue gas. PRIOR: No displaced rib fracture or gross destructive lesion in the ribs, clavicles or shoulders. Visible spine is partly obscured by the mediastinum. No soft tissue gas.",
+        "devices": "CURRENT: No lines, tubes, pacemaker or other internal device identified. PRIOR: No internal device identified; external radiopaque markers sit at the upper film edge only. No new device since the prior."
+      },
+      "findings": [
+        {
+          "region": "R_lower",
+          "kind": "consolidation",
+          "description": "Hazy, ill-defined opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm. It is present on both studies. On the current film the haze appears to reach the lower right mid zone.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The opacity sits in the same place on both films with the same loss of the right heart border and medial hemidiaphragm. The apparently greater extent on the current film may be explained by the AP projection, underexposure and overlying soft tissue.",
+          "time_sensitive": false
+        },
+        {
+          "region": "diaphragm_below",
+          "kind": "other",
+          "description": "Right hemidiaphragm contour is elevated and indistinct medially on both studies, with an aerated lateral costophrenic sulcus.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The high right basal contour is seen on both the PA prior and the AP current. Its apparent height differs with projection and beam angle, so interval change cannot be judged.",
+          "time_sensitive": false
+        },
+        {
+          "region": "heart",
+          "kind": "cardiac_silhouette",
+          "description": "Cardiac silhouette appears prominent on the PA prior and enlarged on the AP current. The right heart border is obscured on both.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The heart shadow looks wider on the current film, but AP projection magnifies the heart. The obscured right border also limits assessment of width on both films.",
+          "time_sensitive": false
+        },
+        {
+          "region": "R_hilum",
+          "kind": "other",
+          "description": "Right hilar and infrahilar prominence, continuous with the right lower zone opacity on both studies. Vessels, adjacent lung opacity and a hilar lesion cannot be separated on these films.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "Right hilar density is greater than the left on both films. Mild rotation on both, the projection difference and the overlapping lower zone opacity prevent any call on size or change.",
+          "time_sensitive": false
+        },
+        {
+          "region": "mediastinum",
+          "kind": "other",
+          "description": "Prominent aortic knuckle with an unfolded aortic contour on both studies. The upper mediastinum looks wider on the AP current.",
+          "status": "stable",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The aortic knuckle has the same shape and position on both films. The apparent mediastinal widening on the current film is expected with AP projection and is not called as a change.",
+          "time_sensitive": false
+        }
+      ],
+      "cant_determine": [
+        {
+          "question": "Has the right lower zone opacity changed in size or density since the prior?",
+          "reason": "Prior is PA and current is AP and underexposed. Projection and exposure differences can make a basal opacity look larger or denser.",
+          "recommend": "CT chest, or repeat PA and lateral when the patient is able.",
+          "region": "R_lower",
+          "kind": "consolidation"
+        },
+        {
+          "question": "Is there a right pleural effusion, including a subpulmonic component, and has it changed?",
+          "reason": "The high, indistinct right basal contour with an aerated lateral sulcus could reflect subpulmonic fluid, an elevated hemidiaphragm, or basal volume loss. A frontal film alone cannot separate these, and patient position on the current AP is not shown.",
+          "recommend": "Lateral or right lateral decubitus view, ultrasound of the right base, or CT chest.",
+          "region": "R_pleura",
+          "kind": "effusion"
+        },
+        {
+          "question": "Is there a right hilar or infrahilar mass or adenopathy underlying the right basal opacity and volume loss?",
+          "reason": "The right hilum merges with the adjacent opacity on both films. Mild rotation and the AP projection make hilar size unreliable.",
+          "recommend": "CT chest, with contrast if appropriate.",
+          "region": "R_hilum",
+          "kind": "adenopathy"
+        },
+        {
+          "question": "Has heart size changed?",
+          "reason": "AP projection magnifies the heart, and cardiothoracic ratio is valid on PA films only. The right heart border is also obscured on both studies.",
+          "recommend": "Repeat PA film when the patient is able, or echocardiography if clinically relevant.",
+          "region": "heart",
+          "kind": "cardiac_silhouette"
+        },
+        {
+          "question": "Is the right hemidiaphragm truly elevated, or is the contour formed by subpulmonic fluid or a process below the diaphragm?",
+          "reason": "The true diaphragm is not separately visible on a frontal film. The lordotic AP beam angle on the current film also alters the apparent dome height.",
+          "recommend": "Ultrasound of the right upper quadrant and right base, or CT covering the chest and upper abdomen.",
+          "region": "diaphragm_below",
+          "kind": "other"
+        },
+        {
+          "question": "Are there small nodules or fine interstitial changes in either lung on the current study?",
+          "reason": "The current film is underexposed with heavy soft tissue overlap, and the clavicles project over the apices. Small nodules cannot be confirmed or excluded.",
+          "recommend": "CT chest, or repeat PA and lateral with adequate exposure.",
+          "region": "L_lower",
+          "kind": "nodule_or_mass"
+        }
+      ],
+      "limits": "This is a blind first read of two single frontal radiographs, with no lateral views, no indication and no dates. The prior is PA and the current is AP and underexposed, so no size change is reported for any finding. No measurements are given because the images carry no pixel scale and magnification is unknown. The images are downsampled, so fine detail such as margins, calcification, cavitation and subtle rib lesions should be reviewed on the source images in PACS. Patient identity match is assumed from the similar aortic contour and right basal abnormality and has not been verified. This is a draft for resident and attending review."
+    },
+    "b": {
+      "comparability": {
+        "prior": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "none",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "Side marker (L) at upper corner of image",
+            "Small radiopaque markers at top edge of film"
+          ]
+        },
+        "current": {
+          "view": "AP",
+          "view_inferred": false,
+          "rotation": "mild",
+          "inspiration": "adequate",
+          "exposure": "under",
+          "coverage": "complete",
+          "artifacts": [
+            "Side marker (MG R) at upper corner of image",
+            "Overlying lateral chest wall and arm soft tissue shadows or skin folds over both lateral lower zones",
+            "Low contrast, underpenetrated image; spine and medial clavicle ends poorly seen, so rotation assessment is limited"
+          ]
+        },
+        "comparable": "limited",
+        "differences": [
+          {
+            "factor": "projection",
+            "detail": "Prior is labeled PA, current is labeled AP. AP magnifies the heart and mediastinum.",
+            "prevents": "Comparing heart size, mediastinal width, or the size of any opacity between the two studies."
+          },
+          {
+            "factor": "exposure",
+            "detail": "Prior is adequately penetrated. Current is underpenetrated with low contrast; lungs look diffusely whiter and thoracic vertebrae are not seen behind the heart.",
+            "prevents": "Judging change in density of the right lower zone opacity or of the interstitial markings, and excluding small nodules on the current study."
+          },
+          {
+            "factor": "rotation",
+            "detail": "Prior appears near-centered. Current appears mildly rotated, though the landmarks are poorly seen.",
+            "prevents": "Reliable comparison of tracheal position, hilar size, and left-right lung density."
+          },
+          {
+            "factor": "position",
+            "detail": "Patient position (upright versus supine or semi-erect) is not shown on either image; an AP film is often taken semi-erect or supine.",
+            "prevents": "Judging change in any pleural fluid, since fluid layers out when supine."
+          }
+        ]
+      },
+      "systematic_read": {
+        "airway_lungs": "CURRENT: Trachea is poorly seen through the underpenetrated upper mediastinum, with no gross displacement. Hazy increased density in the right lower zone above a high right hemidiaphragm. Coarse linear and reticular markings in the left mid and lower zones. No visible pleural line to suggest pneumothorax. Apices are partly hidden by clavicles and first ribs, with no gross apical mass. PRIOR: Trachea lies slightly to the right of midline at the level of the aortic arch. Hazy opacity in the right lower zone extends toward the right mid zone, above a high right hemidiaphragm, and blurs the right heart border. Coarse reticular markings in the left mid and lower zones. Vascular markings reach the chest wall on both sides. Apices are clear.",
+        "mediastinum_hila": "CURRENT: Aortic knuckle is prominent. Upper mediastinum looks wide, on an AP film. Hila are poorly defined on this exposure; no discrete hilar mass is seen. PRIOR: Aortic knuckle is prominent. Upper mediastinum is not widened. The left hilum is clearly seen and not definitely enlarged; the right hilum is partly obscured by adjacent right lower zone opacity.",
+        "pleura": "CURRENT: Right lateral costophrenic angle is seen low and laterally with a thin strip of aerated lung. Left costophrenic angle is seen and appears sharp. No pleural line. PRIOR: Right lateral costophrenic sulcus contains aerated lung with no meniscus. Left costophrenic angle is sharp. No pleural line. A subpulmonic right effusion cannot be excluded on either frontal film.",
+        "heart": "CURRENT: Cardiac silhouette looks enlarged, on an AP underpenetrated film. Right heart border is indistinct. PRIOR: Cardiac silhouette appears near the upper limit of normal by eye on a PA film; the right heart border is blurred by adjacent right lower zone opacity, so the true right margin is uncertain.",
+        "diaphragm_below": "CURRENT: Right hemidiaphragm contour is high and smooth. Left dome is clearly defined, with a faint gas lucency beneath it. No free gas identified, within the limits of exposure. PRIOR: Right hemidiaphragm contour is high, more than the usual right-left difference. A thin band of gas under the left dome lies in the expected position of the gastric bubble or splenic flexure. No free gas under the right dome.",
+        "bones_soft_tissue": "CURRENT: No displaced rib fracture or destructive bone lesion seen; fine bone detail is limited by underexposure. Prominent chest wall soft tissue overlies the lateral lower zones. No soft tissue gas. PRIOR: Ribs, clavicles and shoulders show no displaced fracture or gross lucent lesion. A small rounded ring-like density projects over the right lateral base below the diaphragm, probably a costal cartilage or rib end. No soft tissue gas.",
+        "devices": "CURRENT: No lines, tubes, pacemaker or clips seen. PRIOR: No lines, tubes, pacemaker or clips seen. No new device."
+      },
+      "findings": [
+        {
+          "region": "R_lower",
+          "kind": "consolidation",
+          "description": "Hazy, ill-defined opacity in the right lower zone above a high right hemidiaphragm, with loss of the right heart border. Seen on both studies. The pattern could reflect volume loss, airspace opacity, or pleural fluid.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "Prior PA: hazy density from the right mid zone down to the diaphragm, blurring the right heart border. Current AP: hazy density in the same zone, on a film that is underpenetrated throughout. Projection and exposure differ, so change in extent or density cannot be judged.",
+          "time_sensitive": false
+        },
+        {
+          "region": "diaphragm_below",
+          "kind": "other",
+          "description": "High right hemidiaphragm contour, smooth, with aerated lung in the lateral costophrenic sulcus. Seen on both studies.",
+          "status": "stable",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "The right dome sits well above the left on both the prior PA and the current AP, with a similar shape. Exact height is not compared because the projection differs.",
+          "time_sensitive": false
+        },
+        {
+          "region": "heart",
+          "kind": "cardiac_silhouette",
+          "description": "Cardiac silhouette looks enlarged on the current AP film. On the prior PA film it appears near the upper limit of normal by eye, with the right border obscured.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The heart looks wider relative to the chest on the current film, but the current film is AP and the prior is PA. AP magnification alone can produce this difference.",
+          "time_sensitive": false
+        },
+        {
+          "region": "mediastinum",
+          "kind": "other",
+          "description": "Prominent aortic knuckle on both studies. Upper mediastinum looks wider on the current AP film.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": false,
+          "evidence": "The aortic knuckle contour is visible and prominent on both. Apparent widening on the current study coincides with AP projection, possible mild rotation, and underexposure.",
+          "time_sensitive": false
+        },
+        {
+          "region": "L_lower",
+          "kind": "interstitial",
+          "description": "Coarse linear and reticular markings in the left mid and lower zones on both studies.",
+          "status": "stable",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "The markings have a similar distribution on the prior PA and current AP films. No new confluent opacity in the left lung. Density is not compared because of the exposure difference.",
+          "time_sensitive": false
+        }
+      ],
+      "cant_determine": [
+        {
+          "question": "Has the heart enlarged since the prior?",
+          "reason": "Prior is PA and current is AP. AP projection magnifies the heart, and the right heart border is obscured on both films.",
+          "recommend": "Repeat PA and lateral when the patient is able, or CT chest.",
+          "region": "heart",
+          "kind": "cardiac_silhouette"
+        },
+        {
+          "question": "Has the right lower zone opacity grown, shrunk, or stayed the same?",
+          "reason": "Projection differs (PA then AP) and the current film is underpenetrated. Size and density change cannot be reported across these differences.",
+          "recommend": "Repeat PA and lateral with good inspiration, or CT chest.",
+          "region": "R_lower",
+          "kind": "consolidation"
+        },
+        {
+          "question": "Is the high right hemidiaphragm contour a truly elevated diaphragm, a subpulmonic effusion, or lower lobe volume loss?",
+          "reason": "A frontal film alone cannot separate these. Patient position on the current AP film is unknown, and fluid layers out when supine.",
+          "recommend": "Lateral and right lateral decubitus views, ultrasound of the right base, or CT chest.",
+          "region": "R_pleura",
+          "kind": "effusion"
+        },
+        {
+          "question": "Is the upper mediastinum truly wider on the current study?",
+          "reason": "AP projection, possible mild rotation, and underexposure each widen or blur the mediastinal contour.",
+          "recommend": "Repeat PA film, or CT chest if there is clinical concern.",
+          "region": "mediastinum",
+          "kind": "other"
+        },
+        {
+          "question": "Are there small lung nodules or a hilar abnormality on the current study?",
+          "reason": "The current film is underpenetrated and low in contrast, with overlying soft tissue shadows. Small nodules and hilar detail cannot be assessed, and the right hilum is partly obscured by adjacent opacity on both studies.",
+          "recommend": "Review the source image in PACS with windowing; CT chest if a nodule or hilar lesion needs to be excluded.",
+          "region": "R_hilum",
+          "kind": "nodule_or_mass"
+        },
+        {
+          "question": "Is there a retrocardiac opacity?",
+          "reason": "Vertebrae are not visible behind the heart on the current film, and a frontal view alone cannot clear this area.",
+          "recommend": "Lateral view or CT chest.",
+          "region": "L_lower",
+          "kind": "consolidation"
+        }
+      ],
+      "limits": "Draft blind first read for resident and attending review, made without the indication or study dates. Two frontal radiographs only, with no lateral views. The prior is PA and the current is AP, so no size change is reported for the heart, the mediastinum, or any opacity. The current film is underpenetrated, which limits assessment of small nodules, the hila, the retrocardiac region, and bone detail. Rotation on the current film is estimated from poorly seen landmarks. Patient position is not shown on either image. No measurements are given; the radiologist measures in PACS. The images are downsampled, so fine detail should be checked on the source images."
+    }
+  },
+  "focused": {
+    "indication_pass": {
+      "question": "Known lung nodule under surveillance, admitted with fever: has the nodule changed?",
+      "answer": "No discrete nodule can be identified and matched on both films, so change in the nodule cannot be judged from these images. The only focal lung abnormality is the hazy right lower zone opacity (F1), present on both films; its size and density cannot be compared because the prior is PA and the current is an underexposed AP, and a new process within it cannot be confirmed or excluded, while the left lung shows no new confluent opacity.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "R_pleura",
+        "L_pleura",
+        "mediastinum"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Nodular opacity (no side or zone given).",
+        "images_show": "No discrete, well-defined nodule is seen on the prior or the current film. The prior shows a hazy, ill-defined right lower zone opacity with right hilar and infrahilar prominence (F1, F4). The images cannot establish whether this is the opacity the report means, so it has not been adopted as the nodule. Small nodules cannot be excluded on the underexposed current film."
+      },
+      {
+        "prior_report_says": "Small pleural effusion (no side given).",
+        "images_show": "No definite meniscus or blunted lateral costophrenic angle is seen on either side on the prior or the current film. The right basal contour is high and indistinct medially with an aerated lateral sulcus on both films (F2). Whether this includes subpulmonic fluid remains undetermined on frontal films alone. An effusion has not been adopted as a finding."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F4",
+      "F2"
+    ]
+  },
+  "lightbox": {
+    "comparability": {
+      "prior": {
+        "view": "PA",
+        "view_inferred": false,
+        "rotation": "mild",
+        "inspiration": "adequate",
+        "exposure": "adequate",
+        "coverage": "complete",
+        "artifacts": [
+          "Side marker and two short linear radiopaque external markers at the upper left corner of the film, outside the lungs"
+        ]
+      },
+      "current": {
+        "view": "AP",
+        "view_inferred": false,
+        "rotation": "mild",
+        "inspiration": "adequate",
+        "exposure": "under",
+        "coverage": "complete",
+        "artifacts": [
+          "Side marker at upper right of the patient",
+          "Heavy overlying chest wall soft tissue with curvilinear soft tissue edges over both lower lateral zones",
+          "Clavicles project high over the apices, suggesting a lordotic AP beam angle"
+        ]
+      },
+      "comparable": "limited",
+      "differences": [
+        {
+          "factor": "projection",
+          "detail": "Prior is labeled PA and current is labeled AP.",
+          "prevents": "Judging change in heart size, mediastinal width, hilar size, or the size of the right lower zone opacity."
+        },
+        {
+          "factor": "exposure",
+          "detail": "Current is underexposed, with diffusely greyer lungs and more soft tissue overlap than the prior.",
+          "prevents": "Judging change in density of the right lower zone opacity, or excluding small nodules and fine interstitial change on the current film."
+        },
+        {
+          "factor": "position",
+          "detail": "Upright versus supine or semi-erect is not shown on either image, and the current AP appears lordotic.",
+          "prevents": "Judging change in pleural fluid, since an effusion can layer out on a supine film, and comparing the apices."
+        },
+        {
+          "factor": "rotation",
+          "detail": "Both films are mildly rotated, and the medial clavicular ends are poorly seen on the current film.",
+          "prevents": "Reliable comparison of tracheal position, hilar size and left-right lung density."
+        }
+      ]
+    },
+    "comparable_by_read": {
+      "a": "limited",
+      "b": "limited"
+    },
+    "systematic_read": {
+      "airway_lungs": "CURRENT: Trachea is poorly seen through the underexposed upper mediastinum, with no gross displacement. Hazy opacity occupies the right lower zone and reaches the lower right mid zone, obscuring the right heart border and medial right hemidiaphragm. Left lung shows no focal opacity. Vascular markings reach the chest wall on both sides, with no pleural line. PRIOR: Tracheal air column is roughly midline to slightly right, within the range expected for mild rotation. Hazy and partly linear opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm. Left lung is clear, with no pneumothorax.",
+      "mediastinum_hila": "CURRENT: Aortic knuckle is prominent. Upper mediastinum looks wide, as expected on an AP projection. Right hilum merges with the right lower zone opacity and cannot be separated from it. Left hilum is not clearly enlarged. PRIOR: Aortic knuckle is prominent with an unfolded aortic contour. Right hilar and infrahilar region is prominent and continuous with the right lower zone opacity. Left hilum is unremarkable.",
+      "pleura": "CURRENT: Lateral right costophrenic sulcus is aerated and pointed, while the medial right base is opaque; subpulmonic or layering pleural fluid is not excluded. Left costophrenic angle is sharp. No pneumothorax. PRIOR: Aerated pocket at the lateral right base with opacity medial and inferior to it; right pleural fluid or thickening is not excluded. Left costophrenic angle is sharp. No pneumothorax.",
+      "heart": "CURRENT: Cardiac silhouette appears enlarged, but this is an AP film and size is not reliable. Right heart border is obscured. PRIOR: Cardiac silhouette appears prominent on this PA film, with the cardiothoracic ratio near or above the upper limit, for radiologist measurement. Right heart border is obscured by the adjacent right lower zone opacity. Left heart border is defined.",
+      "diaphragm_below": "CURRENT: Right hemidiaphragm contour is high and indistinct medially. Left dome is sharp. No free gas is identified, but the upper abdomen is underexposed. PRIOR: Right hemidiaphragm appears elevated by more than the usual side difference, with an indistinct medial contour. Left dome is sharp with gastric and bowel gas beneath it. No free gas under the diaphragm.",
+      "bones_soft_tissue": "CURRENT: No displaced rib fracture or gross destructive bone lesion, but bone detail is limited by underexposure. Chest wall soft tissue is prominent. No soft tissue gas. PRIOR: No displaced rib fracture or gross destructive lesion in the ribs, clavicles or shoulders. Visible spine is partly obscured by the mediastinum. No soft tissue gas.",
+      "devices": "CURRENT: No lines, tubes, pacemaker or other internal device identified. PRIOR: No internal device identified; external radiopaque markers sit at the upper film edge only. No new device since the prior."
+    },
+    "findings": [
+      {
+        "region": "R_lower",
+        "kind": "consolidation",
+        "description": "Hazy, ill-defined opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm. It is present on both studies. On the current film the haze appears to reach the lower right mid zone.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "The opacity sits in the same place on both films with the same loss of the right heart border and medial hemidiaphragm. The apparently greater extent on the current film may be explained by the AP projection, underexposure and overlying soft tissue.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": "indeterminate",
+        "reads": {
+          "a": {
+            "region": "R_lower",
+            "kind": "consolidation",
+            "description": "Hazy, ill-defined opacity in the right lower zone with apparent right basal volume loss, obscuring the right heart border and medial right hemidiaphragm. It is present on both studies. On the current film the haze appears to reach the lower right mid zone.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The opacity sits in the same place on both films with the same loss of the right heart border and medial hemidiaphragm. The apparently greater extent on the current film may be explained by the AP projection, underexposure and overlying soft tissue.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "R_lower",
+            "kind": "consolidation",
+            "description": "Hazy, ill-defined opacity in the right lower zone above a high right hemidiaphragm, with loss of the right heart border. Seen on both studies. The pattern could reflect volume loss, airspace opacity, or pleural fluid.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "Prior PA: hazy density from the right mid zone down to the diaphragm, blurring the right heart border. Current AP: hazy density in the same zone, on a film that is underpenetrated throughout. Projection and exposure differ, so change in extent or density cannot be judged.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F1"
+      },
+      {
+        "region": "diaphragm_below",
+        "kind": "other",
+        "description": "Right hemidiaphragm contour is elevated and indistinct medially on both studies, with an aerated lateral costophrenic sulcus.",
+        "status": "indeterminate",
+        "size_change_words": null,
+        "needs_measurement": false,
+        "evidence": "The high right basal contour is seen on both the PA prior and the AP current. Its apparent height differs with projection and beam angle, so interval change cannot be judged.",
+        "time_sensitive": false,
+        "agreement": "status_differs",
+        "read_a_status": "indeterminate",
+        "read_b_status": "stable",
+        "reads": {
+          "a": {
+            "region": "diaphragm_below",
+            "kind": "other",
+            "description": "Right hemidiaphragm contour is elevated and indistinct medially on both studies, with an aerated lateral costophrenic sulcus.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The high right basal contour is seen on both the PA prior and the AP current. Its apparent height differs with projection and beam angle, so interval change cannot be judged.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "diaphragm_below",
+            "kind": "other",
+            "description": "High right hemidiaphragm contour, smooth, with aerated lung in the lateral costophrenic sulcus. Seen on both studies.",
+            "status": "stable",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "The right dome sits well above the left on both the prior PA and the current AP, with a similar shape. Exact height is not compared because the projection differs.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F2"
+      },
+      {
+        "region": "heart",
+        "kind": "cardiac_silhouette",
+        "description": "Cardiac silhouette appears prominent on the PA prior and enlarged on the AP current. The right heart border is obscured on both.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "The heart shadow looks wider on the current film, but AP projection magnifies the heart. The obscured right border also limits assessment of width on both films.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": "indeterminate",
+        "reads": {
+          "a": {
+            "region": "heart",
+            "kind": "cardiac_silhouette",
+            "description": "Cardiac silhouette appears prominent on the PA prior and enlarged on the AP current. The right heart border is obscured on both.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The heart shadow looks wider on the current film, but AP projection magnifies the heart. The obscured right border also limits assessment of width on both films.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "heart",
+            "kind": "cardiac_silhouette",
+            "description": "Cardiac silhouette looks enlarged on the current AP film. On the prior PA film it appears near the upper limit of normal by eye, with the right border obscured.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The heart looks wider relative to the chest on the current film, but the current film is AP and the prior is PA. AP magnification alone can produce this difference.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F3"
+      },
+      {
+        "region": "R_hilum",
+        "kind": "other",
+        "description": "Right hilar and infrahilar prominence, continuous with the right lower zone opacity on both studies. Vessels, adjacent lung opacity and a hilar lesion cannot be separated on these films.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "Right hilar density is greater than the left on both films. Mild rotation on both, the projection difference and the overlapping lower zone opacity prevent any call on size or change.",
+        "time_sensitive": false,
+        "agreement": "1_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": null,
+        "reads": {
+          "a": {
+            "region": "R_hilum",
+            "kind": "other",
+            "description": "Right hilar and infrahilar prominence, continuous with the right lower zone opacity on both studies. Vessels, adjacent lung opacity and a hilar lesion cannot be separated on these films.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "Right hilar density is greater than the left on both films. Mild rotation on both, the projection difference and the overlapping lower zone opacity prevent any call on size or change.",
+            "time_sensitive": false
+          },
+          "b": null
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F4"
+      },
+      {
+        "region": "mediastinum",
+        "kind": "other",
+        "description": "Prominent aortic knuckle with an unfolded aortic contour on both studies. The upper mediastinum looks wider on the AP current.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "The aortic knuckle has the same shape and position on both films. The apparent mediastinal widening on the current film is expected with AP projection and is not called as a change.",
+        "time_sensitive": false,
+        "agreement": "status_differs",
+        "read_a_status": "stable",
+        "read_b_status": "indeterminate",
+        "reads": {
+          "a": {
+            "region": "mediastinum",
+            "kind": "other",
+            "description": "Prominent aortic knuckle with an unfolded aortic contour on both studies. The upper mediastinum looks wider on the AP current.",
+            "status": "stable",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The aortic knuckle has the same shape and position on both films. The apparent mediastinal widening on the current film is expected with AP projection and is not called as a change.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "mediastinum",
+            "kind": "other",
+            "description": "Prominent aortic knuckle on both studies. Upper mediastinum looks wider on the current AP film.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": false,
+            "evidence": "The aortic knuckle contour is visible and prominent on both. Apparent widening on the current study coincides with AP projection, possible mild rotation, and underexposure.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F5"
+      },
+      {
+        "region": "L_lower",
+        "kind": "interstitial",
+        "description": "Coarse linear and reticular markings in the left mid and lower zones on both studies.",
+        "status": "stable",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "The markings have a similar distribution on the prior PA and current AP films. No new confluent opacity in the left lung. Density is not compared because of the exposure difference.",
+        "time_sensitive": false,
+        "agreement": "1_of_2",
+        "read_a_status": null,
+        "read_b_status": "stable",
+        "reads": {
+          "a": null,
+          "b": {
+            "region": "L_lower",
+            "kind": "interstitial",
+            "description": "Coarse linear and reticular markings in the left mid and lower zones on both studies.",
+            "status": "stable",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "The markings have a similar distribution on the prior PA and current AP films. No new confluent opacity in the left lung. Density is not compared because of the exposure difference.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F6"
+      }
+    ],
+    "cant_determine": [
+      {
+        "question": "Has the right lower zone opacity changed in size or density since the prior?",
+        "reason": "Prior is PA and current is AP and underexposed. Projection and exposure differences can make a basal opacity look larger or denser.",
+        "recommend": "CT chest, or repeat PA and lateral when the patient is able.",
+        "related_finding": "F1",
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is there a right pleural effusion, including a subpulmonic component, and has it changed?",
+        "reason": "The high, indistinct right basal contour with an aerated lateral sulcus could reflect subpulmonic fluid, an elevated hemidiaphragm, or basal volume loss. A frontal film alone cannot separate these, and patient position on the current AP is not shown.",
+        "recommend": "Lateral or right lateral decubitus view, ultrasound of the right base, or CT chest.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is there a right hilar or infrahilar mass or adenopathy underlying the right basal opacity and volume loss?",
+        "reason": "The right hilum merges with the adjacent opacity on both films. Mild rotation and the AP projection make hilar size unreliable.",
+        "recommend": "CT chest, with contrast if appropriate.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Has heart size changed?",
+        "reason": "AP projection magnifies the heart, and cardiothoracic ratio is valid on PA films only. The right heart border is also obscured on both studies.",
+        "recommend": "Repeat PA film when the patient is able, or echocardiography if clinically relevant.",
+        "related_finding": "F3",
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is the right hemidiaphragm truly elevated, or is the contour formed by subpulmonic fluid or a process below the diaphragm?",
+        "reason": "The true diaphragm is not separately visible on a frontal film. The lordotic AP beam angle on the current film also alters the apparent dome height.",
+        "recommend": "Ultrasound of the right upper quadrant and right base, or CT covering the chest and upper abdomen.",
+        "related_finding": "F2",
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Are there small nodules or fine interstitial changes in either lung on the current study?",
+        "reason": "The current film is underexposed with heavy soft tissue overlap, and the clavicles project over the apices. Small nodules cannot be confirmed or excluded.",
+        "recommend": "CT chest, or repeat PA and lateral with adequate exposure.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Has the heart enlarged since the prior?",
+        "reason": "Prior is PA and current is AP. AP projection magnifies the heart, and the right heart border is obscured on both films.",
+        "recommend": "Repeat PA and lateral when the patient is able, or CT chest.",
+        "related_finding": "F3",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Has the right lower zone opacity grown, shrunk, or stayed the same?",
+        "reason": "Projection differs (PA then AP) and the current film is underpenetrated. Size and density change cannot be reported across these differences.",
+        "recommend": "Repeat PA and lateral with good inspiration, or CT chest.",
+        "related_finding": "F1",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the high right hemidiaphragm contour a truly elevated diaphragm, a subpulmonic effusion, or lower lobe volume loss?",
+        "reason": "A frontal film alone cannot separate these. Patient position on the current AP film is unknown, and fluid layers out when supine.",
+        "recommend": "Lateral and right lateral decubitus views, ultrasound of the right base, or CT chest.",
+        "related_finding": null,
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the upper mediastinum truly wider on the current study?",
+        "reason": "AP projection, possible mild rotation, and underexposure each widen or blur the mediastinal contour.",
+        "recommend": "Repeat PA film, or CT chest if there is clinical concern.",
+        "related_finding": "F5",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Are there small lung nodules or a hilar abnormality on the current study?",
+        "reason": "The current film is underpenetrated and low in contrast, with overlying soft tissue shadows. Small nodules and hilar detail cannot be assessed, and the right hilum is partly obscured by adjacent opacity on both studies.",
+        "recommend": "Review the source image in PACS with windowing; CT chest if a nodule or hilar lesion needs to be excluded.",
+        "related_finding": null,
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is there a retrocardiac opacity?",
+        "reason": "Vertebrae are not visible behind the heart on the current film, and a frontal view alone cannot clear this area.",
+        "recommend": "Lateral view or CT chest.",
+        "related_finding": null,
+        "from_reads": [
+          "B"
+        ]
+      }
+    ],
+    "indication_pass": {
+      "question": "Known lung nodule under surveillance, admitted with fever: has the nodule changed?",
+      "answer": "No discrete nodule can be identified and matched on both films, so change in the nodule cannot be judged from these images. The only focal lung abnormality is the hazy right lower zone opacity (F1), present on both films; its size and density cannot be compared because the prior is PA and the current is an underexposed AP, and a new process within it cannot be confirmed or excluded, while the left lung shows no new confluent opacity.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "R_pleura",
+        "L_pleura",
+        "mediastinum"
+      ]
+    },
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Nodular opacity (no side or zone given).",
+        "images_show": "No discrete, well-defined nodule is seen on the prior or the current film. The prior shows a hazy, ill-defined right lower zone opacity with right hilar and infrahilar prominence (F1, F4). The images cannot establish whether this is the opacity the report means, so it has not been adopted as the nodule. Small nodules cannot be excluded on the underexposed current film."
+      },
+      {
+        "prior_report_says": "Small pleural effusion (no side given).",
+        "images_show": "No definite meniscus or blunted lateral costophrenic angle is seen on either side on the prior or the current film. The right basal contour is high and indistinct medially with an aerated lateral sulcus on both films (F2). Whether this includes subpulmonic fluid remains undetermined on frontal films alone. An effusion has not been adopted as a finding."
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F4",
+      "F2"
+    ],
+    "study_flags": [],
+    "limits": "This is a blind first read of two single frontal radiographs, with no lateral views, no indication and no dates. The prior is PA and the current is AP and underexposed, so no size change is reported for any finding. No measurements are given because the images carry no pixel scale and magnification is unknown. The images are downsampled, so fine detail such as margins, calcification, cavitation and subtle rib lesions should be reviewed on the source images in PACS. Patient identity match is assumed from the similar aortic contour and right basal abnormality and has not been verified. This is a draft for resident and attending review. | Draft blind first read for resident and attending review, made without the indication or study dates. Two frontal radiographs only, with no lateral views. The prior is PA and the current is AP, so no size change is reported for the heart, the mediastinum, or any opacity. The current film is underpenetrated, which limits assessment of small nodules, the hila, the retrocardiac region, and bone detail. Rotation on the current film is estimated from poorly seen landmarks. Patient position is not shown on either image. No measurements are given; the radiologist measures in PACS. The images are downsampled, so fine detail should be checked on the source images."
+  },
+  "code_checks": [
+    {
+      "check": "every finding has region, kind, status, evidence and agreement",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no millimeter value or percent in Lightbox output",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not comparable: no finding is called increased or decreased",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "views differ: no size change is reported",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no finding from either blind read is missing after reconciliation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "every look_first id exists",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "stat": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "Temp 38.4 C, admitted with fever, source under evaluation",
+        "bears_on": "F1 right lower zone opacity (change cannot be judged)",
+        "why": "Fever with a basal opacity that cannot be compared raises the need for early human review of a possible new process."
+      },
+      {
+        "item": "Problem list: lung nodule under surveillance",
+        "bears_on": "Indication: has the nodule changed",
+        "why": "No nodule could be matched on either film, so the surveillance question is unanswered and needs a person."
+      },
+      {
+        "item": "Prior report lists small pleural effusion, side not given",
+        "bears_on": "Right pleural effusion question (cant_determine)",
+        "why": "Subpulmonic fluid with fever is not excluded, and the prior report is not confirmed by the images."
+      }
+    ],
+    "worklist_reason": "Nodule change unanswerable on mismatched films; right lower opacity with fever cannot be compared, needs radiologist review."
+  },
+  "paged_on_call_at": null,
+  "report_draft": "EXAM: Chest radiograph, one view, 2026-11-20\nCLINICAL INDICATION: Known lung nodule under surveillance. Admitted with fever. Portable film. Has the nodule changed?\nORDERING PROVIDER: Dr. S. Whitfield (synthetic), medical oncology\nCOMPARISON: Chest radiograph, 2026-08-21\nTECHNIQUE: Current AP, prior PA. Projection differs from the prior. The current film is also underexposed and appears lordotic. Both films are mildly rotated. Upright versus supine position is not shown on either film. Comparability is limited.\n\nLOOK AT FIRST:\n- Priority order from the findings. None of these is flagged time-sensitive.\n- F1: Hazy right lower zone opacity (consolidation), indeterminate.\n- F4: Right hilar and infrahilar prominence, indeterminate. Only one read is recorded for this finding.\n- F2: Elevated, indistinct right hemidiaphragm contour, indeterminate. The two reads disagreed (one indeterminate, one stable).\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Current: the trachea is poorly seen through the underexposed upper mediastinum, with no gross displacement. Hazy, ill-defined opacity in the right lower zone with apparent right basal volume loss reaches the lower right mid zone and obscures the right heart border and medial right hemidiaphragm (F1). It is present on both studies. The apparently greater extent on the current film may be explained by AP projection, underexposure and overlying soft tissue, so it is indeterminate. The left lung shows no focal opacity or new confluent opacity. Coarse linear and reticular markings are present in the left mid and lower zones on both studies (F6, one read recorded, stable). Vascular markings reach the chest wall on both sides. No pneumothorax. Small nodules and fine interstitial change cannot be excluded on the underexposed current film.\n- Mediastinum / hila: The aortic knuckle is prominent with an unfolded contour on both studies. The upper mediastinum looks wider on the AP current film, as expected with AP projection (F5). The two reads disagreed (one stable, one indeterminate), so this is indeterminate and no change is called. The right hilum and infrahilar region are prominent and continuous with the right lower zone opacity on both studies (F4, indeterminate, one read recorded). The right hilum cannot be separated from the adjacent opacity. The left hilum is not clearly enlarged.\n- Pleura: The lateral right costophrenic sulcus is aerated and pointed, while the medial right base is opaque. Subpulmonic or layering pleural fluid is not excluded. The left costophrenic angle is sharp. No pneumothorax. The right hemidiaphragm is high and indistinct medially on both studies with an aerated lateral sulcus (F2). The reads disagreed, so this is indeterminate and interval change cannot be judged.\n- Heart: The cardiac silhouette appears prominent on the PA prior and enlarged on the AP current. AP projection magnifies the heart, and the right heart border is obscured on both films (F3). This is indeterminate, with no size change reported.\n- Bones / soft tissue: No displaced rib fracture or gross destructive bone lesion. Bone detail is limited by underexposure. Chest wall soft tissue is prominent. No soft tissue gas. No lines, tubes, pacemaker or other internal device identified. External radiopaque markers on the prior are outside the lungs. No free gas is identified beneath the diaphragm, but the upper abdomen is underexposed on the current film.\n\nINTERVAL CHANGE:\n- Changed: None can be called. Size and density change of the right lower zone opacity, heart size, mediastinal width, hilar size and pleural fluid cannot be compared because the prior is PA and the current is an underexposed AP.\n- Unchanged: Coarse linear and reticular markings in the left mid and lower zones have a similar distribution on both films (F6, one read recorded). Density is not compared because of the exposure difference. The right lower zone opacity is present in the same location on both films, but its size and density change are not comparable.\n\nRECIST 1.1: Not computed on radiographs.\n\nCAN'T DETERMINE:\n- Has the right lower zone opacity changed in size or density since the prior? | Reason: Prior is PA and current is AP and underexposed. Projection and exposure differences can make a basal opacity look larger or denser. | Recommend: CT chest, or repeat PA and lateral when the patient is able.\n- Is there a right pleural effusion, including a subpulmonic component, and has it changed? | Reason: The high, indistinct right basal contour with an aerated lateral sulcus could reflect subpulmonic fluid, an elevated hemidiaphragm, or basal volume loss. A frontal film alone cannot separate these, and patient position on the current AP is not shown. | Recommend: Lateral or right lateral decubitus view, ultrasound of the right base, or CT chest.\n- Is there a right hilar or infrahilar mass or adenopathy underlying the right basal opacity and volume loss? | Reason: The right hilum merges with the adjacent opacity on both films. Mild rotation and the AP projection make hilar size unreliable. | Recommend: CT chest, with contrast if appropriate.\n- Has heart size changed? | Reason: AP projection magnifies the heart, and cardiothoracic ratio is valid on PA films only. The right heart border is also obscured on both studies. | Recommend: Repeat PA film when the patient is able, or echocardiography if clinically relevant.\n- Is the right hemidiaphragm truly elevated, or is the contour formed by subpulmonic fluid or a process below the diaphragm? | Reason: The true diaphragm is not separately visible on a frontal film. The lordotic AP beam angle on the current film also alters the apparent dome height. | Recommend: Ultrasound of the right upper quadrant and right base, or CT covering the chest and upper abdomen.\n- Are there small nodules or fine interstitial changes in either lung on the current study? | Reason: The current film is underexposed with heavy soft tissue overlap, and the clavicles project over the apices. Small nodules cannot be confirmed or excluded. | Recommend: CT chest, or repeat PA and lateral with adequate exposure.\n- Has the heart enlarged since the prior? | Reason: Prior is PA and current is AP. AP projection magnifies the heart, and the right heart border is obscured on both films. | Recommend: Repeat PA and lateral when the patient is able, or CT chest.\n- Has the right lower zone opacity grown, shrunk, or stayed the same? | Reason: Projection differs (PA then AP) and the current film is underpenetrated. Size and density change cannot be reported across these differences. | Recommend: Repeat PA and lateral with good inspiration, or CT chest.\n- Is the high right hemidiaphragm contour a truly elevated diaphragm, a subpulmonic effusion, or lower lobe volume loss? | Reason: A frontal film alone cannot separate these. Patient position on the current AP film is unknown, and fluid layers out when supine. | Recommend: Lateral and right lateral decubitus views, ultrasound of the right base, or CT chest.\n- Is the upper mediastinum truly wider on the current study? | Reason: AP projection, possible mild rotation, and underexposure each widen or blur the mediastinal contour. | Recommend: Repeat PA film, or CT chest if there is clinical concern.\n- Are there small lung nodules or a hilar abnormality on the current study? | Reason: The current film is underpenetrated and low in contrast, with overlying soft tissue shadows. Small nodules and hilar detail cannot be assessed, and the right hilum is partly obscured by adjacent opacity on both studies. | Recommend: Review the source image in PACS with windowing. CT chest if a nodule or hilar lesion needs to be excluded.\n- Is there a retrocardiac opacity? | Reason: Vertebrae are not visible behind the heart on the current film, and a frontal view alone cannot clear this area. | Recommend: Lateral view or CT chest.\n\nIMPRESSION:\n1. Hazy right lower zone opacity with apparent right basal volume loss, present on both films, obscuring the right heart border and medial right hemidiaphragm (F1). Size and density change are indeterminate because the prior is PA and the current is an underexposed AP. A new process within it cannot be confirmed or excluded.\n2. Right hilar and infrahilar prominence continuous with the right lower zone opacity (F4). Indeterminate, with no call on size or change. Only one read is recorded for this finding.\n3. High, medially indistinct right hemidiaphragm contour with an aerated lateral sulcus on both films (F2). Indeterminate because the two reads disagreed. Subpulmonic fluid is not excluded.\n4. Cardiac silhouette appears prominent to enlarged (F3). Indeterminate across the PA and AP projections, with no size change reported.\n5. Prominent aortic knuckle with apparent upper mediastinal widening on the AP current film (F5). Indeterminate because the two reads disagreed. No change is called.\n6. Coarse linear and reticular markings in the left mid and lower zones, similar in distribution on both films (F6). No new confluent opacity in the left lung.\n7. Indication question: No discrete nodule can be identified and matched on both films, so change in the known nodule cannot be judged from these images. The prior report's nodular opacity and small pleural effusion (neither with a side given) are not confirmed by the images and are not adopted as findings.\n\nRECOMMENDATIONS:\n- CT chest, for the right lower zone opacity, right hilum, pleural question and small nodules. The findings give no interval.\n- Repeat PA and lateral chest radiograph with adequate exposure and inspiration when the patient is able. The findings give no interval.\n- Lateral or right lateral decubitus view, or ultrasound of the right base, for the possible subpulmonic effusion and diaphragm contour. The findings give no interval.\n- Review the source images in PACS with windowing.\n\nAI DRAFT: requires resident review and attending signature.",
+  "report_edited_by_hand": false,
+  "qc": {
+    "pass": true,
+    "mismatches": []
+  },
+  "reviews": {},
+  "measurements": [],
+  "recist": {
+    "category": "not_computed",
+    "prior_sum_mm": null,
+    "current_sum_mm": null,
+    "change_mm": null,
+    "change_pct": null,
+    "targets": [],
+    "reason": "RECIST is not computed on radiographs.",
+    "caveat": null,
+    "line": "RECIST 1.1: not computed on radiographs"
+  },
+  "signature": {
+    "resident": null,
+    "attending": null
+  },
+  "handoff": null,
+  "delivery": null,
+  "patient_informed": false,
+  "calls": [
+    {
+      "agent": "lightbox",
+      "label": "blind_A",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "560df237777ef824446b7ec5616127a699e6529b2f10b7e44b76c39733c967dc",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:39:08.485Z",
+      "attempts": 2,
+      "usage": {
+        "input_tokens": 15059,
+        "output_tokens": 3752
+      }
+    },
+    {
+      "agent": "lightbox",
+      "label": "blind_B",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "0c7cdb235d0051ba7474e088e1e936fef5334b8b8a7b81b6f89c30634197a572",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:38:55.912Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9202,
+        "output_tokens": 7248
+      }
+    },
+    {
+      "agent": "lightbox",
+      "label": "focused",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "debc9b5f9dda5266a4257e533b4f68fd08f865fbf6746277dfa7fe8dcc29d632",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:39:35.056Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 10391,
+        "output_tokens": 2625
+      }
+    },
+    {
+      "agent": "stat",
+      "label": "triage",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "c0324a8fa17ae12dc6dde07cf235cf7c608c1785db86c5a94ab18a238e4b969d",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:39:39.991Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 8951,
+        "output_tokens": 350
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "3009abcf05285352b728010d0258389df821e10dd478c7f694fa7fb81a142124",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:17.233Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7253,
+        "output_tokens": 6370
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "2010f9215be6270ba4344c332aa4aa2452266461a2677f136b76df26e8817f9d",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:26.561Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 10424,
+        "output_tokens": 1136
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "c5853037c2526360fd3023348c382718aab7fb80e36bfeee069ddaa154bf625b",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:40:56.529Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7402,
+        "output_tokens": 5161
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "0e2ff513fd7b433e0a6ec77397a8b2964fba478473739021d6c4edb950dce0fe",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:41:10.865Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9878,
+        "output_tokens": 1846
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_try1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "b78ea46bc72a005bd5749cdda28833c44a62e6893c527257dee091eddaadbebf",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:43:54.686Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7378,
+        "output_tokens": 6404
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_try1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "19207ccb82d8e8befb7a8892c58b16359d550c9139067ada386c13ecbc5cf25b",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:08.559Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 10366,
+        "output_tokens": 1603
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_try1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "6c124b345c8ebf8c8a4d212eeb9618a2e9ab8b8bf933011e9051843d352cceba",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:37.162Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7608,
+        "output_tokens": 5021
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_try1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "2cc44aa37c5c05f462b4d033e559dee7a5b5e529994a94a88e98beff33fe8708",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:44:50.016Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 10240,
+        "output_tokens": 1224
+      }
+    }
+  ],
+  "draft_tries": 1
+}

@@ -59,6 +59,7 @@ export type CasePayload = {
   error?: string | null; // a failure, shown as it happened
   code_checks?: { check: string; pass: boolean; detail: string }[];
   paged_on_call_at?: string | null;
+  can_reset?: boolean; // a recorded baseline exists: the demo can return to the unreviewed AI draft
   replay?: boolean; // DEMO_MODE=replay: responses come from data/cache
   synthetic_fields: string[];
   calls?: { label: string; model: string; replayed: boolean; recorded_at: string }[];

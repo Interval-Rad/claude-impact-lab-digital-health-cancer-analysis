@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "81509a2e176a60860127c31fc792ca8fabe36589a58496b10e57da7f5233e34b",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:21.935Z",
+  "usage": {
+    "input_tokens": 5691,
+    "output_tokens": 2103
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Increased bilateral hazy lung opacity, supine AP chest film",
+      "body": "Line 1: Chest X-ray 11/21 shows more hazy opacity in both lungs than the prior. Possible tube or line is unconfirmed (reads disagreed). Basal, pleural, heart size and right scapula findings are indeterminate on this supine film.\nLine 2: Radiologist recommends repeat upright PA and lateral chest film with good inspiration when able, CT chest if concern persists, and PACS source review with the bedside line record.\nLine 3: Awaiting your signature: pre-filled repeat PA and lateral chest radiograph order."
+    },
+    "followup_order": {
+      "study": "Chest radiograph, PA and lateral, upright, with good inspiration",
+      "body_part": "Chest",
+      "contrast": "None",
+      "interval": "When the patient is able (no specific date given in report)",
+      "reason": "Increased bilateral hazy and reticular opacity on supine AP portable film. Basal opacities, effusions, heart size and mediastinal width could not be determined. Compare with prior PA."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "Prostate cancer on hormone therapy.\nED visit with shortness of breath; SpO2 94 percent.\nPortable AP supine chest film 2026-11-21 compared with PA film 2026-06-30; comparison limited, and the prior report may not match the prior image (radiologist asks for confirmation).",
+      "impression": "RECIST not computed on radiographs. Increased bilateral hazy and reticular perihilar and mid zone opacity with indeterminate basal opacities, effusions and heart size; possible tubes or lines unconfirmed.\nMottled density over the right scapula (F10) is indeterminate in a patient with prostate cancer and needs PACS source image review; no definite sclerotic or destructive lesion seen at this resolution."
+    },
+    "surgeon": "The report does not address surgical candidacy or resectability. No lesion is measured and no size trend is reported. The only possible bone finding is an indeterminate mottled density over the right glenoid and scapular neck (F10), which needs source image review. Cardiac device with transvenous leads is present, similar to the prior.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray because you were short of breath.\nThe X-ray shows more hazy areas in both lungs than your last one. This may be fluid in the lungs. The doctors cannot rule out other causes yet.\nThe film was taken lying down. That makes some parts hard to read.\nThe doctors are also not sure about a few other spots. They are checking the heart size, the edges of the lungs, and a spot near your right shoulder blade.\nYour care team recommends another chest X-ray while you are standing or sitting up, when you are able. You may need a CT scan if the questions remain. A CT scan is a more detailed picture of the inside of your chest.\nIf you have questions, ask Dr. Marte or your nurse in the emergency department."
+  }
+}

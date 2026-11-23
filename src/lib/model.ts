@@ -72,6 +72,12 @@ export interface CallOptions<S extends z.ZodType> {
   schema: S;
   maxTokens?: number;
   /**
+   * Replaces the request body in the cache key. Use it when the input carries a value that
+   * differs on every run but does not change the task (a signature time), so a recorded
+   * response can still be replayed. The request sent to the model is unchanged.
+   */
+  cacheKey?: string;
+  /**
    * Code QC on a schema-valid answer. Returns the problems found, or an empty list.
    * Problems send the answer back to the model once with the list attached
    * (agents/01_CHARGE_orchestrator.md: "return to the agent once with the mismatch list").
@@ -90,8 +96,10 @@ function buildRequest<S extends z.ZodType>(o: CallOptions<S>, messages: Anthropi
 }
 
 export function requestHash<S extends z.ZodType>(o: CallOptions<S>): string {
-  const request = buildRequest(o, [{ role: "user", content: o.content }]);
-  return crypto.createHash("sha256").update(`${o.caseId}\n${o.label}\n${JSON.stringify(request)}`).digest("hex");
+  const body = o.cacheKey !== undefined
+    ? JSON.stringify({ model: o.model, system: o.system, key: o.cacheKey })
+    : JSON.stringify(buildRequest(o, [{ role: "user", content: o.content }]));
+  return crypto.createHash("sha256").update(`${o.caseId}\n${o.label}\n${body}`).digest("hex");
 }
 
 function cachePath(hash: string): string {

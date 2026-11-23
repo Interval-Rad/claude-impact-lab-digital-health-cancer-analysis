@@ -1,0 +1,933 @@
+{
+  "case_id": "control",
+  "state": "DRAFTED",
+  "version": 1,
+  "arrived_at": "2026-11-21T19:48:24.493Z",
+  "status_text": "AI draft ready for resident review",
+  "busy": null,
+  "error": null,
+  "indication_released_at": "2026-11-21T19:49:48.689Z",
+  "blind": {
+    "a": {
+      "comparability": {
+        "prior": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "none",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "Bilateral breast shadows overlap the lower zones and both costophrenic regions",
+            "Side marker at upper corner"
+          ]
+        },
+        "current": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "none",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "Bilateral breast shadows overlap the lower zones, lying slightly differently from the prior",
+            "Side marker at upper corner"
+          ]
+        },
+        "comparable": "yes",
+        "differences": [
+          {
+            "factor": "exposure",
+            "detail": "Current image shows slightly higher contrast and penetration than the prior; lung markings appear crisper on the current.",
+            "prevents": "Confident call of a true increase in fine lung markings, particularly in the right lower zone."
+          },
+          {
+            "factor": "position",
+            "detail": "Breast shadows and left chest wall soft tissues lie differently; the left chest wall device projects over a higher rib level on the current.",
+            "prevents": "Judging true device migration and subtle lower zone density change under the breast shadows."
+          }
+        ]
+      },
+      "systematic_read": {
+        "airway_lungs": "CURRENT: Trachea central with slight rightward deviation at the aortic arch, within normal. Carina and main bronchi not narrowed. Lungs well inflated. No consolidation, mass or band-like collapse. Coarse linear markings in the right medial lower zone are more conspicuous than on the prior. A tiny dense focus projects over the right lower zone. Vascular markings reach the chest wall on both sides. PRIOR: Trachea central. Lungs clear, with no consolidation, mass or collapse. Right lower zone markings less conspicuous. A small rounded density at the right hilar margin looks like a vessel end-on.",
+        "mediastinum_hila": "CURRENT: Aortic knuckle prominent, contour similar to prior. Upper mediastinum not widened. Aortopulmonary window not filled in. Hila normal in position and size, with no one-sided enlargement. PRIOR: Same appearance, with a prominent aortic knuckle and unremarkable hila.",
+        "pleura": "CURRENT: No pleural line to suggest pneumothorax. Right costophrenic angle sharp. Left costophrenic angle appears sharp and is partly overlapped by breast shadow. No visible pleural thickening. PRIOR: No pneumothorax. Both costophrenic angles appear preserved and are partly overlapped by breast shadows.",
+        "heart": "CURRENT: Cardiac silhouette within normal limits on PA, with clear borders. PRIOR: Cardiac silhouette within normal limits on PA, similar in size and shape.",
+        "diaphragm_below": "CURRENT: Both domes well defined, right slightly higher than left. Gastric bubble under the left dome. Several gas-filled bowel loops in the left upper abdomen, more gas than on the prior. No free gas seen under the diaphragm. PRIOR: Domes well defined. Less bowel gas in the left upper abdomen. No free gas.",
+        "bones_soft_tissue": "CURRENT: No displaced rib fracture or destructive rib lesion seen at this resolution. Clavicles and shoulders intact. Mild curvature and degenerative change of the visible spine. Both breast shadows present. No soft tissue gas. PRIOR: Same appearance.",
+        "devices": "CURRENT: Left chest wall implanted device. Thin tubing arcs from the left infraclavicular region down to a small metallic component over the left mid zone, consistent with an implanted venous access device with a faintly opaque reservoir. The central catheter course and tip are not confidently traced. PRIOR: Same device present, with the metallic component projecting over a lower rib level. No new device."
+      },
+      "findings": [
+        {
+          "region": "devices",
+          "kind": "device",
+          "description": "Left chest wall implanted device with arcing tubing and a small metallic component over the left mid zone, consistent with an implanted venous access device. Present on both studies.",
+          "status": "stable",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "Same tubing arc and metallic component on both films. The component projects over a higher rib level on the current, and breast and chest wall soft tissues lie differently between the two. No new device.",
+          "time_sensitive": false
+        },
+        {
+          "region": "R_lower",
+          "kind": "interstitial",
+          "description": "Coarse linear bronchovascular markings in the right medial lower zone, more conspicuous on the current. No confluent consolidation.",
+          "status": "indeterminate",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "Markings in the right infrahilar and medial lower zone are denser and crisper on the current. The current also has higher contrast, and the breast shadow overlaps the zone differently, so technique might explain the difference.",
+          "time_sensitive": false
+        },
+        {
+          "region": "mediastinum",
+          "kind": "other",
+          "description": "Prominent aortic knuckle, consistent with an unfolded aorta. Upper mediastinum not widened.",
+          "status": "stable",
+          "size_change_words": "similar",
+          "needs_measurement": false,
+          "evidence": "Aortic knuckle contour and upper mediastinal width look alike on both PA films.",
+          "time_sensitive": false
+        },
+        {
+          "region": "heart",
+          "kind": "cardiac_silhouette",
+          "description": "Cardiac silhouette within normal limits on PA, with clear borders.",
+          "status": "stable",
+          "size_change_words": "similar",
+          "needs_measurement": false,
+          "evidence": "Both films are PA with adequate inspiration. The heart occupies under half the thoracic width on each and its borders are sharp.",
+          "time_sensitive": false
+        },
+        {
+          "region": "diaphragm_below",
+          "kind": "other",
+          "description": "More gas-filled bowel loops in the left upper abdomen on the current. No free gas under either dome.",
+          "status": "indeterminate",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "Several rounded gas lucencies below the left dome on the current, fewer on the prior. Each has a visible bowel wall or haustral outline. No crescent of gas between diaphragm and liver. Bowel gas varies from film to film.",
+          "time_sensitive": false
+        }
+      ],
+      "cant_determine": [
+        {
+          "question": "Is the tiny dense focus over the right lower zone on the current a true nodule, for example a calcified granuloma, or a vessel end-on?",
+          "reason": "The focus is very small, sits among crossing vessels, and is not clearly visible on the prior, which has lower contrast. A frontal film does not separate a small nodule from a vessel end-on or a bone island.",
+          "recommend": "Review the source images in PACS. If it persists, CT chest.",
+          "region": "R_lower",
+          "kind": "nodule_or_mass"
+        },
+        {
+          "question": "Is the increased conspicuity of the right lower zone markings a true interval change?",
+          "reason": "The current image has higher contrast and a different breast shadow position, both of which make markings look more prominent.",
+          "recommend": "Correlate clinically. Short-interval repeat PA and lateral, or CT chest if there is clinical concern.",
+          "region": "R_lower",
+          "kind": "interstitial"
+        },
+        {
+          "question": "Where is the catheter tip of the left chest wall device, and has the device moved?",
+          "reason": "The central course of the tubing is not traceable through the mediastinum at this resolution. The metallic component projects at a different rib level on the two films, which soft tissue and breast positioning might explain.",
+          "recommend": "Review the source images in PACS with windowing for lines. Add a lateral view if tip position matters clinically.",
+          "region": "devices",
+          "kind": "device"
+        },
+        {
+          "question": "Is there a small left pleural effusion or a subtle left lower zone opacity?",
+          "reason": "Breast shadow overlaps the left costophrenic region and lower zone on both films, and there is no lateral view.",
+          "recommend": "Lateral view if clinically relevant.",
+          "region": "L_pleura",
+          "kind": "effusion"
+        },
+        {
+          "question": "Are there subtle lesions in the ribs or spine?",
+          "reason": "The images are low resolution and compressed, so fine bone detail such as pedicles and small lucent lesions is not assessable.",
+          "recommend": "Review the source images in PACS on bone settings.",
+          "region": "bones",
+          "kind": "bone_lesion"
+        }
+      ],
+      "limits": "Draft first read for resident and attending review. This was a blind read with no indication and no dates. It is based on two downsampled frontal PA images with no lateral view and no pixel scale, so no measurements are given. Fine detail of margins, calcification, small nodules and bone is limited at this resolution. Retrocardiac and apical regions were assessed on frontal projection alone. Patient identity and study dates were not verified here."
+    },
+    "b": {
+      "comparability": {
+        "prior": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "none",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "bilateral breast shadows overlying the lower zones",
+            "left chest wall port and catheter overlying the left upper and mid zones"
+          ]
+        },
+        "current": {
+          "view": "PA",
+          "view_inferred": false,
+          "rotation": "none",
+          "inspiration": "adequate",
+          "exposure": "adequate",
+          "coverage": "complete",
+          "artifacts": [
+            "bilateral breast shadows overlying the lower zones",
+            "left chest wall port and catheter overlying the left upper and mid zones"
+          ]
+        },
+        "comparable": "yes",
+        "differences": [
+          {
+            "factor": "inspiration",
+            "detail": "Current is taken at slightly deeper inspiration than the prior; both are adequate.",
+            "prevents": "Small differences in heart size and in crowding of basal markings should not be read as real change."
+          },
+          {
+            "factor": "exposure",
+            "detail": "Current looks slightly sharper and higher in contrast than the prior; both are adequately penetrated.",
+            "prevents": "A confident call on subtle change in fine lung markings, hilar density or very small nodular foci."
+          },
+          {
+            "factor": "position",
+            "detail": "Arm, shoulder and breast soft tissue position differ slightly; the port reservoir projects over a higher level of the left chest on the current.",
+            "prevents": "A confident call on true port or catheter migration from projected position alone."
+          }
+        ]
+      },
+      "systematic_read": {
+        "airway_lungs": "CURRENT: Trachea central, no narrowing seen. Lungs well expanded. Coarse linear bronchovascular markings in the medial right lower zone running from the right hilum toward the base, with a small dense nodular focus projected over the medial right lower zone. No lobar consolidation or collapse. Apices clear. PRIOR: Trachea central. Lungs expanded. Right lower zone markings are present but less conspicuous on a softer image. Mild streaky left perihilar markings on both studies. No consolidation or collapse.",
+        "mediastinum_hila": "CURRENT: Upper mediastinum not widened. Aortic knuckle prominent. Right hilum and infrahilar region look fuller and denser than the left. Left hilum unremarkable, partly overlapped by the catheter. PRIOR: Aortic knuckle prominent, similar. Right hilum shows a small dense focus and is less full than on the current. Left hilum unremarkable.",
+        "pleura": "CURRENT: Both costophrenic angles sharp. No pleural line and no lung edge to suggest pneumothorax. No visible pleural thickening. PRIOR: Costophrenic angles preserved, partly overlapped by breast shadows. No pneumothorax seen.",
+        "heart": "CURRENT: Cardiac silhouette within normal limits on PA, borders sharp. PRIOR: Cardiac silhouette within normal limits on PA and marginally wider in appearance than the current, in keeping with slightly shallower inspiration. Borders sharp.",
+        "diaphragm_below": "CURRENT: Both domes well defined, right slightly higher than left. Gastric bubble and gas-filled bowel loops under the left dome. No free gas under the diaphragm. PRIOR: Both domes well defined. Less bowel gas under the left dome. No free gas.",
+        "bones_soft_tissue": "CURRENT: No displaced rib fracture or destructive rib lesion at this resolution. Clavicles intact. Mild curvature of the thoracolumbar spine. Left humeral head has a slightly heterogeneous texture. Both breast shadows present. No soft tissue gas. PRIOR: Same appearance, including the heterogeneous left humeral head and the spinal curvature.",
+        "devices": "CURRENT: Left chest wall port with the catheter arching over the lateral left upper chest toward the left subclavian region and central veins. Catheter tip not confidently traced over the mediastinum. PRIOR: Same port and catheter, with the reservoir projected lower over the left mid zone. Tip not confidently traced. No new device."
+      },
+      "findings": [
+        {
+          "region": "R_hilum",
+          "kind": "other",
+          "description": "Right hilar and infrahilar fullness and density, more conspicuous than on the prior. Left hilum is not enlarged.",
+          "status": "indeterminate",
+          "size_change_words": "not_comparable",
+          "needs_measurement": true,
+          "evidence": "The right hilum is denser and fuller than the left on the current. On the prior it shows only a small dense focus with less fullness. The current is sharper and at deeper inspiration, which may account for part of the difference.",
+          "time_sensitive": false
+        },
+        {
+          "region": "R_lower",
+          "kind": "interstitial",
+          "description": "Coarse linear and reticular markings in the medial right lower zone running from the hilum to the base, more conspicuous than on the prior.",
+          "status": "indeterminate",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "The markings are sharper and more numerous on the current. They are present but fainter on the softer prior image, and breast shadow overlies the region on both. Image sharpness and exposure may explain the difference.",
+          "time_sensitive": false
+        },
+        {
+          "region": "heart",
+          "kind": "cardiac_silhouette",
+          "description": "Cardiac silhouette within normal limits on both PA films.",
+          "status": "stable",
+          "size_change_words": "similar",
+          "needs_measurement": false,
+          "evidence": "The heart occupies under half of the thoracic width on both PA studies. It looks marginally narrower on the current, in keeping with deeper inspiration.",
+          "time_sensitive": false
+        },
+        {
+          "region": "mediastinum",
+          "kind": "other",
+          "description": "Prominent aortic knuckle without upper mediastinal widening.",
+          "status": "stable",
+          "size_change_words": "similar",
+          "needs_measurement": false,
+          "evidence": "The aortic knuckle contour and upper mediastinal width are alike on both studies.",
+          "time_sensitive": false
+        },
+        {
+          "region": "devices",
+          "kind": "device",
+          "description": "Left chest wall port with catheter directed toward the central veins, present on both studies. The reservoir projects higher on the current than on the prior.",
+          "status": "stable",
+          "size_change_words": "not_applicable",
+          "needs_measurement": false,
+          "evidence": "The same port and catheter loop are seen on both studies, with no new device. The reservoir lies over the left mid zone on the prior and over the upper-mid zone on the current, with a similar catheter arc. Arm and breast position differ between the films.",
+          "time_sensitive": false
+        }
+      ],
+      "cant_determine": [
+        {
+          "question": "Is the right hilar and infrahilar fullness a real interval change, such as enlarged nodes or a hilar mass, or prominent vessels made more conspicuous by technique?",
+          "reason": "A frontal film alone cannot separate vessels from nodes or mass. The current is sharper and at deeper inspiration than the prior.",
+          "recommend": "CT chest with contrast. A lateral view would help if CT is not immediately available.",
+          "region": "R_hilum",
+          "kind": "other"
+        },
+        {
+          "question": "Is the small dense nodular focus over the medial right lower zone on the current a true lung nodule, a calcified granuloma, or a vessel seen end-on?",
+          "reason": "It is a small focus on X-ray within crowded bronchovascular markings and breast shadow, and no definite matching focus is seen at the same site on the softer prior image.",
+          "recommend": "CT chest.",
+          "region": "R_lower",
+          "kind": "nodule_or_mass"
+        },
+        {
+          "question": "Are the more conspicuous right lower zone linear markings a true interstitial change?",
+          "reason": "The current is sharper and slightly different in exposure and inspiration, and breast shadow overlies the region on both films.",
+          "recommend": "Review the source images in PACS. If the difference persists there, CT chest.",
+          "region": "R_lower",
+          "kind": "interstitial"
+        },
+        {
+          "question": "Where is the port catheter tip, and has the port or catheter moved?",
+          "reason": "The catheter tip cannot be traced over the mediastinum at this image resolution. The different projected level of the reservoir may reflect arm and breast position only.",
+          "recommend": "Review the source images in PACS with windowing to trace the catheter to its tip. Add a lateral view if tip position remains unclear.",
+          "region": "devices",
+          "kind": "device"
+        },
+        {
+          "question": "Is the heterogeneous texture of the left humeral head a bone lesion or a normal or degenerative appearance?",
+          "reason": "The images are low resolution and the shoulder is at the edge of a chest film, so fine bone detail is unreliable. The appearance is similar on both studies.",
+          "recommend": "Review the source images in PACS. Dedicated left shoulder radiographs if the appearance persists.",
+          "region": "bones",
+          "kind": "bone_lesion"
+        }
+      ],
+      "limits": "This is a blind read with no indication and no study dates. Each study is a single frontal view with no lateral, so the retrocardiac region and hila are incompletely assessed. The images are downsampled with no pixel scale, so no measurements are given and fine detail (margins, calcification, small nodules, bone texture, catheter tip) is unreliable. Breast shadows overlie both lower zones on both studies. This is a draft for resident and attending review."
+    }
+  },
+  "focused": {
+    "indication_pass": {
+      "question": "In a patient with treated breast cancer on routine surveillance and no new symptoms, do the images show any sign of disease in the chest (lung nodule or mass, hilar or mediastinal node enlargement, pleural effusion, bone lesion), and has anything changed from the prior?",
+      "answer": "No definite lung mass, confluent opacity, right pleural effusion or destructive rib lesion is seen on the current PA film, and the upper mediastinum is not widened. The right hilar and infrahilar fullness (F6), the more conspicuous right lower zone markings (F2), the tiny dense right lower zone focus and the left humeral head texture remain undetermined on these frontal films, and the left costophrenic region is hidden by breast shadow.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura",
+        "bones",
+        "soft_tissue",
+        "devices"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F6",
+      "F2"
+    ]
+  },
+  "lightbox": {
+    "comparability": {
+      "prior": {
+        "view": "PA",
+        "view_inferred": false,
+        "rotation": "none",
+        "inspiration": "adequate",
+        "exposure": "adequate",
+        "coverage": "complete",
+        "artifacts": [
+          "Bilateral breast shadows overlap the lower zones and both costophrenic regions",
+          "Side marker at upper corner"
+        ]
+      },
+      "current": {
+        "view": "PA",
+        "view_inferred": false,
+        "rotation": "none",
+        "inspiration": "adequate",
+        "exposure": "adequate",
+        "coverage": "complete",
+        "artifacts": [
+          "Bilateral breast shadows overlap the lower zones, lying slightly differently from the prior",
+          "Side marker at upper corner"
+        ]
+      },
+      "comparable": "yes",
+      "differences": [
+        {
+          "factor": "exposure",
+          "detail": "Current image shows slightly higher contrast and penetration than the prior; lung markings appear crisper on the current.",
+          "prevents": "Confident call of a true increase in fine lung markings, particularly in the right lower zone."
+        },
+        {
+          "factor": "position",
+          "detail": "Breast shadows and left chest wall soft tissues lie differently; the left chest wall device projects over a higher rib level on the current.",
+          "prevents": "Judging true device migration and subtle lower zone density change under the breast shadows."
+        }
+      ]
+    },
+    "comparable_by_read": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "systematic_read": {
+      "airway_lungs": "CURRENT: Trachea central with slight rightward deviation at the aortic arch, within normal. Carina and main bronchi not narrowed. Lungs well inflated. No consolidation, mass or band-like collapse. Coarse linear markings in the right medial lower zone are more conspicuous than on the prior. A tiny dense focus projects over the right lower zone. Vascular markings reach the chest wall on both sides. PRIOR: Trachea central. Lungs clear, with no consolidation, mass or collapse. Right lower zone markings less conspicuous. A small rounded density at the right hilar margin looks like a vessel end-on.",
+      "mediastinum_hila": "CURRENT: Aortic knuckle prominent, contour similar to prior. Upper mediastinum not widened. Aortopulmonary window not filled in. Hila normal in position and size, with no one-sided enlargement. PRIOR: Same appearance, with a prominent aortic knuckle and unremarkable hila.",
+      "pleura": "CURRENT: No pleural line to suggest pneumothorax. Right costophrenic angle sharp. Left costophrenic angle appears sharp and is partly overlapped by breast shadow. No visible pleural thickening. PRIOR: No pneumothorax. Both costophrenic angles appear preserved and are partly overlapped by breast shadows.",
+      "heart": "CURRENT: Cardiac silhouette within normal limits on PA, with clear borders. PRIOR: Cardiac silhouette within normal limits on PA, similar in size and shape.",
+      "diaphragm_below": "CURRENT: Both domes well defined, right slightly higher than left. Gastric bubble under the left dome. Several gas-filled bowel loops in the left upper abdomen, more gas than on the prior. No free gas seen under the diaphragm. PRIOR: Domes well defined. Less bowel gas in the left upper abdomen. No free gas.",
+      "bones_soft_tissue": "CURRENT: No displaced rib fracture or destructive rib lesion seen at this resolution. Clavicles and shoulders intact. Mild curvature and degenerative change of the visible spine. Both breast shadows present. No soft tissue gas. PRIOR: Same appearance.",
+      "devices": "CURRENT: Left chest wall implanted device. Thin tubing arcs from the left infraclavicular region down to a small metallic component over the left mid zone, consistent with an implanted venous access device with a faintly opaque reservoir. The central catheter course and tip are not confidently traced. PRIOR: Same device present, with the metallic component projecting over a lower rib level. No new device."
+    },
+    "findings": [
+      {
+        "region": "devices",
+        "kind": "device",
+        "description": "Left chest wall implanted device with arcing tubing and a small metallic component over the left mid zone, consistent with an implanted venous access device. Present on both studies.",
+        "status": "stable",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "Same tubing arc and metallic component on both films. The component projects over a higher rib level on the current, and breast and chest wall soft tissues lie differently between the two. No new device.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "stable",
+        "read_b_status": "stable",
+        "reads": {
+          "a": {
+            "region": "devices",
+            "kind": "device",
+            "description": "Left chest wall implanted device with arcing tubing and a small metallic component over the left mid zone, consistent with an implanted venous access device. Present on both studies.",
+            "status": "stable",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "Same tubing arc and metallic component on both films. The component projects over a higher rib level on the current, and breast and chest wall soft tissues lie differently between the two. No new device.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "devices",
+            "kind": "device",
+            "description": "Left chest wall port with catheter directed toward the central veins, present on both studies. The reservoir projects higher on the current than on the prior.",
+            "status": "stable",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "The same port and catheter loop are seen on both studies, with no new device. The reservoir lies over the left mid zone on the prior and over the upper-mid zone on the current, with a similar catheter arc. Arm and breast position differ between the films.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F1"
+      },
+      {
+        "region": "R_lower",
+        "kind": "interstitial",
+        "description": "Coarse linear bronchovascular markings in the right medial lower zone, more conspicuous on the current. No confluent consolidation.",
+        "status": "indeterminate",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "Markings in the right infrahilar and medial lower zone are denser and crisper on the current. The current also has higher contrast, and the breast shadow overlaps the zone differently, so technique might explain the difference.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": "indeterminate",
+        "reads": {
+          "a": {
+            "region": "R_lower",
+            "kind": "interstitial",
+            "description": "Coarse linear bronchovascular markings in the right medial lower zone, more conspicuous on the current. No confluent consolidation.",
+            "status": "indeterminate",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "Markings in the right infrahilar and medial lower zone are denser and crisper on the current. The current also has higher contrast, and the breast shadow overlaps the zone differently, so technique might explain the difference.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "R_lower",
+            "kind": "interstitial",
+            "description": "Coarse linear and reticular markings in the medial right lower zone running from the hilum to the base, more conspicuous than on the prior.",
+            "status": "indeterminate",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "The markings are sharper and more numerous on the current. They are present but fainter on the softer prior image, and breast shadow overlies the region on both. Image sharpness and exposure may explain the difference.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F2"
+      },
+      {
+        "region": "mediastinum",
+        "kind": "other",
+        "description": "Prominent aortic knuckle, consistent with an unfolded aorta. Upper mediastinum not widened.",
+        "status": "stable",
+        "size_change_words": "similar",
+        "needs_measurement": false,
+        "evidence": "Aortic knuckle contour and upper mediastinal width look alike on both PA films.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "stable",
+        "read_b_status": "stable",
+        "reads": {
+          "a": {
+            "region": "mediastinum",
+            "kind": "other",
+            "description": "Prominent aortic knuckle, consistent with an unfolded aorta. Upper mediastinum not widened.",
+            "status": "stable",
+            "size_change_words": "similar",
+            "needs_measurement": false,
+            "evidence": "Aortic knuckle contour and upper mediastinal width look alike on both PA films.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "mediastinum",
+            "kind": "other",
+            "description": "Prominent aortic knuckle without upper mediastinal widening.",
+            "status": "stable",
+            "size_change_words": "similar",
+            "needs_measurement": false,
+            "evidence": "The aortic knuckle contour and upper mediastinal width are alike on both studies.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F3"
+      },
+      {
+        "region": "heart",
+        "kind": "cardiac_silhouette",
+        "description": "Cardiac silhouette within normal limits on PA, with clear borders.",
+        "status": "stable",
+        "size_change_words": "similar",
+        "needs_measurement": false,
+        "evidence": "Both films are PA with adequate inspiration. The heart occupies under half the thoracic width on each and its borders are sharp.",
+        "time_sensitive": false,
+        "agreement": "2_of_2",
+        "read_a_status": "stable",
+        "read_b_status": "stable",
+        "reads": {
+          "a": {
+            "region": "heart",
+            "kind": "cardiac_silhouette",
+            "description": "Cardiac silhouette within normal limits on PA, with clear borders.",
+            "status": "stable",
+            "size_change_words": "similar",
+            "needs_measurement": false,
+            "evidence": "Both films are PA with adequate inspiration. The heart occupies under half the thoracic width on each and its borders are sharp.",
+            "time_sensitive": false
+          },
+          "b": {
+            "region": "heart",
+            "kind": "cardiac_silhouette",
+            "description": "Cardiac silhouette within normal limits on both PA films.",
+            "status": "stable",
+            "size_change_words": "similar",
+            "needs_measurement": false,
+            "evidence": "The heart occupies under half of the thoracic width on both PA studies. It looks marginally narrower on the current, in keeping with deeper inspiration.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F4"
+      },
+      {
+        "region": "diaphragm_below",
+        "kind": "other",
+        "description": "More gas-filled bowel loops in the left upper abdomen on the current. No free gas under either dome.",
+        "status": "indeterminate",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "Several rounded gas lucencies below the left dome on the current, fewer on the prior. Each has a visible bowel wall or haustral outline. No crescent of gas between diaphragm and liver. Bowel gas varies from film to film.",
+        "time_sensitive": false,
+        "agreement": "1_of_2",
+        "read_a_status": "indeterminate",
+        "read_b_status": null,
+        "reads": {
+          "a": {
+            "region": "diaphragm_below",
+            "kind": "other",
+            "description": "More gas-filled bowel loops in the left upper abdomen on the current. No free gas under either dome.",
+            "status": "indeterminate",
+            "size_change_words": "not_applicable",
+            "needs_measurement": false,
+            "evidence": "Several rounded gas lucencies below the left dome on the current, fewer on the prior. Each has a visible bowel wall or haustral outline. No crescent of gas between diaphragm and liver. Bowel gas varies from film to film.",
+            "time_sensitive": false
+          },
+          "b": null
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": true,
+        "id": "F5"
+      },
+      {
+        "region": "R_hilum",
+        "kind": "other",
+        "description": "Right hilar and infrahilar fullness and density, more conspicuous than on the prior. Left hilum is not enlarged.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": true,
+        "evidence": "The right hilum is denser and fuller than the left on the current. On the prior it shows only a small dense focus with less fullness. The current is sharper and at deeper inspiration, which may account for part of the difference.",
+        "time_sensitive": false,
+        "agreement": "1_of_2",
+        "read_a_status": null,
+        "read_b_status": "indeterminate",
+        "reads": {
+          "a": null,
+          "b": {
+            "region": "R_hilum",
+            "kind": "other",
+            "description": "Right hilar and infrahilar fullness and density, more conspicuous than on the prior. Left hilum is not enlarged.",
+            "status": "indeterminate",
+            "size_change_words": "not_comparable",
+            "needs_measurement": true,
+            "evidence": "The right hilum is denser and fuller than the left on the current. On the prior it shows only a small dense focus with less fullness. The current is sharper and at deeper inspiration, which may account for part of the difference.",
+            "time_sensitive": false
+          }
+        },
+        "added_in_focused_pass": false,
+        "outside_indication": false,
+        "id": "F6"
+      }
+    ],
+    "cant_determine": [
+      {
+        "question": "Is the tiny dense focus over the right lower zone on the current a true nodule, for example a calcified granuloma, or a vessel end-on?",
+        "reason": "The focus is very small, sits among crossing vessels, and is not clearly visible on the prior, which has lower contrast. A frontal film does not separate a small nodule from a vessel end-on or a bone island.",
+        "recommend": "Review the source images in PACS. If it persists, CT chest.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is the increased conspicuity of the right lower zone markings a true interval change?",
+        "reason": "The current image has higher contrast and a different breast shadow position, both of which make markings look more prominent.",
+        "recommend": "Correlate clinically. Short-interval repeat PA and lateral, or CT chest if there is clinical concern.",
+        "related_finding": "F2",
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Where is the catheter tip of the left chest wall device, and has the device moved?",
+        "reason": "The central course of the tubing is not traceable through the mediastinum at this resolution. The metallic component projects at a different rib level on the two films, which soft tissue and breast positioning might explain.",
+        "recommend": "Review the source images in PACS with windowing for lines. Add a lateral view if tip position matters clinically.",
+        "related_finding": "F1",
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is there a small left pleural effusion or a subtle left lower zone opacity?",
+        "reason": "Breast shadow overlaps the left costophrenic region and lower zone on both films, and there is no lateral view.",
+        "recommend": "Lateral view if clinically relevant.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Are there subtle lesions in the ribs or spine?",
+        "reason": "The images are low resolution and compressed, so fine bone detail such as pedicles and small lucent lesions is not assessable.",
+        "recommend": "Review the source images in PACS on bone settings.",
+        "related_finding": null,
+        "from_reads": [
+          "A"
+        ]
+      },
+      {
+        "question": "Is the right hilar and infrahilar fullness a real interval change, such as enlarged nodes or a hilar mass, or prominent vessels made more conspicuous by technique?",
+        "reason": "A frontal film alone cannot separate vessels from nodes or mass. The current is sharper and at deeper inspiration than the prior.",
+        "recommend": "CT chest with contrast. A lateral view would help if CT is not immediately available.",
+        "related_finding": "F6",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the small dense nodular focus over the medial right lower zone on the current a true lung nodule, a calcified granuloma, or a vessel seen end-on?",
+        "reason": "It is a small focus on X-ray within crowded bronchovascular markings and breast shadow, and no definite matching focus is seen at the same site on the softer prior image.",
+        "recommend": "CT chest.",
+        "related_finding": null,
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Are the more conspicuous right lower zone linear markings a true interstitial change?",
+        "reason": "The current is sharper and slightly different in exposure and inspiration, and breast shadow overlies the region on both films.",
+        "recommend": "Review the source images in PACS. If the difference persists there, CT chest.",
+        "related_finding": "F2",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Where is the port catheter tip, and has the port or catheter moved?",
+        "reason": "The catheter tip cannot be traced over the mediastinum at this image resolution. The different projected level of the reservoir may reflect arm and breast position only.",
+        "recommend": "Review the source images in PACS with windowing to trace the catheter to its tip. Add a lateral view if tip position remains unclear.",
+        "related_finding": "F1",
+        "from_reads": [
+          "B"
+        ]
+      },
+      {
+        "question": "Is the heterogeneous texture of the left humeral head a bone lesion or a normal or degenerative appearance?",
+        "reason": "The images are low resolution and the shoulder is at the edge of a chest film, so fine bone detail is unreliable. The appearance is similar on both studies.",
+        "recommend": "Review the source images in PACS. Dedicated left shoulder radiographs if the appearance persists.",
+        "related_finding": null,
+        "from_reads": [
+          "B"
+        ]
+      }
+    ],
+    "indication_pass": {
+      "question": "In a patient with treated breast cancer on routine surveillance and no new symptoms, do the images show any sign of disease in the chest (lung nodule or mass, hilar or mediastinal node enlargement, pleural effusion, bone lesion), and has anything changed from the prior?",
+      "answer": "No definite lung mass, confluent opacity, right pleural effusion or destructive rib lesion is seen on the current PA film, and the upper mediastinum is not widened. The right hilar and infrahilar fullness (F6), the more conspicuous right lower zone markings (F2), the tiny dense right lower zone focus and the left humeral head texture remain undetermined on these frontal films, and the left costophrenic region is hidden by breast shadow.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura",
+        "bones",
+        "soft_tissue",
+        "devices"
+      ]
+    },
+    "prior_report_discrepancies": [],
+    "look_first": [
+      "F6",
+      "F2"
+    ],
+    "study_flags": [],
+    "limits": "Draft first read for resident and attending review. This was a blind read with no indication and no dates. It is based on two downsampled frontal PA images with no lateral view and no pixel scale, so no measurements are given. Fine detail of margins, calcification, small nodules and bone is limited at this resolution. Retrocardiac and apical regions were assessed on frontal projection alone. Patient identity and study dates were not verified here. | This is a blind read with no indication and no study dates. Each study is a single frontal view with no lateral, so the retrocardiac region and hila are incompletely assessed. The images are downsampled with no pixel scale, so no measurements are given and fine detail (margins, calcification, small nodules, bone texture, catheter tip) is unreliable. Breast shadows overlie both lower zones on both studies. This is a draft for resident and attending review."
+  },
+  "code_checks": [
+    {
+      "check": "every finding has region, kind, status, evidence and agreement",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no millimeter value or percent in Lightbox output",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not comparable: no finding is called increased or decreased",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "views differ: no size change is reported",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no finding from either blind read is missing after reconciliation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "every look_first id exists",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "stat": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "History of treated breast cancer",
+        "bears_on": "F6 right hilar and infrahilar fullness, and the tiny dense right lower zone focus",
+        "why": "In a patient with prior breast cancer, a possible new hilar change or nodule on surveillance deserves earlier human review."
+      }
+    ],
+    "worklist_reason": "Possible new right hilar fullness and tiny lung focus, reads disagree, prior breast cancer; needs radiologist review next shift."
+  },
+  "paged_on_call_at": null,
+  "report_draft": "EXAM: Chest radiograph, one view (PA). Study date not verified.\nCLINICAL INDICATION: Routine surveillance. History of treated breast cancer. No new symptoms.\nORDERING PROVIDER: Not provided in findings.\nCOMPARISON: Prior chest radiograph, PA. Study date not verified.\nTECHNIQUE: Current PA. Prior PA. Difference from prior: the current image has slightly higher contrast and penetration, and the breast shadows and left chest wall soft tissues lie differently. This limits confident calls of true change in fine right lower zone markings and subtle lower zone density under the breast shadows.\n\nLOOK AT FIRST:\n- None marked time-sensitive. Listed first for review, in order: F6 right hilar and infrahilar fullness (indeterminate; the two reads disagreed), then F2 right lower zone linear markings (indeterminate).\n\nFINDINGS (systematic read, done blind to the indication):\n- Airway / lungs: Trachea central with slight rightward deviation at the aortic arch, within normal. Carina and main bronchi not narrowed. Lungs well inflated. No consolidation, mass or band-like collapse. Coarse linear markings in the right medial lower zone are more conspicuous than on the prior (F2, indeterminate; both reads indeterminate, technique may explain the difference). A tiny dense focus projects over the right lower zone on the current; see CAN'T DETERMINE. Vascular markings reach the chest wall on both sides.\n- Mediastinum / hila: Aortic knuckle prominent, consistent with an unfolded aorta, similar to prior (F3). Upper mediastinum not widened. Aortopulmonary window not filled in. Right hilar and infrahilar fullness and density, more conspicuous than on the prior, indeterminate (F6). The two blind reads disagreed: one read did not identify it and the other called it indeterminate. Size change is not comparable between the studies. Left hilum not enlarged.\n- Pleura: No pleural line to suggest pneumothorax. Right costophrenic angle sharp. Left costophrenic angle appears sharp and is partly overlapped by breast shadow. No visible pleural thickening.\n- Heart: Cardiac silhouette within normal limits on PA, with clear borders, similar to prior (F4).\n- Bones / soft tissue: No displaced rib fracture or destructive rib lesion seen at this resolution. Clavicles and shoulders intact. Mild curvature and degenerative change of the visible spine. Both breast shadows present. No soft tissue gas.\n- Devices: Left chest wall implanted device with arcing tubing and a small metallic component over the left mid zone, consistent with an implanted venous access device. Present on both studies, no new device (F1). The central catheter course and tip are not confidently traced.\n- Below diaphragm: Both domes well defined, right slightly higher than left. Gastric bubble under the left dome. Several gas-filled bowel loops in the left upper abdomen, more than on the prior, indeterminate (F5). The reads disagreed: only one read identified it, as indeterminate. No free gas under either dome.\n\nINTERVAL CHANGE:\n- Changed: Right hilar and infrahilar fullness more conspicuous, indeterminate, reads disagreed (F6). Right lower zone linear markings more conspicuous, indeterminate (F2). Tiny dense right lower zone focus on the current, not clearly seen on the prior (see CAN'T DETERMINE). More left upper abdominal bowel gas, indeterminate, reads disagreed (F5). The device component projects over a higher rib level on the current; true migration cannot be judged because soft tissue and breast position differ.\n- Unchanged: Aortic knuckle and upper mediastinal contour (F3). Cardiac silhouette (F4). Implanted venous access device present on both studies, no new device (F1). Left hilum not enlarged on either study.\n\nRECIST 1.1: Not computed on radiographs.\n\nCAN'T DETERMINE:\n- Is the tiny dense focus over the right lower zone on the current a true nodule, for example a calcified granuloma, or a vessel end-on? | Reason: The focus is very small, sits among crossing vessels, and is not clearly visible on the prior, which has lower contrast. A frontal film does not separate a small nodule from a vessel end-on or a bone island. | Recommend: Review the source images in PACS. If it persists, CT chest.\n- Is the increased conspicuity of the right lower zone markings a true interval change? | Reason: The current image has higher contrast and a different breast shadow position, both of which make markings look more prominent. | Recommend: Correlate clinically. Short-interval repeat PA and lateral, or CT chest if there is clinical concern.\n- Where is the catheter tip of the left chest wall device, and has the device moved? | Reason: The central course of the tubing is not traceable through the mediastinum at this resolution. The metallic component projects at a different rib level on the two films, which soft tissue and breast positioning might explain. | Recommend: Review the source images in PACS with windowing for lines. Add a lateral view if tip position matters clinically.\n- Is there a small left pleural effusion or a subtle left lower zone opacity? | Reason: Breast shadow overlaps the left costophrenic region and lower zone on both films, and there is no lateral view. | Recommend: Lateral view if clinically relevant.\n- Are there subtle lesions in the ribs or spine? | Reason: The images are low resolution and compressed, so fine bone detail such as pedicles and small lucent lesions is not assessable. | Recommend: Review the source images in PACS on bone settings.\n- Is the right hilar and infrahilar fullness a real interval change, such as enlarged nodes or a hilar mass, or prominent vessels made more conspicuous by technique? | Reason: A frontal film alone cannot separate vessels from nodes or mass. The current is sharper and at deeper inspiration than the prior. The two reads disagreed on this finding. | Recommend: CT chest with contrast. A lateral view would help if CT is not immediately available.\n- Is the small dense nodular focus over the medial right lower zone on the current a true lung nodule, a calcified granuloma, or a vessel seen end-on? | Reason: It is a small focus on X-ray within crowded bronchovascular markings and breast shadow, and no definite matching focus is seen at the same site on the softer prior image. | Recommend: CT chest.\n- Are the more conspicuous right lower zone linear markings a true interstitial change? | Reason: The current is sharper and slightly different in exposure and inspiration, and breast shadow overlies the region on both films. | Recommend: Review the source images in PACS. If the difference persists there, CT chest.\n- Where is the port catheter tip, and has the port or catheter moved? | Reason: The catheter tip cannot be traced over the mediastinum at this image resolution. The different projected level of the reservoir may reflect arm and breast position only. | Recommend: Review the source images in PACS with windowing to trace the catheter to its tip. Add a lateral view if tip position remains unclear.\n- Is the heterogeneous texture of the left humeral head a bone lesion or a normal or degenerative appearance? | Reason: The images are low resolution and the shoulder is at the edge of a chest film, so fine bone detail is unreliable. The appearance is similar on both studies. | Recommend: Review the source images in PACS. Dedicated left shoulder radiographs if the appearance persists.\n\nIMPRESSION:\n1. Right hilar and infrahilar fullness, more conspicuous than on the prior, indeterminate. The two reads disagreed. Nodes or mass versus prominent vessels cannot be separated on this frontal film (F6).\n2. More conspicuous coarse linear markings in the right medial lower zone, indeterminate. Technique differences may account for this (F2).\n3. Tiny dense focus over the right lower zone on the current, undetermined: nodule versus vessel end-on.\n4. Left chest wall implanted venous access device present on both studies, no new device. Tip position and possible migration cannot be determined (F1).\n5. More left upper abdominal bowel gas, indeterminate, reads disagreed. No free gas under either dome (F5).\n6. No definite lung mass, confluent opacity, right pleural effusion or destructive rib lesion. Upper mediastinum not widened. Left costophrenic region partly hidden by breast shadow.\n7. Prominent aortic knuckle (F3) and cardiac silhouette within normal limits (F4), both similar to prior.\n\nRECOMMENDATIONS:\n- CT chest with contrast for the right hilar and infrahilar fullness (F6). Interval not specified in the findings. A lateral view if CT is not immediately available.\n- CT chest for the tiny right lower zone focus and the right lower zone markings (F2) if they persist on source image review in PACS. Interval not specified in the findings.\n- Review the source images in PACS, with windowing for the device and catheter tip and on bone settings. Add a lateral view if tip position or the left costophrenic region matters clinically.\n- Dedicated left shoulder radiographs if the left humeral head appearance persists.\n\nAI DRAFT: requires resident review and attending signature.",
+  "report_edited_by_hand": false,
+  "qc": {
+    "pass": true,
+    "mismatches": []
+  },
+  "draft_tries": 0,
+  "reviews": {},
+  "measurements": [
+    {
+      "finding_id": "F6",
+      "prior_mm": null,
+      "current_mm": null
+    }
+  ],
+  "recist": {
+    "category": "not_computed",
+    "prior_sum_mm": null,
+    "current_sum_mm": null,
+    "change_mm": null,
+    "change_pct": null,
+    "targets": [],
+    "reason": "RECIST is not computed on radiographs.",
+    "caveat": null,
+    "line": "RECIST 1.1: not computed on radiographs"
+  },
+  "signature": {
+    "resident": null,
+    "attending": null
+  },
+  "handoff": null,
+  "delivery": null,
+  "patient_informed": false,
+  "calls": [
+    {
+      "agent": "lightbox",
+      "label": "blind_A",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "a76579d28f8e9f9ed505f654b4cb54253ca204457dd7517fcec863efd4abe080",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:49:48.688Z",
+      "attempts": 2,
+      "usage": {
+        "input_tokens": 15259,
+        "output_tokens": 2995
+      }
+    },
+    {
+      "agent": "lightbox",
+      "label": "blind_B",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "dcb42d08c43c8d5db4cae180e3582888d8ae17a393340a7c56ed12db02d01850",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:49:36.042Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9202,
+        "output_tokens": 6931
+      }
+    },
+    {
+      "agent": "lightbox",
+      "label": "focused",
+      "requested_model": "claude-fable-5-2",
+      "request_hash": "2dd45c06f30daa0d3f3ee89e69cbf8769fd0dd8a291d5d5097c79251944d94ee",
+      "model": "claude-fable-5-2",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:50:13.320Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 9541,
+        "output_tokens": 2372
+      }
+    },
+    {
+      "agent": "stat",
+      "label": "triage",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "778856103df303d9070a805748fb45c4046a60eaf9e648717eaaf1deee358643",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:50:18.298Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 7701,
+        "output_tokens": 545
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "1bfea9b94f2fc61be517136e2cb58af9ddfffd4729af2979ba9eac66cdb32165",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:50:49.105Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 6157,
+        "output_tokens": 5137
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "a5d08269b75439bbdb3dc396c1e0f1cc1d10cf06e032d9372a59db500553a14b",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:51:00.129Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 8859,
+        "output_tokens": 1425
+      }
+    },
+    {
+      "agent": "courier",
+      "label": "report_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "281f3be06c730aa28177aef636ba54eb773030514d0a3b549fc4d6f93fe071ff",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:51:26.758Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 6553,
+        "output_tokens": 4512
+      }
+    },
+    {
+      "agent": "charge",
+      "label": "qc_v1_redraft",
+      "requested_model": "claude-sonnet-5-5",
+      "request_hash": "d2ad59ac62008153d3024e08f5221bdefffaa175e90d481f5c17a87790024585",
+      "model": "claude-sonnet-5-5",
+      "replayed": false,
+      "recorded_at": "2026-11-21T19:51:35.996Z",
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 8847,
+        "output_tokens": 1270
+      }
+    }
+  ]
+}

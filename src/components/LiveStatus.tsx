@@ -68,6 +68,14 @@ export default function LiveStatus({ payload }: { payload: CasePayload }) {
           {payload.state === "NEEDS_HUMAN" ? "Run AI first read again" : "Run AI first read"}
         </button>
       )}
+      {payload.can_reset && !working && (Object.keys(payload.reviews ?? {}).length > 0 || payload.signature?.resident || payload.state === "NEEDS_HUMAN") && (
+        <button
+          type="button" className="btn" title="Demo control: clear reviews and signatures and return to the recorded AI draft"
+          onClick={async () => { const r = await api.resetCase(payload.case_id); if (!r.ok) setError(r.error); router.refresh(); }}
+        >
+          Reset demo
+        </button>
+      )}
       {delivered && (
         <Link href={`/case/${payload.case_id}/handoff`} className="data underline underline-offset-2">
           Handoff

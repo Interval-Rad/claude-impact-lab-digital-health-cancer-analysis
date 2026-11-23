@@ -556,6 +556,13 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
         )}
         <span className="ml-auto flex items-center gap-2">
           <button
+            type="button" className="btn" disabled={lb === null || allReviewed || resident !== null}
+            title="Accept every finding not yet reviewed. Each acceptance is logged."
+            onClick={async () => { for (const f of findings) if (!reviews[f.id]) await setReview(f.id, { action: "accepted" }); }}
+          >
+            Accept all remaining
+          </button>
+          <button
             type="button" className="btn" disabled={!allReviewed || resident !== null}
             title={allReviewed ? undefined : "Review every finding first"}
             onClick={() => doSign("resident")}

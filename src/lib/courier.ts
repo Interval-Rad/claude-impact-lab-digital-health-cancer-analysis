@@ -58,6 +58,8 @@ export async function handoff(caseId: string, input: HandoffInput): Promise<{ da
   const result = await callModel({
     agent: "courier", label: `handoff_v${input.findings_version}`, caseId, model: MODELS.courier, system,
     content: [{ type: "text", text: JSON.stringify(input) }], schema: CourierHandoff,
+    // The same signed findings replay whatever the clock said when they were signed.
+    cacheKey: JSON.stringify({ ...input, signed_at: "*", signed_report: input.signed_report.replace(/\nSigned by [^\n]*$/, "") }),
   });
   // Safety net, in code: these flags add support and never enter the worklist sort.
   if (!input.patient_context.pcp_on_file && result.data.followup_order) {

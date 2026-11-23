@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "d0c077330fba542e675124be7a97183e780923a9e4628c2596c8e7eb2744fc1b",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:32:54.578Z",
+  "usage": {
+    "input_tokens": 9223,
+    "output_tokens": 1364
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage urgency is high and radiologist review is needed. On-call page is not flagged.",
+        "why": "The findings contain no triage urgency rating or on-call paging decision, and every finding is marked time_sensitive false."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F1",
+        "report_text": "Triage urgency is high.",
+        "why": "The recommendation attaches an urgency level to the CT request that appears nowhere in the findings."
+      }
+    ]
+  }
+}

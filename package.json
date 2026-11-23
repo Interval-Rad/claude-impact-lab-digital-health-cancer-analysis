@@ -12,7 +12,9 @@
     "models": "tsx scripts/check-models.ts",
     "lightbox": "tsx scripts/run-lightbox.ts",
     "cases": "tsx scripts/run-cases.ts",
-    "pipeline": "tsx scripts/run-pipeline.ts"
+    "pipeline": "tsx scripts/run-pipeline.ts",
+    "baseline": "tsx scripts/save-baselines.ts",
+    "demo": "next build && DEMO_MODE=replay next start"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.12.0",
@@ -31,5 +33,8 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vitest": "^5.1.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

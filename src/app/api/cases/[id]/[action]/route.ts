@@ -7,11 +7,12 @@
 //   open      the provider opened the result. Stops the timer
 //   order     the provider signs the pre-filled follow-up order
 //   informed  the provider marks the patient conversation done
+//   reset     demo control: back to the recorded AI draft, reviews and signatures cleared
 import { NextResponse } from "next/server";
 import { getCasePayload } from "@/components/data";
 import { assertCaseId } from "@/lib/cases";
 import {
-  ChargeError, measure, providerInformed, providerOpen, providerSignOrder, review, saveReport, sign, startPipeline,
+  ChargeError, measure, providerInformed, providerOpen, providerSignOrder, resetCase, review, saveReport, sign, startPipeline,
 } from "@/lib/charge";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +40,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         sign(id, body.role, body.role === "resident" ? "Resident (demo role)" : "Attending radiologist (demo role)");
         break;
       }
+      case "reset": resetCase(id); break;
       case "open": providerOpen(id); break;
       case "order": providerSignOrder(id, "Ordering provider (demo role)"); break;
       case "informed": providerInformed(id); break;

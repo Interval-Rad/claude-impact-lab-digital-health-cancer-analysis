@@ -29,6 +29,7 @@ details summary{cursor:pointer}a{color:var(--text)}
 </style></head><body>
 <header><b class="mono">SCANSHIFT</b><span class="label">Radiology</span>
 <label class="label" for="case">case</label><select id="case"></select>
+<button id="own" type="button">Compare your own pair</button>
 <span class="label" style="margin-left:auto">demo only, not for clinical use</span></header>
 <div class="strip"><span class="tag warn">recorded snapshot</span><span class="mono muted">Real model output, recorded <span id="rec"></span>. Buttons work in this browser only.</span></div>
 <div class="strip"><b class="mono" id="banner">AI DRAFT. Requires resident review and attending signature.</b><span class="mono muted" id="models" style="margin-left:auto"></span></div>
@@ -48,6 +49,15 @@ const more = (label, ...kids) => el('details', {}, el('summary', { class: 'label
 function render() {
   const c = CASES.find(x => x.id === S.id), app = document.getElementById('app'); app.textContent = '';
   document.getElementById('banner').textContent = S.attending ? '● Signed by attending ' + time(S.attending) + ' (in this browser only)' : 'AI DRAFT. Requires resident review and attending signature.';
+  if (c.own) {
+    document.getElementById('models').textContent = ''; document.getElementById('rec').textContent = 'for the example cases';
+    const pick = w => el('label', { class: 'mono', style: 'display:grid;gap:4px' }, w === 'prior' ? 'Prior image' : 'Current image', el('input', { type: 'file', accept: 'image/*', onchange: e => { const f = e.target.files[0]; if (f) { c.img[w] = URL.createObjectURL(f); render(); } } }));
+    const pane = w => el('div', { class: 'pane', style: 'min-height:200px' }, c.img[w] ? el('img', { src: c.img[w], alt: w + ' image you chose', style: 'filter:' + (S.invert ? 'invert(1)' : 'none') }) : el('div', { class: 'muted mono', style: 'padding:60px 12px' }, 'no ' + w + ' image chosen'), el('span', { class: 'cap mono' }, w.toUpperCase()));
+    app.append(el('section', {}, el('div', { class: 'label' }, 'Your own pair'), el('p', {}, 'Choose two images to compare side by side. They stay in this browser. Nothing is uploaded and nothing is read by AI here.'), el('div', { style: 'display:flex;gap:24px;flex-wrap:wrap;margin-top:8px' }, pick('prior'), pick('current'))),
+      el('div', { class: 'well' + (S.flick ? ' one' : '') }, S.flick ? pane(S.show) : [pane('prior'), pane('current')]),
+      el('div', { class: 'strip' }, el('button', { 'aria-pressed': String(S.flick), onclick: () => { S.flick = !S.flick; render(); } }, 'Flicker: ' + (S.flick ? 'on' : 'off')), S.flick && el('button', { onclick: () => { S.show = S.show === 'prior' ? 'current' : 'prior'; render(); } }, 'Swap (showing ' + S.show + ')'), el('button', { 'aria-pressed': String(S.invert), onclick: () => { S.invert = !S.invert; render(); } }, 'Invert: ' + (S.invert ? 'on' : 'off'))),
+      el('section', {}, el('div', { class: 'locked mono' }, 'No AI draft. This page is a static snapshot and cannot call a model. In the running app, "Upload a pair" on the worklist starts the two blind reads on your images.')));
+    return; }
   if (c.needs_human) { app.append(el('section', {}, el('div', { class: 'attn mono' }, 'NEEDS HUMAN ! No AI draft. A person reads this study.'), el('p', { class: 'muted' }, 'Recorded reason: ' + (c.error || 'not recorded')))); document.getElementById('models').textContent = ''; return; }
   document.getElementById('rec').textContent = c.recorded ? new Date(c.recorded).toLocaleString() : '';
   document.getElementById('models').textContent = 'models: ' + c.models.join(', ');
@@ -107,6 +117,7 @@ function alertLine(t) { const m = document.getElementById('msg'); if (m) m.textC
 const sel = document.getElementById('case');
 CASES.forEach(c => sel.append(el('option', { value: c.id }, c.id + (c.needs_human ? ' (needs human)' : ''))));
 sel.addEventListener('change', () => { S = fresh(sel.value); render(); });
+document.getElementById('own').addEventListener('click', () => { if (!CASES.find(c => c.own)) { CASES.push({ id: 'your own pair', own: true, img: {} }); sel.append(el('option', { value: 'your own pair' }, 'your own pair (not read)')); } sel.value = 'your own pair'; S = fresh('your own pair'); render(); });
 S = fresh(CASES[0].id); render();
 </script>
 <div class="strip"><span class="label">Images: NIH Clinical Center, ChestX-ray14 (Wang et al., CVPR 2017). All chart data is synthetic. A smoke test, not a validation study.</span><a class="mono" href="https://github.com/Interval-Rad/claude-impact-lab-digital-health-cancer-analysis">Source on GitHub</a></div>

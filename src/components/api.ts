@@ -4,11 +4,17 @@ import type { CasePayload, MeasurementEntry, Review } from "./types";
 export type ApiResult<T = object> = ({ ok: true; stub?: boolean; payload?: CasePayload } & T) | { ok: false; error: string };
 
 async function post(caseId: string, action: string, body: object = {}): Promise<ApiResult<{ payload?: CasePayload }>> {
-  try {
-    const res = await fetch(`/api/cases/${encodeURIComponent(caseId)}/${action}`, {
+  const send = () =>
+    fetch(`/api/cases/${encodeURIComponent(caseId)}/${action}`, {
       method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body),
     });
-    const json = (await res.json()) as { ok?: boolean; error?: string; payload?: CasePayload };
+  try {
+    let res = await send();
+    // A 5xx with no JSON body is the server itself failing (for example mid-recompile in dev),
+    // not a refusal from the app. Try once more before reporting it.
+    if (res.status >= 500 && !(res.headers.get("content-type") ?? "").includes("application/json")) res = await send();
+    const json = (await res.json().catch(() => null)) as { ok?: boolean; error?: string; payload?: CasePayload } | null;
+    if (!json) return { ok: false, error: `The server returned an unreadable answer (${res.status}). Nothing was saved. Try again.` };
     if (!res.ok || !json.ok) return { ok: false, error: json.error ?? `Request failed (${res.status})` };
     return { ok: true, payload: json.payload };
   } catch (e) {
@@ -17,6 +23,7 @@ async function post(caseId: string, action: string, body: object = {}): Promise<
 }
 
 export const runCase = (caseId: string) => post(caseId, "run");
+export const resetCase = (caseId: string) => post(caseId, "reset");
 
 export async function reviewFinding(
   caseId: string, findingId: string, review: Review | null // null clears the review (undo)

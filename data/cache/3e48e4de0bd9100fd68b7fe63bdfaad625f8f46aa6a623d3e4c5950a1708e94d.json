@@ -1,0 +1,48 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "3e48e4de0bd9100fd68b7fe63bdfaad625f8f46aa6a623d3e4c5950a1708e94d",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:33:35.460Z",
+  "usage": {
+    "input_tokens": 9385,
+    "output_tokens": 1609
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "The findings list F1 (left hilar adenopathy, indeterminate) first in look_at_first, but the report says None."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F6",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "F6 (left hilum ring lucency) is in look_at_first but is not listed in the report."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F5",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "F5 (right lower zone coarse markings) is in look_at_first but is not listed in the report."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F8",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "F8 (right base bronchovascular prominence) is in look_at_first but is not listed in the report."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F7",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "F7 (cardiac silhouette) is in look_at_first but is not listed in the report."
+      }
+    ]
+  }
+}

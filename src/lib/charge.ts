@@ -70,6 +70,21 @@ export interface CaseState {
 const stateFile = (id: string) => path.join(caseDir(id), "state.json");
 const AUDIT_FILE = path.join(process.cwd(), "data", "audit.jsonl");
 
+const baselineFile = (id: string) => path.join(caseDir(id), "baseline.json");
+
+/** A baseline is the recorded AI draft before any review. Reset returns a case to it. */
+export function hasBaseline(id: string): boolean {
+  return fs.existsSync(baselineFile(id));
+}
+
+/** Saves the current unsigned draft as the baseline. Returns false if the case is not in that state. */
+export function saveBaseline(id: string): boolean {
+  const s = loadState(id);
+  if (!s || s.state !== "DRAFTED" || s.signature.resident || Object.keys(s.reviews).length > 0) return false;
+  fs.writeFileSync(baselineFile(id), JSON.stringify(s, null, 2));
+  return true;
+}
+
 export function hasState(id: string): boolean {
   return fs.existsSync(stateFile(id));
 }
@@ -79,7 +94,11 @@ export function loadState(id: string): CaseState | null {
 }
 
 function save(s: CaseState): CaseState {
-  fs.writeFileSync(stateFile(s.case_id), JSON.stringify(s, null, 2));
+  // Write to a temporary file and rename, so a reader never sees a half-written state.
+  const file = stateFile(s.case_id);
+  const tmp = `${file}.${process.pid}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(s, null, 2));
+  fs.renameSync(tmp, file);
   return s;
 }
 
@@ -295,6 +314,19 @@ async function pipeline(s: CaseState): Promise<void> {
   } catch (e) {
     needsHuman(s, String((e as Error).message ?? e));
   }
+}
+
+/** Demo control: discard reviews, signatures and delivery and return to the recorded AI draft. */
+export function resetCase(id: string): CaseState {
+  if (running.has(id)) throw new ChargeError("A step is still running on this case.");
+  if (!hasBaseline(id)) throw new ChargeError("This case has no recorded baseline to return to.", 404);
+  const t = timers.get(id);
+  if (t) { clearTimeout(t); timers.delete(id); }
+  const before = loadState(id)?.state ?? null;
+  const s = JSON.parse(fs.readFileSync(baselineFile(id), "utf8")) as CaseState;
+  save(s);
+  audit(id, "charge", "state_change", { before, after: s.state, reason: "demo reset to the recorded AI draft" });
+  return s;
 }
 
 // ---------- the human gate ----------

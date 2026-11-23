@@ -36,60 +36,70 @@ Bagheri M, Summers RM. ChestX-ray8: Hospital-scale Chest X-ray Database
 and Benchmarks on Weakly-Supervised Classification and Localization of
 Common Thorax Diseases. IEEE CVPR 2017, pp. 3462-3471.
 
-## Run it
+## Screens
 
-Needs Node 22 and Python 3 with `requests`.
+![Read screen: prior and current film, comparability, look first, findings with agreement, can't determine](docs/screenshots/read-screen.png)
+
+![Provider inbox after the attending signs: what changed, the recommendation, the follow-up order to sign](docs/screenshots/provider-inbox.png)
+
+![Worklist: a plain sort on visible columns](docs/screenshots/worklist.png)
+
+## Try it
+
+**In a browser, nothing to install.** `index.html` is a static snapshot of the five recorded example
+cases. Review, reject with a reason, and both signatures work in the page. "Compare your own pair"
+shows two of your images side by side (they never leave the browser, and no AI reads them there).
+
+**The app, no API key needed.** Needs Node 22.
 
 ```
 npm install
-python dataset/pull_demo_pairs.py --out /tmp/interval_read_pull
-for c in control new_effusion new_nodule refusal_heart refusal_nodule; do cp /tmp/interval_read_pull/$c/*.jpg data/cases/$c/; done
-npm run check        # typecheck, unit tests, rule guard
-npm run dev          # http://localhost:3000
+npm run demo         # builds, then serves recorded model responses at http://localhost:3000
 ```
 
-The images are not in git. The copy step above adds them next to each
-committed `case.json` without overwriting the synthetic chart.
+Open a case, press **Accept all remaining**, **Sign as resident**, **Attending sign**, then switch to
+**Ordering provider** in the header. Every model response on that path was recorded from a real run
+and is replayed. **Reset demo** returns a case to its unreviewed AI draft. Editing or rejecting a
+finding changes what the report writer is asked, so that path needs a key.
 
-Live model calls need `ANTHROPIC_API_KEY` in `.env.local` (server side only):
+**The app, live.** Put `ANTHROPIC_API_KEY=...` in `.env.local` (server side only, gitignored).
 
 ```
-npm run models                 # checks the model ids in src/lib/config.ts against the key
+npm run dev                    # http://localhost:3000. Model ids are checked at start
+npm run models                 # checks the ids in src/lib/config.ts against the key
 npm run pipeline -- new_nodule # one case from upload to report draft, without the browser
 npm run cases                  # scorecard.md from the stored runs (add -- --rerun to run them again)
+npm run check                  # typecheck, unit tests, rule guard
 ```
 
-`DEMO_MODE=replay` serves responses recorded in `data/cache/` and calls no model.
+## Upload your own pair
 
-## Status
+On the worklist, open **Upload a pair**. Choose a prior and a current chest film (JPEG, PNG or WebP,
+checked by the file's first bytes), set each view (PA or AP), and type the reason for the scan.
+Uploading starts the two blind reads. The reason is held on the server until both are saved.
+Use public, de-identified images only. Uploaded images are gitignored. Needs a key.
 
-Works, and has been run live on the five demo pairs:
+## Example cases
 
-- Two blind reads, reconciliation with agreement per finding, focused pass with the release time.
-- Triage and the worklist sort. Report draft and the quality check.
-- Review (accept, edit, reject with a reason), typed measurements, resident and attending signatures.
-- After the attending signs: provider message, pre-filled follow-up order, tumor board, surgeon and
-  family drafts, the provider inbox, and re-send with escalation on the demo clock.
-- Replay from recorded responses (`DEMO_MODE=replay`), and a model id check when the server starts.
+Five pairs from NIH ChestX-ray14, in `data/cases/`, each with its images, a synthetic chart, the
+recorded AI draft (`state.json`, `baseline.json`) and blank `ground_truth` for a clinician to fill.
 
-Known limits:
+| Case | Films | Why it was picked |
+|---|---|---|
+| `new_nodule` | PA then PA | NIH label goes from No Finding to Nodule. The reads called the dense hilar foci stable |
+| `control` | PA then PA | No Finding on both. Any called change is a false flag to look at |
+| `new_effusion` | PA then PA | Effusion label added on the current film |
+| `refusal_nodule` | PA then AP | Declines to say whether the right lower zone opacity changed. Next step: CT chest |
+| `refusal_heart` | PA then AP | Declines to say whether the heart size changed. Next step: repeat PA and lateral |
 
-- No case has clinician ground truth, so `scorecard.md` has no accuracy counts.
-- RECIST is not computed on radiographs until a clinician confirms the wording
-  (`RECIST_RADIOGRAPH_POLICY` in `src/lib/config.ts`). Every demo case is a radiograph.
-- The synthetic charts were written for the demo and no clinician has reviewed them.
-- Three of the five cases failed the report quality check on their first run and were redrafted on request.
-- Not built: voice, past-corrections feedback to the reading agent, automatic fallback model,
-  on-call re-page, PCP and navigator tabs.
-
-`index.html` is a static snapshot of the recorded runs (rebuild with `python3 scripts/build_static.py`).
-`slides/` holds the three minute deck. `design/` is a separate design exploration, not app code.
+NIH labels are text-mined and noisy. They are hints for choosing cases and are never sent to a model.
 
 ## Layout
 
 - agents/: reading method and the four agent specs (the app loads its prompts from here)
 - dataset/: dataset guide, pair manifest, pull script
-- data/cases/: one folder per case. data/cache/: recorded model responses
+- data/cases/: one folder per case, with its two films. data/cache/: recorded model responses
+- docs/screenshots/: the pictures above
 - src/lib/: pipeline code and tests. src/app/: screens and API routes
 - scripts/: command line runners
 - fixtures/: mock UI fixture

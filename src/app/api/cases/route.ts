@@ -23,6 +23,9 @@ export async function POST(request: Request) {
     const id = assertCaseId(text("case_id"));
     const dir = path.join(CASES_DIR, id);
     if (fs.existsSync(dir)) return NextResponse.json({ error: "A case with this id already exists." }, { status: 409 });
+    if (!text("indication")) {
+      return NextResponse.json({ error: "Type the reason for the scan. The focused pass and the report need it. It stays hidden from the blind reads." }, { status: 400 });
+    }
     const images = {} as Record<"prior" | "current", { bytes: Buffer; media: keyof typeof EXT; view: string }>;
     for (const which of ["prior", "current"] as const) {
       const file = form.get(which);
