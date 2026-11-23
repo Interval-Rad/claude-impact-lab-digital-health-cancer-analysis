@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "6b062d1b979802f0a7592e98819960ec9c7ca55c48ee24213a4487ec00549a98",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T16:17:36.920Z",
+  "usage": {
+    "input_tokens": 5867,
+    "output_tokens": 2062
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Increased bilateral hazy lung opacity on chest film",
+      "body": "Changed: more hazy opacity in both lungs since the 2026-06-30 film. Possible tubes or lines are indeterminate (reads disagreed), with tips unconfirmed. Heart size, effusions and basal opacity are not comparable (supine AP vs upright PA). Right scapular density is indeterminate.\nRadiologist recommends: review source images in PACS, check the bedside line record, confirm tip positions before use, and repeat PA and lateral film when the patient is able.\nAwaiting your signature: repeat chest radiograph order (pre-filled)."
+    },
+    "followup_order": {
+      "study": "Chest radiograph, PA and lateral, with good inspiration, upright if possible",
+      "body_part": "Chest",
+      "contrast": "None",
+      "interval": "When the patient is able (no specific date given in report)",
+      "reason": "Increased bilateral hazy and reticular perihilar and mid zone opacity; indeterminate basal opacity, possible pleural effusions, heart size change and upper mediastinal widening on a supine AP portable film that is not comparable to the upright PA prior. Shortness of breath."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "Prostate cancer on hormone therapy.\nED visit with shortness of breath, SpO2 94 percent. Portable supine AP chest film on 2026-11-21.\nCompared with upright PA film of 2026-06-30. A left chest wall cardiac device is present on the prior images.",
+      "impression": "RECIST 1.1 not computed on radiographs. No measurable lesions. Increased bilateral hazy opacity; tubes and lines, effusions, basal opacity and heart size change are indeterminate on this film.\nMottled density over the right glenoid and scapular neck is indeterminate and may be projectional. The radiologist asks for source image review in PACS given the prostate cancer history."
+    },
+    "surgeon": "The report says nothing about whether surgery is possible. No lesion is measured and no size trend exists; RECIST was not computed on radiographs. The only bone finding is an indeterminate mottled density over the right glenoid and scapular neck. It may be projectional and cannot be compared with the prior film. No definite sclerotic or destructive bone lesion is seen. Small lung nodules or lesions behind the heart or the device generator cannot be excluded on this film.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray because you were short of breath.\nThe X-ray showed more hazy areas in both lungs than your last X-ray. This can have different causes. The doctors need more information to know which one.\nThe X-ray was taken while you were lying down. This makes some parts hard to see clearly. It is hard to tell about fluid around the lungs, the size of the heart, and the bottom of the lungs.\nThere was also a spot near your right shoulder blade that was not clear. It may just be from how you were positioned. Your doctors will look at the pictures again.\nYour care team recommends a second chest X-ray when you are able. It will be taken from the front and the side, standing up if you can. They may also use other tests if they are worried.\nWho to call: please call Dr. Marte or the care team that ordered your scan with any questions."
+  }
+}

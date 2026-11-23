@@ -159,6 +159,7 @@ function toRow(p: CasePayload): WorklistRow {
     state: p.state,
     arrived_at: p.header.arrived_at,
     has_draft: p.lightbox !== null,
+    summary: p.stat?.worklist_reason ?? null,
   };
 }
 
@@ -178,7 +179,7 @@ export function getWorklist(): WorklistRow[] {
         case_id: id, mock: false, tier: null, severity_subgroup: null, agreement_flag: null,
         patient: null, mrn: null, exam: null, views: { prior: "unknown", current: "unknown" },
         indication: null, indication_released_at: null, context_flags: [], page_on_call: false,
-        state: "RECEIVED — case.json unreadable", arrived_at: null, has_draft: false,
+        state: "RECEIVED — case.json unreadable", arrived_at: null, has_draft: false, summary: null,
       });
     }
   }

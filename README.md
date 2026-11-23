@@ -38,7 +38,7 @@ Common Thorax Diseases. IEEE CVPR 2017, pp. 3462-3471.
 
 ## Screens
 
-![Read screen: prior and current film, comparability, look first, findings with agreement, can't determine](docs/screenshots/read-screen.png)
+![Case screen: before and now films, the bottom line, what the AI could not tell, findings to confirm, one next step](docs/screenshots/read-screen.png)
 
 ![Provider inbox after the attending signs: what changed, the recommendation, the follow-up order to sign](docs/screenshots/provider-inbox.png)
 
@@ -57,9 +57,9 @@ npm install
 npm run demo         # builds, then serves recorded model responses at http://localhost:3000
 ```
 
-Open a case, press **Accept all remaining**, **Sign as resident**, **Attending sign**, then switch to
-**Ordering provider** in the header. Every model response on that path was recorded from a real run
-and is replayed. **Reset demo** returns a case to its unreviewed AI draft. Editing or rejecting a
+Open a case and follow the one highlighted button: **Confirm all remaining**, **Sign as resident**,
+**Sign as attending**, then **See what the provider received**. Every model response on that path was
+recorded from a real run and is replayed. **Start over** returns a case to its unreviewed AI draft. Editing or rejecting a
 finding changes what the report writer is asked, so that path needs a key.
 
 **The app, live.** Put `ANTHROPIC_API_KEY=...` in `.env.local` (server side only, gitignored).

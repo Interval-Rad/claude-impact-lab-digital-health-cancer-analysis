@@ -1,0 +1,17 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "2996516fca54e6bfbdbda3b6c9b59b21ce3af459e608f51793b845206247ddaa",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T16:17:20.570Z",
+  "usage": {
+    "input_tokens": 11685,
+    "output_tokens": 1235
+  },
+  "response": {
+    "pass": true,
+    "mismatches": []
+  }
+}

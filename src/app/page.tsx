@@ -1,153 +1,90 @@
 import Link from "next/link";
 import { getWorklist } from "@/components/data";
-import { MockTag, Syn, clockTime, dateAndTime, words } from "@/components/format";
-import UploadForm from "@/components/UploadForm";
+import { MockTag, Syn, dateAndTime } from "@/components/format";
+import { stateWord, tierWord } from "@/components/plain";
 import type { WorklistRow } from "@/components/types";
+import UploadForm from "@/components/UploadForm";
 import { BANNER } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
-const HANDOFF_STATES = new Set(["DELIVERED", "ACKNOWLEDGED", "PATIENT_INFORMED"]);
-const TIER_SHAPE: Record<string, string> = { critical: "▲", high: "◆", routine: "○" };
+const SENT = new Set(["DELIVERED", "ACKNOWLEDGED", "PATIENT_INFORMED"]);
+const SUBGROUP: Record<string, string> = {
+  new_lesion_or_possible_new_diagnosis: "possible new finding", urgent_incidental: "urgent incidental finding",
+  progression_of_known_disease: "known disease, progressing", indeterminate_needs_human: "unclear, needs a radiologist",
+  stable_or_responding: "stable or responding",
+};
 
-function Tier({ row }: { row: WorklistRow }) {
-  if (!row.tier) return <span className="data text-muted">— not triaged</span>;
-  return (
-    <span className={`data whitespace-nowrap ${row.tier === "critical" ? "text-critical" : ""}`}>
-      <span aria-hidden="true">{TIER_SHAPE[row.tier]}</span> {row.tier}
-      {row.page_on_call && <span className="attn block">on-call paged</span>}
-    </span>
-  );
-}
-
-function Agreement({ flag }: { flag: WorklistRow["agreement_flag"] }) {
-  if (flag === null) return <span className="data text-muted">—</span>;
-  if (flag === "reads_agree") return <span className="data whitespace-nowrap">reads agree</span>;
-  return (
-    <span className="data attn whitespace-nowrap">{flag === "one_of_two" ? "1 of 2 !" : "reads disagree !"}</span>
-  );
+function reads(flag: WorklistRow["agreement_flag"]) {
+  if (flag === null) return null;
+  if (flag === "reads_agree") return <span className="ez-chip">The 2 AI reads agree</span>;
+  return <span className="ez-chip warn">{flag === "one_of_two" ? "Some findings seen by 1 of 2 reads !" : "The 2 AI reads disagree !"}</span>;
 }
 
 export default function WorklistPage() {
   const rows = getWorklist();
-  const anyMock = rows.some((r) => r.mock);
   return (
-    <div>
-      <div className="strip">
-        <span className="data">{BANNER}</span>
-        <span className="data ml-auto text-muted">{rows.length} studies</span>
+    <div className="ez mx-auto max-w-[1200px] p-5">
+      <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <h1>Chest X-ray follow-ups</h1>
+        <span className="text-muted">{rows.length} studies. Most urgent first.</span>
       </div>
-      {anyMock && (
-        <div className="strip">
-          <MockTag />
-          <span className="data">
-            Rows tagged mock come from a hand-written placeholder fixture, not model output.
-          </span>
-        </div>
-      )}
-      <div className="px-[10px] pt-2 pb-1">
-        <h1 className="label">Worklist</h1>
-        <p className="mt-1 text-muted">
-          Plain sort on the columns shown: tier, then severity subgroup, then low agreement first, then arrival
-          (oldest first). Studies not run yet are listed last.
-        </p>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="worklist">
-          <thead>
-            <tr>
-              <th scope="col">Tier</th>
-              <th scope="col">Severity subgroup</th>
-              <th scope="col">Agreement</th>
-              <th scope="col">Patient</th>
-              <th scope="col">Exam</th>
-              <th scope="col">Indication</th>
-              <th scope="col">Context flags</th>
-              <th scope="col">State</th>
-              <th scope="col">Arrived</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.case_id}>
-                <td style={r.tier === "critical" ? { borderLeft: "3px solid var(--accent)" } : undefined}><Tier row={r} /></td>
-                <td className="data">
-                  {r.severity_subgroup ? words(r.severity_subgroup) : <span className="text-muted">—</span>}
-                </td>
-                <td><Agreement flag={r.agreement_flag} /></td>
-                <td>
-                  <Link href={`/case/${r.case_id}`} className="row-link data underline underline-offset-2">
-                    {r.case_id}
-                  </Link>{" "}
-                  {r.mock && <MockTag />}
-                  {r.patient ? (
-                    <div>
-                      {r.patient} <Syn />
-                    </div>
-                  ) : (
-                    <div className="text-muted">no chart on file</div>
-                  )}
-                  {r.mrn && (
-                    <div className="data text-muted">
-                      MRN {r.mrn} <Syn />
-                    </div>
-                  )}
-                </td>
-                <td>
-                  {r.exam && <div className="data">{r.exam}</div>}
-                  <div className="data text-muted">
-                    views: prior {r.views.prior}, current {r.views.current}
+      <p className="mb-4 text-[13px] text-muted">
+        {BANNER} Demo only: patient details are synthetic. Order: priority, then type, then studies where the two AI
+        reads disagree, then oldest first.
+      </p>
+      <table className="ez-table">
+        <thead>
+          <tr>
+            <th scope="col">Priority</th>
+            <th scope="col">Patient and reason for the scan</th>
+            <th scope="col">AI draft says</th>
+            <th scope="col">Status</th>
+            <th scope="col"><span className="sr-only">Open</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.case_id}>
+              <td style={r.tier === "critical" ? { borderLeft: "3px solid var(--accent)" } : undefined}>
+                <div className={r.tier === "critical" ? "attn font-medium" : "font-medium"}>{tierWord(r.tier)}</div>
+                {r.severity_subgroup && <div className="text-[13px] text-muted">{SUBGROUP[r.severity_subgroup] ?? r.severity_subgroup}</div>}
+                {r.page_on_call && <div className="attn text-[13px]">on-call paged !</div>}
+              </td>
+              <td className="max-w-[38ch]">
+                <div className="font-medium">
+                  {r.patient ?? r.case_id} {r.patient && <Syn />} {r.mock && <MockTag />}
+                </div>
+                <div className="text-muted">
+                  {r.indication_released_at && r.indication ? r.indication : r.has_draft ? "" : "Reason is held until the AI has done its two blind reads."}
+                </div>
+                <div className="text-[13px] text-muted">Before: {r.views.prior} view. Now: {r.views.current} view.</div>
+              </td>
+              <td className="max-w-[40ch]">
+                {r.summary ? <div>{r.summary}</div> : <div className="text-muted">{r.has_draft ? "" : "No AI draft yet."}</div>}
+                <div className="mt-1">{reads(r.agreement_flag)}</div>
+              </td>
+              <td>
+                <div>{stateWord(r.state)}</div>
+                {r.arrived_at && <div className="text-[13px] text-muted">arrived {dateAndTime(r.arrived_at)}</div>}
+              </td>
+              <td className="whitespace-nowrap text-right">
+                <Link href={`/case/${r.case_id}`} className="ez-btn ez-primary">
+                  {r.has_draft ? (SENT.has(r.state) ? "View" : "Review") : "Open"}
+                </Link>
+                {SENT.has(r.state) && (
+                  <div className="mt-2">
+                    <Link href={`/case/${r.case_id}/handoff`} className="ez-link text-[13px]">handoff drafts</Link>
                   </div>
-                </td>
-                <td className="max-w-[26ch]">
-                  {r.indication_released_at && r.indication ? (
-                    <>
-                      {r.indication} <Syn />
-                      <div className="data text-muted">released {clockTime(r.indication_released_at)}</div>
-                    </>
-                  ) : (
-                    <span className="data text-muted">held until focused pass</span>
-                  )}
-                </td>
-                <td>
-                  {r.context_flags.length === 0 ? (
-                    <span className="data text-muted">—</span>
-                  ) : (
-                    r.context_flags.map((c) => (
-                      <div key={c} className="data">
-                        {c} <Syn />
-                      </div>
-                    ))
-                  )}
-                </td>
-                <td className="data">
-                  {r.state}
-                  {!r.has_draft && <div className="text-muted">No AI draft</div>}
-                  {HANDOFF_STATES.has(r.state) && (
-                    <div>
-                      <Link href={`/case/${r.case_id}/handoff`} className="relative z-10 underline underline-offset-2">
-                        handoff
-                      </Link>
-                    </div>
-                  )}
-                </td>
-                <td className="data whitespace-nowrap">
-                  {r.arrived_at ? (
-                    <>
-                      {dateAndTime(r.arrived_at)} <Syn />
-                    </>
-                  ) : (
-                    <span className="text-muted">—</span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <details className="border-b border-rule">
-        <summary className="label cursor-pointer px-[10px] py-2">Upload a pair</summary>
-        <UploadForm />
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <details className="ez-panel mt-6">
+        <summary className="font-medium text-text">+ Upload a new pair of X-rays</summary>
+        <div className="mt-3"><UploadForm /></div>
       </details>
     </div>
   );

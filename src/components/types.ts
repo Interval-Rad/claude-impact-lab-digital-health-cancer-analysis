@@ -106,4 +106,5 @@ export type WorklistRow = {
   state: string;
   arrived_at: string | null;
   has_draft: boolean;
+  summary: string | null; // Stat's one-line reason for the row
 };

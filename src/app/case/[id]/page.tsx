@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getCasePayload } from "@/components/data";
-import ReadScreen from "@/components/ReadScreen";
+import SimpleRead from "@/components/SimpleRead";
 
 export const dynamic = "force-dynamic";
 
@@ -13,5 +13,5 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
     payload.state, payload.version, payload.busy, payload.report_draft?.length, payload.lightbox?.findings.length,
     payload.signature?.resident?.at, payload.signature?.attending?.at, payload.qc?.pass,
   ].join("|");
-  return <ReadScreen key={key} payload={payload} />;
+  return <SimpleRead key={key} payload={payload} />;
 }
