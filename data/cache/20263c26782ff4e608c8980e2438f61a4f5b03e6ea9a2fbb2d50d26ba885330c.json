@@ -1,0 +1,36 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "20263c26782ff4e608c8980e2438f61a4f5b03e6ea9a2fbb2d50d26ba885330c",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:15:55.995Z",
+  "usage": {
+    "input_tokens": 8964,
+    "output_tokens": 1347
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "EXAM: Chest radiograph, one view, 2026-11-12",
+        "why": "The findings state the read had no study dates and that dates were not verified, so this exam date is not supported."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "COMPARISON: Chest radiograph, 2026-02-10",
+        "why": "The findings state there were no study dates, so this prior study date is not supported."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "ORDERING PROVIDER: Dr. L. Okafor (synthetic), medical oncology",
+        "why": "No ordering provider appears anywhere in the findings."
+      }
+    ]
+  }
+}

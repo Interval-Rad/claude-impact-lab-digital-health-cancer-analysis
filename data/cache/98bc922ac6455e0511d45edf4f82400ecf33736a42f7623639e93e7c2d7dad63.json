@@ -1,0 +1,36 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "98bc922ac6455e0511d45edf4f82400ecf33736a42f7623639e93e7c2d7dad63",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:10:44.215Z",
+  "usage": {
+    "input_tokens": 10499,
+    "output_tokens": 1612
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "critical",
+    "page_on_call": true,
+    "context_flags": [
+      {
+        "item": "Indication lists shortness of breath and does not mention intubation or any tube",
+        "bears_on": "F1 new tracheal tube with tip-to-carina relationship not confirmed",
+        "why": "A tube appears on this film that the clinical context does not explain, and its position is undetermined, so a person should confirm it promptly."
+      },
+      {
+        "item": "SpO2 94 percent with shortness of breath",
+        "bears_on": "F3 and F4 new bilateral perihilar and mid zone opacities",
+        "why": "Borderline low saturation with symptoms and new diffuse opacity raises how soon the film should be looked at."
+      },
+      {
+        "item": "Prostate cancer on hormone therapy",
+        "bears_on": "Indication: any intrathoracic or bony disease, and undetermined effusion",
+        "why": "Known malignancy means the undetermined effusion and new opacities should be reviewed promptly, though no mass is seen."
+      }
+    ],
+    "worklist_reason": "New endotracheal tube, tip level unconfirmed; new bilateral hazy lung opacities; supine film limits comparison."
+  }
+}

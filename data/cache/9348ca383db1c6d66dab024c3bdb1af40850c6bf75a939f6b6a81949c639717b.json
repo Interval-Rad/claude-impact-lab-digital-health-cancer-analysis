@@ -5,10 +5,10 @@
   "request_hash": "9348ca383db1c6d66dab024c3bdb1af40850c6bf75a939f6b6a81949c639717b",
   "case_id": "refusal_heart",
   "model": "claude-fable-5-2",
-  "recorded_at": "2026-11-21T19:38:57.914Z",
+  "recorded_at": "2026-11-23T15:15:42.089Z",
   "usage": {
     "input_tokens": 9202,
-    "output_tokens": 7226
+    "output_tokens": 7737
   },
   "response": {
     "comparability": {
@@ -20,8 +20,8 @@
         "exposure": "adequate",
         "coverage": "complete",
         "artifacts": [
-          "Left chest wall cardiac device generator overlies the left upper and mid zones",
-          "Side marker at the upper corner of the image"
+          "Side marker at upper corner of image",
+          "Left chest wall cardiac device generator overlies the left upper and mid zones"
         ]
       },
       "current": {
@@ -32,173 +32,175 @@
         "exposure": "adequate",
         "coverage": "complete",
         "artifacts": [
-          "External ECG electrodes over both shoulders and the lower midline, with wires crossing the chest",
-          "Left chest wall cardiac device generator overlies the left upper and mid zones",
-          "Burned-in AP SUPINE PORTABLE annotation",
-          "External tubing or wires projected over the lateral chest walls"
+          "ECG electrodes and lead wires over both shoulders and the chest",
+          "External tubing or wires crossing the upper chest",
+          "Burned-in annotations: L, AP, SUPINE, PORTABLE",
+          "Left chest wall cardiac device generator overlies the left upper and mid zones"
         ]
       },
       "comparable": "limited",
       "differences": [
         {
           "factor": "projection",
-          "detail": "Prior is labeled PA. Current is labeled AP portable.",
-          "prevents": "Comparison of heart size, mediastinal width and the size of any lesion. AP projection magnifies anterior structures."
+          "detail": "Prior is PA. Current is AP portable.",
+          "prevents": "Comparing heart size, mediastinal width or the size of any lesion or opacity. AP magnifies the heart and mediastinum."
         },
         {
           "factor": "position",
-          "detail": "Current is labeled supine. Prior position is not marked on the image and has the appearance of an upright film.",
-          "prevents": "Judging presence or change of pleural effusion, which layers posteriorly when supine, and excluding pneumothorax or free subdiaphragmatic gas. Supine position also widens the mediastinum and makes upper zone vessels more prominent."
+          "detail": "Current is labeled supine. Prior appears upright.",
+          "prevents": "Judging pleural effusion (fluid layers posteriorly when supine), pneumothorax (air collects anteriorly), free gas under the diaphragm, and mediastinal width."
         },
         {
           "factor": "inspiration",
           "detail": "Prior has adequate inspiration. Current has low lung volumes with elevated hemidiaphragms.",
-          "prevents": "Calling new basal opacity, increased interstitial markings or cardiac enlargement, because low volumes crowd the lower zones and enlarge the heart shadow."
+          "prevents": "Calling new basal opacity or a larger heart with certainty. Low volumes crowd the lower zones and enlarge the heart shadow."
         },
         {
           "factor": "rotation",
-          "detail": "Both films appear mildly rotated, and the degree is hard to match between them.",
+          "detail": "Both studies show mild rotation, and the degree is not identical.",
           "prevents": "Reliable comparison of hilar size, tracheal position and left-right lung density."
-        },
-        {
-          "factor": "exposure",
-          "detail": "Current portable film has lower contrast and more scatter over the lower chest and upper abdomen than the prior.",
-          "prevents": "Confident assessment of the lung bases, the retrocardiac region and fine lung markings."
         }
       ]
     },
     "systematic_read": {
-      "airway_lungs": "CURRENT: Trachea is approximately midline, allowing for rotation and overlying linear densities. Lung volumes are low. There are bilateral hazy and coarse reticular opacities in the perihilar, mid and lower zones, with denser hazy opacity at the right base and in the left retrocardiac and basal region. No lobar collapse is evident. PRIOR: Trachea is approximately midline. Lungs are well inflated. Bronchovascular markings are mildly prominent in the perihilar regions and right lower zone, with no confluent opacity. The left retrocardiac region is partly obscured by the heart.",
-      "mediastinum_hila": "CURRENT: Upper mediastinum appears wide, which is expected on a supine AP film with low volumes. Hila are indistinct and partly obscured by perihilar opacity and device leads. PRIOR: Mediastinal contour is within expected limits for the projection, with a prominent aortic knuckle. Hila are not clearly enlarged. Hilar and mediastinal size cannot be compared between the two films.",
-      "pleura": "CURRENT: No pleural line is seen to suggest pneumothorax, though a supine film is insensitive for this. Both costophrenic angles are hazy and poorly defined, so layering effusions are not excluded. PRIOR: No pneumothorax is seen. The right costophrenic angle is at the image edge and appears grossly clear. The left costophrenic angle shows no large effusion.",
-      "heart": "CURRENT: Cardiac silhouette appears enlarged, but the film is AP supine with low volumes, so size is not reliable. PRIOR: Cardiac silhouette appears enlarged on the PA film. Change in heart size between the studies cannot be assessed.",
-      "diaphragm_below": "CURRENT: Both hemidiaphragms are elevated and indistinct, consistent with low volumes and adjacent basal opacity. No free gas is identified, but a supine film is insensitive for it. PRIOR: Both hemidiaphragms are well defined, with the right dome slightly higher than the left. No free subdiaphragmatic gas is seen.",
-      "bones_soft_tissue": "CURRENT and PRIOR: No displaced rib fracture or gross destructive bone lesion is seen at this image resolution. Degenerative change is present at the shoulders. No soft tissue gas is seen. Fine bone detail is limited on both, more so on the portable film.",
-      "devices": "CURRENT: Left chest wall cardiac device generator with multiple transvenous leads, including shock-coil segments projected over the right paramediastinal region and the lower cardiac silhouette. External ECG electrodes and wires are present. Additional linear tubular densities project over the tracheal air column and upper mediastinum and cannot be characterized with certainty. PRIOR: The same type of left chest wall generator with multiple leads, with coil segments over the right mediastinal border and lower left cardiac silhouette. No other tubes or lines are seen."
+      "airway_lungs": "CURRENT: Trachea roughly midline allowing for mild rotation. A linear tubular density projects over the tracheal air column, suspicious for an endotracheal tube. Low lung volumes. Diffuse bilateral hazy and coarse reticular opacity, most marked in the perihilar mid zones and both lower zones. Denser hazy opacity at the right base obscures the right hemidiaphragm. Hazy left lower zone and retrocardiac opacity. No pleural line seen, but the film is supine. PRIOR: Trachea central. Lungs well inflated. Mildly prominent right perihilar and infrahilar markings. No focal consolidation, no discrete nodule or mass. Vascular markings reach the chest wall.",
+      "mediastinum_hila": "CURRENT: Upper mediastinum appears wide on a supine AP film, so width is not reliable. Hila are indistinct and partly obscured by perihilar opacity. PRIOR: Mediastinal contour unremarkable for a PA film apart from the enlarged heart. Hila not clearly enlarged. Left hilum partly overlain by the device generator and leads.",
+      "pleura": "CURRENT: Right costophrenic angle and right hemidiaphragm are obscured by hazy basal opacity. Left costophrenic angle is hazy. A layering effusion on either side is not excluded on a supine film. No visible pleural line. PRIOR: Right costophrenic angle appears sharp. Left costophrenic angle is grossly clear. No pneumothorax.",
+      "heart": "CURRENT: Cardiac silhouette appears enlarged. Size is not reliable on AP supine with low volumes. Borders are partly indistinct from adjacent lung opacity. PRIOR: Cardiac silhouette is enlarged on a PA film, with cardiothoracic ratio above one half by eye.",
+      "diaphragm_below": "CURRENT: Both hemidiaphragms are elevated with low volumes. The right hemidiaphragm outline is obscured. Free gas cannot be assessed on a supine film. A tubular density projects over the upper abdomen in the midline, possibly an enteric tube or external tubing. PRIOR: Both domes are defined, right slightly higher than left. No free gas under the diaphragm.",
+      "bones_soft_tissue": "CURRENT: No displaced rib fracture seen on this limited portable film. No soft tissue gas seen. PRIOR: No displaced rib fracture. No destructive bone lesion seen. Degenerative change at the shoulders. No soft tissue gas.",
+      "devices": "CURRENT: Left chest wall cardiac device generator with transvenous leads. Coil segments project over the right mediastinal border (superior vena cava region) and over the lower heart (right ventricle region). Additional lead electrodes project over the left heart border, likely a coronary sinus lead. A lead with a curved tip projects over the right atrial region. Probable endotracheal tube over the trachea. Possible enteric tube over the upper abdomen. ECG electrodes are external. PRIOR: Same left chest wall generator and lead configuration: superior vena cava coil, right ventricular coil, and electrodes over the left heart border. No endotracheal or enteric tube."
     },
     "findings": [
       {
         "region": "R_mid",
         "kind": "interstitial",
-        "description": "Hazy and coarse reticular opacity in the right perihilar and mid zone, more conspicuous on the current film than on the prior.",
-        "status": "indeterminate",
-        "size_change_words": "not_applicable",
+        "description": "Hazy and coarse reticular perihilar opacity in the right mid zone, extending toward the upper and lower zones. Consistent with interstitial or alveolar fluid. Other diffuse airspace processes are not excluded.",
+        "status": "increased",
+        "size_change_words": "not_comparable",
         "needs_measurement": false,
-        "evidence": "Prior PA film with good inspiration shows only mildly prominent markings. Current AP supine low-volume film shows denser perihilar and mid zone markings. Low volumes, supine position and the exposure difference could account for part or all of the change.",
+        "evidence": "Prior PA shows only mildly prominent right perihilar markings with clear lung beyond. Current shows diffuse hazy reticular opacity out to the periphery. Supine position and low volumes add vascular crowding, but the opacity reaches the mid and upper zones, where low volumes explain less.",
         "time_sensitive": true
       },
       {
         "region": "L_mid",
         "kind": "interstitial",
-        "description": "Hazy and coarse reticular opacity in the left perihilar and mid zone, more conspicuous on the current film than on the prior.",
-        "status": "indeterminate",
-        "size_change_words": "not_applicable",
+        "description": "Hazy and reticular perihilar opacity in the left mid zone, extending to the lower zone. It mirrors the right side.",
+        "status": "increased",
+        "size_change_words": "not_comparable",
         "needs_measurement": false,
-        "evidence": "Left mid zone markings are denser on the current film, in a distribution similar to the right side. Bilateral perihilar distribution, if real, would be consistent with interstitial fluid, but technique differences could explain the appearance.",
+        "evidence": "Prior PA shows a clear left mid zone apart from the overlying device. Current shows bilateral, roughly symmetric hazy opacity. Supine AP technique and low volumes contribute, but the bilateral perihilar pattern is denser than on the prior.",
         "time_sensitive": true
       },
       {
         "region": "R_lower",
         "kind": "consolidation",
-        "description": "Hazy increased density at the right base with an indistinct right hemidiaphragm on the current film. The right base was clear on the prior.",
+        "description": "Hazy opacity at the right base obscuring the right hemidiaphragm and costophrenic angle. Could be airspace opacity, atelectasis, layering pleural fluid, or a combination.",
         "status": "indeterminate",
-        "size_change_words": "not_applicable",
+        "size_change_words": "not_comparable",
         "needs_measurement": false,
-        "evidence": "Right hemidiaphragm is sharply defined on the prior and ill defined on the current. The current film is supine with low volumes, which crowds the base and lets pleural fluid layer, so basal airspace opacity, atelectasis and layering effusion cannot be separated.",
+        "evidence": "Prior PA shows a clear right base with a sharp hemidiaphragm. On the current film the hemidiaphragm outline is lost. The current film is supine AP with low volumes, which crowds the bases and can mimic basal opacity.",
         "time_sensitive": true
       },
       {
         "region": "L_lower",
         "kind": "consolidation",
-        "description": "Increased density in the left retrocardiac and basal region with an indistinct left hemidiaphragm on the current film.",
+        "description": "Hazy left lower zone and retrocardiac opacity with an indistinct left costophrenic angle.",
         "status": "indeterminate",
-        "size_change_words": "not_applicable",
+        "size_change_words": "not_comparable",
         "needs_measurement": false,
-        "evidence": "Left hemidiaphragm is traceable on the prior and obscured on the current. The enlarged cardiac silhouette, low volumes and supine AP technique all contribute to retrocardiac density.",
+        "evidence": "Prior PA shows a clear left lower zone lateral to the enlarged heart. Current shows hazy density at the left base. Low volumes, supine position and the enlarged heart shadow may account for some or all of it.",
         "time_sensitive": false
       },
       {
         "region": "heart",
         "kind": "cardiac_silhouette",
-        "description": "Cardiac silhouette appears enlarged on both studies.",
+        "description": "Enlarged cardiac silhouette on both studies.",
         "status": "indeterminate",
         "size_change_words": "not_comparable",
         "needs_measurement": false,
-        "evidence": "The heart appears enlarged on the PA prior. On the current AP supine low-volume film the silhouette is magnified, so no interval change in size can be stated.",
+        "evidence": "Prior PA shows an enlarged heart. Current is AP supine with low volumes, which magnifies the heart shadow, so interval change in size cannot be judged.",
         "time_sensitive": false
       },
       {
         "region": "devices",
         "kind": "device",
-        "description": "Left chest wall cardiac device generator with multiple transvenous leads, including shock-coil segments, present on both studies.",
+        "description": "Linear tubular density over the tracheal air column, suspicious for an endotracheal tube. The tip appears to project above the expected level of the carina, but the carina is not clearly defined.",
+        "status": "new",
+        "size_change_words": "not_applicable",
+        "needs_measurement": false,
+        "evidence": "No tube projects over the trachea on the prior. On the current film a vertical tubular density overlies the midline trachea at the thoracic inlet. The tip position needs confirmation by the radiologist.",
+        "time_sensitive": true
+      },
+      {
+        "region": "devices",
+        "kind": "device",
+        "description": "Left chest wall cardiac device (defibrillator-type generator) with a superior vena cava coil, a right ventricular coil, electrodes over the left heart border likely in the coronary sinus, and a lead tip over the right atrial region.",
         "status": "stable",
         "size_change_words": "not_applicable",
         "needs_measurement": false,
-        "evidence": "Generator and lead configuration are of the same type on both films. No gross lead discontinuity is seen. Apparent differences in lead tip position are within what the projection and inspiration change can produce and cannot be judged further.",
+        "evidence": "The generator and lead configuration are the same on both studies. The differences in apparent generator size and lead projection are in keeping with AP magnification and supine positioning. No lead discontinuity is seen at this resolution.",
         "time_sensitive": false
-      },
-      {
-        "region": "devices",
-        "kind": "device",
-        "description": "Linear tubular densities projected over the tracheal air column and upper mediastinum on the current film, not seen on the prior. These may be support tubes or lines, or external tubing and wires.",
-        "status": "indeterminate",
-        "size_change_words": "not_applicable",
-        "needs_measurement": false,
-        "evidence": "The prior shows no tube or line in this region. On the current film the densities overlap device leads, ECG wires and the spine, so their nature and tip position cannot be confirmed at this resolution.",
-        "time_sensitive": true
       }
     ],
     "cant_determine": [
       {
-        "question": "Has the heart size changed?",
-        "reason": "Prior is PA and current is AP supine with low volumes. AP projection and poor inspiration both enlarge the heart shadow.",
-        "recommend": "Repeat PA and lateral when the patient is able, or echocardiography or CT if clinically needed.",
-        "region": "heart",
-        "kind": "cardiac_silhouette"
-      },
-      {
-        "question": "Are the bilateral perihilar and basal opacities a real interval change?",
-        "reason": "The current film is supine, AP and low volume, which crowds the lower zones and makes vessels more prominent. The difference is visible, but technique might explain it.",
-        "recommend": "Repeat upright film with good inspiration when the patient is able, or CT chest. Correlate with clinical status.",
-        "region": "R_lower",
-        "kind": "consolidation"
-      },
-      {
-        "question": "Are pleural effusions present on the current study?",
-        "reason": "On a supine film, fluid layers posteriorly and appears as hazy density, not a meniscus. Both costophrenic angles are indistinct on the current film.",
-        "recommend": "Upright or decubitus film, bedside ultrasound, or CT chest.",
+        "question": "Is there a pleural effusion on either side, and has it changed?",
+        "reason": "The current film is supine, so fluid layers posteriorly and shows only as hazy density. Both costophrenic angles are indistinct on the current film and were clear on the upright PA prior.",
+        "recommend": "Upright or semi-erect film or decubitus views when the patient is able, or bedside ultrasound or CT chest.",
         "region": "R_pleura",
         "kind": "effusion"
       },
       {
-        "question": "Is there a pneumothorax or free subdiaphragmatic gas on the current study?",
-        "reason": "A supine portable film is insensitive for both. Air collects anteriorly and may not produce a visible pleural line or a crescent under the diaphragm.",
-        "recommend": "Upright or decubitus film, or CT if there is clinical concern.",
-        "region": "L_pleura",
+        "question": "Has the heart size changed?",
+        "reason": "Prior is PA and current is AP supine with low volumes. Magnification differs, so the sizes are not comparable.",
+        "recommend": "Repeat PA and lateral when the patient is able, or echocardiography or CT as clinically appropriate.",
+        "region": "heart",
+        "kind": "cardiac_silhouette"
+      },
+      {
+        "question": "Is the upper mediastinum truly widened?",
+        "reason": "Supine AP projection with mild rotation widens the mediastinal shadow. The prior PA showed no widening.",
+        "recommend": "Repeat upright PA film when the patient is able, or CT chest if there is clinical concern.",
+        "region": "mediastinum",
+        "kind": "other"
+      },
+      {
+        "question": "Is the right basal opacity consolidation, atelectasis or layering fluid?",
+        "reason": "Low lung volumes and supine position crowd the base and obscure the hemidiaphragm. A frontal film alone cannot separate these.",
+        "recommend": "Repeat film with better inspiration, upright if possible, or CT chest.",
+        "region": "R_lower",
+        "kind": "consolidation"
+      },
+      {
+        "question": "Is there a pneumothorax?",
+        "reason": "On a supine film air collects anteriorly and at the bases, and may not produce a visible pleural line. None is seen, but the film does not exclude it.",
+        "recommend": "Upright film, bedside ultrasound, or CT chest if there is clinical concern.",
+        "region": "R_pleura",
         "kind": "pneumothorax"
       },
       {
-        "question": "Is there a new endotracheal tube, enteric tube or central line, and where are the tips?",
-        "reason": "Linear densities over the trachea and mediastinum overlap device leads, ECG wires and the spine, and the image resolution is limited.",
-        "recommend": "Review the source image in PACS with windowing and edge enhancement. Confirm against the clinical record of placed devices. Repeat the film if tip position remains unclear.",
+        "question": "Where exactly is the endotracheal tube tip relative to the carina, and is there an enteric tube with its tip in the stomach?",
+        "reason": "The image is low resolution and the carina is not clearly defined. A tubular density over the upper abdomen could be an enteric tube or external tubing.",
+        "recommend": "Review the source image in PACS with windowing. Repeat the film if the tube positions remain unclear.",
         "region": "devices",
         "kind": "device"
       },
       {
-        "question": "Has the mediastinal width or hilar size changed?",
-        "reason": "Supine AP projection, low volumes and mild rotation widen the mediastinum and distort the hila.",
-        "recommend": "Repeat PA and lateral when the patient is able, or CT chest.",
-        "region": "mediastinum",
-        "kind": "adenopathy"
+        "question": "Is there free gas under the diaphragm?",
+        "reason": "A supine film does not show subdiaphragmatic free gas reliably.",
+        "recommend": "Upright or left lateral decubitus film, or CT, if there is clinical concern.",
+        "region": "diaphragm_below",
+        "kind": "other"
       },
       {
-        "question": "Have the cardiac device leads moved?",
-        "reason": "The projection, patient position and inspiration all differ, which changes the apparent lead course and tip location.",
-        "recommend": "Matched PA and lateral films and device interrogation if there is clinical concern.",
-        "region": "devices",
-        "kind": "device"
+        "question": "Are there small nodules or subtle bone lesions on either study?",
+        "reason": "The device generator overlies the left upper and mid zones on both films. Diffuse opacity and portable technique on the current film hide fine detail.",
+        "recommend": "CT chest if clinically indicated. Review source images in PACS.",
+        "region": "L_upper",
+        "kind": "nodule_or_mass"
       }
     ],
-    "limits": "This is a blind first read with no indication or study dates, comparing a PA prior with an AP supine portable current film taken at low lung volumes. Size comparisons, heart size change and effusion assessment are not reliable across these techniques. Both images are downsampled, so fine detail such as small nodules, subtle rib lesions and line or tube tips needs review on the source images in PACS. The cardiac device and ECG hardware obscure parts of the left upper and mid zones and the mediastinum. No lateral view is available. All findings are draft observations for resident and attending review."
+    "limits": "Blind read of two frontal chest radiographs with no indication or dates. Prior is PA. Current is AP supine portable with low lung volumes. Projection, position and inspiration all differ, so comparison is limited and no size change is reported for the heart, the mediastinum or any opacity. The images are downsampled, so fine detail (lead integrity, tube tips, small nodules, subtle fractures) needs review on the source images in PACS. The device generator obscures part of the left lung on both studies. No lateral view. This is a draft for resident and attending review."
   }
 }

@@ -1,75 +1,78 @@
-// npm run cases
-// Runs Lightbox on every case in data/cases/, writes lightbox.json per case and scorecard.md.
-// Ground truth is never filled here. A case with no clinician label is reported as UNLABELLED.
+// npm run cases            scorecard from the stored runs. Cases never run are run now
+// npm run cases -- --rerun run every unsigned case again first (live model calls)
+// Writes scorecard.md. Ground truth is never filled here: a case with no clinician
+// label is reported as UNLABELLED and gets no score.
 import fs from "node:fs";
-import path from "node:path";
 import { loadEnv } from "./env";
-import { caseDir, listCaseIds, loadCase } from "../src/lib/cases";
-import { runLightbox, type LightboxRun } from "../src/lib/lightbox";
+import { listCaseIds, loadCase } from "../src/lib/cases";
+import { loadState, RUNNING_STATES, startPipeline, type CaseState } from "../src/lib/charge";
 import { assertModelsAvailable } from "../src/lib/model";
 
 loadEnv();
+const rerun = process.argv.includes("--rerun");
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-interface Truth {
-  labeled_by?: string;
-  findings?: { region?: string; status?: string }[];
-  should_refuse?: string[];
-}
+interface Truth { labeled_by?: string; findings?: { region?: string; status?: string }[]; should_refuse?: string[] }
 const cell = (v: string | number) => String(v).replace(/\|/g, "/");
 
+async function run(id: string): Promise<CaseState> {
+  console.error(`${id}: running`);
+  startPipeline(id);
+  for (;;) {
+    await sleep(1500);
+    const s = loadState(id)!;
+    if (s.state !== "RECEIVED" && !RUNNING_STATES.includes(s.state)) return s;
+  }
+}
+
 async function main() {
-  await assertModelsAvailable();
-  const rows: string[] = [];
-  const errors: string[] = [];
-  let labelled = 0, ran = 0;
-  for (const id of listCaseIds()) {
-    let run: LightboxRun;
-    try {
-      console.error(`${id}: running`);
-      run = await runLightbox(id);
-      fs.writeFileSync(path.join(caseDir(id), "lightbox.json"), JSON.stringify(run, null, 2));
-      ran++;
-    } catch (e) {
-      errors.push(`${id}: ${String((e as Error).message ?? e)}`);
-      rows.push(`| ${id} | ERROR | | | | | | | |`);
-      continue;
-    }
+  const ids = listCaseIds();
+  const toRun = ids.filter((id) => { const s = loadState(id); return !s || (rerun && !s.signature.attending); });
+  if (toRun.length) await assertModelsAvailable();
+  const rows: string[] = [], problems: string[] = [];
+  let labelled = 0, ran = 0, drafts = 0;
+  for (const id of ids) {
+    const s = toRun.includes(id) ? await run(id) : loadState(id)!;
+    ran++;
     const truth = (loadCase(id).ground_truth ?? {}) as Truth;
-    const isLabelled = Boolean(truth.labeled_by && truth.labeled_by.trim());
-    const f = run.merged.findings;
-    const agreed = f.filter((x) => x.agreement === "2_of_2").length;
-    const called = f.filter((x) => x.status !== "stable");
-    const failedChecks = run.code_checks.filter((c) => !c.pass).length;
-    if (!isLabelled) {
-      rows.push(`| ${id} | UNLABELLED | | | | | | ${agreed} of ${f.length} | ${failedChecks} | |`);
+    const isLabelled = Boolean(truth.labeled_by?.trim());
+    const truthCell = isLabelled ? `labelled by ${cell(truth.labeled_by!)}` : "UNLABELLED";
+    if (s.state === "NEEDS_HUMAN" || !s.lightbox) {
+      problems.push(`${id}: stopped in NEEDS_HUMAN. ${s.error ?? ""}`);
+      rows.push(`| ${id} | ${truthCell} | NEEDS_HUMAN, no AI draft | | | | | | |`);
+      if (isLabelled) labelled++;
       continue;
     }
+    drafts++;
+    const f = s.lightbox.findings;
+    const agreed = `${f.filter((x) => x.agreement === "2_of_2").length} of ${f.length}`;
+    if (!isLabelled) { rows.push(`| ${id} | UNLABELLED | ${s.state} | | | | | ${agreed} | |`); continue; }
     labelled++;
     const truthFindings = (truth.findings ?? []).filter((t) => t.region);
     const caught = truthFindings.filter((t) => f.some((x) => x.region === t.region)).length;
-    const falseFlags = called.filter((x) => !truthFindings.some((t) => t.region === x.region)).length;
+    const falseFlags = f.filter((x) => x.status !== "stable" && !truthFindings.some((t) => t.region === x.region)).length;
     const refuse = truth.should_refuse ?? [];
-    // A refusal counts as correct when a Can't determine item is linked to a finding in the named region,
-    // or names the region in its question.
-    const refused = (r: string) => run.merged.cant_determine.some((c) =>
+    const refused = (r: string) => s.lightbox!.cant_determine.some((c) =>
       c.question.toLowerCase().includes(r.toLowerCase()) || f.some((x) => x.id === c.related_finding && x.region === r));
-    const correctRefusals = refuse.filter(refused).length;
-    rows.push(
-      `| ${id} | labelled by ${cell(truth.labeled_by!)} | ${truthFindings.length} | ${caught} | ${falseFlags} | ${correctRefusals} | ${refuse.length - correctRefusals} | ${agreed} of ${f.length} | ${failedChecks} | |`
-    );
+    const ok = refuse.filter(refused).length;
+    rows.push(`| ${id} | ${truthCell} | ${s.state} | ${caught} of ${truthFindings.length} | ${falseFlags} | ${ok} | ${refuse.length - ok} | ${agreed} | |`);
   }
   const md = [
     "# Scorecard", "",
-    `Generated ${new Date().toISOString()}. Cases labelled by a clinician: ${labelled}. Cases run: ${ran}.`,
-    "A smoke test, not a validation study. Matching is by region only. Unlabelled cases have no score.", "",
-    "| Case | Ground truth | Findings in truth | Caught | False flags | Correct refusals | Missed refusals | Reads agreed | Code checks failed | Would sign with minor edits |",
-    "|---|---|---|---|---|---|---|---|---|---|",
+    `Generated ${new Date().toISOString()}.`, "",
+    `- Cases run: ${ran}`, `- Cases with an AI draft: ${drafts}`, `- Cases stopped as NEEDS_HUMAN: ${ran - drafts}`,
+    `- Cases labelled by a clinician: ${labelled}`, "",
+    labelled === 0
+      ? "No case has clinician ground truth, so there are no caught, false flag or refusal counts. Fill `ground_truth` in each `case.json` and run this again."
+      : "Scores exist only for labelled cases. Matching is by region only.",
+    "A smoke test, not a validation study.", "",
+    "| Case | Ground truth | State | Caught | False flags | Correct refusals | Missed refusals | Reads agreed (2 of 2) | Would sign with minor edits |",
+    "|---|---|---|---|---|---|---|---|---|",
     ...rows, "",
-    ...(errors.length ? ["## Pipeline errors", "", ...errors.map((e) => `- ${e}`), ""] : []),
+    ...(problems.length ? ["## Cases with no AI draft", "", ...problems.map((p) => `- ${p}`), ""] : []),
   ].join("\n");
   fs.writeFileSync("scorecard.md", md);
   console.log(md);
-  if (errors.length) process.exit(1);
 }
 
 main().catch((e) => { console.error(String(e.message ?? e)); process.exit(1); });

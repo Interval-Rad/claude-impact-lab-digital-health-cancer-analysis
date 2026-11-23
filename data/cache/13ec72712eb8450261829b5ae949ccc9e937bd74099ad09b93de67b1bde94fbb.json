@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_try1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "13ec72712eb8450261829b5ae949ccc9e937bd74099ad09b93de67b1bde94fbb",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:13:30.337Z",
+  "usage": {
+    "input_tokens": 11853,
+    "output_tokens": 1200
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage: critical tier, on-call page flagged.",
+        "why": "The findings JSON contains no triage tier or paging information, and study_flags is empty."
+      },
+      {
+        "type": "disagreement_hidden",
+        "finding_id": "F1",
+        "report_text": "Reason: new endotracheal tube with tip level unconfirmed",
+        "why": "The triage line calls the tube plainly new, but F1 is indeterminate and the reads disagreed (A: new, B: stable), so the disagreement is not carried into this line."
+      }
+    ]
+  }
+}

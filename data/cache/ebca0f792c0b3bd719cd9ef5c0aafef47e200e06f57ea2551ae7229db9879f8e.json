@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "ebca0f792c0b3bd719cd9ef5c0aafef47e200e06f57ea2551ae7229db9879f8e",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:11:34.327Z",
+  "usage": {
+    "input_tokens": 11980,
+    "output_tokens": 1261
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F1",
+        "report_text": "Triage: critical, page on-call flagged.",
+        "why": "The findings only mark F1 as time_sensitive and outside_indication, with no critical triage level or on-call page; the same claim is repeated in Impression 1 as 'Triage flagged critical with on-call page'."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "7114af9fa05ee55c6d5bb87d49e1a9f8f922b04744afb59ac4a3035f861b952e",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:17:33.934Z",
+  "usage": {
+    "input_tokens": 11641,
+    "output_tokens": 960
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F1",
+        "report_text": "Shortness of breath and SpO2 94 percent fit this pattern.",
+        "why": "The findings contain no SpO2 value, and no clinical correlation is stated as a finding, so this vital sign and the claim that it fits the pattern are unsupported."
+      }
+    ]
+  }
+}

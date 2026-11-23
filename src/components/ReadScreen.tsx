@@ -48,6 +48,13 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
   );
   const [localOnly, setLocalOnly] = useState(false); // a stubbed call answered: nothing was saved
   const [error, setError] = useState<string | null>(null);
+  const [showAllCd, setShowAllCd] = useState(false);
+  // Abstentions tied to the look-first findings come first. Nothing is dropped: the rest are one click away.
+  const cdRank = (related: string | null) => {
+    const i = related ? (lb?.look_first ?? []).indexOf(related) : -1;
+    return i === -1 ? (related ? 50 : 99) : i;
+  };
+  const cantDetermine = [...(lb?.cant_determine ?? [])].sort((x, y) => cdRank(x.related_finding) - cdRank(y.related_finding));
 
   const note = (r: api.ApiResult<{ state?: string }>) => {
     if (!r.ok) return setError(r.error);
@@ -198,11 +205,16 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
                   <>
                     <dt className="label attn pt-[2px]">Differs from prior report !</dt>
                     <dd className={attending ? "ai-accepted" : "ai-draft"}>
-                      {lb.prior_report_discrepancies.map((d, i) => (
-                        <div key={i}>
-                          Prior report says: {d.prior_report_says} Images show: {d.images_show}
-                        </div>
-                      ))}
+                      <details>
+                        <summary className="cursor-pointer">
+                          {lb.prior_report_discrepancies.length} place{lb.prior_report_discrepancies.length === 1 ? "" : "s"} where the images do not match the prior report
+                        </summary>
+                        {lb.prior_report_discrepancies.map((d, i) => (
+                          <div key={i} className="mt-1">
+                            Prior report says: {d.prior_report_says} Images show: {d.images_show}
+                          </div>
+                        ))}
+                      </details>
                     </dd>
                   </>
                 )}
@@ -316,6 +328,15 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
                 {lb.comparability.differences.length === 0 ? (
                   <div className="mt-1">No differences between the two studies noted.</div>
                 ) : (
+                  <div className="ai-draft mt-1">
+                    <span className="data">{words(lb.comparability.differences[0].factor)}:</span>{" "}
+                    {lb.comparability.differences[0].detail}
+                  </div>
+                )}
+                <details className="mt-1">
+                  <summary className="label cursor-pointer">
+                    What this prevents, image quality, limits ({lb.comparability.differences.length})
+                  </summary>
                   <ul className="mt-1">
                     {lb.comparability.differences.map((d, i) => (
                       <li key={i} className="ai-draft mb-1">
@@ -326,7 +347,6 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
                       </li>
                     ))}
                   </ul>
-                )}
                 <table className="data mt-2 w-full text-[11px]">
                   <thead>
                     <tr className="text-left text-muted">
@@ -354,11 +374,12 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
                     })}
                   </tbody>
                 </table>
-                {lb.limits && (
-                  <div className="mt-2">
-                    <span className="data">limits:</span> {lb.limits}
-                  </div>
-                )}
+                  {lb.limits && (
+                    <div className="mt-2">
+                      <span className="data">limits:</span> {lb.limits}
+                    </div>
+                  )}
+                </details>
               </section>
 
               <section className="section" aria-labelledby="h-look">
@@ -424,27 +445,35 @@ export default function ReadScreen({ payload }: { payload: CasePayload }) {
               </section>
 
               <section className="section" aria-labelledby="h-cant">
-                <h2 id="h-cant" className="label mb-[6px]">Can&apos;t determine</h2>
+                <h2 id="h-cant" className="label mb-[6px]">Can&apos;t determine ({lb.cant_determine.length})</h2>
                 {lb.cant_determine.length === 0 ? (
                   <div>Nothing listed as undeterminable.</div>
                 ) : (
-                  <ul>
-                    {lb.cant_determine.map((c, i) => (
-                      <li key={i} className="hatched border-t border-rule py-[6px] first:border-t-0">
-                        <div className="font-medium">{c.question}</div>
-                        <div>
-                          <span className="data">Reason:</span> {c.reason}
-                        </div>
-                        <div>
-                          <span className="data">Next:</span> {c.recommend}
-                        </div>
-                        <div className="data text-[11px] text-muted">
-                          {c.related_finding ? `relates to ${c.related_finding}, ` : ""}
-                          from read{c.from_reads.length === 1 ? "" : "s"} {c.from_reads.join(" and ")}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                  <>
+                    <ul>
+                      {(showAllCd ? cantDetermine : cantDetermine.slice(0, 3)).map((c, i) => (
+                        <li key={i} className="hatched border-t border-rule py-[6px] first:border-t-0">
+                          <div className="font-medium">{c.question}</div>
+                          <div>
+                            <span className="data">Next:</span> {c.recommend}
+                          </div>
+                          <details>
+                            <summary className="label cursor-pointer">Reason</summary>
+                            <div>{c.reason}</div>
+                            <div className="data text-[11px] text-muted">
+                              {c.related_finding ? `relates to ${c.related_finding}, ` : ""}
+                              from read{c.from_reads.length === 1 ? "" : "s"} {c.from_reads.join(" and ")}
+                            </div>
+                          </details>
+                        </li>
+                      ))}
+                    </ul>
+                    {cantDetermine.length > 3 && (
+                      <button type="button" className="btn mt-1" aria-expanded={showAllCd} onClick={() => setShowAllCd((v) => !v)}>
+                        {showAllCd ? "Show fewer" : `Show ${cantDetermine.length - 3} more`}
+                      </button>
+                    )}
+                  </>
                 )}
               </section>
 

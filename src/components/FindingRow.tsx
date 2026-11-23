@@ -70,7 +70,10 @@ export default function FindingRow({ finding: f, review, selected, onSelect, onR
           <AgreementMark finding={f} />
         </button>
 
-        <div className={review?.action === "rejected" ? "text-muted line-through" : ""}>{shownText}</div>
+        {/* One line per finding. The wording shows on expand, or once the radiologist has edited it. */}
+        {(open || review?.action === "edited" || form !== null) && (
+          <div className={review?.action === "rejected" ? "text-muted line-through" : ""}>{shownText}</div>
+        )}
 
         <div className="mt-[2px] flex flex-wrap items-center gap-x-2 gap-y-1">
           {f.outside_indication === true && <span className="tag">outside indication</span>}

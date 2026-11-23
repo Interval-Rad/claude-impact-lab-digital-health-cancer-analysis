@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_try2",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "653ffce9208282b6245651853b19b3d5d37c7e0661e777da099e3f38a6f31a3f",
+  "case_id": "new_effusion",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:08:36.600Z",
+  "usage": {
+    "input_tokens": 9309,
+    "output_tokens": 1507
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": null,
+        "report_text": "Triage: high urgency, not paged; radiologist review needed.",
+        "why": "The findings contain no triage level or paging information, and every finding has time_sensitive false with empty study_flags."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "LOOK AT FIRST:\n- None. No time-sensitive findings flagged.",
+        "why": "The findings list look_at_first as F1, F6, F5, F8 and F7, but the report gives no priority items."
+      }
+    ]
+  }
+}

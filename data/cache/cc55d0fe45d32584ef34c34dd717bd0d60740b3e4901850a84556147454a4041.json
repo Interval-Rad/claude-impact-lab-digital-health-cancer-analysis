@@ -5,10 +5,10 @@
   "request_hash": "cc55d0fe45d32584ef34c34dd717bd0d60740b3e4901850a84556147454a4041",
   "case_id": "new_nodule",
   "model": "claude-fable-5-2",
-  "recorded_at": "2026-11-21T19:36:05.653Z",
+  "recorded_at": "2026-11-23T15:08:37.154Z",
   "usage": {
     "input_tokens": 9202,
-    "output_tokens": 4505
+    "output_tokens": 5271
   },
   "response": {
     "comparability": {
@@ -20,9 +20,9 @@
         "exposure": "adequate",
         "coverage": "complete",
         "artifacts": [
-          "Belt and buckle projected over the upper abdomen below the diaphragm",
-          "Left side marker over the left shoulder",
-          "Black masking bar at the left image edge"
+          "External belt and buckle projected over the upper abdomen, below the diaphragm",
+          "Black rectangular masked area at the upper left image edge, outside the lungs",
+          "Side marker over the left shoulder"
         ]
       },
       "current": {
@@ -33,96 +33,96 @@
         "exposure": "adequate",
         "coverage": "complete",
         "artifacts": [
-          "Side marker over the left shoulder",
-          "Short linear radiopaque external object at the lower left image edge below the right hemidiaphragm, probably clothing or belt",
-          "Black image border from collimation"
+          "Small rectangular radiopaque object at the lower image edge on the patient's right, below the diaphragm, likely external",
+          "Black border around the image",
+          "Side marker over the left shoulder"
         ]
       },
       "comparable": "yes",
       "differences": [
         {
-          "factor": "exposure",
-          "detail": "Prior is slightly more penetrated and differently processed than current. Field of view and magnification differ slightly.",
-          "prevents": "Judging subtle change in fine lung markings or in the density of small nodules. It does not prevent comparison of the main findings."
+          "factor": "coverage",
+          "detail": "Field of view and image scaling differ slightly. The prior includes more of the upper abdomen, and the chest sits lower in the current frame.",
+          "prevents": "Direct on-image size comparison without calibrated measurement in PACS. Size change is described in words only."
         },
         {
-          "factor": "coverage",
-          "detail": "The belt and buckle overlie the upper abdomen on the prior and not on the current.",
-          "prevents": "Comparing the upper abdomen below the diaphragm between the two studies."
+          "factor": "exposure",
+          "detail": "Minor difference in image processing and contrast. Both studies show the vertebrae behind the heart.",
+          "prevents": "Nothing substantive. Small differences in the conspicuity of fine lung markings should not be read as change."
         }
       ]
     },
     "systematic_read": {
-      "airway_lungs": "CURRENT: Trachea central. Carina and main bronchi are not narrowed. Lung volumes are adequate. No consolidation, collapse or interstitial pattern in any zone. A small, dense, well-defined round nodule projects at the lateral left hilum and medial left mid zone. Vascular markings reach the chest wall on both sides. PRIOR: Same appearance. The same small dense nodule sits in the same position relative to the left hilum. No other focal lung opacity.",
-      "mediastinum_hila": "CURRENT: Upper mediastinum is not widened. Aortic knuckle is normal in contour. Aortopulmonary window is not filled in. Left hilum sits slightly higher than the right. A small dense focus projects over the right hilum. No one-sided hilar enlargement. PRIOR: Same mediastinal and hilar contours. The same small dense focus is at the right hilum.",
-      "pleura": "CURRENT: Both costophrenic angles are sharp. No pleural line and no visible pleural thickening. PRIOR: Both costophrenic angles are sharp. No pleural line.",
-      "heart": "CURRENT: The cardiac silhouette is at the upper limit of normal to mildly enlarged by eye on a PA film. Heart borders are sharp. PRIOR: Same size and contour by eye.",
-      "diaphragm_below": "CURRENT: Both domes are sharp, the right slightly higher than the left. Gastric bubble and bowel gas lie under the left dome. No free gas under the diaphragm. PRIOR: Both domes are sharp. Gastric bubble lies under the left dome. No free gas. The belt overlies the upper abdomen.",
-      "bones_soft_tissue": "CURRENT: No rib, clavicle or shoulder lesion at this resolution. Visible spine shows no destructive lesion. Breast shadows overlie both lower zones. No soft tissue gas. PRIOR: Same.",
-      "devices": "CURRENT: No lines, tubes, port or cardiac device. PRIOR: No internal device. The belt and buckle are external."
+      "airway_lungs": "CURRENT: Trachea central. Carina and main bronchi are not clearly narrowed. Lungs are well inflated. No consolidation, band-like collapse or reticular interstitial pattern. A small, dense, well-defined round nodule projects over the left perihilar region, just lateral to the left hilum. Bronchovascular markings in the right lower zone are mildly prominent. Apices are clear. PRIOR: Same appearance. The same dense, well-defined left perihilar nodule is present in the same position with similar size and density. Right lower zone markings are similar. No consolidation or collapse.",
+      "mediastinum_hila": "CURRENT: Upper mediastinum is not widened. Aortic knuckle is visible. There is a prominent convexity along the left mediastinal and heart border below the aortic knuckle, in the region of the pulmonary artery segment and left atrial appendage. A small rounded dense focus projects over the right hilum. Hila are otherwise not enlarged. PRIOR: Same mediastinal contour, with the same convexity below the aortic knuckle. The small dense focus over the right hilum is also present. No interval change in hilar size.",
+      "pleura": "CURRENT: Both costophrenic angles are sharp. No pleural line, and lung markings reach the chest wall on both sides. No pleural thickening. PRIOR: Both costophrenic angles are sharp. No effusion or pneumothorax.",
+      "heart": "CURRENT: Cardiac silhouette is at or slightly above the upper limit of normal size on this PA film. The left heart border is straightened and prominent. Heart borders are sharp. PRIOR: Similar size and configuration on a PA film. No interval change in the cardiac silhouette.",
+      "diaphragm_below": "CURRENT: Both domes are well defined, with the right slightly higher than the left. No free gas under the diaphragm. Bowel gas lies beneath the left dome. PRIOR: Both domes are well defined. Gastric bubble lies under the left dome. No free gas. An external belt and buckle overlie the upper abdomen.",
+      "bones_soft_tissue": "CURRENT: No displaced rib fracture or destructive bone lesion at this image resolution. Clavicles and shoulders are unremarkable. Bilateral breast shadows overlie the lower zones. No soft tissue gas. PRIOR: Same. No rib, clavicle or visible spine lesion seen. Bilateral breast shadows. No soft tissue gas.",
+      "devices": "CURRENT: No lines, tubes, pacemaker or surgical clips in the chest. PRIOR: No intrathoracic devices. The belt and buckle are external. No new device since the prior."
     },
     "findings": [
       {
         "region": "L_hilum",
         "kind": "nodule_or_mass",
-        "description": "Small, dense, well-defined round nodule at the lateral left hilum and medial left mid zone. Its density suggests calcification. The appearance is consistent with a calcified granuloma or calcified node, not confirmed on these films.",
+        "description": "Small, dense, well-defined round nodule projected over the left perihilar region, just lateral to the left hilum. Its high density raises the possibility of a calcified nodule, but calcification is not confirmed on these images.",
         "status": "stable",
         "size_change_words": "similar",
         "needs_measurement": true,
-        "evidence": "Seen on both PA films in the same position relative to the left hilum and left heart border. Size and shape are similar by eye. It looks slightly denser on the current, which the exposure and processing difference could explain.",
+        "evidence": "Seen on both PA studies in the same position relative to the left hilum and the left mediastinal border, with similar size, density and sharp margin.",
         "time_sensitive": false
       },
       {
         "region": "R_hilum",
         "kind": "nodule_or_mass",
-        "description": "Small dense focus projected over the right hilum. This may be a vessel seen end-on or a small calcified hilar node.",
+        "description": "Small rounded dense focus projected over the right hilum. This may be a vessel seen end-on or a small calcified node.",
         "status": "stable",
         "size_change_words": "similar",
         "needs_measurement": false,
-        "evidence": "Seen at the same place within the right hilar vessels on both films. The right hilum has the same size and contour on both.",
+        "evidence": "Present on both studies in the same position within the right hilar shadow, with similar size and density. The right hilum is not enlarged on either study.",
         "time_sensitive": false
       },
       {
         "region": "heart",
         "kind": "cardiac_silhouette",
-        "description": "Cardiac silhouette at the upper limit of normal to mildly enlarged by eye. Borders are sharp.",
+        "description": "Cardiac silhouette at or slightly above the upper limit of normal size on PA projection. The left heart border is straightened and prominent, with a convexity below the aortic knuckle in the region of the pulmonary artery segment and left atrial appendage.",
         "status": "stable",
         "size_change_words": "similar",
         "needs_measurement": true,
-        "evidence": "Both films are PA with adequate inspiration and no rotation. The transverse heart width relative to the chest looks the same on both.",
+        "evidence": "Both studies are PA with adequate inspiration and no significant rotation. Heart width relative to the thorax and the left border contour look the same on both.",
         "time_sensitive": false
       }
     ],
     "cant_determine": [
       {
-        "question": "Is the small left hilar nodule calcified and benign in character?",
-        "reason": "The nodule is small and seen on frontal films alone. The image is compressed and low resolution, so calcification and margin cannot be confirmed.",
-        "recommend": "Review the source images in PACS and compare with any older studies. If it has not been characterized before, CT chest.",
+        "question": "Is the left perihilar nodule calcified, which would be consistent with a granuloma?",
+        "reason": "The nodule is small and these are downsampled frontal radiographs. Density and internal calcification cannot be confirmed at this resolution.",
+        "recommend": "Review the source images in PACS and compare with any older studies to establish long-term stability. CT chest if calcification or stability cannot be confirmed.",
         "region": "L_hilum",
         "kind": "nodule_or_mass"
       },
       {
-        "question": "Is the small dense focus at the right hilum a vessel end-on or a calcified node?",
-        "reason": "A small density over hilar vessels on a frontal film cannot be separated from normal vascular overlap.",
-        "recommend": "Lateral view or CT chest if characterization is needed.",
+        "question": "Is the small dense focus over the right hilum a vessel end-on, a calcified node or a small nodule?",
+        "reason": "It is a small density superimposed on hilar vessels on a frontal view alone, and the image resolution is limited.",
+        "recommend": "Review the source images in PACS with a lateral view if available. CT chest if it remains unexplained.",
         "region": "R_hilum",
         "kind": "nodule_or_mass"
       },
       {
-        "question": "Is the cardiothoracic ratio above the normal limit?",
-        "reason": "The heart size is borderline by eye, and no measurement is made on image files without a pixel scale.",
-        "recommend": "The radiologist measures the cardiothoracic ratio in PACS on both PA films.",
+        "question": "Does the prominent left heart border reflect enlargement of a specific chamber or of the pulmonary artery?",
+        "reason": "A frontal radiograph shows the contour only. It cannot separate the left atrial appendage, the pulmonary artery segment and normal variation.",
+        "recommend": "Lateral chest view and clinical correlation. Echocardiography if clinically indicated.",
         "region": "heart",
         "kind": "cardiac_silhouette"
       },
       {
-        "question": "Is there a lesion behind the heart or behind the domes of the diaphragm?",
-        "reason": "Only frontal films were provided, and these areas are hidden by overlap.",
-        "recommend": "Lateral view, or CT chest if there is clinical concern.",
+        "question": "Is there a retrocardiac or hidden lower lobe abnormality?",
+        "reason": "Only frontal views are provided, and the retrocardiac region is partly obscured by the prominent cardiac silhouette.",
+        "recommend": "Lateral view.",
         "region": "L_lower",
         "kind": "other"
       }
     ],
-    "limits": "This is a first-read draft for resident and attending review. It was read blind, with no indication and no dates. Only one frontal PA film per study was provided, with no lateral view. The images are downsampled and compressed, so fine detail such as nodule margins, calcification and subtle bone lesions is limited. No measurements were made, and size statements are by eye only."
+    "limits": "This is a draft first read of two frontal PA radiographs, done without indication or study dates. No lateral views were provided. The images are downsampled and carry no pixel scale, so no measurements are given and size change is described in words only. Fine detail such as nodule calcification, margins and subtle bone lesions needs review on the source images in PACS. A radiologist must confirm all findings and measurements."
   }
 }

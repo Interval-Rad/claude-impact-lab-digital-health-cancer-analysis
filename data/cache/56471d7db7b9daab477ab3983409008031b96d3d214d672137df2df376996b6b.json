@@ -1,0 +1,36 @@
+{
+  "agent": "charge",
+  "label": "qc_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "56471d7db7b9daab477ab3983409008031b96d3d214d672137df2df376996b6b",
+  "case_id": "new_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:09:35.490Z",
+  "usage": {
+    "input_tokens": 7110,
+    "output_tokens": 1136
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": "F1",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "The findings list F1 first in look_at_first, but the report says None."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F4",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "The findings list F4 second in look_at_first, but the report says None."
+      },
+      {
+        "type": "missing_finding",
+        "finding_id": "F2",
+        "report_text": "LOOK AT FIRST:\n- None",
+        "why": "The findings list F2 third in look_at_first, but the report says None."
+      }
+    ]
+  }
+}

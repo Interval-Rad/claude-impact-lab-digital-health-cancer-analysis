@@ -55,20 +55,35 @@ Live model calls need `ANTHROPIC_API_KEY` in `.env.local` (server side only):
 
 ```
 npm run models                 # checks the model ids in src/lib/config.ts against the key
-npm run lightbox -- new_nodule # two blind reads, reconciliation, focused pass. Prints merged JSON
-npm run cases                  # every case, writes scorecard.md
+npm run pipeline -- new_nodule # one case from upload to report draft, without the browser
+npm run cases                  # scorecard.md from the stored runs (add -- --rerun to run them again)
 ```
 
 `DEMO_MODE=replay` serves responses recorded in `data/cache/` and calls no model.
 
 ## Status
 
-Built and unit tested: RECIST arithmetic, schemas, prompt loader, the model
-call layer with cache and replay, the blind read with its firewall test,
-reconciliation, the focused pass and code QC checks. Screens render a
-hand-written fixture carrying a visible "mock" tag until a case has been run.
-Not built yet: Stat, Courier, the QC call, review and signatures, the
-provider inbox.
+Works, and has been run live on the five demo pairs:
+
+- Two blind reads, reconciliation with agreement per finding, focused pass with the release time.
+- Triage and the worklist sort. Report draft and the quality check.
+- Review (accept, edit, reject with a reason), typed measurements, resident and attending signatures.
+- After the attending signs: provider message, pre-filled follow-up order, tumor board, surgeon and
+  family drafts, the provider inbox, and re-send with escalation on the demo clock.
+- Replay from recorded responses (`DEMO_MODE=replay`), and a model id check when the server starts.
+
+Known limits:
+
+- No case has clinician ground truth, so `scorecard.md` has no accuracy counts.
+- RECIST is not computed on radiographs until a clinician confirms the wording
+  (`RECIST_RADIOGRAPH_POLICY` in `src/lib/config.ts`). Every demo case is a radiograph.
+- The synthetic charts were written for the demo and no clinician has reviewed them.
+- Three of the five cases failed the report quality check on their first run and were redrafted on request.
+- Not built: voice, past-corrections feedback to the reading agent, automatic fallback model,
+  on-call re-page, PCP and navigator tabs.
+
+`index.html` is a static snapshot of the recorded runs (rebuild with `python3 scripts/build_static.py`).
+`slides/` holds the three minute deck. `design/` is a separate design exploration, not app code.
 
 ## Layout
 

@@ -1,0 +1,31 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "980c5ef0c288fd41bdb019c770df2d835b953b9a828ed140e791f47046ca5974",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:16:45.977Z",
+  "usage": {
+    "input_tokens": 11168,
+    "output_tokens": 1531
+  },
+  "response": {
+    "severity_subgroup": "indeterminate_needs_human",
+    "urgency_tier": "high",
+    "page_on_call": false,
+    "context_flags": [
+      {
+        "item": "SpO2 94 percent with shortness of breath",
+        "bears_on": "F1/F2 increased bilateral perihilar and mid zone opacity",
+        "why": "Mildly reduced oxygen saturation fits the indication and the increased bilateral opacity, so this should be looked at early."
+      },
+      {
+        "item": "Prostate cancer on hormone therapy",
+        "bears_on": "F10 mottled density over right scapula and the bone question in the indication",
+        "why": "Known prostate cancer raises the importance of an unresolved possible bone texture change, which needs source image review."
+      }
+    ],
+    "worklist_reason": "Reads disagree on possible endotracheal tube; increased bilateral hazy opacity with breathlessness; supine film limits pneumothorax assessment."
+  }
+}

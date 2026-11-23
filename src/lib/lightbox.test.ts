@@ -43,6 +43,16 @@ describe("reconcile", () => {
     expect(m.findings.map((f) => f.agreement)).toEqual(["2_of_2", "1_of_2"]);
   });
 
+  it("pairs same-region findings by what they describe, not by their order", () => {
+    const tube = finding({ region: "devices", kind: "device", status: "new", description: "Endotracheal tube projecting over the tracheal air column" });
+    const pacer = finding({ region: "devices", kind: "device", status: "stable", description: "Left chest cardiac device generator with transvenous leads" });
+    const m = reconcile(read({ findings: [tube, pacer] }), read({ findings: [
+      { ...pacer, description: "Cardiac device generator in the left chest with leads" },
+      { ...tube, description: "Tube over the tracheal air column, likely endotracheal" },
+    ] }));
+    expect(m.findings.map((f) => [f.status, f.agreement])).toEqual([["new", "2_of_2"], ["stable", "2_of_2"]]);
+  });
+
   it("uses the more cautious comparability and flags the disagreement", () => {
     const m = reconcile(read({}, "yes"), read({}, "limited"));
     expect(m.comparability.comparable).toBe("limited");

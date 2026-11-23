@@ -207,14 +207,14 @@ async function draftAndCheck(c: CaseFile, s: CaseState, tag: string): Promise<bo
 // ---------- the pipeline: RECEIVED to DRAFTED ----------
 
 /** Starts the pipeline in the background and returns at once. The UI polls the case state. */
-export function startPipeline(id: string): CaseState {
+export function startPipeline(id: string, options: { fresh?: boolean } = {}): CaseState {
   loadCase(id); // throws on an unknown case
   if (running.has(id)) throw new ChargeError("This case is already running.");
   const existing = loadState(id);
   if (existing && existing.signature.attending) throw new ChargeError("This case is signed. It cannot be re-run.");
   // The read itself is sound and only the report draft failed QC: a person may ask for the
   // draft again without paying for the three Lightbox calls a second time.
-  if (existing && existing.state === "NEEDS_HUMAN" && existing.lightbox && existing.focused && existing.stat &&
+  if (!options.fresh && existing && existing.state === "NEEDS_HUMAN" && existing.lightbox && existing.focused && existing.stat &&
       existing.code_checks.length > 0 && existing.code_checks.every((x) => x.pass)) {
     existing.error = null;
     existing.draft_tries = (existing.draft_tries ?? 0) + 1;

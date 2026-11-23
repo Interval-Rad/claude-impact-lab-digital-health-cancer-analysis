@@ -1,0 +1,33 @@
+{
+  "agent": "courier",
+  "label": "handoff_v1",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "8c7a3925772478ce5b9d62016330aa909e848e7fe44b17577cc8ab4873a3b67b",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:16:53.924Z",
+  "usage": {
+    "input_tokens": 5145,
+    "output_tokens": 1739
+  },
+  "response": {
+    "provider_message": {
+      "subject": "HIGH: Right hilar and infrahilar fullness, more conspicuous than prior, indeterminate",
+      "body": "Line 1: Chest X-ray shows right hilar and infrahilar fullness that looks more prominent than the prior. It is indeterminate, the two reads disagreed, and technique may explain part of it.\nLine 2: Radiologist recommends CT chest with contrast, or a lateral view if CT is not immediately available. A tiny right lower zone focus also needs PACS review.\nLine 3: Awaiting your signature: CT chest with contrast order (interval not specified in the report)."
+    },
+    "followup_order": {
+      "study": "CT chest",
+      "body_part": "Chest",
+      "contrast": "With contrast",
+      "interval": "Not specified in the report. Triage calls for radiologist review next shift. Lateral view if CT is not immediately available.",
+      "reason": "Right hilar and infrahilar fullness, more conspicuous than on the prior chest radiograph. Indeterminate, enlarged nodes or mass versus technique-accentuated vessels. History of treated breast cancer, on surveillance."
+    },
+    "tumor_board": {
+      "recist_rows": [],
+      "history": "History of treated breast cancer, on routine surveillance with no new symptoms.\nChest radiograph (PA) compared with a prior PA. Dates not verified in the report.\nLeft chest wall implanted venous access device present on both studies. Catheter tip not traced.",
+      "impression": "Right hilar and infrahilar fullness is more conspicuous than on the prior. It is indeterminate, the two reads disagreed, and CT chest with contrast is recommended. A tiny right lower zone dense focus is undetermined (nodule versus vessel end-on), and right lower zone linear markings are indeterminate. RECIST was not computed on radiographs."
+    },
+    "surgeon": "Location: right hilar and infrahilar region (fullness), plus a tiny dense focus in the right lower zone. Size trend: no measurements were made. The hilar fullness looks more conspicuous than on the prior, but size change is not comparable and the finding is indeterminate. The report says nothing on whether surgery is possible. CT chest with contrast is recommended to clarify the hilar finding.",
+    "family_page": "Your care team will go over this with you.\nYou had a chest X-ray. It was a check-up because you were treated for breast cancer in the past.\nThe X-ray showed an area near the right lung's center that looks a bit fuller than before. The doctors cannot tell what it is from this X-ray alone. It may be normal blood vessels that look different because of how the picture was taken.\nThe X-ray also showed a very small spot in the lower right lung. It could be a small spot in the lung or just a blood vessel seen end-on. This is also not clear yet.\nYour care team recommends a CT scan of your chest. A CT scan takes many detailed pictures and shows more than an X-ray. It may use contrast, a special dye given through a vein.\nWho to call: please call your oncology care team with any questions, or if you notice new symptoms."
+  }
+}

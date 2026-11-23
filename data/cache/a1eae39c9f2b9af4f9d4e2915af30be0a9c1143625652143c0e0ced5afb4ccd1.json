@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "a1eae39c9f2b9af4f9d4e2915af30be0a9c1143625652143c0e0ced5afb4ccd1",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:12:18.832Z",
+  "usage": {
+    "input_tokens": 11196,
+    "output_tokens": 1768
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F1",
+        "report_text": "Status indeterminate: the two blind reads disagreed (one read new, one read stable).",
+        "why": "The indication_pass merge note says the F1 status_differs flag is a pairing artifact and both reads called the tracheal tube new, so the report states a read disagreement the findings do not support."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F2",
+        "report_text": "Status indeterminate: the two blind reads disagreed (one read stable, one read new).",
+        "why": "The indication_pass merge note says the F2 status_differs flag is a pairing artifact and both reads called the cardiac device stable, so the report states a read disagreement the findings do not support."
+      }
+    ]
+  }
+}

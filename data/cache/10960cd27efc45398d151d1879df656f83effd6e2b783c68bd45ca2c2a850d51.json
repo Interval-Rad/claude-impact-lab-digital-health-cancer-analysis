@@ -1,0 +1,20 @@
+{
+  "agent": "stat",
+  "label": "triage",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "10960cd27efc45398d151d1879df656f83effd6e2b783c68bd45ca2c2a850d51",
+  "case_id": "new_nodule",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:08:56.559Z",
+  "usage": {
+    "input_tokens": 5999,
+    "output_tokens": 94
+  },
+  "response": {
+    "severity_subgroup": "stable_or_responding",
+    "urgency_tier": "routine",
+    "page_on_call": false,
+    "context_flags": [],
+    "worklist_reason": "Surveillance chest film: hilar densities unchanged from prior, no new nodule seen; frontal views only."
+  }
+}

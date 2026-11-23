@@ -1,0 +1,92 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "09e7b47d5181b6939a4963ae66e6081b39dc1d693862dad10dc7a55f334ff831",
+  "case_id": "refusal_heart",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-23T15:10:31.776Z",
+  "usage": {
+    "input_tokens": 11841,
+    "output_tokens": 5684
+  },
+  "response": {
+    "indication_pass": {
+      "question": "What on the current film could account for shortness of breath, and is there any visible sign of intrathoracic or bony disease in a patient with prostate cancer on hormone therapy?",
+      "answer": "The current film shows increased hazy and reticular opacity in both perihilar and mid zones, hazy bases and an enlarged cardiac silhouette; this pattern is consistent with interstitial or alveolar fluid, but infection or another diffuse process is not excluded on a supine, low-volume film. No discrete lung mass or definite focal bone lesion is seen at this resolution, and pleural effusion, pneumothorax and true mediastinal widening remain undetermined. Note on the merge: F1 and F2 each pair one read's tracheal tube entry with the other read's cardiac device entry, so their status_differs flags are a pairing artifact; both reads called the tracheal tube new and the cardiac device stable. The indication does not mention intubation.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "heart",
+        "R_pleura",
+        "L_pleura",
+        "bones"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Heart size normal.",
+        "images_show": "The cardiac silhouette appears enlarged on the prior PA film; both blind reads recorded this. I do not see a normal-sized heart on the prior image."
+      },
+      {
+        "prior_report_says": "No device is mentioned.",
+        "images_show": "The prior image shows a left pectoral cardiac device with transvenous leads, including coil leads. The report is either incomplete or may not belong to this image; this should be verified."
+      },
+      {
+        "prior_report_says": "Lungs clear.",
+        "images_show": "The prior lungs are largely clear, which mostly agrees. One blind read noted mildly prominent right perihilar markings and a slightly hazy left costophrenic angle on the prior, so the left base may not have been entirely normal at baseline."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F7",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F8",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F3",
+      "F4",
+      "F5",
+      "F6"
+    ]
+  }
+}

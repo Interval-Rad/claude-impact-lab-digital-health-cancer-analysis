@@ -56,11 +56,21 @@ function mergeFinding(a: BlindFinding | null, b: BlindFinding | null): Omit<Merg
 
 /** Merges blind read A and blind read B. Keeps every finding from either read. */
 export function reconcile(a: BlindRead, b: BlindRead): LightboxMerged {
-  // Match on region + kind. Two findings with the same region and kind in one read pair off in order.
+  // Match on region + kind. When one read has several findings with the same region and kind
+  // (two devices, say), pair each with the most similar one from the other read, not just the
+  // next in line: a wrong pairing would show a disagreement the reads never had.
+  const tokens = (f: BlindFinding) => new Set(f.description.toLowerCase().match(/[a-z]{4,}/g) ?? []);
+  const similarity = (x: BlindFinding, y: BlindFinding) => {
+    const tx = tokens(x), ty = tokens(y);
+    const shared = [...tx].filter((t) => ty.has(t)).length;
+    const union = new Set([...tx, ...ty]).size || 1;
+    return shared / union + (x.status === y.status ? 0.25 : 0);
+  };
   const unusedB = b.findings.map((f, i) => ({ f, i, used: false }));
   const merged: Omit<MergedFinding, "id">[] = [];
   for (const fa of a.findings) {
-    const match = unusedB.find((x) => !x.used && key(x.f) === key(fa));
+    const candidates = unusedB.filter((x) => !x.used && key(x.f) === key(fa));
+    const match = candidates.sort((x, y) => similarity(fa, y.f) - similarity(fa, x.f) || x.i - y.i)[0];
     if (match) match.used = true;
     merged.push(mergeFinding(fa, match?.f ?? null));
   }

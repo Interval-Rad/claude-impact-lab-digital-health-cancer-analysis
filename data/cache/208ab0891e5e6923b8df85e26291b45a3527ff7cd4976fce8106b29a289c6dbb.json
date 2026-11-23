@@ -1,0 +1,24 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "208ab0891e5e6923b8df85e26291b45a3527ff7cd4976fce8106b29a289c6dbb",
+  "case_id": "refusal_heart",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:18:24.652Z",
+  "usage": {
+    "input_tokens": 11647,
+    "output_tokens": 2147
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "missing_finding",
+        "finding_id": null,
+        "report_text": "COMPARISON: Chest radiograph, 2026-06-30",
+        "why": "The findings list two prior_report_discrepancies: the prior report says heart size normal and mentions no cardiac device, but the prior image shows an enlarged heart and a device generator. They also ask the radiologist to confirm the prior report belongs to this prior image. The report mentions none of this."
+      }
+    ]
+  }
+}

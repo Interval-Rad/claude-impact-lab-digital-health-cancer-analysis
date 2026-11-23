@@ -1,0 +1,68 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "0b82a127b114d9e34da56bbb07d31134e26f3b0c80a55231b21a28371daf6ab3",
+  "case_id": "new_nodule",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-23T15:08:53.717Z",
+  "usage": {
+    "input_tokens": 7936,
+    "output_tokens": 1598
+  },
+  "response": {
+    "indication_pass": {
+      "question": "Are there new pulmonary nodules on this surveillance film in a patient with treated colon adenocarcinoma?",
+      "answer": "No new pulmonary nodule is seen on the current PA film compared with the prior. The small dense left perihilar nodule (F1) and the small dense right hilar focus (F2 and F4, which describe the same focus) are present on both films and look similar, but frontal views alone at this resolution cannot exclude small or retrocardiac nodules.",
+      "regions_rechecked": [
+        "R_apical",
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_apical",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "R_pleura",
+        "L_pleura"
+      ]
+    },
+    "added_findings": [],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Lungs clear. No focal opacity.",
+        "images_show": "The prior film shows a small, dense, well-defined rounded opacity at the lateral margin of the left hilum (F1). It is also present on the current film with similar position, size and density, so it is not new. The prior report does not mention it."
+      },
+      {
+        "prior_report_says": "Lungs clear. No focal opacity.",
+        "images_show": "The prior film also shows a small dense focus over the right hilum (F2 and F4), unchanged on the current film. It may be a vessel seen end-on or a small calcified node. The prior report does not mention it."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F4",
+      "F2"
+    ]
+  }
+}

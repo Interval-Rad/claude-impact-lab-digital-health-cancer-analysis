@@ -1,0 +1,30 @@
+{
+  "agent": "charge",
+  "label": "qc_v1_reviewed_redraft",
+  "requested_model": "claude-sonnet-5-5",
+  "request_hash": "0b74ee77e49759df6c459e2224dec2d8c8216ae7d7a0694a8ce7e8579d28f04f",
+  "case_id": "control",
+  "model": "claude-sonnet-5-5",
+  "recorded_at": "2026-11-23T15:16:39.034Z",
+  "usage": {
+    "input_tokens": 8886,
+    "output_tokens": 1272
+  },
+  "response": {
+    "pass": false,
+    "mismatches": [
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F6",
+        "report_text": "Priority for review per triage (urgency high, radiologist review next shift)",
+        "why": "The findings give only a look_at_first order with time_sensitive false and empty study_flags, so there is no triage urgency level or next-shift timing."
+      },
+      {
+        "type": "unsupported_statement",
+        "finding_id": "F6",
+        "report_text": "Triage calls for radiologist review next shift.",
+        "why": "The findings contain no triage instruction or review timing, so this recommendation is invented."
+      }
+    ]
+  }
+}

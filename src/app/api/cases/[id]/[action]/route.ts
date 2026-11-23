@@ -1,5 +1,5 @@
 // Every action on a case. The case id is in the path. Nothing else about the patient is in a URL.
-//   run       start the pipeline
+//   run       start the pipeline. After a failed report draft it only redrafts, unless { fresh: true }
 //   review    accept, edit or reject one finding, with a reason
 //   measure   the radiologist enters prior and current mm. Code recomputes RECIST
 //   report    save a hand edit of the report text
@@ -24,7 +24,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     assertCaseId(id);
     const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
     switch (action) {
-      case "run": startPipeline(id); break;
+      case "run": startPipeline(id, { fresh: body.fresh === true }); break; // fresh: read the images again, not only redraft
       case "review": {
         const r = body.review as { action?: string; reason?: string; text?: string } | null;
         if (r !== null && !["accepted", "edited", "rejected"].includes(String(r?.action))) throw new ChargeError("Unknown review action.", 400);

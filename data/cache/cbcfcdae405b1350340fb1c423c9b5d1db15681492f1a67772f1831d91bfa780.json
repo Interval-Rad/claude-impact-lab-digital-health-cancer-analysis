@@ -1,0 +1,102 @@
+{
+  "agent": "lightbox",
+  "label": "focused",
+  "requested_model": "claude-fable-5-2",
+  "request_hash": "cbcfcdae405b1350340fb1c423c9b5d1db15681492f1a67772f1831d91bfa780",
+  "case_id": "refusal_heart",
+  "model": "claude-fable-5-2",
+  "recorded_at": "2026-11-23T15:16:33.126Z",
+  "usage": {
+    "input_tokens": 12382,
+    "output_tokens": 3658
+  },
+  "response": {
+    "indication_pass": {
+      "question": "What on the film could account for the shortness of breath, and is there any visible chest or bone abnormality relevant to the history of prostate cancer?",
+      "answer": "Hazy and reticular opacity around both hila and in both mid zones has increased from the prior, with bibasal opacity and an enlarged cardiac silhouette. This pattern may reflect interstitial or alveolar fluid, and other diffuse processes are not excluded. No discrete lung mass or definite destructive rib lesion is seen, but the supine portable technique, diffuse opacity and reduced resolution limit this, and pleural effusion and pneumothorax remain undetermined.",
+      "regions_rechecked": [
+        "R_upper",
+        "R_mid",
+        "R_lower",
+        "L_upper",
+        "L_mid",
+        "L_lower",
+        "R_hilum",
+        "L_hilum",
+        "mediastinum",
+        "heart",
+        "R_pleura",
+        "L_pleura",
+        "bones"
+      ]
+    },
+    "added_findings": [
+      {
+        "region": "bones",
+        "kind": "bone_lesion",
+        "description": "Mottled, heterogeneous density projecting over the right glenoid and scapular neck region on the current film. It could be a projectional effect from arm position and the overlying ECG electrode, or altered bone texture. This does not settle the open question about bone lesions. No definite sclerotic or destructive lesion is identified in the visible ribs, clavicles or spine at this resolution.",
+        "status": "indeterminate",
+        "size_change_words": "not_comparable",
+        "needs_measurement": false,
+        "evidence": "On the prior PA the right shoulder girdle shows no similar mottled density, but the arm position and projection differ. On the current AP supine film an oval area of granular density overlies the right scapula just above an ECG electrode. Overlap with the electrode and reduced resolution prevent a confident call. Review on the source images in PACS is needed.",
+        "time_sensitive": false,
+        "added_in_focused_pass": true
+      }
+    ],
+    "prior_report_discrepancies": [
+      {
+        "prior_report_says": "Heart size normal.",
+        "images_show": "The cardiac silhouette appears enlarged on the prior PA image, and both blind reads recorded this. The report statement is not adopted."
+      },
+      {
+        "prior_report_says": "No cardiac device is mentioned (the report reads only: PA chest. Heart size normal. Lungs clear.).",
+        "images_show": "The prior image shows a left chest wall cardiac device generator with transvenous leads. The radiologist should confirm that the prior report belongs to this prior image."
+      }
+    ],
+    "outside_indication": [
+      {
+        "finding_id": "F1",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F2",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F3",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F4",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F5",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F6",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F7",
+        "outside_indication": false
+      },
+      {
+        "finding_id": "F8",
+        "outside_indication": true
+      },
+      {
+        "finding_id": "F9",
+        "outside_indication": true
+      }
+    ],
+    "look_first": [
+      "F1",
+      "F2",
+      "F9",
+      "F3",
+      "F7"
+    ]
+  }
+}
